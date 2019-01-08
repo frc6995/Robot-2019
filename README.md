@@ -1,4 +1,6 @@
-# 2019-DEEP-SPACE
+# Robot-2019
+# 2019 FRC Deep Space Robot Code - FRC Team 6995
+
 This Repository is for FRC 6995, 2019 Robot using VS Code
 
 This repository is the code for the 2019 robot of the First Robotics Challenge (FRC) team, 6995 NOMAD.
