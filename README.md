@@ -82,7 +82,7 @@ Install the FRC Update Suite from National Instruments which will allow you to c
 
 		3. cd git
 
-		4. git clone https://github.com/frc6995/2019-DEEP-SPACE.git  
+		4. git clone https://github.com/frc6995/Robot-2019.git  
 		
 		5. This should create ~/Git/2019-DEEP-SPACE/, which contains the latest master version of the 
 		FRC 6995 DEEP SPACE source code.
