@@ -4,11 +4,11 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import org.usfirst.frc.team6995.robot.RobotMap;
 import edu.wpi.first.wpilibj.Preferences;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
+import edu.wpi.first.wpilibj.Talon;
 
 public class DrivebaseS extends Subsystem {
 
