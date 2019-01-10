@@ -7,24 +7,11 @@
 
 package frc.robot;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
-
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
-  public final static int FRONT_LEFT_TALON = 2;
-  public final static int FRONT_RIGHT_TALON = 4;
-  public final static int BACK_LEFT_TALON = 3;
-  public final static int BACK_RIGHT_TALON = 5;
+//CAN bus
+//Talons
+  public final static int DRIVE_FRONT_LEFT_TALON = 2;
+  public final static int DRIVE_FRONT_RIGHT_TALON = 3;
+  public final static int DRIVE_BACK_LEFT_TALON = 4;
+  public final static int DRIVE_BACK_RIGHT_TALON = 5;
 }
