@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import org.usfirst.frc.team6995.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.Preferences;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -18,8 +17,6 @@ public class DrivebaseS extends Subsystem {
   private TalonSRX driveRightFront = null;
   private TalonSRX driveRightBack = null;
 
-  Preferences prefs = new Preferences;
-
   private DifferentialDrive differentialDrive = null;
   private SpeedControllerGroup leftSpeedControllerGroup = null;
   private SpeedControllerGroup rightSpeedControllerGroup = null;
@@ -30,10 +27,10 @@ public class DrivebaseS extends Subsystem {
   }
 
   public DrivebaseS() {
-    driveLeftFront = new TalonSRX(RobotMap.DRIVEBASE_LEFT_TALON_CAN_ID);
-    driveLeftBack = new TalonSRX(RobotMap.DRIVEBASE_LEFTB_TALON_CAN_ID);
-    driveRightFront = new TalonSRX(RobotMap.DRIVEBASE_RIGHT_TALON_CAN_ID);
-    driveRightBack = new TalonSRX(RobotMap.DRIVEBASE_RIGHTB_TALON_CAN_ID);
+    driveLeftFront = new TalonSRX(frc.robot.RobotMap.DRIVEBASE_LEFT_TALON_CAN_ID);
+    driveLeftBack = new TalonSRX(frc.robot.RobotMap.DRIVEBASE_LEFTB_TALON_CAN_ID);
+    driveRightFront = new TalonSRX(frc.robot.RobotMap.DRIVEBASE_RIGHT_TALON_CAN_ID);
+    driveRightBack = new TalonSRX(frc.robot.RobotMap.DRIVEBASE_RIGHTB_TALON_CAN_ID);
 
     leftSpeedControllerGroup = new SpeedControllerGroup(driveLeftFront, driveLeftBack);
     rightSpeedControllerGroup = new SpeedControllerGroup(driveRightFront, driveRightBack);
@@ -44,10 +41,6 @@ public class DrivebaseS extends Subsystem {
     driveRightFront.setNeutralMode(NeutralMode.Brake);
     driveRightBack.setNeutralMode(NeutralMode.Brake);
 
-    driveLeftFront.setSafetyEnabled(false);
-    driveLeftBack.setSafetyEnabled(false);
-    driveRightFront.setSafetyEnabled(false);
-    driveRightBack.setSafetyEnabled(false);
   }
 
 public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
