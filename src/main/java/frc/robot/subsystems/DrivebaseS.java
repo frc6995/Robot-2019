@@ -24,7 +24,7 @@ public class DrivebaseS extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new DriveArcadeXboxC(.5));
+    setDefaultCommand(new DriveArcadeStickC());
   }
 
   public DrivebaseS() {
