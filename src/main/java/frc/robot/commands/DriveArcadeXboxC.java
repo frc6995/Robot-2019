@@ -10,6 +10,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class DriveArcadeXboxC extends Command {
   private double forwardSpeed = 0;
@@ -31,10 +32,10 @@ public class DriveArcadeXboxC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    forwardSpeed = Robot.m_oi.xbox.getTriggerAxis(Hand.kLeft);
-    backwardSpeed = Robot.m_oi.xbox.getTriggerAxis(Hand.kRight);
+    forwardSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_LEFT_TRIGGER);
+    backwardSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_RIGHT_TRIGGER);
     moveSpeed = forwardSpeed - backwardSpeed;
-    rotSpeed = Robot.m_oi.xbox.getX(Hand.kLeft);
+    rotSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_LEFT_X_AXIS);
     Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throt);
   }
 

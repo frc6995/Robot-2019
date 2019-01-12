@@ -24,4 +24,8 @@ public class RobotMap {
 
 //OI - xbox
   public final static int OI_XBOX = 1;
+  public static final int DRIVE_XBOX_LEFT_X_AXIS = 0;
+  public static final int DRIVE_XBOX_LEFT_Y_AXIS = 1; 
+  public static final int DRIVE_XBOX_LEFT_TRIGGER = 2;
+  public static final int DRIVE_XBOX_RIGHT_TRIGGER = 3;
 }
