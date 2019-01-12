@@ -2,6 +2,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -31,9 +33,11 @@ public class DrivebaseS extends Subsystem {
     driveRightFront = new WPI_TalonSRX(frc.robot.RobotMap.DRIVEBASE_RIGHT_TALON_CAN_ID);
     driveRightBack = new WPI_TalonSRX(frc.robot.RobotMap.DRIVEBASE_RIGHTB_TALON_CAN_ID);
 
-    leftSpeedControllerGroup = new SpeedControllerGroup(driveLeftFront, driveLeftBack);
-    rightSpeedControllerGroup = new SpeedControllerGroup(driveRightFront, driveRightBack);
-    differentialDrive = new DifferentialDrive(leftSpeedControllerGroup, rightSpeedControllerGroup);
+    driveLeftBack.set(ControlMode.Follower, frc.robot.RobotMap.DRIVEBASE_LEFT_TALON_CAN_ID);
+    driveRightBack.set(ControlMode.Follower, frc.robot.RobotMap.DRIVEBASE_RIGHT_TALON_CAN_ID);
+    //leftSpeedControllerGroup = new SpeedControllerGroup(driveLeftFront, driveLeftBack);
+    //rightSpeedControllerGroup = new SpeedControllerGroup(driveRightFront, driveRightBack);
+    differentialDrive = new DifferentialDrive(driveLeftFront, driveRightFront);
  
     driveLeftFront.setNeutralMode(NeutralMode.Brake);
     driveLeftBack.setNeutralMode(NeutralMode.Brake);
