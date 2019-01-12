@@ -19,8 +19,6 @@ public class DrivebaseS extends Subsystem {
 
 
   private DifferentialDrive differentialDrive = null;
-  private SpeedControllerGroup leftSpeedControllerGroup = null;
-  private SpeedControllerGroup rightSpeedControllerGroup = null;
 
   @Override
   public void initDefaultCommand() {
@@ -35,8 +33,6 @@ public class DrivebaseS extends Subsystem {
 
     driveLeftBack.set(ControlMode.Follower, frc.robot.RobotMap.DRIVEBASE_LEFT_TALON_CAN_ID);
     driveRightBack.set(ControlMode.Follower, frc.robot.RobotMap.DRIVEBASE_RIGHT_TALON_CAN_ID);
-    //leftSpeedControllerGroup = new SpeedControllerGroup(driveLeftFront, driveLeftBack);
-    //rightSpeedControllerGroup = new SpeedControllerGroup(driveRightFront, driveRightBack);
     differentialDrive = new DifferentialDrive(driveLeftFront, driveRightFront);
  
     driveLeftFront.setNeutralMode(NeutralMode.Brake);
