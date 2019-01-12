@@ -30,8 +30,10 @@ public class DriveArcadeStickC extends Command {
   @Override
   protected void execute() {
     moveSpeed = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_MOVE_AXIS);
-    rotSpeed = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_ROTATE_AXIS);
+    rotSpeed = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_LEFTRIGHT_AXIS);
     throttle = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_THROT_AXIS);
+    throttle = -throttle; //Flip sign of throttle
+    throttle = (throttle+1)/2; //Convert into proper range.
 
     Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throttle);
   }
