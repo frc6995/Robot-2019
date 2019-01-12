@@ -47,5 +47,8 @@ public class DrivebaseS extends Subsystem {
 public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
   differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed);
 }
+public void tankDrive(double leftSide, double rightSide) {
+  differentialDrive.tankDrive(leftSide, rightSide);
+}
 
 }
