@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.commands.DriveArcadeStickC;
+import frc.robot.commands.DriveArcadeXboxC;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 public class DrivebaseS extends Subsystem {
@@ -23,7 +24,7 @@ public class DrivebaseS extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new DriveArcadeStickC());
+    setDefaultCommand(new DriveArcadeXboxC(.5));
   }
 
   public DrivebaseS() {

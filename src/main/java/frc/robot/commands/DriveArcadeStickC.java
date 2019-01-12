@@ -8,6 +8,7 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -29,11 +30,13 @@ public class DriveArcadeStickC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    moveSpeed = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_MOVE_AXIS);
+    moveSpeed = -Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_MOVE_AXIS);
     rotSpeed = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_LEFTRIGHT_AXIS);
     throttle = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_THROT_AXIS);
-    throttle = (throttle+1)/2; //Convert into proper range.
-
+    throttle = (1 -(throttle+1)/2); //Convert into proper range.
+    SmartDashboard.putNumber("throttle", throttle);
+    SmartDashboard.putNumber("xAxis", moveSpeed);
+    SmartDashboard.putNumber("yAxis", rotSpeed);
     Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throttle);
   }
 
