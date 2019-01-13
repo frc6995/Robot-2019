@@ -16,15 +16,20 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 
 public class AlignTargetC extends Command {
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
+  
   NetworkTableEntry txEntry = table.getEntry("tx");
   NetworkTableEntry tyEntry = table.getEntry("ty");
+  NetworkTableEntry camMode = table.getEntry("camMode");
   double KpAim = -0.1f;
   double KpDistance = -0.1f;
   double min_aim_command = 0.05f;
+  double cam = 0.0;
   double tx= 0.0;
   double ty = 0.0;
   double left_command = 0.0;
   double right_command = 0.0;
+
+
 
   public AlignTargetC() {
     // Use requires() here to declare subsystem dependencies
@@ -40,7 +45,7 @@ public class AlignTargetC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
+  cam = camMode.getDouble(0);
   tx = txEntry.getDouble(0.0);
   ty = tyEntry.getDouble(0.0);
 
@@ -64,7 +69,11 @@ public class AlignTargetC extends Command {
         right_command -= steering_adjust + distance_adjust;
         Robot.m_drivebaseS.tankDrive(left_command, right_command);
 }
+else {
+  
+}
   }
+  
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
