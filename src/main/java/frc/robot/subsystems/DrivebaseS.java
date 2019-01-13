@@ -1,6 +1,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -8,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import frc.robot.Robot;
 import frc.robot.commands.DriveArcadeStickC;
 import frc.robot.commands.DriveArcadeXboxC;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -24,7 +26,7 @@ public class DrivebaseS extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new DriveArcadeStickC());
+    setDefaultCommand(null);
   }
 
   public DrivebaseS() {

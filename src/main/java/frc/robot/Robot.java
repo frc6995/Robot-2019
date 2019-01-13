@@ -28,8 +28,9 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   public static DrivebaseS m_drivebaseS;
 
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  public Command m_autonomousCommand;
+  public Command m_driveCommand;
+  public SendableChooser<Command> drive_chooser = new SendableChooser<>();
 
   /**
    * This function is run when the robot is first started up and should be
@@ -39,9 +40,9 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_drivebaseS = new DrivebaseS();
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Control", new DriveArcadeStickC());
-    m_chooser.addOption("XboxControl", new DriveArcadeXboxC(0.5));
-    SmartDashboard.putData("Drive Control", m_chooser);
+    drive_chooser.setDefaultOption("Default Control", new DriveArcadeStickC());
+    drive_chooser.addOption("XboxControl", new DriveArcadeXboxC());
+    SmartDashboard.putData("Drive Control", drive_chooser);
   }
 
   /**
@@ -54,6 +55,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    m_driveCommand = drive_chooser.getSelected();
+    m_driveCommand.start();
   }
 
   /**
@@ -83,7 +86,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+    m_autonomousCommand = drive_chooser.getSelected();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",

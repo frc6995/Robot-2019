@@ -34,7 +34,7 @@ public class DriveArcadeStickC extends Command {
     rotSpeed = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_LEFTRIGHT_AXIS);
     throttle = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_THROT_AXIS);
     throttle = (1 -(throttle+1)/2); //Convert into proper range.
-    SmartDashboard.putNumber("throttle", throttle);
+    SmartDashboard.putNumber("JoystickThrottle", throttle);
     SmartDashboard.putNumber("xAxis", moveSpeed);
     SmartDashboard.putNumber("yAxis", rotSpeed);
     Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throttle);
