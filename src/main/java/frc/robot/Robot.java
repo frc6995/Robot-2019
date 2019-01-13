@@ -41,7 +41,7 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Control", new DriveArcadeStickC());
     m_chooser.addOption("XboxControl", new DriveArcadeXboxC(0.5));
-    SmartDashboard.putData("Auto mode", m_chooser);
+    SmartDashboard.putData("Drive Control", m_chooser);
   }
 
   /**
