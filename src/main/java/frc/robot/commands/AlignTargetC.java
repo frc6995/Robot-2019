@@ -49,7 +49,6 @@ public class AlignTargetC extends Command {
   tx = txEntry.getDouble(0.0);
   ty = tyEntry.getDouble(0.0);
 
-  if (Robot.m_oi.stick.getRawButton(9) || Robot.m_oi.xbox.getRawButton(3)) {
         double heading_error = -tx;
         double distance_error = -ty;
         double steering_adjust = 0.0f;
@@ -69,10 +68,7 @@ public class AlignTargetC extends Command {
         right_command -= steering_adjust + distance_adjust;
         Robot.m_drivebaseS.tankDrive(left_command, right_command);
 }
-else {
-  
-}
-  }
+
   
 
   // Make this return true when this Command no longer needs to run execute()
