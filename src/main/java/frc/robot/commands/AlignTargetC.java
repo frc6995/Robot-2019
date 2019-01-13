@@ -21,7 +21,7 @@ public class AlignTargetC extends Command {
   double KpAim = -0.1f;
   double KpDistance = -0.1f;
   double min_aim_command = 0.05f;
-  double tx=0.0;
+  double tx= 0.0;
   double ty = 0.0;
   double left_command = 0.0;
   double right_command = 0.0;
@@ -44,8 +44,7 @@ public class AlignTargetC extends Command {
   tx = txEntry.getDouble(0.0);
   ty = tyEntry.getDouble(0.0);
 
-if (Robot.m_oi.stick.getRawButton(9) || Robot.m_oi.xbox.getRawButton(3));
-{
+  if (Robot.m_oi.stick.getRawButton(9) || Robot.m_oi.xbox.getRawButton(3)) {
         double heading_error = -tx;
         double distance_error = -ty;
         double steering_adjust = 0.0f;
