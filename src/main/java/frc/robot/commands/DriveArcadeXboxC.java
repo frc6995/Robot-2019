@@ -9,6 +9,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -18,10 +19,10 @@ public class DriveArcadeXboxC extends Command {
   private double moveSpeed = 0;
   private double rotSpeed = 0;
   private double throt = 0;
-  public DriveArcadeXboxC(double throttle) {
+  public DriveArcadeXboxC() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_drivebaseS);
-    throt = throttle;
+    throt = SmartDashboard.getNumber("XboxThrottle", 0.5);
   }
 
   // Called just before this Command runs the first time

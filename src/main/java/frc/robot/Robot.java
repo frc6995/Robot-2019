@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.DriveArcadeStickC;
+import frc.robot.commands.DriveArcadeXboxC;
 import frc.robot.subsystems.DrivebaseS;
-import frc.robot.subsystems.ExampleSubsystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,12 +25,12 @@ import frc.robot.subsystems.ExampleSubsystem;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
   public static OI m_oi;
   public static DrivebaseS m_drivebaseS;
 
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+  public Command m_autonomousCommand;
+  public Command m_driveCommand;
+  public SendableChooser<Command> drive_chooser = new SendableChooser<>();
 
   /**
    * This function is run when the robot is first started up and should be
@@ -40,9 +40,9 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_drivebaseS = new DrivebaseS();
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
-    SmartDashboard.putData("Auto mode", m_chooser);
+    drive_chooser.setDefaultOption("Default Control", new DriveArcadeStickC());
+    drive_chooser.addOption("XboxControl", new DriveArcadeXboxC());
+    SmartDashboard.putData("Drive Control", drive_chooser);
   }
 
   /**
@@ -55,6 +55,8 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    m_driveCommand = drive_chooser.getSelected();
+    m_driveCommand.start();
   }
 
   /**
@@ -84,7 +86,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
+    m_autonomousCommand = drive_chooser.getSelected();
 
     /*
      * String autoSelected = SmartDashboard.getString("Auto Selector",
