@@ -12,6 +12,13 @@ public class LadderS extends Subsystem {
   private WPI_TalonSRX ladderMotorB = null;
   private DifferentialDrive ladderDifferentialDrive = null;
 
+  private int currentLadderLevel = 1; // 1 = ground level, 2 = rocket level 2, 3 = rocket level 3.
+  private int nextLadderLevel = 1;
+
+  public static final int LADDER_LEVEL_ONE = 0;
+  public static final int LADDER_LEVEL_TWO = 100; //change as needed
+  public static final int LADDER_LEVEL_THREE = 200; //change as needed
+
   @Override
   public void initDefaultCommand() {
   setDefaultCommand(null);
@@ -39,5 +46,13 @@ public class LadderS extends Subsystem {
   return ladderMotorB.getSensorCollection().getQuadraturePosition();
   }
 
+  public int GetCurrentLadderLevel(){
+    return currentLadderLevel;
+  }
+  /*
+  public int SetLadderLevel() {
+    return currentLadderLevel;
+  }
+   */
 
 }
