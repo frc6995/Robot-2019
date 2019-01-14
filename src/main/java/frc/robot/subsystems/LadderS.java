@@ -30,7 +30,6 @@ public class LadderS extends Subsystem {
     ladderMotorB = new WPI_TalonSRX(RobotMap.LADDER_MOTOR_B_TALON_CAN_ID);
 
     ladderDifferentialDrive = new DifferentialDrive(ladderMotorA, ladderMotorB);
-  
 
   }
 
@@ -55,4 +54,10 @@ public class LadderS extends Subsystem {
   }
    */
 
+    public void SetNextLadderLevel(int nextLevel){
+       nextLadderLevel = nextLevel;
+    }
+    public int GetNextLadderLevel(){
+      return nextLadderLevel;
+    }
 }
