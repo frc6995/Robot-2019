@@ -14,6 +14,10 @@ public class RobotMap {
   public final static int DRIVEBASE_RIGHT_TALON_CAN_ID = 3;
   public final static int DRIVEBASE_LEFTB_TALON_CAN_ID = 4;
   public final static int DRIVEBASE_RIGHTB_TALON_CAN_ID = 5;
+  //HatchMech constants
+  public final static int HATCHMECH_PCM_ID = 0;
+  public final static int HATCHMECH_FORWARD_CHANNEL = 0;
+  public final static int HATCHMECH_REVERSE_CHANNEL = 1;
 
 //OI - joystick
   public final static int OI_JOYSTICK = 0;
