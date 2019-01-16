@@ -9,13 +9,20 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.HatchMechC;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-// joystick
-public Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
-public XboxController xbox = new XboxController(RobotMap.OI_XBOX);
+public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
+public final JoystickButton hatch = new JoystickButton(stick, 1);
+//1 is trigger
+public final XboxController xbox = new XboxController(RobotMap.OI_XBOX);
+
+public OI(){
+    hatch.whenPressed(new HatchMechC());
+}
 }
