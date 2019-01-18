@@ -48,11 +48,11 @@ public class LadderS extends Subsystem {
   public int GetCurrentLadderLevel(){
     return currentLadderLevel;
   }
-  /*
-  public int SetLadderLevel() {
-    return currentLadderLevel;
+  
+  public void SetLadderLevel(int currentLevel) {
+   currentLadderLevel = currentLevel;
   }
-   */
+   
 
     public void SetNextLadderLevel(int nextLevel){
        nextLadderLevel = nextLevel;
