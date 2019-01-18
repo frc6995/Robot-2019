@@ -8,10 +8,11 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
-public class HatchMechC extends Command {
-  public HatchMechC() {
+public class HatchMechDeployC extends Command {
+  public HatchMechDeployC() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_hatchMechS);
@@ -25,8 +26,10 @@ public class HatchMechC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    
     Robot.m_hatchMechS.deploy();
-    Robot.m_hatchMechS.retract();
+    
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
