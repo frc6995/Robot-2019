@@ -23,8 +23,8 @@ public class OI {
 
     public OI(){
         // joystick
-        align.whenPressed(new AlignTargetC());
+        align.whileHeld(new AlignTargetC());
 
 
-}
+    }
 }

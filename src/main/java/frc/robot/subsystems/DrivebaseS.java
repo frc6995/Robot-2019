@@ -53,4 +53,10 @@ public void tankDrive(double leftSide, double rightSide) {
   differentialDrive.tankDrive(leftSide, rightSide);
 }
 
+public void visionDrive(double moveSpeed, double rotateSpeed)
+ {
+  driveLeftFront.set(moveSpeed + rotateSpeed);
+  driveRightFront.set(-moveSpeed + rotateSpeed);
+}
+
 }

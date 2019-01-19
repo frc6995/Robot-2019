@@ -20,7 +20,7 @@ public class AlignTargetC extends Command {
   NetworkTableEntry txEntry = table.getEntry("tx");
   NetworkTableEntry tyEntry = table.getEntry("ty");
   NetworkTableEntry camMode = table.getEntry("camMode");
-  double KpAim = -0.1f;
+  double KpAim = -0.03f;
   double KpDistance = -0.1f;
   double min_aim_command = 0.05f;
   double cam = 0.0;
@@ -28,8 +28,6 @@ public class AlignTargetC extends Command {
   double ty = 0.0;
   double left_command = 0.0;
   double right_command = 0.0;
-
-
 
   public AlignTargetC() {
     // Use requires() here to declare subsystem dependencies
@@ -40,33 +38,35 @@ public class AlignTargetC extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Preferences.getInstance().getDouble("kpAim", 0.01)
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
   cam = camMode.getDouble(0);
-  tx = txEntry.getDouble(0.0);
-  ty = tyEntry.getDouble(0.0);
+        tx = txEntry.getDouble(0.0);
+        ty = tyEntry.getDouble(0.0);
+
+        SmartDashboard.putNumber("Tx", tx);
+        SmartDashboard.putNumber("Ty", ty);
+        SmartDashboard.getNumber("KpAim", shuffleKpAim);
 
         double heading_error = -tx;
-        double distance_error = -ty;
+        double distance_error = 0;
         double steering_adjust = 0.0f;
 
-        if (tx > 1.0)
-        {
-                steering_adjust = KpAim*heading_error - min_aim_command;
-        }
-        else if (tx < 1.0)
-        {
-                steering_adjust = KpAim*heading_error + min_aim_command;
-        }
-
+        steering_adjust = steering_adjust * shuffleKpAim;
         double distance_adjust = KpDistance * distance_error;
+        
+        
+        SmartDashboard.putNumber("Steering", steering_adjust);
 
-        left_command += steering_adjust + distance_adjust;
-        right_command -= steering_adjust + distance_adjust;
-        Robot.m_drivebaseS.tankDrive(left_command, right_command);
+        left_command = steering_adjust;// + distance_adjust;
+        SmartDashboard.putNumber("left_command", left_command);
+
+        right_command = steering_adjust;// + distance_adjust;
+        Robot.m_drivebaseS.visionDrive(0, steering_adjust);
 }
 
   
@@ -74,6 +74,14 @@ public class AlignTargetC extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    //tx = txEntry.getDouble(0.0);
+    //ty = tyEntry.getDouble(0.0);
+    //if (tx == 0.0 && ty == 0.0) {
+    //  return true;
+    //}
+    //else {
+     // return false;
+    //}
     return false;
   }
 
