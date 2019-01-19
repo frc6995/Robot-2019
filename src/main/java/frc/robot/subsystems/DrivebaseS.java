@@ -37,6 +37,6 @@ public class DrivebaseS extends Subsystem {
   }
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
-    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * throttle);
+    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * Math.min(Math.max(throttle, 0.6), 1));
   }
 }
