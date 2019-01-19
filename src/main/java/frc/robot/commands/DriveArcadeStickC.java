@@ -16,9 +16,8 @@ public class DriveArcadeStickC extends Command {
   private double moveSpeed = 0;
   private double rotSpeed = 0;
   private double throttle = 0;
+
   public DriveArcadeStickC() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.m_drivebaseS);
   }
 
@@ -33,10 +32,13 @@ public class DriveArcadeStickC extends Command {
     moveSpeed = -Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_MOVE_AXIS);
     rotSpeed = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_LEFTRIGHT_AXIS);
     throttle = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_THROT_AXIS);
-    throttle = (1 -(throttle+1)/2); //Convert into proper range.
+
+    throttle = 1 - ((throttle + 1)/2); //Reverse the throttle value
+
     SmartDashboard.putNumber("JoystickThrottle", throttle);
     SmartDashboard.putNumber("xAxis", moveSpeed);
     SmartDashboard.putNumber("yAxis", rotSpeed);
+
     Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throttle);
   }
 
