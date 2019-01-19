@@ -27,7 +27,7 @@ public class MoveLadderC extends Command {
 
 
     if (Robot.m_ladderS.GetCurrentLadderLevel() == Robot.m_ladderS.GetNextLadderLevel()) {
-      end();
+      return;
     }
     else {
 
