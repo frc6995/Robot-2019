@@ -33,7 +33,7 @@ public class DriveArcadeStickC extends Command {
     rotSpeed = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_LEFTRIGHT_AXIS);
     throttle = Robot.m_oi.stick.getRawAxis(RobotMap.DRIVE_STICK_THROT_AXIS);
 
-    throttle = (throttle + 1)/2; //Reverse the throttle value
+    throttle = (-throttle + 1)/2; //Reverse the throttle value
 
     SmartDashboard.putNumber("JoystickThrottle", throttle);
     SmartDashboard.putNumber("xAxis", moveSpeed);
