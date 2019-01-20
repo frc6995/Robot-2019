@@ -17,6 +17,8 @@ public class RobotMap {
   public final static int DRIVE_STICK_LEFTRIGHT_AXIS = 0;
   public final static int DRIVE_STICK_ROTATE_AXIS = 2;
   public final static int DRIVE_STICK_THROT_AXIS = 3;  
+  public final static int LADDER_UP_BUTTON = 4;  // change as needed
+  public final static int LADDER_DOWN_BUTTON = 5; //change as needed
 
 //OI - xbox
   public final static int OI_XBOX = 1;

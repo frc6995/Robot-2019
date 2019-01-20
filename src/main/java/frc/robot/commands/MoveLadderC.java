@@ -3,8 +3,15 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class MoveLadderC extends Command {
+
+//constants
+private double ladderKp;
+private double ladderKi;
+private double sumError;
+
   public MoveLadderC() {
     requires(Robot.m_ladderS);
   }
@@ -23,16 +30,33 @@ public class MoveLadderC extends Command {
     else if (Robot.m_oi.xbox.getBumperPressed(Hand.kLeft) && Robot.m_ladderS.GetCurrentLadderLevel() != 1) {
       Robot.m_ladderS.SetNextLadderLevel(Robot.m_ladderS.GetCurrentLadderLevel() - 1);
     } //if left bumper is pressed, tell the robot to move ladder down a level
-
-
+   //for xbox controller
+   
+    if (Robot.m_oi.stick.getRawButton(RobotMap.LADDER_UP_BUTTON) == true && Robot.m_ladderS.GetCurrentLadderLevel() != 3) {
+      Robot.m_ladderS.SetNextLadderLevel(Robot.m_ladderS.GetCurrentLadderLevel() + 1);
+    }
+    else if (Robot.m_oi.stick.getRawButton(RobotMap.LADDER_DOWN_BUTTON) == true && Robot.m_ladderS.GetCurrentLadderLevel() != 1) {
+      Robot.m_ladderS.SetNextLadderLevel(Robot.m_ladderS.GetCurrentLadderLevel() - 1);
+    }
+    //for joystick
 
     if (Robot.m_ladderS.GetCurrentLadderLevel() == Robot.m_ladderS.GetNextLadderLevel()) {
       return;
     }
     else {
 
+      double error = Robot.m_ladderS.GetError();
+      double power = error * ladderKp;
+      
+      if (Math.abs(error) < 100) {
+        power += sumError * ladderKi;
+        sumError += error;            
+      }
+      else {
+        sumError = 0;
+      }
         
-        if (Robot.m_ladderS.GetNextLadderLevel() == 1) {
+      /*  if (Robot.m_ladderS.GetNextLadderLevel() == 1) {
           do {
             Robot.m_ladderS.MoveLadder(-1);
           } while (Robot.m_ladderS.GetMotorAEncoderCount() >= Robot.m_ladderS.LADDER_LEVEL_ONE);
@@ -61,10 +85,9 @@ public class MoveLadderC extends Command {
           } while (Robot.m_ladderS.GetMotorAEncoderCount() <= Robot.m_ladderS.LADDER_LEVEL_THREE);
           Robot.m_ladderS.SetLadderLevel(3);
           }
-          //if moving up to level 3
-        }
-      
-      
+          //if moving up to level 3 */
+        } 
+            
     }
 
   // Make this return true when this Command no longer needs to run execute()

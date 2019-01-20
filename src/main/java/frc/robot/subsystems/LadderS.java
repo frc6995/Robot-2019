@@ -2,18 +2,19 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import frc.robot.commands.MoveLadderC;;
 
 public class LadderS extends Subsystem {
 
   private WPI_TalonSRX ladderMotorA = null;
   private WPI_TalonSRX ladderMotorB = null;
-  private DifferentialDrive ladderDifferentialDrive = null;
 
   private int currentLadderLevel = 1; // 1 = ground level, 2 = rocket level 2, 3 = rocket level 3.
   private int nextLadderLevel = 1;
+
+  private int setPoint;
 
   public static final int LADDER_LEVEL_ONE = 0;
   public static final int LADDER_LEVEL_TWO = 100; //change as needed
@@ -29,24 +30,44 @@ public class LadderS extends Subsystem {
     ladderMotorA = new WPI_TalonSRX(frc.robot.RobotMap.LADDER_MOTOR_A_TALON_CAN_ID);  
     ladderMotorB = new WPI_TalonSRX(RobotMap.LADDER_MOTOR_B_TALON_CAN_ID);
 
-    ladderDifferentialDrive = new DifferentialDrive(ladderMotorA, ladderMotorB);
-
   }
 
   public void MoveLadder(double moveSpeed){
-    ladderDifferentialDrive.arcadeDrive(moveSpeed, 0);     //may need to use set.
+         ladderMotorA.set(moveSpeed);
+         ladderMotorB.set(moveSpeed); //may need to be negative
   }
 
   public double GetMotorAEncoderCount() {
-  return ladderMotorA.getSensorCollection().getQuadraturePosition();  
+  return (ladderMotorA.getSensorCollection().getQuadraturePosition());  
   }
 
   public double GetMotorBEncoderCount() {
-  return ladderMotorB.getSensorCollection().getQuadraturePosition();
+  return (ladderMotorB.getSensorCollection().getQuadraturePosition());
+  }
+
+  public double GetLadderEncoderCount() {
+    return (GetMotorAEncoderCount() + GetMotorBEncoderCount() / 2); //averages two encoders
   }
 
   public int GetCurrentLadderLevel(){
-    return currentLadderLevel;
+    return (currentLadderLevel);
+  }
+
+  public int GetError(){
+
+    if (nextLadderLevel == 1) {
+      return (GetCurrentLadderLevel() - LADDER_LEVEL_ONE);
+    }
+    else if (nextLadderLevel == 2) {
+      return (GetCurrentLadderLevel() - LADDER_LEVEL_TWO);
+    }
+    else if (nextLadderLevel == 3) {
+      return (GetCurrentLadderLevel() - LADDER_LEVEL_THREE);
+    }
+    else {
+      return 0;
+    }
+
   }
   
   public void SetLadderLevel(int currentLevel) {
