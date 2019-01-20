@@ -28,6 +28,10 @@ public class AlignTargetC extends Command {
   double ty = 0.0;
   double left_command = 0.0;
   double right_command = 0.0;
+  double heading_error = 0.0;
+  double distance_error = 0.0;
+  double steering_adjust = 0.0;
+  double distance_adjust = 0.0;
 
   public AlignTargetC() {
     // Use requires() here to declare subsystem dependencies
@@ -38,35 +42,37 @@ public class AlignTargetC extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Preferences.getInstance().getDouble("kpAim", 0.01)
+    SmartDashboard.putNumber("kpAim", KpAim);
+    SmartDashboard.putNumber("kpDistance", KpDistance);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  cam = camMode.getDouble(0);
-        tx = txEntry.getDouble(0.0);
+  cam = camMode.getDouble(0); //shueja-personal:Unused
+        tx = txEntry.getDouble(0.0); //get offsets from limelight
         ty = tyEntry.getDouble(0.0);
 
         SmartDashboard.putNumber("Tx", tx);
         SmartDashboard.putNumber("Ty", ty);
-        SmartDashboard.getNumber("KpAim", shuffleKpAim);
+        KpAim = SmartDashboard.getNumber("kpAim", KpAim); //pull control constants from smartdashboard.
+        KpDistance = SmartDashboard.getNumber("kpDistance", KpDistance);
 
         double heading_error = -tx;
-        double distance_error = 0;
-        double steering_adjust = 0.0f;
+        double distance_error = 0/*ty*/; //shueja-personal: Might be negative, need to test.
 
-        steering_adjust = steering_adjust * shuffleKpAim;
-        double distance_adjust = KpDistance * distance_error;
+        steering_adjust = heading_error * KpAim; //basic proportional control
+        distance_adjust = KpDistance * distance_error;
         
         
         SmartDashboard.putNumber("Steering", steering_adjust);
 
-        left_command = steering_adjust;// + distance_adjust;
+        /*left_command = steering_adjust;// + distance_adjust;
         SmartDashboard.putNumber("left_command", left_command);
 
         right_command = steering_adjust;// + distance_adjust;
-        Robot.m_drivebaseS.visionDrive(0, steering_adjust);
+        SmartDashboard.putNumber("right_command", right_command);*/ //shueja-personal: Unused
+        Robot.m_drivebaseS.visionDrive(0/*distance_adjust*/, steering_adjust);
 }
 
   
@@ -76,12 +82,12 @@ public class AlignTargetC extends Command {
   protected boolean isFinished() {
     //tx = txEntry.getDouble(0.0);
     //ty = tyEntry.getDouble(0.0);
-    //if (tx == 0.0 && ty == 0.0) {
-    //  return true;
-    //}
-    //else {
-     // return false;
-    //}
+    /*if (tx == 0.0 && ty == 0.0) {
+      return true;
+    }
+    else {
+      return false;
+    }*/
     return false;
   }
 
