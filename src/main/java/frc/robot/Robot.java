@@ -42,7 +42,6 @@ public class Robot extends TimedRobot {
     m_oi = new OI();
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXboxC2());
-    drive_chooser.addOption("Joystick", new DriveArcadeStickC());
     SmartDashboard.putData("Drive Control", drive_chooser);
   }
 
