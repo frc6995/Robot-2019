@@ -19,19 +19,28 @@ public class AlignTargetC extends Command {
   
   NetworkTableEntry txEntry = table.getEntry("tx");
   NetworkTableEntry tyEntry = table.getEntry("ty");
+  NetworkTableEntry taEntry = table.getEntry("ta");
   NetworkTableEntry camMode = table.getEntry("camMode");
   double KpAim = -0.03f;
+  double KiAim = -0.03f;
   double KpDistance = -0.1f;
   double min_aim_command = 0.05f;
   double cam = 0.0;
   double tx= 0.0;
   double ty = 0.0;
+  double ta = 0.0;
   double left_command = 0.0;
   double right_command = 0.0;
   double heading_error = 0.0;
+  double heading_sum_error = 0.0;
   double distance_error = 0.0;
+  double distance_sum_error = 0.0;
+
+
   double steering_adjust = 0.0;
   double distance_adjust = 0.0;
+
+  
 
   public AlignTargetC() {
     // Use requires() here to declare subsystem dependencies
@@ -49,30 +58,35 @@ public class AlignTargetC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  cam = camMode.getDouble(0); //shueja-personal:Unused
+        cam = camMode.getDouble(0); //shueja-personal:Unused
         tx = txEntry.getDouble(0.0); //get offsets from limelight
         ty = tyEntry.getDouble(0.0);
+        ta = taEntry.getDouble(0.0);
 
         SmartDashboard.putNumber("Tx", tx);
         SmartDashboard.putNumber("Ty", ty);
+        SmartDashboard.putNumber("Ta", ta);
+        SmartDashboard.putNumber("Heading error", heading_error);
         KpAim = SmartDashboard.getNumber("kpAim", KpAim); //pull control constants from smartdashboard.
         KpDistance = SmartDashboard.getNumber("kpDistance", KpDistance);
 
-        double heading_error = -tx;
-        double distance_error = 0/*ty*/; //shueja-personal: Might be negative, need to test.
-
+        heading_error = -tx;
+        heading_sum_error += heading_error;
+        distance_error = ta - 0.54; //shueja-personal: Might be negative, need to test.
+        distance_sum_error += distance_error;
+        
         steering_adjust = heading_error * KpAim; //basic proportional control
         distance_adjust = KpDistance * distance_error;
         
-        
         SmartDashboard.putNumber("Steering", steering_adjust);
+        SmartDashboard.putNumber("Distance", distance_adjust);
 
         /*left_command = steering_adjust;// + distance_adjust;
         SmartDashboard.putNumber("left_command", left_command);
 
         right_command = steering_adjust;// + distance_adjust;
         SmartDashboard.putNumber("right_command", right_command);*/ //shueja-personal: Unused
-        Robot.m_drivebaseS.visionDrive(0/*distance_adjust*/, steering_adjust);
+        Robot.m_drivebaseS.visionDrive(distance_adjust, steering_adjust);
 }
 
   
