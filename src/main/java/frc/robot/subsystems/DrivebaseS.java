@@ -15,6 +15,10 @@ public class DrivebaseS extends Subsystem {
   private WPI_TalonSRX driveRightBack = null;
 
   private DifferentialDrive differentialDrive = null;
+  
+  @Override
+  protected void initDefaultCommand() {
+  }
 
   public DrivebaseS() {
     driveLeftFront = new WPI_TalonSRX(frc.robot.RobotMap.DRIVEBASE_LEFT_TALON_CAN_ID);
@@ -35,9 +39,4 @@ public class DrivebaseS extends Subsystem {
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
     differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * throttle);
   }
-
-  @Override
-  protected void initDefaultCommand() {
-  }
-
 }
