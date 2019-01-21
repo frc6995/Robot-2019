@@ -1,18 +1,11 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.robot.Robot;
-import frc.robot.commands.DriveArcadeStickC;
-import frc.robot.commands.DriveArcadeXboxC;
-import edu.wpi.first.wpilibj.SpeedControllerGroup;
 
 public class DrivebaseS extends Subsystem {
 
@@ -21,12 +14,10 @@ public class DrivebaseS extends Subsystem {
   private WPI_TalonSRX driveRightFront = null;
   private WPI_TalonSRX driveRightBack = null;
 
-
   private DifferentialDrive differentialDrive = null;
-
+  
   @Override
-  public void initDefaultCommand() {
-    setDefaultCommand(null);
+  protected void initDefaultCommand() {
   }
 
   public DrivebaseS() {
@@ -43,14 +34,9 @@ public class DrivebaseS extends Subsystem {
     driveLeftBack.setNeutralMode(NeutralMode.Brake);
     driveRightFront.setNeutralMode(NeutralMode.Brake);
     driveRightBack.setNeutralMode(NeutralMode.Brake);
-
   }
 
-public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
-  differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed);
-}
-public void tankDrive(double leftSide, double rightSide) {
-  differentialDrive.tankDrive(leftSide, rightSide);
-}
-
+  public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
+    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * throttle);
+  }
 }
