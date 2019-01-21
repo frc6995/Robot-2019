@@ -5,6 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+/**
+ * This is the xbox command that uses the left and right sticks to control movement with a toggleable throttle using the buttons B and A
+ */
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;

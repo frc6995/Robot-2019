@@ -5,6 +5,10 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+/**
+ * This xbox command uses the two triggers for forwards and back with the left stick acting as rotation and does not contain a throttle
+ */
+
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
