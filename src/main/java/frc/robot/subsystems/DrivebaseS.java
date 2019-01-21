@@ -9,10 +9,6 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class DrivebaseS extends Subsystem {
 
-  @Override
-  protected void initDefaultCommand() {
-  }
-
   private WPI_TalonSRX driveLeftFront = null;
   private WPI_TalonSRX driveLeftBack = null;
   private WPI_TalonSRX driveRightFront = null;
@@ -39,4 +35,9 @@ public class DrivebaseS extends Subsystem {
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
     differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * throttle);
   }
+
+  @Override
+  protected void initDefaultCommand() {
+  }
+
 }
