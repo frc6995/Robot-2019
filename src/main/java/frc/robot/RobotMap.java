@@ -16,7 +16,7 @@ public class RobotMap {
   public final static int DRIVEBASE_RIGHTB_TALON_CAN_ID = 5;
 
 //OI - joystick
-  public final static int OI_JOYSTICK = 0;
+  public final static int OI_JOYSTICK = 1;
   public final static int DRIVE_STICK_MOVE_AXIS = 1;
   public final static int DRIVE_STICK_LEFTRIGHT_AXIS = 0;
   public final static int DRIVE_STICK_ROTATE_AXIS = 2;
@@ -29,5 +29,5 @@ public class RobotMap {
   public static final int DRIVE_XBOX_LEFT_TRIGGER = 2;
   public static final int DRIVE_XBOX_RIGHT_TRIGGER = 3;
   public static final int DRIVE_XBOX_RIGHT_X_AXIS = 4;
-  public static final int DRIVE_XBOX_RIGHT_Y_AXIS = 4;
+  //public static final int DRIVE_XBOX_RIGHT_Y_AXIS = 5;
 }

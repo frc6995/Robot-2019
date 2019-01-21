@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
-public class DriveArcadeXboxC2 extends Command {
+public class DriveArcadeXbox2C extends Command {
   private double forwardBackSpeed = 0;
   private double rotationSpeed = 0;
   private double throt = 1;
 
   private int numberPressed = 0;
 
-  public DriveArcadeXboxC2() {
+  public DriveArcadeXbox2C() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_drivebaseS);
   }
