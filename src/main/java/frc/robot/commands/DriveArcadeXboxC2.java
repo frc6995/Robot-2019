@@ -34,7 +34,7 @@ public class DriveArcadeXboxC2 extends Command {
     forwardBackSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_LEFT_Y_AXIS);
     rotationSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_RIGHT_X_AXIS);
 
-    if(Robot.m_oi.xbox.getBButtonPressed()); {
+    if(Robot.m_oi.xbox.getBButtonPressed()) {
       switch(numberPressed) {
         case 0: throt = 0.80; numberPressed = 1; break;
         case 1: throt = 0.50; numberPressed = 2; break;
@@ -42,6 +42,9 @@ public class DriveArcadeXboxC2 extends Command {
         case 3: throt = 1.00; numberPressed = 0; break;
         default: throt = 1.00; numberPressed = 0; break;
       }
+    } else if(Robot.m_oi.xbox.getAButtonPressed()) {
+      throt = 1;
+      numberPressed = 0;
     }
 
     Robot.m_drivebaseS.arcadeDrive(forwardBackSpeed, rotationSpeed, throt);
