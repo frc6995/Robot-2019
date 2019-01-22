@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveArcadeStickC;
 import frc.robot.commands.DriveArcadeXboxC;
 import frc.robot.subsystems.DrivebaseS;
+import frc.robot.subsystems.ClimbS;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,6 +28,7 @@ import frc.robot.subsystems.DrivebaseS;
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static DrivebaseS m_drivebaseS;
+  public static ClimbS m_ClimbS;
 
   public Command m_autonomousCommand;
   public Command m_driveCommand;
