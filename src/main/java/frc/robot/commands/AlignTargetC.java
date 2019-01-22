@@ -20,7 +20,8 @@ public class AlignTargetC extends Command {
   NetworkTableEntry txEntry = table.getEntry("tx");
   NetworkTableEntry tyEntry = table.getEntry("ty");
   NetworkTableEntry camMode = table.getEntry("camMode");
-  double KpAim = -0.03f;
+  NetworkTableEntry pipelineEntry = table.getEntry("pipeline");
+  double KpAim = -0.07f;
   double KpDistance = -0.1f;
   double min_aim_command = 0.05f;
   double cam = 0.0;
@@ -32,24 +33,31 @@ public class AlignTargetC extends Command {
   double distance_error = 0.0;
   double steering_adjust = 0.0;
   double distance_adjust = 0.0;
+  double pipeline = 0.0;
 
-  public AlignTargetC() {
+  public AlignTargetC(double pipeline) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_drivebaseS);
+    this.pipeline = pipeline;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    SmartDashboard.putNumber("kpAim", KpAim);
-    SmartDashboard.putNumber("kpDistance", KpDistance);
+    if(SmartDashboard.getNumber("kpAim", -2000.0) == -2000.0){
+      SmartDashboard.putNumber("kpAim", KpAim);
+    }
+    if(SmartDashboard.getNumber("kpDistance", -2000.0) == -2000.0){
+      SmartDashboard.putNumber("kpDistance", KpDistance);
+    }
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
   cam = camMode.getDouble(0); //shueja-personal:Unused
+
         tx = txEntry.getDouble(0.0); //get offsets from limelight
         ty = tyEntry.getDouble(0.0);
 
