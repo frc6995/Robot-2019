@@ -63,7 +63,7 @@ if (Robot.m_oi.stick.getRawButton(9) || Robot.m_oi.xbox.getRawButton(3));
 
         left_command += steering_adjust + distance_adjust;
         right_command -= steering_adjust + distance_adjust;
-        Robot.m_drivebaseS.tankDrive(left_command, right_command);
+        //Robot.m_drivebaseS.tankDrive(left_command, right_command);
 }
   }
 
