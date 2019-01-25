@@ -21,7 +21,7 @@ public class AlignTargetC extends Command {
   NetworkTableEntry tyEntry = table.getEntry("ty");
   NetworkTableEntry camMode = table.getEntry("camMode");
   NetworkTableEntry pipelineEntry = table.getEntry("pipeline");
-  double KpAim = -0.07f;
+  double KpAim = -0.035f;
   double KpDistance = -0.1f;
   double min_aim_command = 0.05f;
   double cam = 0.0;
