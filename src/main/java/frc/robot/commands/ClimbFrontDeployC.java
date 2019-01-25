@@ -14,7 +14,7 @@ public class ClimbFrontDeployC extends Command {
   public ClimbFrontDeployC() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires (Robot.m_ClimbS);
+    requires (Robot.m_ClimbFrontS);
   }
 
   // Called just before this Command runs the first time
@@ -25,9 +25,7 @@ public class ClimbFrontDeployC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-  Robot.m_ClimbS.deployFront();
-
+    Robot.m_ClimbFrontS.deployFront();
   }
 
   // Make this return true when this Command no longer needs to run execute()

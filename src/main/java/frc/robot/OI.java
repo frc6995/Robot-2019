@@ -37,7 +37,8 @@ public class OI {
         //hatchDeploy.whenPressed(new HatchMechDeployC()); //change to Climber
         //hatchRetract.whenPressed(new HatchMechRectractC());
         //hatchToggle.whenPressed(new HatchMechToggleCG());
-        climbDeploy.whenPressed(new ClimbDeployC());
+
+        //climbDeploy.whenPressed(new ClimbDeployC());
         
     }
     }

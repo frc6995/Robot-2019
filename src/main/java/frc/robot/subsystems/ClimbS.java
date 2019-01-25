@@ -5,6 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+//UNNECESSARY -- Replaced by ClimbFrontS and ClimbRearS, not imported
+
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -31,8 +33,8 @@ public class ClimbS extends Subsystem {
 
   public ClimbS(){
     //Creates a new solenoid object
-    ClimbMechanismFront = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, RobotMap.CLIMBER_DEPLOY_CHANNEL_FRONT, RobotMap.CLIMBER_RETRACT_CHANNEL_FRONT);
-    ClimbMechanismRear = new DoubleSolenoid(RobotMap.CLIMBER_ID_REAR, RobotMap.CLIMBER_DEPLOY_CHANNEL_REAR, RobotMap.CLIMBER_RETRACT_CHANNEL_REAR);
+    ClimbMechanismFront = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, 0, 1);
+    ClimbMechanismRear = new DoubleSolenoid(RobotMap.CLIMBER_ID_REAR, 0, 1);
     ClimberFrontSwitch = new DigitalInput(RobotMap.CLIMBER_FRONT_LIMIT);
     ClimberRearSwitch = new DigitalInput(RobotMap.CLIMBER_REAR_LIMIT);
   }

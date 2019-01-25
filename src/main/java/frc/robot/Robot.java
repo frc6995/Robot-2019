@@ -17,6 +17,8 @@ import frc.robot.commands.DriveArcadeStickC;
 import frc.robot.commands.DriveArcadeXboxC;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.subsystems.ClimbS;
+import frc.robot.subsystems.ClimbFrontS;
+import frc.robot.subsystems.ClimbRearS;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,7 +30,10 @@ import frc.robot.subsystems.ClimbS;
 public class Robot extends TimedRobot {
   public static OI m_oi;
   public static DrivebaseS m_drivebaseS;
+  //Climb stuffs
   public static ClimbS m_ClimbS;
+  public static ClimbFrontS m_ClimbFrontS;
+  public static ClimbRearS m_ClimbRearS;
 
   public Command m_autonomousCommand;
   public Command m_driveCommand;

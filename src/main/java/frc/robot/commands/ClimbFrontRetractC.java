@@ -14,7 +14,7 @@ public class ClimbFrontRetractC extends Command {
   public ClimbFrontRetractC() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_ClimbS);
+    requires(Robot.m_ClimbFrontS);
   }
 
   // Called just before this Command runs the first time
@@ -25,8 +25,8 @@ public class ClimbFrontRetractC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.m_ClimbS.CSwitchFront()){
-      Robot.m_ClimbS.retractFront();
+    if(Robot.m_ClimbFrontS.CSwitchFront()){
+      Robot.m_ClimbFrontS.retractFront();
     }
   }
 

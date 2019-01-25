@@ -15,23 +15,29 @@ import frc.robot.RobotMap;
 /**
  * Add your docs here.
  */
-public class ClimbRear extends Subsystem {
+public class ClimbRearS extends Subsystem {
   
-  private static DoubleSolenoid ClimbRearMechanism;
+  private static DoubleSolenoid ClimbMechanismRear;
   private static DigitalInput ClimberRearSwitch;
 
-//  @Override
-//  public void initDefaultCommand() {
-//    // Set the default command for a subsystem here.
-//    // setDefaultCommand(new MySpecialCommand());
-//  }
+  public ClimbRearS() {
+    ClimbMechanismRear = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, 0, 1);  //0, 1 is correct
+    ClimberRearSwitch = new DigitalInput(RobotMap.CLIMBER_FRONT_LIMIT);
+  }
+
+  @Override
+  public void initDefaultCommand() {
+    // Set the default command for a subsystem here.
+    // setDefaultCommand(new MySpecialCommand());
+  }
 
   public boolean CSwitchRear() {
-    return ClimbRearSwitch.get(); //returns the Rear limit switch
+    return ClimberRearSwitch.get(); //returns the Rear limit switch
   }
   public void deployRear() {
-    ClimbRearMechanism.set(Value.kForward);
+    ClimbMechanismRear.set(Value.kForward);
   }
   public void retractRear() {
-    ClimbRearMechanism.set(Value.kReverse);
+    ClimbMechanismRear.set(Value.kReverse);
+  }
 }
