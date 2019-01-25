@@ -11,6 +11,8 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.RobotMap;
+import frc.robot.commands.ClimbFrontToggleC;
+import frc.robot.commands.ClimbRearToggleC;
 //import frc.robot.commands.HatchMechDeployC;
 //import frc.robot.commands.HatchMechRectractC;
 //import frc.robot.commands.HatchMechToggleCG;
@@ -24,8 +26,8 @@ import frc.robot.RobotMap;
 public class OI {
     public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
 
-    public final JoystickButton climbDeploy = new JoystickButton(stick, RobotMap.CLIMBER_DEPLOY);
-    public final JoystickButton climbRetract = new JoystickButton(stick, RobotMap.CLIMBER_RETRACT);
+    public final JoystickButton climbFront = new JoystickButton(stick, RobotMap.CLIMBER_DEPLOY);
+    public final JoystickButton climbRear = new JoystickButton(stick, RobotMap.CLIMBER_RETRACT);
 
     //public final JoystickButton hatchDeploy = new JoystickButton(stick, RobotMap.HATCH_DEPLOY); //change to button nums
     //public final JoystickButton hatchRetract = new JoystickButton(stick, RobotMap.HATCH_RETRACT);
@@ -34,11 +36,12 @@ public class OI {
     public final XboxController xbox = new XboxController(RobotMap.OI_XBOX);
     
         public OI() {
-        //hatchDeploy.whenPressed(new HatchMechDeployC()); //change to Climber
-        //hatchRetract.whenPressed(new HatchMechRectractC());
-        //hatchToggle.whenPressed(new HatchMechToggleCG());
+            //hatchDeploy.whenPressed(new HatchMechDeployC()); //change to Climber
+            //hatchRetract.whenPressed(new HatchMechRectractC());
+            //hatchToggle.whenPressed(new HatchMechToggleCG());
 
-        //climbDeploy.whenPressed(new ClimbDeployC());
-        
+            climbFront.whenPressed(new ClimbFrontToggleC());
+            climbRear.whenPressed(new ClimbRearToggleC());
+            
     }
-    }
+}
