@@ -18,13 +18,12 @@ import frc.robot.commands.AlignTargetC;
  */
 public class OI {
     public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
-    public final JoystickButton align = new JoystickButton(stick, 9);
     public XboxController xbox = new XboxController(RobotMap.OI_XBOX);
+    public final JoystickButton alignCargoRocket = new JoystickButton(stick, 2);
 
     public OI(){
         // joystick
-        align.whileHeld(new AlignTargetC());
-
+        alignCargoRocket.whileHeld(new AlignTargetC(0));
 
     }
 }

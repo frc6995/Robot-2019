@@ -67,7 +67,7 @@ public class AlignTargetC extends Command {
         KpDistance = SmartDashboard.getNumber("kpDistance", KpDistance);
 
         double heading_error = -tx;
-        double distance_error = 0/*ty*/; //shueja-personal: Might be negative, need to test.
+        double distance_error = ty; //shueja-personal: Might be negative, need to test.
 
         steering_adjust = heading_error * KpAim; //basic proportional control
         distance_adjust = KpDistance * distance_error;
@@ -80,7 +80,7 @@ public class AlignTargetC extends Command {
 
         right_command = steering_adjust;// + distance_adjust;
         SmartDashboard.putNumber("right_command", right_command);*/ //shueja-personal: Unused
-        Robot.m_drivebaseS.visionDrive(0/*distance_adjust*/, steering_adjust);
+        Robot.m_drivebaseS.visionDrive(distance_adjust, steering_adjust);
 }
 
   
