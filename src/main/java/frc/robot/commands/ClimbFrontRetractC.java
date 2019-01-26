@@ -25,9 +25,9 @@ public class ClimbFrontRetractC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.m_ClimbFrontS.CSwitchFront()){
+    //if(Robot.m_ClimbFrontS.CSwitchFront()){
       Robot.m_ClimbFrontS.retractFront();
-    }
+    //}
   }
 
   // Make this return true when this Command no longer needs to run execute()

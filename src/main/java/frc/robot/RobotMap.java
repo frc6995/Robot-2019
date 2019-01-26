@@ -37,7 +37,7 @@ public class RobotMap {
 //Climb constants
   public final static int CLIMBER_ID_FRONT = 2;
   public final static int CLIMBER_ID_REAR = 3;
-  public final static int CLIMBER_FRONT_LIMIT = null;
-  public final static int CLIMBER_REAR_LIMIT = null;
+  public final static int CLIMBER_FRONT_LIMIT = 4;
+  public final static int CLIMBER_REAR_LIMIT = 5;
   
 }

@@ -46,10 +46,13 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_drivebaseS = new DrivebaseS();
+    m_ClimbFrontS = new ClimbFrontS();
+    m_ClimbRearS = new ClimbRearS();
     m_oi = new OI();
     drive_chooser.setDefaultOption("Default Control", new DriveArcadeStickC());
     drive_chooser.addOption("XboxControl", new DriveArcadeXboxC());
     SmartDashboard.putData("Drive Control", drive_chooser);
+    
   }
 
   /**
