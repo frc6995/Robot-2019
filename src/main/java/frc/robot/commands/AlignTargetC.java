@@ -45,18 +45,20 @@ public class AlignTargetC extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    this.setInterruptible(false);
     if(SmartDashboard.getNumber("kpAim", -2000.0) == -2000.0){
       SmartDashboard.putNumber("kpAim", KpAim);
     }
     if(SmartDashboard.getNumber("kpDistance", -2000.0) == -2000.0){
       SmartDashboard.putNumber("kpDistance", KpDistance);
     }
+
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  cam = camMode.getDouble(0); //shueja-personal:Unused
+  cam = camMode.getDouble(0); //shueja-personal:Unused    
 
         tx = txEntry.getDouble(0.0); //get offsets from limelight
         ty = tyEntry.getDouble(0.0);
@@ -88,15 +90,15 @@ public class AlignTargetC extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    //tx = txEntry.getDouble(0.0);
-    //ty = tyEntry.getDouble(0.0);
-    /*if (tx == 0.0 && ty == 0.0) {
-      return true;
+    tx = txEntry.getDouble(0.0);
+    ty = tyEntry.getDouble(0.0);
+    if (Math.abs(tx) <= 0.5 && Math.abs(ty) <= 1) {
+     return true;
     }
     else {
       return false;
-    }*/
-    return false;
+    }
+   // return false;
   }
 
   // Called once after isFinished returns true
