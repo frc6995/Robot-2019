@@ -26,4 +26,13 @@ public class RobotMap {
   public static final int DRIVE_XBOX_LEFT_Y_AXIS = 1; 
   public static final int DRIVE_XBOX_LEFT_TRIGGER = 2;
   public static final int DRIVE_XBOX_RIGHT_TRIGGER = 3;
+
+  /**
+   *Ladder Encoder Constants   
+   */  
+  public static final int LADDER_LEVEL_ONE = 0;
+  public static final int LADDER_LEVEL_TWO = 100; //change as needed
+  public static final int LADDER_LEVEL_THREE = 200; //change as needed
 }
+
+

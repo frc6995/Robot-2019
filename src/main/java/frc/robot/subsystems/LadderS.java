@@ -6,6 +6,17 @@ import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class LadderS extends Subsystem {
+  /*
+if (Robot.m_oi.xbox.getBumperPressed(Hand.kRight)) {
+    Robot.m_ladderS.SetNextLadderLevel(1);
+  } // if right bumper is pressed, set the next ladder level to 1.
+  else if (Robot.m_oi.xbox.getBumperPressed(Hand.kLeft)) {
+    Robot.m_ladderS.SetNextLadderLevel(2);
+  } //if left bumper is pressed, set the next ladder level to 2.
+  if (Robot.m_oi.xbox.getTriggerAxis(Hand.kLeft) <= 0.6) {
+    Robot.m_ladderS.SetNextLadderLevel(3);
+  }
+  */
 
   private WPI_TalonSRX ladderMotorA = null;
   private WPI_TalonSRX ladderMotorB = null;
@@ -17,7 +28,7 @@ public class LadderS extends Subsystem {
 
   public static final int LADDER_LEVEL_ONE = 0;
   public static final int LADDER_LEVEL_TWO = 100; //change as needed
-  public static final int LADDER_LEVEL_THREE = 200; //change as needed
+  public static final int LADDER_LEVEL_THREE = 200; //change as needed  
 
   @Override
   public void initDefaultCommand() {
@@ -27,7 +38,7 @@ public class LadderS extends Subsystem {
   public LadderS() {
 
     ladderMotorA = new WPI_TalonSRX(frc.robot.RobotMap.LADDER_MOTOR_A_TALON_CAN_ID);  
-    ladderMotorB = new WPI_TalonSRX(RobotMap.LADDER_MOTOR_B_TALON_CAN_ID);
+    ladderMotorB = new WPI_TalonSRX(RobotMap.LADDER_MOTOR_B_TALON_CAN_ID);    
 
   }
 
