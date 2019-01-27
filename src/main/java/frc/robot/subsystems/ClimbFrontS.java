@@ -20,7 +20,7 @@ public class ClimbFrontS extends Subsystem {
   //private static DigitalInput ClimberFrontSwitch;
 
   public ClimbFrontS(){
-    ClimbMechanismFront = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, 0, 1);  //0, 1 is correct
+    ClimbMechanismFront = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, 2, 0); 
     //ClimberFrontSwitch = new DigitalInput(RobotMap.CLIMBER_FRONT_LIMIT);
   }
 
