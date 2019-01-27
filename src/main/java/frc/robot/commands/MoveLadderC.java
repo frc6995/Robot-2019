@@ -2,6 +2,7 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.DigitalInput;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -12,6 +13,9 @@ private double ladderKp;
 private double ladderKi;
 private double sumError;
 
+//limit switch used to reset encoders.
+DigitalInput limitSwitch;
+
   public MoveLadderC() {
     requires(Robot.m_ladderS);
   }
@@ -19,6 +23,16 @@ private double sumError;
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    //initialize the limit switch to channel 1, will need to be changed
+    limitSwitch = new DigitalInput(1);
+    //move ladder slightly up.
+    Robot.m_ladderS.MoveLadder(0.3);
+    //move ladder down while the limit switch is not closed.
+    while (limitSwitch.getChannel() != 0) {
+      Robot.m_ladderS.MoveLadder(-0.3);
+    }
+    //reset encoders.
+    Robot.m_ladderS.ResetEncoders();
   }
 
   @Override
@@ -55,6 +69,7 @@ private double sumError;
       else {
         sumError = 0;
       }
+      Robot.m_ladderS.MoveLadder(power);
         
       /*  if (Robot.m_ladderS.GetNextLadderLevel() == 1) {
           do {

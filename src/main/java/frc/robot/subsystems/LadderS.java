@@ -4,7 +4,6 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import frc.robot.commands.MoveLadderC;;
 
 public class LadderS extends Subsystem {
 
@@ -80,5 +79,9 @@ public class LadderS extends Subsystem {
     }
     public int GetNextLadderLevel(){
       return nextLadderLevel;
+    }
+    public void ResetEncoders() {
+      ladderMotorA.getSensorCollection().setQuadraturePosition(0, 500);
+      ladderMotorB.getSensorCollection().setQuadraturePosition(0, 500);
     }
 }
