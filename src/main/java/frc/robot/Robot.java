@@ -16,7 +16,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveArcadeStickC;
 import frc.robot.commands.DriveArcadeXboxC;
 import frc.robot.subsystems.DrivebaseS;
-import frc.robot.subsystems.ClimbS;
 import frc.robot.subsystems.ClimbFrontS;
 import frc.robot.subsystems.ClimbRearS;
 
