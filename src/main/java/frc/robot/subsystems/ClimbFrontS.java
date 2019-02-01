@@ -21,6 +21,7 @@ public class ClimbFrontS extends Subsystem {
 
   public ClimbFrontS(){
     ClimbMechanismFront = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, 2, 0); 
+    ClimbFrontLimit = new DigitalInput(1);
     //ClimberFrontSwitch = new DigitalInput(RobotMap.CLIMBER_FRONT_LIMIT);
   }
 
@@ -39,6 +40,8 @@ public class ClimbFrontS extends Subsystem {
   }
   public void retractFront() {
     ClimbMechanismFront.set(Value.kReverse);
+  }
+  public void ClimbFrontLimit(){
   }
 
 }
