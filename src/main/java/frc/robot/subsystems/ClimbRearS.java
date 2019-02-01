@@ -18,11 +18,11 @@ import frc.robot.RobotMap;
 public class ClimbRearS extends Subsystem {
   
   private static DoubleSolenoid ClimbMechanismRear;
-  //private static DigitalInput ClimberRearSwitch;
+  private static DigitalInput ClimberRearSwitch;
 
   public ClimbRearS() {
     ClimbMechanismRear = new DoubleSolenoid(RobotMap.CLIMBER_ID_REAR, 0, 1);  //0, 1 is correct
-    //ClimberRearSwitch = new DigitalInput(RobotMap.CLIMBER_FRONT_LIMIT);
+    ClimberRearSwitch = new DigitalInput(RobotMap.CLIMBER_REAR_LIMIT);
   }
 
   @Override
@@ -31,9 +31,9 @@ public class ClimbRearS extends Subsystem {
     // setDefaultCommand(new MySpecialCommand());
   }
 
-  //public boolean CSwitchRear() {
-  //  return ClimberRearSwitch.get(); //returns the Rear limit switch
-  //}
+  public boolean CSwitchRear() {
+    return ClimberRearSwitch.get(); //returns the Rear limit switch
+  }
 
   public void deployRear() {
     ClimbMechanismRear.set(Value.kForward);

@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimbRearRetractC extends Command {
-  public ClimbRearRetractC() {
+public class ClimbRearLimitRetractC extends Command {
+  public ClimbRearLimitRetractC() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_ClimbRearS);
@@ -25,6 +25,9 @@ public class ClimbRearRetractC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    while(Robot.m_ClimbRearS.CSwitchRear() == false){
+      Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1);
+    }
     Robot.m_ClimbRearS.retractRear();
   }
 

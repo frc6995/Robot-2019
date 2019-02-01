@@ -17,31 +17,28 @@ import frc.robot.RobotMap;
  */
 public class ClimbFrontS extends Subsystem {
   private static DoubleSolenoid ClimbMechanismFront;
-  //private static DigitalInput ClimberFrontSwitch;
+  private static DigitalInput ClimberFrontSwitch;
 
   public ClimbFrontS(){
-    ClimbMechanismFront = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, 2, 0); 
-    ClimbFrontLimit = new DigitalInput(1);
-    //ClimberFrontSwitch = new DigitalInput(RobotMap.CLIMBER_FRONT_LIMIT);
+    ClimbMechanismFront = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, 2, 0);
+    ClimberFrontSwitch = new DigitalInput(RobotMap.CLIMBER_FRONT_LIMIT);
   }
 
   @Override
   public void initDefaultCommand() { // Without this line it creates an error in line 22, class def -Sam
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+   //setDefaultCommand(new MySpecialCommand());
   }
 
-  //public boolean CSwitchFront() {
-  //  return ClimberFrontSwitch.get(); //returns the front limit switch
-  //}
+  public boolean CSwitchFront() {
+    return ClimberFrontSwitch.get(); //returns the front limit switch
+  }
   
   public void deployFront() {
     ClimbMechanismFront.set(Value.kForward);
   }
   public void retractFront() {
     ClimbMechanismFront.set(Value.kReverse);
-  }
-  public void ClimbFrontLimit(){
   }
 
 }

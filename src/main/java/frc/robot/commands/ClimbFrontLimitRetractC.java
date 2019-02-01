@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimbFrontRetractC extends Command {
-  public ClimbFrontRetractC() {
+public class ClimbFrontLimitRetractC extends Command {
+  public ClimbFrontLimitRetractC() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_ClimbFrontS);
@@ -26,8 +26,13 @@ public class ClimbFrontRetractC extends Command {
   @Override
   protected void execute() {
     //if(Robot.m_ClimbFrontS.CSwitchFront()){
-      Robot.m_ClimbFrontS.retractFront();
+      //Robot.m_ClimbFrontS.retractFront();
     //}
+
+    while (Robot.m_ClimbFrontS.CSwitchFront() == false){
+        Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1);
+    }
+    Robot.m_ClimbFrontS.retractFront();
   }
 
   // Make this return true when this Command no longer needs to run execute()
