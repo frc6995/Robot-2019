@@ -25,7 +25,8 @@ public class RobotMap {
   public final static int DRIVE_STICK_ROTATE_AXIS = 2;
   public final static int DRIVE_STICK_THROT_AXIS = 3;
   public final static int CLIMBER_DEPLOY = 3;
-  public final static int CLIMBER_RETRACT = 4;  
+  public final static int CLIMBER_RETRACT = 4;
+  public final static int CLIMB_BOX = 2;
 
 //OI - xbox
   public final static int OI_XBOX = 1;

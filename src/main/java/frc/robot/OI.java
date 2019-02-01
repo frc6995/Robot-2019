@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.RobotMap;
 import frc.robot.commands.ClimbFrontToggleC;
+import frc.robot.commands.ClimbPlatformCG;
 import frc.robot.commands.ClimbRearToggleC;
 //import frc.robot.commands.HatchMechDeployC;
 //import frc.robot.commands.HatchMechRectractC;
@@ -28,6 +29,7 @@ public class OI {
 
     public final JoystickButton climbFront = new JoystickButton(stick, RobotMap.CLIMBER_DEPLOY);
     public final JoystickButton climbRear = new JoystickButton(stick, RobotMap.CLIMBER_RETRACT);
+    public final JoystickButton climbBox = new JoystickButton(stick, RobotMap.CLIMB_BOX);
 
     //public final JoystickButton hatchDeploy = new JoystickButton(stick, RobotMap.HATCH_DEPLOY); //change to button nums
     //public final JoystickButton hatchRetract = new JoystickButton(stick, RobotMap.HATCH_RETRACT);
@@ -42,6 +44,7 @@ public class OI {
 
             climbFront.whenPressed(new ClimbFrontToggleC());
             climbRear.whenPressed(new ClimbRearToggleC());
+            climbBox.whenPressed(new ClimbPlatformCG());
             
     }
 }
