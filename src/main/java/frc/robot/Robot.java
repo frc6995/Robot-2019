@@ -30,7 +30,6 @@ public class Robot extends TimedRobot {
   public static OI m_oi;
   public static DrivebaseS m_drivebaseS;
   //Climb stuffs
-  public static ClimbS m_ClimbS;
   public static ClimbFrontS m_ClimbFrontS;
   public static ClimbRearS m_ClimbRearS;
 
