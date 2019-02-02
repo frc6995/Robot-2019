@@ -16,7 +16,7 @@ public class RobotMap {
   public final static int DRIVEBASE_RIGHTB_TALON_CAN_ID = 5;
 
 //OI - joystick
-  public final static int OI_JOYSTICK = 1;
+  public final static int OI_JOYSTICK = 0;
   public final static int DRIVE_STICK_MOVE_AXIS = 1;
   public final static int DRIVE_STICK_LEFTRIGHT_AXIS = 0;
   public final static int DRIVE_STICK_ROTATE_AXIS = 2;
