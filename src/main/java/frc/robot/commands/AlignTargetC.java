@@ -103,9 +103,7 @@ public class AlignTargetC extends Command {
         right_command = steering_adjust;// + distance_adjust;
         SmartDashboard.putNumber("right_command", right_command);*/ //shueja-personal: Unused
         Robot.m_drivebaseS.visionDrive(distance_adjust, steering_adjust);
-}
-
-  
+      }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -119,8 +117,7 @@ public class AlignTargetC extends Command {
     }
     else {
       return false;
-    }
- /*   else if(sumInRange>40){
+    }/*   else if(sumInRange>40){
       pipelineEntry.setDouble(1);
       return true;
     }

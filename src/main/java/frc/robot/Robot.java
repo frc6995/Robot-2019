@@ -10,10 +10,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.DriveArcadeStickC;
+import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
 import frc.robot.subsystems.DrivebaseS;
 
@@ -40,8 +39,8 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_drivebaseS = new DrivebaseS();
     m_oi = new OI();
-    drive_chooser.setDefaultOption("Default Control", new DriveArcadeStickC());
-    drive_chooser.addOption("XboxControl", new DriveArcadeXboxC());
+    drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
+    drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
   }
 
