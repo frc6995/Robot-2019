@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.AlignTargetC;
+import frc.robot.commands.VisionScoreCG;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -28,6 +29,6 @@ public class OI {
 
     public OI(){
         // joystick
-        alignCargoRocket.toggleWhenPressed(new AlignTargetC(0));    
+        alignCargoRocket.toggleWhenPressed(new VisionScoreCG());    
     }
 }

@@ -14,6 +14,10 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
+/**
+ * 
+ * IMPORTANT!!! MAKE SURE "IGNORE NETWORK TABLES" is set to false.
+ */
 public class AlignTargetC extends Command {
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
   
@@ -34,12 +38,14 @@ public class AlignTargetC extends Command {
   double steering_adjust = 0.0;
   double distance_adjust = 0.0;
   double pipeline = 0.0;
+  int sumInRange = 0;
 
-  public AlignTargetC(double pipeline) {
+  public AlignTargetC() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_drivebaseS);
-    this.pipeline = pipeline;
+    pipelineEntry.setDouble(0);
+
   }
 
   // Called just before this Command runs the first time
@@ -52,14 +58,14 @@ public class AlignTargetC extends Command {
     if(SmartDashboard.getNumber("kpDistance", -2000.0) == -2000.0){
       SmartDashboard.putNumber("kpDistance", KpDistance);
     }
+    pipelineEntry.setDouble(0);
 
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-  cam = camMode.getDouble(0); //shueja-personal:Unused    
-
+      cam = camMode.getDouble(0);
         tx = txEntry.getDouble(0.0); //get offsets from limelight
         ty = tyEntry.getDouble(0.0);
 
@@ -74,7 +80,21 @@ public class AlignTargetC extends Command {
         steering_adjust = heading_error * KpAim; //basic proportional control
         distance_adjust = KpDistance * distance_error;
         
-        
+        double max_steering = 0.75;
+
+        if (steering_adjust > max_steering) {
+          steering_adjust = max_steering;
+        }
+        else if (steering_adjust < -max_steering) {
+          steering_adjust = -max_steering;
+        }
+        if (distance_adjust > max_steering) {
+          distance_adjust = max_steering;
+        }
+        else if (distance_adjust < -max_steering) {
+          distance_adjust = -max_steering;
+        }
+ 
         SmartDashboard.putNumber("Steering", steering_adjust);
 
         /*left_command = steering_adjust;// + distance_adjust;
@@ -93,9 +113,16 @@ public class AlignTargetC extends Command {
     tx = txEntry.getDouble(0.0);
     ty = tyEntry.getDouble(0.0);
     if (Math.abs(tx) <= 0.5 && Math.abs(ty) <= 1) {
-     return true;
+      sumInRange+=1;
+
+      return false;     
+    }else if(sumInRange>40){
+      pipelineEntry.setDouble(1);
+      return true;
     }
     else {
+      sumInRange = 0;
+      pipelineEntry.setDouble(0);
       return false;
     }
    // return false;
@@ -104,6 +131,7 @@ public class AlignTargetC extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    pipelineEntry.setDouble(1);
   }
 
   // Called when another command which requires one or more of the same
