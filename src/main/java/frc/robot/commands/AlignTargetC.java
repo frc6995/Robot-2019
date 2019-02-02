@@ -113,10 +113,14 @@ public class AlignTargetC extends Command {
     tx = txEntry.getDouble(0.0);
     ty = tyEntry.getDouble(0.0);
     if (Math.abs(tx) <= 0.5 && Math.abs(ty) <= 1) {
-      sumInRange+=1;
+     // sumInRange+=1;
 
-      return false;     
-    }else if(sumInRange>40){
+      return true;     
+    }
+    else {
+      return false;
+    }
+ /*   else if(sumInRange>40){
       pipelineEntry.setDouble(1);
       return true;
     }
@@ -124,7 +128,7 @@ public class AlignTargetC extends Command {
       sumInRange = 0;
       pipelineEntry.setDouble(0);
       return false;
-    }
+    }*/
    // return false;
   }
 

@@ -24,7 +24,6 @@ public class OI {
     public final JoystickButton alignCargoRocket = new JoystickButton(stick, 1);
     /*Xbox buttons: 1=A, 2=B, 3=X, 4=Y, LB = 5, RB = 6, Select = 7, Start = 8, LStick In = 9, RStick In = 10
     Axes: LStick X, LStick Y, L Trigger, R Trigger, RStick X, Rstick Y
-    Rumble: Big Slow Rumble, Small Fast Rumble.
     */
 
     public OI(){
