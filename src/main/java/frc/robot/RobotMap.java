@@ -30,4 +30,11 @@ public class RobotMap {
   public static final int DRIVE_XBOX_RIGHT_TRIGGER = 3;
   public static final int DRIVE_XBOX_RIGHT_X_AXIS = 4;
   //public static final int DRIVE_XBOX_RIGHT_Y_AXIS = 5;
+
+  public String[] LIST_OF_COMMANDS = {
+    "AlignTargetC", 
+    "DrievArcadeXbox2C",
+    "DriveArcadeXbox"
+  };
 }
+

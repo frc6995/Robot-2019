@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
+import frc.robot.commands.UpdateControlls;
 import frc.robot.subsystems.DrivebaseS;
 
 /**
@@ -42,6 +43,7 @@ public class Robot extends TimedRobot {
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
+    SmartDashboard.putData("Update", new UpdateControlls())
   }
 
   /**
