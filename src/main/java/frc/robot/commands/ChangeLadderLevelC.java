@@ -1,12 +1,12 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ChangeLadderLevelC extends Command {
-  public ChangeLadderLevelC() {
+  public ChangeLadderLevelC(int ladderLevel) {
+    Robot.m_ladderS.SetNextLadderLevel(ladderLevel);
   }
 
   @Override
@@ -20,7 +20,7 @@ public class ChangeLadderLevelC extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   // Called once after isFinished returns true

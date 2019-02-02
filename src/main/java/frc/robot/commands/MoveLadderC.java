@@ -7,13 +7,21 @@ import frc.robot.Robot;
 
 public class MoveLadderC extends Command {
 
-//constants
-//private double ladderKp;
-//private double ladderKi;
-//private double sumError;
+  // -- PID constants --
+  private boolean ladderPIDActive = false;
+  //Preportoinal constant
+  private double ladderKp = 0.01;
+  //Integral constant
+  private double ladderKi = 0.0;
+  //Sum error
+  private double sumError = 0;
+  //Threshold when we turn the integral on
+  private int iThreshold = 50;
+  //Feedforward = power needed to hold the ladder in a constant spot
+  private double ladderKf = 0.2;
 
-//limit switch used to reset encoders.
-DigitalInput limitSwitch;
+  //limit switch used to reset encoders.
+  DigitalInput limitSwitch;
 
   public MoveLadderC() {
     requires(Robot.m_ladderS);
@@ -33,29 +41,31 @@ DigitalInput limitSwitch;
     //reset encoders.
     Robot.m_ladderS.ResetEncoders();
   }
-
+  
   @Override
   protected void execute() {
 
-  
-
-    if (Robot.m_ladderS.GetCurrentLadderLevel() == Robot.m_ladderS.GetNextLadderLevel()) {
-      return;
-    }
-    else {
-/*
-      double error = Robot.m_ladderS.GetError();
-      double power = error * ladderKp;
+    if(ladderPIDActive){
+      //Retrives the error from the 
+      int error = Robot.m_ladderS.GetError();
       
-      if (Math.abs(error) < 100) {
-        power += sumError * ladderKi;
-        sumError += error;            
-      }
-      else {
+      //                P term                  I term        F term
+      double power = error * ladderKp + sumError * ladderKi + ladderKf;
+
+      //Only "turns on" the integral when we need it
+      if(Math.abs(error)<iThreshold){
+        //Sums the error
+        sumError += error;
+      }else{
+        //Resets the sumError term when we don't need it
         sumError = 0;
       }
-      Robot.m_ladderS.MoveLadder(power);
-  */      
+    }
+    else{
+      if (Robot.m_ladderS.GetCurrentLadderLevel() == Robot.m_ladderS.GetNextLadderLevel()) {
+        return;
+      } 
+      else{     
         if (Robot.m_ladderS.GetNextLadderLevel() == 1) {
           do {
             Robot.m_ladderS.MoveLadder(-1);
@@ -63,32 +73,30 @@ DigitalInput limitSwitch;
           Robot.m_ladderS.SetLadderLevel(1);
         }
         //if moving down to level 1
-
         else if (Robot.m_ladderS.GetNextLadderLevel() == 2 && Robot.m_ladderS.GetCurrentLadderLevel() == 1) {  
           do {
             Robot.m_ladderS.MoveLadder(1);
           } while (Robot.m_ladderS.GetLadderEncoderCount() <= Robot.m_ladderS.LADDER_LEVEL_TWO);
           Robot.m_ladderS.SetLadderLevel(2);
-          } 
-          //if moving up from level 1 to level 2
-
+        } 
+        //if moving up from level 1 to level 2
         else if (Robot.m_ladderS.GetNextLadderLevel() == 2 && Robot.m_ladderS.GetCurrentLadderLevel() == 3) {
           do {
             Robot.m_ladderS.MoveLadder(-1);
           } while (Robot.m_ladderS.GetLadderEncoderCount() >= Robot.m_ladderS.LADDER_LEVEL_TWO);
           Robot.m_ladderS.SetLadderLevel(2);
         }
-          //if moving down from level 3 to level 2
+        //if moving down from level 3 to level 2
         else if (Robot.m_ladderS.GetNextLadderLevel() == 3) {
           do {
             Robot.m_ladderS.MoveLadder(1);
           } while (Robot.m_ladderS.GetLadderEncoderCount() <= Robot.m_ladderS.LADDER_LEVEL_THREE);
           Robot.m_ladderS.SetLadderLevel(3);
-          }
-          //if moving up to level 3 
-        } 
-            
-    }
+        }
+        //if moving up to level 3 
+      } 
+    }     
+  }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
@@ -99,11 +107,13 @@ DigitalInput limitSwitch;
   // Called once after isFinished returns true
   @Override
   protected void end() {
+
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+
   }
 }

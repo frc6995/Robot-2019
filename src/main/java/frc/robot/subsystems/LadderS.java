@@ -24,7 +24,7 @@ if (Robot.m_oi.xbox.getBumperPressed(Hand.kRight)) {
   private int currentLadderLevel = 1; // 1 = ground level, 2 = rocket level 2, 3 = rocket level 3.
   private int nextLadderLevel = 1;
 
-  private int setPoint;
+  private int setPoint = 0;
 
   public static final int LADDER_LEVEL_ONE = 0;
   public static final int LADDER_LEVEL_TWO = 100; //change as needed
@@ -77,22 +77,22 @@ if (Robot.m_oi.xbox.getBumperPressed(Hand.kRight)) {
     else {
       return 0;
     }
-
   }
-  
+
   public void SetLadderLevel(int currentLevel) {
    currentLadderLevel = currentLevel;
   }
-   
 
-    public void SetNextLadderLevel(int nextLevel){
-       nextLadderLevel = nextLevel;
-    }
-    public int GetNextLadderLevel(){
-      return nextLadderLevel;
-    }
-    public void ResetEncoders() {
-      ladderMotorA.getSensorCollection().setQuadraturePosition(0, 500);
-      ladderMotorB.getSensorCollection().setQuadraturePosition(0, 500);
-    }
+  public void SetNextLadderLevel(int nextLevel){
+      nextLadderLevel = nextLevel;
+  }
+
+  public int GetNextLadderLevel(){
+    return nextLadderLevel;
+  }
+
+  public void ResetEncoders() {
+    ladderMotorA.getSensorCollection().setQuadraturePosition(0, 500);
+    ladderMotorB.getSensorCollection().setQuadraturePosition(0, 500);
+  }
 }
