@@ -18,10 +18,12 @@ import frc.robot.RobotMap;
 public class ClimbFrontS extends Subsystem {
   private static DoubleSolenoid ClimbMechanismFront;
   private static DigitalInput ClimberFrontSwitch;
+  public boolean extended;
 
   public ClimbFrontS(){
     ClimbMechanismFront = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, 2, 0);
     ClimberFrontSwitch = new DigitalInput(RobotMap.CLIMBER_FRONT_LIMIT);
+    extended = false;
   }
 
   @Override
@@ -39,6 +41,18 @@ public class ClimbFrontS extends Subsystem {
   }
   public void retractFront() {
     ClimbMechanismFront.set(Value.kReverse);
+  }
+
+  public void toggleFront() {
+    if (extended == false) {
+      deployFront();
+      extended = true;
+    }
+    else {
+      retractFront();
+      extended = false;
+    }
+    System.out.println(extended);
   }
 
 }

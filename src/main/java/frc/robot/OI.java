@@ -27,8 +27,8 @@ import frc.robot.commands.ClimbRearToggleC;
 public class OI {
     public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
 
-    public final JoystickButton climbFront = new JoystickButton(stick, RobotMap.CLIMBER_DEPLOY);
-    public final JoystickButton climbRear = new JoystickButton(stick, RobotMap.CLIMBER_RETRACT);
+    public final JoystickButton climbFront = new JoystickButton(stick, RobotMap.CLIMBER_DEPLOY); //bad naming...
+    public final JoystickButton climbRear = new JoystickButton(stick, RobotMap.CLIMBER_RETRACT); //bad naming...
     public final JoystickButton climbBox = new JoystickButton(stick, RobotMap.CLIMB_BOX);
 
     //public final JoystickButton hatchDeploy = new JoystickButton(stick, RobotMap.HATCH_DEPLOY); //change to button nums
