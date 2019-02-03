@@ -21,7 +21,7 @@ public class ClimbRearS extends Subsystem {
   private static DigitalInput ClimberRearSwitch;
 
   public ClimbRearS() {
-    ClimbMechanismRear = new DoubleSolenoid(RobotMap.CLIMBER_ID_REAR, 0, 1);  //0, 1 is correct
+    ClimbMechanismRear = new DoubleSolenoid(RobotMap.CLIMBER_ID_REAR, 2, 0);
     ClimberRearSwitch = new DigitalInput(RobotMap.CLIMBER_REAR_LIMIT);
   }
 
