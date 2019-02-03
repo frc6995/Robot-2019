@@ -15,7 +15,7 @@ public class ControllerMap {
     public final Map<String,Integer> xBoxButtons;
     public final String[] xBoxDPad;
     public final String[] xBoxAxis;
-    public final Map<String,Object> commandsList;
+    public final Command[] commandsList;
 
     public SendableChooser<Command> commandChooser = new SendableChooser<>();
 
@@ -23,7 +23,7 @@ public class ControllerMap {
         xBoxButtons = new HashMap<>();
         xBoxDPad = new String[7];
         xBoxAxis = new String[5];
-        commandsList = new HashMap<>();
+        commandsList = new Command[2];
 
         xBoxButtons.put("A", 1);
         xBoxButtons.put("B", 2);
@@ -52,14 +52,21 @@ public class ControllerMap {
         xBoxAxis[4] = "Left Trigger";
         xBoxAxis[5] = "Right Trigger";
 
-        commandsList.put("AlignTargetC", new AlignTargetC());
-        commandsList.put("DriverArcadeXbox2C", new DriveArcadeXbox2C());
-        commandsList.put("DriveArcadeXboxC", new DriveArcadeXboxC());
+        commandsList[0] = new AlignTargetC();
+        commandsList[1] = new DriveArcadeXbox2C();
+        commandsList[2] = new DriveArcadeXboxC();
     }
 
     public void DisplayData() {
+        String[] xBoxButtonKeys = xBoxButtons.keySet().toArray(new String[0]);
         //commandChooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
         for(int i=0; i == xBoxButtons.size(); i++) {
-            commandChooser.addOption(xBoxButtons.values(), new DriveArcadeXbox2C());
+            //commandChooser.addDefault(xBoxButtonKeys[i], GET_DATA_FROM_FILE);
+            for(int j=0; i == commandsList.length; i++) {
+                commandChooser.addOption(xBoxButtonKeys[i], commandsList[j]);
+                System.out.print(xBoxButtonKeys[i]);
+            }
+            SmartDashboard.putData(xBoxButtonKeys[i], commandChooser);
         }
+    }
 }
