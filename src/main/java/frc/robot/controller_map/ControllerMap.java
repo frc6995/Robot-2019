@@ -30,6 +30,8 @@ public class ControllerMap {
         xBoxMap.put("Back", 8);
         xBoxMap.put("Left Stick Button", 9);
         xBoxMap.put("Right Stick Button", 10);
+
+        xBoxMap.put("Dpad Up", )
       }
 
 }
