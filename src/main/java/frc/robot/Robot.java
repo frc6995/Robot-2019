@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -33,6 +34,8 @@ public class Robot extends TimedRobot {
   public Command m_driveCommand;
   public SendableChooser<Command> drive_chooser = new SendableChooser<>();
 
+  public DigitalInput limitSwitch;
+
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
@@ -40,11 +43,13 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     m_drivebaseS = new DrivebaseS();
-    m_ladderS = new LadderS();
+    //m_ladderS = new LadderS();
     m_oi = new OI();
     drive_chooser.setDefaultOption("Default Control", new DriveArcadeStickC());
     drive_chooser.addOption("XboxControl", new DriveArcadeXboxC());
     SmartDashboard.putData("Drive Control", drive_chooser);
+
+    limitSwitch = new DigitalInput(0);
   }
 
   /**
@@ -59,6 +64,8 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     m_driveCommand = drive_chooser.getSelected();
     m_driveCommand.start();
+
+    SmartDashboard.putBoolean("Limit Switch yay", limitSwitch.get());
   }
 
   /**

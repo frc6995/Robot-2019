@@ -31,7 +31,7 @@ public class MoveLadderC extends Command {
   @Override
   protected void initialize() {
     //initialize the limit switch to channel 1, will need to be changed
-    limitSwitch = new DigitalInput(1);
+    limitSwitch = new DigitalInput(0);
     //move ladder slightly up.
     Robot.m_ladderS.MoveLadder(0.3);
     //move ladder down while the limit switch is not closed.
