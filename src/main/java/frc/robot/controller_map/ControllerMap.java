@@ -3,26 +3,23 @@ package frc.robot.controller_map;
 import java.util.HashMap;
 import java.util.Map;
 
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.AlignTargetC;
 import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
 
 public class ControllerMap {
 
-    public static String[] LIST_OF_COMMANDS = {
-        "",
-        "AlignTargetC", 
-        "DrievArcadeXbox2C",
-        "DriveArcadeXboxC"
-        
-      };
-      
-      public final Map<String,Integer> xBoxButtons;
-      public final String[] xBoxDPad;
-      public final String[] xBoxAxis;
-      public final Map<String,Object> commandsList;
+    public final Map<String,Integer> xBoxButtons;
+    public final String[] xBoxDPad;
+    public final String[] xBoxAxis;
+    public final Map<String,Object> commandsList;
 
-      public ControllerMap() {
+    public SendableChooser<Command> commandChooser = new SendableChooser<>();
+
+    public ControllerMap() {
         xBoxButtons = new HashMap<>();
         xBoxDPad = new String[7];
         xBoxAxis = new String[5];
@@ -58,5 +55,11 @@ public class ControllerMap {
         commandsList.put("AlignTargetC", new AlignTargetC());
         commandsList.put("DriverArcadeXbox2C", new DriveArcadeXbox2C());
         commandsList.put("DriveArcadeXboxC", new DriveArcadeXboxC());
-      }
+    }
+
+    public void DisplayData() {
+        //commandChooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
+        for(int i=0; i == xBoxButtons.size(); i++) {
+            commandChooser.addOption(xBoxButtons.values(), new DriveArcadeXbox2C());
+        }
 }
