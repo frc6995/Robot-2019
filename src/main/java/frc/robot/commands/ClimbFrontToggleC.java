@@ -26,27 +26,21 @@ public class ClimbFrontToggleC extends Command {
 
     @Override
     protected void execute() {
-        /* if (extended == false) {
-            Robot.m_ClimbFrontS.deployFront();
-            extended = true;
-        }
-        else {
-            Robot.m_ClimbFrontS.retractFront();
-            extended = false;
-        } */
-        Robot.m_ClimbFrontS.toggleFront();
+        Robot.m_ClimbFrontS.deployFront();
     }
 
     @Override
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     @Override
     protected void end() {
+        Robot.m_ClimbFrontS.retractFront();
     }
 
     @Override
     protected void interrupted() {
+        end();
     }
 }

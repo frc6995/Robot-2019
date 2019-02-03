@@ -43,16 +43,4 @@ public class ClimbFrontS extends Subsystem {
     ClimbMechanismFront.set(Value.kReverse);
   }
 
-  public void toggleFront() {
-    if (ClimbMechanismFront.get() == Value.kReverse) {
-      deployFront();
-      extended = true;
-    }
-    else {
-      retractFront();
-      extended = false;
-    }
-    System.out.println(extended);
-  }
-
 }
