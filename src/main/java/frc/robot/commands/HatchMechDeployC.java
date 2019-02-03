@@ -2,7 +2,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 public class HatchMechDeployC extends Command {
@@ -17,10 +16,8 @@ public class HatchMechDeployC extends Command {
 
   @Override
   protected void execute() {
-    
+    //Deploy the hatch mech
     Robot.m_hatchMechS.deploy();
-    
-    
   }
 
 

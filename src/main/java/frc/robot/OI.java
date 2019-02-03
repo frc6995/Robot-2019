@@ -17,8 +17,8 @@ public final JoystickButton hatchToggle = new JoystickButton(stick, RobotMap.HAT
 public final XboxController xbox = new XboxController(RobotMap.OI_XBOX);
 
     public OI() {
-    hatchDeploy.whenPressed(new HatchMechDeployC());
-    hatchRetract.whenPressed(new HatchMechRectractC());
-    hatchToggle.whenPressed(new HatchMechToggleCG());
-}
+        hatchDeploy.whenPressed(new HatchMechDeployC());
+        hatchRetract.whenPressed(new HatchMechRectractC());
+        hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
+    }
 }

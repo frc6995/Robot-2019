@@ -11,26 +11,21 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.HatchMechRectractC;
 
-/**
- * Add your docs here.
- */
 public class HatchMechS extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  
 
   private static DoubleSolenoid hatchMechanism;
 
   public HatchMechS(){
     //Creates a new solenoid object
     hatchMechanism = new DoubleSolenoid(RobotMap.HATCHMECH_PCM_ID, RobotMap.HATCHMECH_FORWARD_CHANNEL, RobotMap.HATCHMECH_REVERSE_CHANNEL);
-
   }
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new HatchMechRectractC());
   }
   
   //Retract the cylinders
