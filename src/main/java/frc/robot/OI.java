@@ -42,8 +42,8 @@ public class OI {
             //hatchRetract.whenPressed(new HatchMechRectractC());
             //hatchToggle.whenPressed(new HatchMechToggleCG());
 
-            climbFront.whenPressed(new ClimbFrontToggleC());
-            climbRear.whenPressed(new ClimbRearToggleC());
+            climbFront.toggleWhenPressed(new ClimbFrontToggleC());
+            climbRear.toggleWhenPressed(new ClimbRearToggleC());
             climbBox.whenPressed(new ClimbPlatformCG());
             
     }
