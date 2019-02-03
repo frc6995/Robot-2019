@@ -3,6 +3,12 @@ package frc.robot.controller_map;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.sun.org.apache.xpath.internal.operations.String;
+
+import frc.robot.commands.AlignTargetC;
+import frc.robot.commands.DriveArcadeXbox2C;
+import frc.robot.commands.DriveArcadeXboxC;
+
 public class ControllerMap {
 
     public static String[] LIST_OF_COMMANDS = {
@@ -13,25 +19,46 @@ public class ControllerMap {
         
       };
       
-      public final Map<String,Integer> xBoxMap;
-      public final Map<String,Object> dashBoardButtons;
+      public final Map<String,Integer> xBoxButtons;
+      public final String[] xBoxDPad;
+      public final String[] xBoxAxis;
+      public final Map<String,Object> commandsList;
 
       public ControllerMap() {
-        xBoxMap = new HashMap<>();
-        dashBoardButtons = new HashMap<>();
+        xBoxButtons = new HashMap<>();
+        xBoxDPad = new String[7];
+        xBoxAxis = new String[5];
+        commandsList = new HashMap<>();
 
-        xBoxMap.put("A", 1);
-        xBoxMap.put("B", 2);
-        xBoxMap.put("X", 3);
-        xBoxMap.put("Y", 4);
-        xBoxMap.put("Left Bumper", 5);
-        xBoxMap.put("Right Bumper", 6);
-        xBoxMap.put("Start", 7);
-        xBoxMap.put("Back", 8);
-        xBoxMap.put("Left Stick Button", 9);
-        xBoxMap.put("Right Stick Button", 10);
+        xBoxButtons.put("A", 1);
+        xBoxButtons.put("B", 2);
+        xBoxButtons.put("X", 3);
+        xBoxButtons.put("Y", 4);
+        xBoxButtons.put("Left Bumper", 5);
+        xBoxButtons.put("Right Bumper", 6);
+        xBoxButtons.put("Start", 7);
+        xBoxButtons.put("Back", 8);
+        xBoxButtons.put("Left Stick Button", 9);
+        xBoxButtons.put("Right Stick Button", 10);
 
-        xBoxMap.put("Dpad Up", )
+        xBoxDPad[0] = "Dpad_Up";
+        xBoxDPad[1] = "Dpad_Down";
+        xBoxDPad[2] = "Dpad_Left";
+        xBoxDPad[3] = "Dpad_Right";
+        xBoxDPad[4] = "Dpad_UpLeft";
+        xBoxDPad[5] = "Dpad_UpRight";
+        xBoxDPad[6] = "Dpad_DownLeft";
+        xBoxDPad[7] = "Dpad_DownRight";
+
+        xBoxAxis[0] = "Left Stick X";
+        xBoxAxis[1] = "Left Stick Y";
+        xBoxAxis[2] = "Right Stick X";
+        xBoxAxis[3] = "Right Stick Y";
+        xBoxAxis[4] = "Left Trigger";
+        xBoxAxis[5] = "Right Trigger";
+
+        commandsList.put("AlignTargetC", new AlignTargetC());
+        commandsList.put("DriverArcadeXbox2C", new DriveArcadeXbox2C());
+        commandsList.put("DriveArcadeXboxC", new DriveArcadeXboxC());
       }
-
 }
