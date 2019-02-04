@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.HatchMechRectractC;
+import frc.robot.commands.HatchMechRetractC;
 
 public class HatchMechS extends Subsystem {
 
@@ -17,7 +17,7 @@ public class HatchMechS extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    setDefaultCommand(new HatchMechRectractC());
+    setDefaultCommand(new HatchMechRetractC());
   }
   
   //Retract the cylinders

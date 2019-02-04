@@ -11,7 +11,7 @@ public class HatchMechToggleCG extends CommandGroup {
     //Wait 0.25 seconds, NEED TO TUNE ONCE WE GET THE FINAL SUBSYSTEM
     addSequential(new WaitCommand(0.25),0.25);
     //Retract
-    addSequential(new HatchMechRectractC());
+    addSequential(new HatchMechRetractC());
   }
 
 }

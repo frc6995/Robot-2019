@@ -3,8 +3,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class HatchMechRectractC extends Command {
-  public HatchMechRectractC() {
+public class HatchMechRetractC extends Command {
+  public HatchMechRetractC() {
     requires(Robot.m_hatchMechS);
   }
 
@@ -14,7 +14,6 @@ public class HatchMechRectractC extends Command {
 
   @Override
   protected void execute() {
-    //Retract the HatchMech
     Robot.m_hatchMechS.retract();
   }
 
