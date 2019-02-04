@@ -9,12 +9,13 @@ import frc.robot.commands.HatchMechToggleCG;
 
 
 public class OI {
-public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
-public final JoystickButton hatchDeploy = new JoystickButton(stick, RobotMap.HATCH_DEPLOY);
-public final JoystickButton hatchRetract = new JoystickButton(stick, RobotMap.HATCH_RETRACT);
-public final JoystickButton hatchToggle = new JoystickButton(stick, RobotMap.HATCH_TOGGLE);
+    public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
 
-public final XboxController xbox = new XboxController(RobotMap.OI_XBOX);
+    public final XboxController xbox = new XboxController(RobotMap.OI_XBOX);
+    
+    public final JoystickButton hatchDeploy = new JoystickButton(stick, RobotMap.BUTTON_HATCH_DEPLOY);
+    public final JoystickButton hatchRetract = new JoystickButton(stick, RobotMap.BUTTON_HATCH_RETRACT);
+    public final JoystickButton hatchToggle = new JoystickButton(stick, RobotMap.BUTTON_HATCH_TOGGLE);
 
     public OI() {
         hatchDeploy.whenPressed(new HatchMechDeployC());

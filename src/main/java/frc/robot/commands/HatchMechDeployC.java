@@ -1,4 +1,3 @@
-
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -13,24 +12,20 @@ public class HatchMechDeployC extends Command {
   protected void initialize() {
   }
 
-
   @Override
   protected void execute() {
-    //Deploy the hatch mech
+    //Deploy the hatchMech
     Robot.m_hatchMechS.deploy();
   }
-
 
   @Override
   protected boolean isFinished() {
     return true;
   }
 
-
   @Override
   protected void end() {
   }
-
 
   @Override
   protected void interrupted() {
