@@ -41,6 +41,7 @@ public class RobotMap {
   public final static int SOLENOID_ID_CLIMBER_REAR = 2; //doesn't exist, most likely 2
   public final static int LIMIT_ID_CLIMBER_FRONT = 0;
   public final static int LIMIT_ID_CLIMBER_REAR = 1; //doesn't exist, most likely 1
+  public final static int PCM_ID_CLIMBER_SPARK = 7; //doesn't exist, most likely 7, counting down
   
   public static final int DRIVE_XBOX_RIGHT_X_AXIS = 4;
   //public static final int DRIVE_XBOX_RIGHT_Y_AXIS = 5;

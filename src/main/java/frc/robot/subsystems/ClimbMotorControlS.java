@@ -9,11 +9,22 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.Spark;
+import frc.robot.RobotMap;
 
 public class ClimbMotorControlS extends Subsystem {
-  public Spark ClimbMotor;
+  public Spark climbMotor = null;
 
-  public
+  public ClimbMotorControlS() {
+    climbMotor = new Spark(RobotMap.PCM_ID_CLIMBER_SPARK);
+  }
+
+  public void motorForwards() {
+    climbMotor.set(0.5);
+  }
+
+  public void motorStop() {
+    climbMotor.set(0.0);
+  }
 
   @Override
   public void initDefaultCommand() {
