@@ -21,8 +21,8 @@ public class ClimbFrontS extends Subsystem {
   public boolean extended;
 
   public ClimbFrontS(){
-    ClimbMechanismFront = new DoubleSolenoid(RobotMap.CLIMBER_ID_FRONT, 2, 0);
-    ClimberFrontSwitch = new DigitalInput(RobotMap.CLIMBER_FRONT_LIMIT);
+    ClimbMechanismFront = new DoubleSolenoid(RobotMap.SOLENOID_ID_CLIMBER_FRONT, 2, 0); //why does channel change?
+    ClimberFrontSwitch = new DigitalInput(RobotMap.LIMIT_ID_CLIMBER_FRONT);
     extended = false;
   }
 

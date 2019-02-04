@@ -24,9 +24,10 @@ public class RobotMap {
   public final static int DRIVE_STICK_LEFTRIGHT_AXIS = 0;
   public final static int DRIVE_STICK_ROTATE_AXIS = 2;
   public final static int DRIVE_STICK_THROT_AXIS = 3;
-  public final static int CLIMBER_DEPLOY = 3;
-  public final static int CLIMBER_RETRACT = 4;
-  public final static int CLIMB_BOX = 2;
+  //climber buttons
+  public final static int BUTTON_ID_FRONT_TOGGLE = 3;
+  public final static int BUTTON_ID_REAR_TOGGLE = 4;
+  public final static int BUTTON_ID_CLIMB_BOX = 2;
 
 //OI - xbox
   public final static int OI_XBOX = 0;
@@ -36,10 +37,10 @@ public class RobotMap {
   public static final int DRIVE_XBOX_RIGHT_TRIGGER = 3;
 
 //Climb constants
-  public final static int CLIMBER_ID_FRONT = 1;
-  public final static int CLIMBER_ID_REAR = 3; //doesn't exist
-  public final static int CLIMBER_FRONT_LIMIT = 0;
-  public final static int CLIMBER_REAR_LIMIT = 5;
+  public final static int SOLENOID_ID_CLIMBER_FRONT = 1;
+  public final static int SOLENOID_ID_CLIMBER_REAR = 2; //doesn't exist, most likely 2
+  public final static int LIMIT_ID_CLIMBER_FRONT = 0;
+  public final static int LIMIT_ID_CLIMBER_REAR = 1; //doesn't exist, most likely 1
   
   public static final int DRIVE_XBOX_RIGHT_X_AXIS = 4;
   //public static final int DRIVE_XBOX_RIGHT_Y_AXIS = 5;
