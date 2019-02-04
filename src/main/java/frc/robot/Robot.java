@@ -25,9 +25,10 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI m_oi;
   public static DrivebaseS m_drivebaseS;
   public static HatchMechS m_hatchMechS;
+
+  public static OI m_oi;
 
   public Command m_autonomousCommand;
   public Command m_driveCommand;
@@ -43,6 +44,7 @@ public class Robot extends TimedRobot {
     m_drivebaseS = new DrivebaseS();
 
     m_oi = new OI();
+
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
