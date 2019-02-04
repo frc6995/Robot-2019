@@ -15,6 +15,7 @@ public class ClimbRearLimitRetractC extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_ClimbRearS);
+    requires(Robot.m_ClimbMotorControlS);
   }
 
   // Called just before this Command runs the first time
@@ -25,9 +26,11 @@ public class ClimbRearLimitRetractC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    Robot.m_ClimbMotorControlS.motorForwards();
     while(Robot.m_ClimbRearS.CSwitchRear() == false){
       Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1);
     }
+    Robot.m_ClimbMotorControlS.motorStop();
     Robot.m_ClimbRearS.retractRear();
   }
 
