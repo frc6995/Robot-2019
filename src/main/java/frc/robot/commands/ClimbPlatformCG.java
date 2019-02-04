@@ -14,7 +14,7 @@ public class ClimbPlatformCG extends CommandGroup {
    * Climb one box
    */
   public ClimbPlatformCG() {
-    addSequential(new ClimbFrontDeployC());
+    addParallel(new ClimbFrontDeployC());
     addSequential(new ClimbRearDeployC());
     addSequential(new ClimbFrontLimitRetractC());
     addSequential(new ClimbRearLimitRetractC());
