@@ -2,7 +2,7 @@
  * POVhat.java
  */
 
-package edu.wpi.first.wpilibj.frc5002;
+package frc.robot.controller_map;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 
