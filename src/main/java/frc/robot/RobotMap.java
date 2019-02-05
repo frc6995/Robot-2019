@@ -25,9 +25,9 @@ public class RobotMap {
   public final static int DRIVE_STICK_ROTATE_AXIS = 2;
   public final static int DRIVE_STICK_THROT_AXIS = 3;
   //climber buttons
-  public final static int BUTTON_ID_FRONT_TOGGLE = 3;
-  public final static int BUTTON_ID_REAR_TOGGLE = 4;
-  public final static int BUTTON_ID_CLIMB_BOX = 2;
+  public final static int BUTTON_FRONT_TOGGLE = 3;
+  public final static int BUTTON_REAR_TOGGLE = 4;
+  public final static int BUTTON_CLIMB_BOX = 2;
 
 //OI - xbox
   public final static int OI_XBOX = 0;
@@ -37,11 +37,11 @@ public class RobotMap {
   public static final int DRIVE_XBOX_RIGHT_TRIGGER = 3;
 
 //Climb constants
-  public final static int SOLENOID_ID_CLIMBER_FRONT = 1;
-  public final static int SOLENOID_ID_CLIMBER_REAR = 2; //doesn't exist, most likely 2
-  public final static int LIMIT_ID_CLIMBER_FRONT = 0;
-  public final static int LIMIT_ID_CLIMBER_REAR = 1; //doesn't exist, most likely 1
-  public final static int PCM_ID_CLIMBER_SPARK = 7; //doesn't exist, most likely 7, counting down
+  public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT = 1;
+  public final static int PCM_ID_DSOLENOID_CLIMBER_REAR = 2; //doesn't exist, most likely 2
+  public final static int DIO_LIMIT_CLIMBER_FRONT = 0;
+  public final static int DIO_LIMIT_CLIMBER_REAR = 1; //doesn't exist, most likely 1
+  public final static int PWM_ID_SPARK_CLIMB_MOVEMENT = 7; //doesn't exist, most likely 7, counting down
   
   public static final int DRIVE_XBOX_RIGHT_X_AXIS = 4;
   //public static final int DRIVE_XBOX_RIGHT_Y_AXIS = 5;
