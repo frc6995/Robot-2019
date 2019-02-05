@@ -1,5 +1,5 @@
 /**
-   * XBOX one Button mapping reference
+   * XBOX one Button mapping reference (INCORRECT DO NOT USE)
    * 0 = A
    * 1 = B
    * 2 = X
@@ -36,11 +36,11 @@ public class RobotMap {
 
   //OI - xbox
   public final static int OI_XBOX = 0;
-  public static final int XBOX_DRIVE_LEFT_X_AXIS = 0;
-  public static final int XBOX_DRIVE_LEFT_Y_AXIS = 1; 
-  public static final int XBOX_DRIVE_LEFT_TRIGGER = 2;
+  public static final int XBOX_DRIVE_LEFT_RIGHT = 0;
+  public static final int XBOX2_DRIVE_FORWARD_BACK = 1; 
+  public static final int XBOX_DRIVE_FORWARD_SPEED = 2;
   public static final int XBOX_DRIVE_RIGHT_TRIGGER = 3;
-  public static final int XBOX_DRIVE_RIGHT_X_AXIS = 4;
+  public static final int XBOX2_DRIVE_LEFT_RIGHT = 4;
   public final static int BUTTON_HATCH_TOGGLE = 0;
   public final static int BUTTON_THROTTLE_CHANGE = 2;
   public final static int BUTTON_THROTTLE_RESET = 3;
