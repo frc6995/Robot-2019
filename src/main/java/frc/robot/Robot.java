@@ -10,11 +10,15 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.CargoShootC;
 import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
-
+import frc.robot.commands.HatchMechDeployC;
+import frc.robot.commands.HatchMechRetractC;
+import frc.robot.commands.HatchMechToggleCG;
 import frc.robot.subsystems.*;
 
 /**
@@ -27,6 +31,13 @@ import frc.robot.subsystems.*;
 public class Robot extends TimedRobot {
   public static DrivebaseS m_drivebaseS;
   public static HatchMechS m_hatchMechS;
+  public static CargoShooterS m_cargoShooterS;
+  // Init commands as static so we aren't constantly creating new objects.
+  public static CargoShootC m_cargoShootC;
+  public static HatchMechToggleCG m_hatchMechToggleCG;
+  public static HatchMechDeployC m_hatchMechDeployC;
+  public static HatchMechRetractC m_hatchMechRetractC;
+
 
   public static OI m_oi;
 
@@ -42,6 +53,13 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     m_hatchMechS = new HatchMechS();
     m_drivebaseS = new DrivebaseS();
+    m_cargoShooterS = new CargoShooterS();
+    //Commands
+    m_cargoShootC = new CargoShootC();
+    m_hatchMechToggleCG = new HatchMechToggleCG();
+    m_hatchMechDeployC = new HatchMechDeployC();
+    m_hatchMechRetractC = new HatchMechRetractC();
+
 
     m_oi = new OI();
 
@@ -50,25 +68,12 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Drive Control", drive_chooser);
   }
 
-  /**
-   * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
-   * autonomous, teleoperated and test.
-   *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
-   */
   @Override
   public void robotPeriodic() {
     m_driveCommand = drive_chooser.getSelected();
     m_driveCommand.start();
   }
 
-  /**
-   * This function is called once each time the robot enters Disabled mode.
-   * You can use it to reset any subsystem information you want to clear when
-   * the robot is disabled.
-   */
   @Override
   public void disabledInit() {
   }
