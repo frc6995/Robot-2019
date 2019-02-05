@@ -14,7 +14,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
-import frc.robot.subsystems.DrivebaseS;
+
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,8 +25,10 @@ import frc.robot.subsystems.DrivebaseS;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI m_oi;
   public static DrivebaseS m_drivebaseS;
+  public static HatchMechS m_hatchMechS;
+
+  public static OI m_oi;
 
   public Command m_autonomousCommand;
   public Command m_driveCommand;
@@ -37,8 +40,11 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    m_hatchMechS = new HatchMechS();
     m_drivebaseS = new DrivebaseS();
+
     m_oi = new OI();
+
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
