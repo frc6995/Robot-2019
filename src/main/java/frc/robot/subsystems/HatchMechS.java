@@ -12,7 +12,7 @@ public class HatchMechS extends Subsystem {
 
   public HatchMechS(){
     //Creates a new double solenoid object
-    hatchMechanism = new DoubleSolenoid(RobotMap.PCM_ID_DSOLENOID_HATCHMECH, RobotMap.DSOLENOID_HATCHMECH_FORWARD_CHANNEL, RobotMap.DSOLINOID_HATCHMECH_REVERSE_CHANNEL);
+    hatchMechanism = new DoubleSolenoid(RobotMap.PCM_ID_DSOLENOID_HATCHMECH, RobotMap.DSOLENOID_HATCHMECH_FORWARD, RobotMap.DSOLENOID_HATCHMECH_REVERSE);
   }
 
   @Override
