@@ -30,8 +30,8 @@ public class RobotMap {
 
   //HatchMech constants
   public final static int PCM_ID_DSOLENOID_HATCHMECH = 1;
-  public final static int DSOLENOID_HATCHMECH_FORWARD_CHANNEL = 1;
-  public final static int DSOLENOID_HATCHMECH_REVERSE_CHANNEL = 0;
+  public final static int DSOLENOID_HATCHMECH_FORWARD = 1;
+  public final static int DSOLENOID_HATCHMECH_REVERSE = 0;
 
   //CargoShooter constants
   public final static int CAN_ID_TALON_SHOOTER_L = 6;
