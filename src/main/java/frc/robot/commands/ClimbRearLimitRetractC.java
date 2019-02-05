@@ -34,5 +34,6 @@ public class ClimbRearLimitRetractC extends Command {
 
   @Override
   protected void interrupted() {
+    Robot.m_ClimbMotorControlS.motorStop();
   }
 }
