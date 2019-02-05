@@ -44,7 +44,7 @@ public class AlignTargetC extends Command {
   tx = txEntry.getDouble(0.0);
   ty = tyEntry.getDouble(0.0);
 
-if (Robot.m_oi.stick.getRawButton(9) || Robot.m_oi.xbox.getRawButton(3));
+if (Robot.m_oi.xbox.getRawButton(3));
 {
         double heading_error = -tx;
         double distance_error = -ty;

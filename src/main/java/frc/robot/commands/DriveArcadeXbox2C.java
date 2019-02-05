@@ -35,8 +35,8 @@ public class DriveArcadeXbox2C extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    forwardBackSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_LEFT_Y_AXIS);
-    rotationSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_RIGHT_X_AXIS);
+    forwardBackSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX_DRIVE_LEFT_Y_AXIS);
+    rotationSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX_DRIVE_RIGHT_X_AXIS);
 
     if(Robot.m_oi.xbox.getBButtonPressed()) {
       switch(numberPressed) {

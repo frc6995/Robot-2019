@@ -21,13 +21,13 @@ public class DrivebaseS extends Subsystem {
   }
 
   public DrivebaseS() {
-    driveLeftFront = new WPI_TalonSRX(frc.robot.RobotMap.DRIVEBASE_LEFT_TALON_CAN_ID);
-    driveLeftBack = new WPI_TalonSRX(frc.robot.RobotMap.DRIVEBASE_LEFTB_TALON_CAN_ID);
-    driveRightFront = new WPI_TalonSRX(frc.robot.RobotMap.DRIVEBASE_RIGHT_TALON_CAN_ID);
-    driveRightBack = new WPI_TalonSRX(frc.robot.RobotMap.DRIVEBASE_RIGHTB_TALON_CAN_ID);
+    driveLeftFront = new WPI_TalonSRX(frc.robot.RobotMap.CAN_ID_DRIVEBASE_LEFT_TALON_F);
+    driveLeftBack = new WPI_TalonSRX(frc.robot.RobotMap.CAN_ID_DRIVEBASE_LEFT_TALON_B);
+    driveRightFront = new WPI_TalonSRX(frc.robot.RobotMap.CAN_ID_DRIVEBASE_RIGHT_TALON_F);
+    driveRightBack = new WPI_TalonSRX(frc.robot.RobotMap.CAN_ID_DRIVEBASE_RIGHT_TALON_B);
 
-    driveLeftBack.set(ControlMode.Follower, frc.robot.RobotMap.DRIVEBASE_LEFT_TALON_CAN_ID);
-    driveRightBack.set(ControlMode.Follower, frc.robot.RobotMap.DRIVEBASE_RIGHT_TALON_CAN_ID);
+    driveLeftBack.set(ControlMode.Follower, frc.robot.RobotMap.CAN_ID_DRIVEBASE_LEFT_TALON_F);
+    driveRightBack.set(ControlMode.Follower, frc.robot.RobotMap.CAN_ID_DRIVEBASE_RIGHT_TALON_F);
     differentialDrive = new DifferentialDrive(driveLeftFront, driveRightFront);
  
     driveLeftFront.setNeutralMode(NeutralMode.Brake);

@@ -16,17 +16,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
+
 public class DriveArcadeXboxC extends Command {
   private double forwardSpeed = 0;
   private double backwardSpeed = 0; 
   private double moveSpeed = 0;
   private double rotSpeed = 0;
   private double throt = 0;
+  private int numberPressed = 0;
 
   public DriveArcadeXboxC() {
     // Use requires() here to declare subsystem dependencies
     requires(Robot.m_drivebaseS);
-    throt = SmartDashboard.getNumber("XboxThrottle", 0.8);
   }
 
   // Called just before this Command runs the first time
@@ -37,11 +38,23 @@ public class DriveArcadeXboxC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    forwardSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_LEFT_TRIGGER);
-    backwardSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_RIGHT_TRIGGER);
+    forwardSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX_DRIVE_LEFT_TRIGGER);
+    backwardSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX_DRIVE_RIGHT_TRIGGER);
 
     moveSpeed = forwardSpeed - backwardSpeed;
-    rotSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_LEFT_X_AXIS);
+    rotSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX_DRIVE_LEFT_X_AXIS);
+    if(Robot.m_oi.xbox.getRawButtonPressed(RobotMap.BUTTON_THROTTLE_CHANGE)) {
+      switch(numberPressed) {
+        case 0: throt = 0.80; numberPressed = 1; break;
+        case 1: throt = 0.65; numberPressed = 2; break;
+        case 2: throt = 0.50; numberPressed = 3; break;
+        case 3: throt = 1.00; numberPressed = 0; break;
+        default: throt = 1.00; numberPressed = 0; break;
+      }
+    } else if(Robot.m_oi.xbox.getRawButtonPressed(RobotMap.BUTTON_THROTTLE_RESET)) {
+      throt = 1;
+      numberPressed = 0;
+    }
     
     Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throt);
   }
