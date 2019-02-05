@@ -32,7 +32,7 @@ if (Robot.m_oi.xbox.getBumperPressed(Hand.kRight)) {
 
   @Override
   public void initDefaultCommand() {
-  setDefaultCommand(null);
+    setDefaultCommand(null);
   }
 
   public LadderS() {

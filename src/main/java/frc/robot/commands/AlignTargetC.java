@@ -8,7 +8,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
@@ -63,7 +62,7 @@ if (Robot.m_oi.stick.getRawButton(9) || Robot.m_oi.xbox.getRawButton(3));
 
         left_command += steering_adjust + distance_adjust;
         right_command -= steering_adjust + distance_adjust;
-        Robot.m_drivebaseS.tankDrive(left_command, right_command);
+        //Robot.m_drivebaseS.tankDrive(left_command, right_command);
 }
   }
 

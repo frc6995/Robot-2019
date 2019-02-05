@@ -13,10 +13,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.DriveArcadeStickC;
+import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
-import frc.robot.subsystems.DrivebaseS;
-import frc.robot.subsystems.LadderS;
+
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -26,9 +26,12 @@ import frc.robot.subsystems.LadderS;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI m_oi;
+  public static HatchMechS m_hatchMechS;
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
+  
+
+  public static OI m_oi;
 
   public Command m_autonomousCommand;
   public Command m_driveCommand;
@@ -42,11 +45,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    m_hatchMechS = new HatchMechS();
     m_drivebaseS = new DrivebaseS();
-    //m_ladderS = new LadderS();
+    m_ladderS = new LadderS();
     m_oi = new OI();
-    drive_chooser.setDefaultOption("Default Control", new DriveArcadeStickC());
-    drive_chooser.addOption("XboxControl", new DriveArcadeXboxC());
+
+    drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
+    drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
 
     limitSwitch = new DigitalInput(0);
