@@ -74,28 +74,16 @@ public class Xbox {
         a.whenReleased(command);
     }
 
-    public void a_runOnInactive(Command command) {
-        a.whenInactive(command);
-    }
-
-    public void a_runOnActive(Command command) {
-        a.whenActive(command);
-    }
-
     public void a_toggleOnPress(Command command) {
         a.toggleWhenPressed(command);
-    }
-
-    public void a_toggleOnActive(Command command) {
-        a.toggleWhenActive(command);
     }
 
     public void a_cancelOnPress(Command command) {
         a.cancelWhenPressed(command);
     }
 
-    public void a_cancelOnActive(Command command) {
-        a.cancelWhenActive(command);
+    public void a_runWhileHeld(Command command) {
+        a.whileHeld(command);
     }
 
     private enum POV {
