@@ -33,6 +33,9 @@ public class Xbox {
         
     }
 
+    /**
+     * AXIS
+     */
     public double left_stick_x() {
         return xbox.getRawAxis(AXIS_LEFT_STICK_X);
     }
@@ -57,6 +60,9 @@ public class Xbox {
         return xbox.getRawAxis(AXIS_LEFT_TRIGGER);
     }
 
+    /**
+     * BUTTONS
+     */
     public boolean a() {
         if(xbox.getAButton() == true) {
             return true;
