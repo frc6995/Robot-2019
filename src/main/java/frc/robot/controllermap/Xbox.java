@@ -535,6 +535,11 @@ public class Xbox {
         start.whileHeld(command);
     }
 
+    /**
+     * Returns the value of the Xbox Left Stick button.
+     * 
+     * @return boolean
+     */
     public boolean left_stick() {
         if (xbox.getStickButton(Hand.kLeft)) {
             return true;
@@ -543,22 +548,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Left Stick button is pressed.
+     * 
+     * @param
+     */
     public void left_stick_runOnPressed(Command command) {
         left_stick.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Left Stick button is released.
+     * 
+     * @param
+     */
     public void left_stick_runOnRelease(Command command) {
         left_stick.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Left Stick button is pressed.
+     * 
+     * @param
+     */
     public void left_stick_toggleOnPress(Command command) {
         left_stick.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Left Stick button is pressed.
+     * 
+     * @param
+     */
     public void left_stick_cancelOnPress(Command command) {
         left_stick.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Left Stick button is pressed.
+     * 
+     * @param
+     */
     public void left_stick_runWhileHeld(Command command) {
         left_stick.whileHeld(command);
     }
