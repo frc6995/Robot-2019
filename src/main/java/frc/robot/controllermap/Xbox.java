@@ -28,19 +28,9 @@ public class Xbox {
     private static POVButton dpad_up_left;
     private static POVButton dpad_up_right;
     private static POVButton dpad_down_left;
-    private static POVButton dpad_dwon_right;
-    private enum POV {
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT,
-        UP_RIGHT,
-        UP_LEFT,
-        DOWN_LEFT,
-        DOWN_RIGHT,
-        CENTER;
-    }
+    private static POVButton dpad_down_right;
 
+    private enum POV {UP, DOWN, LEFT, RIGHT, UP_RIGHT, UP_LEFT, DOWN_LEFT, DOWN_RIGHT, CENTER;}
     private static int DPAD(POV pov) {
         switch (pov) {
             case UP: return 0;
@@ -89,7 +79,6 @@ public class Xbox {
 
     public Xbox(int portNo) {
         xbox = new XboxController(portNo);
-
         a = new JoystickButton(xbox, BUTTON_A);
         b = new JoystickButton(xbox, BUTTON_B);
         x = new JoystickButton(xbox, BUTTON_X);
@@ -100,7 +89,6 @@ public class Xbox {
         right_bumper = new JoystickButton(xbox, BUTTON_RIGHT_BUMPER);
         start = new JoystickButton(xbox, BUTTON_START);
         back = new JoystickButton(xbox, BUTTON_BACK);
-        
         dpad_up = new POVButton(xbox, DPAD_UP);
         dpad_down = new POVButton(xbox, DPAD_DOWN);
         dpad_left = new POVButton(xbox, DPAD_LEFT);
@@ -108,7 +96,7 @@ public class Xbox {
         dpad_up_left = new POVButton(xbox, DPAD_UP_LEFT);
         dpad_up_right = new POVButton(xbox, DPAD_UP_RIGHT);
         dpad_down_left = new POVButton(xbox, DPAD_DOWN_LEFT);
-        dpad_dwon_right = new POVButton(xbox, DPAD_DOWN_RIGHT);
+        dpad_down_right = new POVButton(xbox, DPAD_DOWN_RIGHT);
         dpad_center = new POVButton(xbox, DPAD_CENTER);
     }
 
@@ -204,10 +192,60 @@ public class Xbox {
     public void dpad_up_toggleOnPress(Command command) {dpad_up.toggleWhenPressed(command);}
     public void dpad_up_cancelOnPress(Command command) {dpad_up.cancelWhenPressed(command);}
     public void dpad_up_runWhileHeld(Command command) {dpad_up.whileHeld(command);}
-    //public boolean dpad_down() {
-     //   if(xbox.getPOV(90) {
 
-        //}
-    //}
+    public boolean dpad_down() {if(dpad_down.get()){return true;} else{return false;}}
+    public void dpad_down_runOnPressed(Command command) {dpad_down.whenPressed(command);}
+    public void dpad_down_runOnRelease(Command command) {dpad_down.whenReleased(command);}
+    public void dpad_down_toggleOnPress(Command command) {dpad_down.toggleWhenPressed(command);}
+    public void dpad_down_cancelOnPress(Command command) {dpad_down.cancelWhenPressed(command);}
+    public void dpad_down_runWhileHeld(Command command) {dpad_down.whileHeld(command);}
 
+    public boolean dpad_left() {if(dpad_left.get()){return true;} else{return false;}}
+    public void dpad_left_runOnPressed(Command command) {dpad_left.whenPressed(command);}
+    public void dpad_left_runOnRelease(Command command) {dpad_left.whenReleased(command);}
+    public void dpad_left_toggleOnPress(Command command) {dpad_left.toggleWhenPressed(command);}
+    public void dpad_left_cancelOnPress(Command command) {dpad_left.cancelWhenPressed(command);}
+    public void dpad_left_runWhileHeld(Command command) {dpad_left.whileHeld(command);}
+
+    public boolean dpad_right() {if(dpad_right.get()){return true;} else{return false;}}
+    public void dpad_right_runOnPressed(Command command) {dpad_right.whenPressed(command);}
+    public void dpad_right_runOnRelease(Command command) {dpad_right.whenReleased(command);}
+    public void dpad_right_toggleOnPress(Command command) {dpad_right.toggleWhenPressed(command);}
+    public void dpad_right_cancelOnPress(Command command) {dpad_right.cancelWhenPressed(command);}
+    public void dpad_right_runWhileHeld(Command command) {dpad_right.whileHeld(command);}
+
+    public boolean dpad_up_right() {if(dpad_up_right.get()){return true;} else{return false;}}
+    public void dpad_up_right_runOnPressed(Command command) {dpad_up_right.whenPressed(command);}
+    public void dpad_up_right_runOnRelease(Command command) {dpad_up_right.whenReleased(command);}
+    public void dpad_up_right_toggleOnPress(Command command) {dpad_up_right.toggleWhenPressed(command);}
+    public void dpad_up_right_cancelOnPress(Command command) {dpad_up_right.cancelWhenPressed(command);}
+    public void dpad_up_right_runWhileHeld(Command command) {dpad_up_right.whileHeld(command);}
+
+    public boolean dpad_up_left() {if(dpad_up_left.get()){return true;} else{return false;}}
+    public void dpad_up_left_runOnPressed(Command command) {dpad_up_left.whenPressed(command);}
+    public void dpad_up_left_runOnRelease(Command command) {dpad_up_left.whenReleased(command);}
+    public void dpad_up_left_toggleOnPress(Command command) {dpad_up_left.toggleWhenPressed(command);}
+    public void dpad_up_left_cancelOnPress(Command command) {dpad_up_left.cancelWhenPressed(command);}
+    public void dpad_up_left_runWhileHeld(Command command) {dpad_up_left.whileHeld(command);}
+
+    public boolean dpad_down_right() {if(dpad_down_right.get()){return true;} else{return false;}}
+    public void dpad_down_right_runOnPressed(Command command) {dpad_down_right.whenPressed(command);}
+    public void dpad_down_right_runOnRelease(Command command) {dpad_down_right.whenReleased(command);}
+    public void dpad_down_right_toggleOnPress(Command command) {dpad_down_right.toggleWhenPressed(command);}
+    public void dpad_down_right_cancelOnPress(Command command) {dpad_down_right.cancelWhenPressed(command);}
+    public void dpad_down_right_runWhileHeld(Command command) {dpad_down_right.whileHeld(command);}
+
+    public boolean dpad_down_left() {if(dpad_down_left.get()){return true;} else{return false;}}
+    public void dpad_down_left_runOnPressed(Command command) {dpad_down_left.whenPressed(command);}
+    public void dpad_down_left_runOnRelease(Command command) {dpad_down_left.whenReleased(command);}
+    public void dpad_down_left_toggleOnPress(Command command) {dpad_down_left.toggleWhenPressed(command);}
+    public void dpad_down_left_cancelOnPress(Command command) {dpad_down_left.cancelWhenPressed(command);}
+    public void dpad_down_left_runWhileHeld(Command command) {dpad_down_left.whileHeld(command);}
+
+    public boolean dpad_center() {if(dpad_center.get()){return true;} else{return false;}}
+    public void dpad_center_left_runOnPressed(Command command) {dpad_center.whenPressed(command);}
+    public void dpad_center_left_runOnRelease(Command command) {dpad_center.whenReleased(command);}
+    public void dpad_center_left_toggleOnPress(Command command) {dpad_center.toggleWhenPressed(command);}
+    public void dpad_center_left_cancelOnPress(Command command) {dpad_center.cancelWhenPressed(command);}
+    public void dpad_center_left_runWhileHeld(Command command) {dpad_center.whileHeld(command);}
 } 
