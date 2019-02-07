@@ -419,6 +419,11 @@ public class Xbox {
         y.whileHeld(command);
     }
 
+    /**
+     * Returns the value of the Xbox Back button.
+     * 
+     * @return boolean
+     */
     public boolean back() {
         if (xbox.getBackButton()) {
             return true;
@@ -427,22 +432,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Back button is pressed.
+     * 
+     * @param
+     */
     public void back_runOnPressed(Command command) {
         back.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Back button is released.
+     * 
+     * @param
+     */
     public void back_runOnRelease(Command command) {
         back.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Back button is pressed.
+     * 
+     * @param
+     */
     public void back_toggleOnPress(Command command) {
         back.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Back button is pressed.
+     * 
+     * @param
+     */
     public void back_cancelOnPress(Command command) {
         back.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Back button is pressed.
+     * 
+     * @param
+     */
     public void back_runWhileHeld(Command command) {
         back.whileHeld(command);
     }
