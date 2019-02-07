@@ -477,6 +477,11 @@ public class Xbox {
         back.whileHeld(command);
     }
 
+    /**
+     * Returns the value of the start button
+     * 
+     * @return boolean
+     */
     public boolean start() {
         if (xbox.getStartButton()) {
             return true;
@@ -485,22 +490,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Start button is pressed.
+     * 
+     * @param
+     */
     public void start_runOnPressed(Command command) {
         start.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Start button is released.
+     * 
+     * @param
+     */
     public void start_runOnRelease(Command command) {
         start.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Start button is pressed.
+     * 
+     * @param
+     */
     public void start_toggleOnPress(Command command) {
         start.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Start button is pressed.
+     * 
+     * @param
+     */
     public void start_cancelOnPress(Command command) {
         start.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Start button is pressed.
+     * 
+     * @param
+     */
     public void start_runWhileHeld(Command command) {
         start.whileHeld(command);
     }
