@@ -361,6 +361,11 @@ public class Xbox {
         x.whileHeld(command);
     }
 
+    /**
+     * Returns the value of the Xbox Y button.
+     * 
+     * @return boolean
+     */
     public boolean y() {
         if (xbox.getYButton()) {
             return true;
@@ -369,22 +374,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Y button is pressed.
+     * 
+     * @param
+     */
     public void y_runOnPressed(Command command) {
         y.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Y button is released.
+     * 
+     * @param
+     */
     public void y_runOnRelease(Command command) {
         y.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Y button is pressed.
+     * 
+     * @param
+     */
     public void y_toggleOnPress(Command command) {
         y.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Y button is pressed.
+     * 
+     * @param
+     */
     public void y_cancelOnPress(Command command) {
         y.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Y button is pressed.
+     * 
+     * @param
+     */
     public void y_runWhileHeld(Command command) {
         y.whileHeld(command);
     }
