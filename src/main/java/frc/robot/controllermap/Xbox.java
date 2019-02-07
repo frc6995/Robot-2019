@@ -2,23 +2,33 @@ package frc.robot.controllermap;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * The Xbox class takes the 3 different control implimentations
+ * that the xbox requires to use all of its functions and
+ * combines it into one easy to use class.
+ * This class combines:
+ * {@link edu.wpi.first.wpilibj.XboxController}, 
+ * {@link edu.wpi.first.wpilibj.buttons.JoystickButton}, and 
+ * {@link edu.wpi.first.wpilibj.buttons.POVButton}
+ * @author Elijah Sauder
+ */
+
 public class Xbox {
     private static XboxController xbox;
-    private static Button a;
-    private static Button b;
-    private static Button x;
-    private static Button y;
-    private static Button left_stick;
-    private static Button right_stick;
-    private static Button left_bumper;
-    private static Button right_bumper;
-    private static Button start;
-    private static Button back;
+    private static JoystickButton a;
+    private static JoystickButton b;
+    private static JoystickButton x;
+    private static JoystickButton y;
+    private static JoystickButton left_stick;
+    private static JoystickButton right_stick;
+    private static JoystickButton left_bumper;
+    private static JoystickButton right_bumper;
+    private static JoystickButton start;
+    private static JoystickButton back;
 
     private static POVButton dpad_center;
     private static POVButton dpad_up;
@@ -76,7 +86,11 @@ public class Xbox {
     private final static int DPAD_DOWN_RIGHT = DPAD(POV.DOWN_RIGHT);
     private final static int DPAD_DOWN_LEFT = DPAD(POV.DOWN_RIGHT);
     private final static int DPAD_CENTER = DPAD(POV.CENTER);
-
+   
+    /**
+     * Construct instance of the Xbox class.
+     * @param portNo : the port on the driver station that the Xbox is plugged into.
+     */
     public Xbox(int portNo) {
         xbox = new XboxController(portNo);
         a = new JoystickButton(xbox, BUTTON_A);
@@ -103,21 +117,69 @@ public class Xbox {
     /**
      * AXIS
      */
+    /**
+     * Returns the X axis value from the Xbox's left stick.
+     * @return double
+     */
     public double left_stick_x() {return xbox.getRawAxis(AXIS_LEFT_STICK_X);}
+    /**
+     * Returns the Y axis value from the Xbox's left stick.
+     * @return double
+     */
     public double left_stick_y() {return xbox.getRawAxis(AXIS_LEFT_STICK_Y);}
+    /**
+     * Returns the X axis value from the Xbox's right stick.
+     * @return double
+     */
     public double right_stick_x() {return xbox.getRawAxis(AXIS_RIGHT_STICK_X);}
+    /**
+     * Returns the Y axis value from the Xbox's right stick.
+     * @return double
+     */
     public double right_stick_y() {return xbox.getRawAxis(AXIS_RIGHT_STICK_Y);}
+    /**
+     * Returns the value from the Xbox's right trigger.
+     * @return double
+     */
     public double right_trigger() {return xbox.getRawAxis(AXIS_RIGHT_TRIGGER);}
+    /**
+     * Returns the value from the Xbox's left trigger.
+     * @return double
+     */
     public double left_trigger() {return xbox.getRawAxis(AXIS_LEFT_TRIGGER);}
 
     /**
      * BUTTONS
      */
+    /**
+     * Returns the value of the Xbox A button
+     * @return boolean
+     */
     public boolean a() {if(xbox.getAButton()){return true;} else{return false;}}
+    /**
+     * Runs a command when the Xbox A button is pressed.
+     * @param 
+     */
     public void a_runOnPressed(Command command) {a.whenPressed(command);}
+    /**
+     * Runs a command when the Xbox A button is released.
+     * @param 
+     */
     public void a_runOnRelease(Command command) {a.whenReleased(command);}
+    /**
+     * Toggles a command when the Xbox A button is pressed.
+     * @param 
+     */
     public void a_toggleOnPress(Command command) {a.toggleWhenPressed(command);}
+    /**
+     * Stops a command when the Xbox A button is pressed.
+     * @param 
+     */
     public void a_cancelOnPress(Command command) {a.cancelWhenPressed(command);}
+    /**
+     * Runs a command while the Xbox A button is pressed.
+     * @param 
+     */
     public void a_runWhileHeld(Command command) {a.whileHeld(command);}
 
     public boolean b() {if(xbox.getBButton()){return true;} else{return false;}}
