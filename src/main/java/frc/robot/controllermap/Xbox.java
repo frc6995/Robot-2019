@@ -303,6 +303,11 @@ public class Xbox {
         b.whileHeld(command);
     }
 
+    /**
+     * Returns the value of the Xbox X button
+     * 
+     * @return boolean
+     */
     public boolean x() {
         if (xbox.getXButton()) {
             return true;
@@ -311,22 +316,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox X button is pressed.
+     * 
+     * @param
+     */
     public void x_runOnPressed(Command command) {
         x.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox X button is released.
+     * 
+     * @param
+     */
     public void x_runOnRelease(Command command) {
         x.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox X button is pressed.
+     * 
+     * @param
+     */
     public void x_toggleOnPress(Command command) {
         x.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox X button is pressed.
+     * 
+     * @param
+     */
     public void x_cancelOnPress(Command command) {
         x.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox X button is pressed.
+     * 
+     * @param
+     */
     public void x_runWhileHeld(Command command) {
         x.whileHeld(command);
     }
