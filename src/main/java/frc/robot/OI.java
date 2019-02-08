@@ -7,6 +7,7 @@ import frc.robot.RobotMap;
 import frc.robot.commands.ClimbFrontToggleC;
 import frc.robot.commands.ClimbPlatformCG;
 import frc.robot.commands.ClimbRearToggleC;
+import frc.robot.commands.ClimbMotorsToggleC;
 import frc.robot.commands.HatchMechToggleCG;
 
 
@@ -20,12 +21,14 @@ public class OI {
     public final JoystickButton climbFront = new JoystickButton(stick, RobotMap.BUTTON_FRONT_TOGGLE); //bad naming...
     public final JoystickButton climbRear = new JoystickButton(stick, RobotMap.BUTTON_REAR_TOGGLE); //bad naming...
     public final JoystickButton climbBox = new JoystickButton(stick, RobotMap.BUTTON_CLIMB_BOX);
+    public final JoystickButton climbMotorsToggle = new JoystickButton(stick, RobotMap.BUTTON_CLIMB_MOTORS_TOGGLE);
 
     public OI() {
         hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
     
         climbFront.toggleWhenPressed(new ClimbFrontToggleC());
         climbRear.toggleWhenPressed(new ClimbRearToggleC());
+        climbMotorsToggle.toggleWhenPressed(new ClimbMotorsToggleC());
         climbBox.whenPressed(new ClimbPlatformCG());
     }
 }

@@ -47,6 +47,7 @@ public class RobotMap {
   public final static int BUTTON_FRONT_TOGGLE = 3;
   public final static int BUTTON_REAR_TOGGLE = 4;
   public final static int BUTTON_CLIMB_BOX = 2;
+  public final static int BUTTON_CLIMB_MOTORS_TOGGLE = 1;
 
   //OI - xbox
   public final static int OI_XBOX = 0;
