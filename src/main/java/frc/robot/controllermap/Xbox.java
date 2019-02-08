@@ -966,18 +966,38 @@ public class Xbox {
         dpad_right.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox POV is no longer in the right position.
+     * 
+     * @param
+     */
     public void dpad_right_runOnRelease(Command command) {
         dpad_right.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox POV is in the right position.
+     * 
+     * @param
+     */
     public void dpad_right_toggleOnPress(Command command) {
         dpad_right.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox POV is in the right position.
+     * 
+     * @param
+     */
     public void dpad_right_cancelOnPress(Command command) {
         dpad_right.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox POV is in the right position.
+     * 
+     * @param
+     */
     public void dpad_right_runWhileHeld(Command command) {
         dpad_right.whileHeld(command);
     }
