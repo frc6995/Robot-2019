@@ -770,6 +770,11 @@ public class Xbox {
     /**
      * POV
      */
+    /**
+     * Returns whether or not the up button on the dpad is pressed.
+     * 
+     * @return boolean
+     */
     public boolean dpad_up() {
         if (dpad_up.get()) {
             return true;
@@ -778,22 +783,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Dpad Up Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_up_runOnPressed(Command command) {
         dpad_up.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Dpad Up Button button is released.
+     * 
+     * @param
+     */
     public void dpad_up_runOnRelease(Command command) {
         dpad_up.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Dpad Up Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_up_toggleOnPress(Command command) {
         dpad_up.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Dpad Up Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_up_cancelOnPress(Command command) {
         dpad_up.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Dpad Up Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_up_runWhileHeld(Command command) {
         dpad_up.whileHeld(command);
     }
