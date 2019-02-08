@@ -886,6 +886,11 @@ public class Xbox {
         dpad_down.whileHeld(command);
     }
 
+    /**
+     * Returns whether or not the left button on the dpad is pressed.
+     * 
+     * @return boolean
+     */
     public boolean dpad_left() {
         if (dpad_left.get()) {
             return true;
@@ -894,22 +899,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Dpad Left Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_left_runOnPressed(Command command) {
         dpad_left.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Dpad Left Button button is released.
+     * 
+     * @param
+     */
     public void dpad_left_runOnRelease(Command command) {
         dpad_left.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Dpad Left Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_left_toggleOnPress(Command command) {
         dpad_left.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Dpad Left Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_left_cancelOnPress(Command command) {
         dpad_left.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Dpad Left Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_left_runWhileHeld(Command command) {
         dpad_left.whileHeld(command);
     }
