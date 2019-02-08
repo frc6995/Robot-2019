@@ -771,7 +771,7 @@ public class Xbox {
      * POV
      */
     /**
-     * Returns whether or not the up button on the dpad is pressed.
+     * Returns whether or not the Xbox POV is in the up position.
      * 
      * @return boolean
      */
@@ -829,7 +829,7 @@ public class Xbox {
     }
 
     /**
-     * Returns whether or not the down button on the dpad is pressed.
+     * Returns whether or not the xbox POV is in the down position.
      * 
      * @return boolean
      */
@@ -887,7 +887,7 @@ public class Xbox {
     }
 
     /**
-     * Returns whether or not the left button on the dpad is pressed.
+     * Returns whether or not the Xbox POV is in the left position.
      * 
      * @return boolean
      */
@@ -944,6 +944,11 @@ public class Xbox {
         dpad_left.whileHeld(command);
     }
 
+    /**
+     * Returns whether or not the Xbox POV is in the Right position.
+     * 
+     * @return boolean
+     */
     public boolean dpad_right() {
         if (dpad_right.get()) {
             return true;
