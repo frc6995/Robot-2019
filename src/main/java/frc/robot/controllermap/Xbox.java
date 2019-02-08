@@ -593,6 +593,11 @@ public class Xbox {
         left_stick.whileHeld(command);
     }
 
+    /**
+     * Returns the value of the Xbox Right Stick button.
+     * 
+     * @return boolean
+     */
     public boolean right_stick() {
         if (xbox.getStickButton(Hand.kRight)) {
             return true;
@@ -601,26 +606,56 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Right Stick button is pressed.
+     * 
+     * @param
+     */
     public void right_stick_runOnPressed(Command command) {
         right_stick.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Right Stick button is released.
+     * 
+     * @param
+     */
     public void right_stick_runOnRelease(Command command) {
         right_stick.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Right Stick button is pressed.
+     * 
+     * @param
+     */
     public void right_stick_toggleOnPress(Command command) {
         right_stick.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Right Stick button is pressed.
+     * 
+     * @param
+     */
     public void right_stick_cancelOnPress(Command command) {
         right_stick.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Right Stick button is pressed.
+     * 
+     * @param
+     */
     public void right_stick_runWhileHeld(Command command) {
         right_stick.whileHeld(command);
     }
 
+    /**
+     * Returns the value of the Xbox Left Bumper button.
+     * 
+     * @return boolean
+     */
     public boolean left_bumper() {
         if (xbox.getStartButton()) {
             return true;
@@ -629,22 +664,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Left Bumper button is pressed.
+     * 
+     * @param
+     */
     public void left_bumper_runOnPressed(Command command) {
         left_bumper.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Left Bumper button is released.
+     * 
+     * @param
+     */
     public void left_bumper_runOnRelease(Command command) {
         left_bumper.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Left Bumper button is pressed.
+     * 
+     * @param
+     */
     public void left_bumper_toggleOnPress(Command command) {
         left_bumper.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Left Bumper button is pressed.
+     * 
+     * @param
+     */
     public void left_bumper_cancelOnPress(Command command) {
         left_bumper.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Left Bumper button is pressed.
+     * 
+     * @param
+     */
     public void left_bumper_runWhileHeld(Command command) {
         left_bumper.whileHeld(command);
     }
