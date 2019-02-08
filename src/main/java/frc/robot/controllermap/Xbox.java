@@ -709,6 +709,11 @@ public class Xbox {
         left_bumper.whileHeld(command);
     }
 
+    /**
+     * Returns the value of the Xbox Right Bumper button.
+     * 
+     * @return boolean
+     */
     public boolean right_bumper() {
         if (xbox.getStartButton()) {
             return true;
@@ -717,22 +722,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Right Bumper button is pressed.
+     * 
+     * @param
+     */
     public void right_bumper_runOnPressed(Command command) {
         right_bumper.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Right Bumper button is released.
+     * 
+     * @param
+     */
     public void right_bumper_runOnRelease(Command command) {
         right_bumper.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Right Bumper button is pressed.
+     * 
+     * @param
+     */
     public void right_bumper_toggleOnPress(Command command) {
         right_bumper.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Right Bumper button is pressed.
+     * 
+     * @param
+     */
     public void right_bumper_cancelOnPress(Command command) {
         right_bumper.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Right Bumper button is pressed.
+     * 
+     * @param
+     */
     public void right_bumper_runWhileHeld(Command command) {
         right_bumper.whileHeld(command);
     }
