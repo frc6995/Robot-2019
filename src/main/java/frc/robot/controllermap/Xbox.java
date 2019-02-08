@@ -842,7 +842,7 @@ public class Xbox {
     }
 
     /**
-     * Runs a command when the Xbox Dpad Down Button button is pressed.
+     * Runs a command when the Xbox POV is in the down position.
      * 
      * @param
      */
@@ -851,7 +851,7 @@ public class Xbox {
     }
 
     /**
-     * Runs a command when the Xbox Dpad Down Button button is release.
+     * Runs a command when the Xbox POV is no longer in the down position.
      * 
      * @param
      */
@@ -860,7 +860,7 @@ public class Xbox {
     }
 
     /**
-     * Toggles a command when the Xbox Dpad Down Button button is pressed.
+     * Toggles a command when the Xbox POV is in the down position.
      * 
      * @param
      */
@@ -869,7 +869,7 @@ public class Xbox {
     }
 
     /**
-     * Cancels a command when the Xbox Dpad Down Button button is pressed.
+     * Cancels a command when the Xbox POV is in the down position.
      * 
      * @param
      */
@@ -878,7 +878,7 @@ public class Xbox {
     }
 
     /**
-     * Runs a command while the Xbox Dpad Down Button button is pressed.
+     * Runs a command while the Xbox POV is in the down position.
      * 
      * @param
      */
