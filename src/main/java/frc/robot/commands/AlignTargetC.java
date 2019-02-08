@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -41,25 +34,16 @@ public class AlignTargetC extends Command {
   int sumInRange = 0;
 
   public AlignTargetC() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
     requires(Robot.m_drivebaseS);
     pipelineEntry.setDouble(0);
 
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    this.setInterruptible(false);
-    if(SmartDashboard.getNumber("kpAim", -2000.0) == -2000.0){
-      SmartDashboard.putNumber("kpAim", KpAim);
-    }
-    if(SmartDashboard.getNumber("kpDistance", -2000.0) == -2000.0){
-      SmartDashboard.putNumber("kpDistance", KpDistance);
-    }
-    pipelineEntry.setDouble(0);
-
+    this.setInterruptible(false); //Prevents drivebase from overriding this command.
+    pipelineEntry.setDouble(0); //Sets pipeline to Vision Align pipeline
+    // pipeline 0 is the 
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -94,14 +78,11 @@ public class AlignTargetC extends Command {
         else if (distance_adjust < -max_steering) {
           distance_adjust = -max_steering;
         }
+        //Adds a maximum and miniumum to the Robots turning speed
+        //and adds a maximum/minimum to the forward-backward speed
  
         SmartDashboard.putNumber("Steering", steering_adjust);
 
-        /*left_command = steering_adjust;// + distance_adjust;
-        SmartDashboard.putNumber("left_command", left_command);
-
-        right_command = steering_adjust;// + distance_adjust;
-        SmartDashboard.putNumber("right_command", right_command);*/ //shueja-personal: Unused
         Robot.m_drivebaseS.visionDrive(distance_adjust, steering_adjust);
       }
 

@@ -42,7 +42,7 @@ public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
 public void tankDrive(double leftSide, double rightSide) {
   differentialDrive.tankDrive(leftSide, rightSide);
 }
-
+//visionDrive added for VisionAlign. It has no motor deadzones.
 public void visionDrive(double moveSpeed, double rotateSpeed)
  {
   driveLeftFront.set(moveSpeed + rotateSpeed);
