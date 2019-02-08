@@ -114,7 +114,7 @@ public class AlignTargetC extends Command {
   @Override
   protected void end() {
     pipelineEntry.setDouble(1);
-  }
+  } 
   @Override
   protected void interrupted() {
   }
