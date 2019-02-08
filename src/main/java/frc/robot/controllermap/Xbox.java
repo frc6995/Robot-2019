@@ -1234,6 +1234,11 @@ public class Xbox {
         dpad_down_left.whileHeld(command);
     }
 
+    /**
+     * Returns whether or not the Xbox POV is in the center position.
+     * 
+     * @return boolean
+     */
     public boolean dpad_center() {
         if (dpad_center.get()) {
             return true;
@@ -1242,23 +1247,48 @@ public class Xbox {
         }
     }
 
-    public void dpad_center_left_runOnPressed(Command command) {
+    /**
+     * Runs a command when the Xbox POV is in the center position.
+     * 
+     * @param
+     */
+    public void dpad_center_runOnPressed(Command command) {
         dpad_center.whenPressed(command);
     }
 
-    public void dpad_center_left_runOnRelease(Command command) {
+    /**
+     * Runs a command when the Xbox POV is no longer in the center position.
+     * 
+     * @param
+     */
+    public void dpad_center_runOnRelease(Command command) {
         dpad_center.whenReleased(command);
     }
 
-    public void dpad_center_left_toggleOnPress(Command command) {
+    /**
+     * Toggles a command when the Xbox POV is in the center position.
+     * 
+     * @param
+     */
+    public void dpad_center_toggleOnPress(Command command) {
         dpad_center.toggleWhenPressed(command);
     }
 
-    public void dpad_center_left_cancelOnPress(Command command) {
+    /**
+     * Cancels a command when the Xbox POV is in the center position.
+     * 
+     * @param
+     */
+    public void dpad_center_cancelOnPress(Command command) {
         dpad_center.cancelWhenPressed(command);
     }
 
-    public void dpad_center_left_runWhileHeld(Command command) {
+    /**
+     * Runs a command while the Xbox POV is in the center position.
+     * 
+     * @param
+     */
+    public void dpad_center_runWhileHeld(Command command) {
         dpad_center.whileHeld(command);
     }
 }
