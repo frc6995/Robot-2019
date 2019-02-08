@@ -51,6 +51,9 @@ public class RobotMap {
   public final static int BUTTON_HATCH_TOGGLE = 0;
   //public static final int DRIVE_XBOX_RIGHT_Y_AXIS = 5;
 
+  //Limit switch constants
+  public static final int DIO_LIMIT_LADDER_TOP = 1;
+
   /**
    *Ladder Encoder Constants   
    */  

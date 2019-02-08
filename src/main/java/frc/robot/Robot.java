@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
-
+import frc.robot.commands.HomeLadderC;
 import frc.robot.subsystems.*;
 
 /**
@@ -35,6 +35,7 @@ public class Robot extends TimedRobot {
 
   public Command m_autonomousCommand;
   public Command m_driveCommand;
+  public Command m_homeLadderCommand;
   public SendableChooser<Command> drive_chooser = new SendableChooser<>();
 
   public DigitalInput limitSwitch;
@@ -54,7 +55,9 @@ public class Robot extends TimedRobot {
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
 
-    limitSwitch = new DigitalInput(0);
+    //Resets the ladder whenever we start the robot
+    m_homeLadderCommand = new HomeLadderC();
+    m_homeLadderCommand.start();
   }
 
   /**
@@ -69,8 +72,6 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     m_driveCommand = drive_chooser.getSelected();
     m_driveCommand.start();
-
-    SmartDashboard.putBoolean("Limit Switch yay", limitSwitch.get());
   }
 
   /**
