@@ -1118,6 +1118,11 @@ public class Xbox {
         dpad_up_left.whileHeld(command);
     }
 
+    /**
+     * Returns whether or not the Xbox POV is in the down right position.
+     * 
+     * @return boolean
+     */
     public boolean dpad_down_right() {
         if (dpad_down_right.get()) {
             return true;
@@ -1126,22 +1131,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox POV is in the down right position.
+     * 
+     * @param
+     */
     public void dpad_down_right_runOnPressed(Command command) {
         dpad_down_right.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox POV is no longer in the down right position.
+     * 
+     * @param
+     */
     public void dpad_down_right_runOnRelease(Command command) {
         dpad_down_right.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox POV is in the down right position.
+     * 
+     * @param
+     */
     public void dpad_down_right_toggleOnPress(Command command) {
         dpad_down_right.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox POV is in the down right position.
+     * 
+     * @param
+     */
     public void dpad_down_right_cancelOnPress(Command command) {
         dpad_down_right.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox POV is in the down right position.
+     * 
+     * @param
+     */
     public void dpad_down_right_runWhileHeld(Command command) {
         dpad_down_right.whileHeld(command);
     }
