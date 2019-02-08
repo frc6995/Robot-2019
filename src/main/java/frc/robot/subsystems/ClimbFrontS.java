@@ -7,13 +7,13 @@ import frc.robot.RobotMap;
 
 
 public class ClimbFrontS extends Subsystem {
-  private static DoubleSolenoid ClimbMechanismFront;
-  private static DigitalInput ClimberFrontSwitch;
+  private static DoubleSolenoid climbMechanismFront;
+  private static DigitalInput climberFrontSwitch;
   public boolean extended;
 
   public ClimbFrontS(){
-    ClimbMechanismFront = new DoubleSolenoid(RobotMap.PCM_ID_DSOLENOID_CLIMBER_FRONT, 2, 0); //why does channel change?
-    ClimberFrontSwitch = new DigitalInput(RobotMap.DIO_LIMIT_CLIMBER_FRONT);
+    climbMechanismFront = new DoubleSolenoid(RobotMap.PCM_ID_DSOLENOID_CLIMBER_FRONT, 2, 0); //why does channel change?
+    climberFrontSwitch = new DigitalInput(RobotMap.DIO_LIMIT_CLIMBER_FRONT);
     extended = false;
   }
 
@@ -21,16 +21,16 @@ public class ClimbFrontS extends Subsystem {
   public void initDefaultCommand() {
   }
 
-  public boolean CSwitchFront() {
-    return ClimberFrontSwitch.get(); //returns the front limit switch
+  public boolean cSwitchFront() {
+    return climberFrontSwitch.get(); //returns the front limit switch
   }
   
   public void deployFront() {
-    ClimbMechanismFront.set(Value.kForward);
+    climbMechanismFront.set(Value.kForward);
   }
   
   public void retractFront() {
-    ClimbMechanismFront.set(Value.kReverse);
+    climbMechanismFront.set(Value.kReverse);
   }
 
 }

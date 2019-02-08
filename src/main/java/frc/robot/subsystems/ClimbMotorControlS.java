@@ -15,7 +15,7 @@ public class ClimbMotorControlS extends Subsystem {
   public void initDefaultCommand() {
   }
 
-  public void motorForwards() {
+  public void motorForward() {
     climbMotor.set(0.5);
   }
 

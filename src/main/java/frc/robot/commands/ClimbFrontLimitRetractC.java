@@ -15,8 +15,8 @@ public class ClimbFrontLimitRetractC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbMotorControlS.motorForwards();
-    while (Robot.m_ClimbFrontS.CSwitchFront() == false){
+    Robot.m_ClimbMotorControlS.motorForward();
+    while (Robot.m_ClimbFrontS.cSwitchFront() == false){
         Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1);
     }
     Robot.m_ClimbMotorControlS.motorStop();
