@@ -945,7 +945,7 @@ public class Xbox {
     }
 
     /**
-     * Returns whether or not the Xbox POV is in the Right position.
+     * Returns whether or not the Xbox POV is in the right position.
      * 
      * @return boolean
      */
@@ -1003,7 +1003,7 @@ public class Xbox {
     }
 
     /**
-     * Returns whether or not the Xbox POV is in the Up Right position.
+     * Returns whether or not the Xbox POV is in the up light position.
      * 
      * @return boolean
      */
@@ -1060,6 +1060,11 @@ public class Xbox {
         dpad_up_right.whileHeld(command);
     }
 
+    /**
+     * Returns whether or not the Xbox POV is in the up left position.
+     * 
+     * @return boolean
+     */
     public boolean dpad_up_left() {
         if (dpad_up_left.get()) {
             return true;
@@ -1068,22 +1073,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox POV is in the up left position.
+     * 
+     * @param
+     */
     public void dpad_up_left_runOnPressed(Command command) {
         dpad_up_left.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox POV is no longer in the up left position.
+     * 
+     * @param
+     */
     public void dpad_up_left_runOnRelease(Command command) {
         dpad_up_left.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox POV is in the up left position.
+     * 
+     * @param
+     */
     public void dpad_up_left_toggleOnPress(Command command) {
         dpad_up_left.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox POV is in the up left position.
+     * 
+     * @param
+     */
     public void dpad_up_left_cancelOnPress(Command command) {
         dpad_up_left.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox POV is in the up left position.
+     * 
+     * @param
+     */
     public void dpad_up_left_runWhileHeld(Command command) {
         dpad_up_left.whileHeld(command);
     }
