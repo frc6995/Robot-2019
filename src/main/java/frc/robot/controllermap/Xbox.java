@@ -784,7 +784,7 @@ public class Xbox {
     }
 
     /**
-     * Runs a command when the Xbox Dpad Up Button button is pressed.
+     * Runs a command when the Xbox POV is in the up position.
      * 
      * @param
      */
@@ -793,7 +793,7 @@ public class Xbox {
     }
 
     /**
-     * Runs a command when the Xbox Dpad Up Button button is released.
+     * Runs a command when the Xbox Dpad POV is no longer in the up position.
      * 
      * @param
      */
@@ -802,7 +802,7 @@ public class Xbox {
     }
 
     /**
-     * Toggles a command when the Xbox Dpad Up Button button is pressed.
+     * Toggles a command when the Xbox POV is in the up position.
      * 
      * @param
      */
@@ -811,7 +811,7 @@ public class Xbox {
     }
 
     /**
-     * Cancels a command when the Xbox Dpad Up Button button is pressed.
+     * Cancels a command when the Xbox POV is in the up position.
      * 
      * @param
      */
@@ -820,7 +820,7 @@ public class Xbox {
     }
 
     /**
-     * Runs a command while the Xbox Dpad Up Button button is pressed.
+     * Runs a command while the Xbox POV is in the up position.
      * 
      * @param
      */
@@ -957,6 +957,11 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox POV is in the right position.
+     * 
+     * @param
+     */
     public void dpad_right_runOnPressed(Command command) {
         dpad_right.whenPressed(command);
     }
