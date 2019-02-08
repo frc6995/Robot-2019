@@ -17,7 +17,9 @@ import frc.robot.commands.DriveArcadeXboxC;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.subsystems.ClimbFrontS;
 import frc.robot.subsystems.ClimbRearS;
-import frc.robot.subsystems.ClimbMotorControlS;;
+import frc.robot.subsystems.ClimbMotorControlS;
+
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,12 +29,14 @@ import frc.robot.subsystems.ClimbMotorControlS;;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static OI m_oi;
   public static DrivebaseS m_drivebaseS;
   //Climb stuffs
   public static ClimbFrontS m_ClimbFrontS;
   public static ClimbRearS m_ClimbRearS;
   public static ClimbMotorControlS m_ClimbMotorControlS;
+  public static HatchMechS m_hatchMechS;
+
+  public static OI m_oi;
 
   public Command m_autonomousCommand;
   public Command m_driveCommand;
@@ -44,10 +48,13 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
+    m_hatchMechS = new HatchMechS();
     m_drivebaseS = new DrivebaseS();
     m_ClimbFrontS = new ClimbFrontS();
     m_ClimbRearS = new ClimbRearS();
+
     m_oi = new OI();
+
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
