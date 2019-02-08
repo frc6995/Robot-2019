@@ -828,6 +828,11 @@ public class Xbox {
         dpad_up.whileHeld(command);
     }
 
+    /**
+     * Returns whether or not the down button on the dpad is pressed.
+     * 
+     * @return boolean
+     */
     public boolean dpad_down() {
         if (dpad_down.get()) {
             return true;
@@ -836,22 +841,47 @@ public class Xbox {
         }
     }
 
+    /**
+     * Runs a command when the Xbox Dpad Down Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_down_runOnPressed(Command command) {
         dpad_down.whenPressed(command);
     }
 
+    /**
+     * Runs a command when the Xbox Dpad Down Button button is release.
+     * 
+     * @param
+     */
     public void dpad_down_runOnRelease(Command command) {
         dpad_down.whenReleased(command);
     }
 
+    /**
+     * Toggles a command when the Xbox Dpad Down Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_down_toggleOnPress(Command command) {
         dpad_down.toggleWhenPressed(command);
     }
 
+    /**
+     * Cancels a command when the Xbox Dpad Down Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_down_cancelOnPress(Command command) {
         dpad_down.cancelWhenPressed(command);
     }
 
+    /**
+     * Runs a command while the Xbox Dpad Down Button button is pressed.
+     * 
+     * @param
+     */
     public void dpad_down_runWhileHeld(Command command) {
         dpad_down.whileHeld(command);
     }
