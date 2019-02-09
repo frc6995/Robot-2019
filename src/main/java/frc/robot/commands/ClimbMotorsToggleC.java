@@ -27,7 +27,7 @@ public class ClimbMotorsToggleC extends Command {
   @Override
   protected void execute() {
     Robot.m_ClimbMotorControlS.motorForward();
-    Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1);
+    Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1); //might have to switch to visionDrive.
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -40,7 +40,7 @@ public class ClimbMotorsToggleC extends Command {
   @Override
   protected void end() {
     Robot.m_ClimbMotorControlS.motorStop();
-    Robot.m_drivebaseS.arcadeDrive(0, 0, 0);
+    Robot.m_drivebaseS.arcadeDrive(0, 0, 0); //probably has to switch to visionDrive
   }
 
   // Called when another command which requires one or more of the same
