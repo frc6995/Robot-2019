@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -14,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
+import frc.robot.commands.LadderHomeC;
 import frc.robot.subsystems.*;
 
 /**
@@ -24,29 +26,34 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static DrivebaseS m_drivebaseS;
   public static HatchMechS m_hatchMechS;
+  public static DrivebaseS m_drivebaseS;
+  public static LadderS m_ladderS;
+  
 
   public static OI m_oi;
 
   public Command m_autonomousCommand;
   public Command m_driveCommand;
+  public Command m_homeLadderCommand;
   public SendableChooser<Command> drive_chooser = new SendableChooser<>();
 
+  public DigitalInput limitSwitch;
   @Override
   public void robotInit() {
     // Instantiate Subsystems Here
     m_drivebaseS = new DrivebaseS();
+    m_ladderS = new LadderS();
     m_hatchMechS = new HatchMechS();
-    
-
-    // Do not instantiate Subsystem below this line!
-
     m_oi = new OI();
 
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
+
+    //Resets the ladder whenever we start the robot
+    m_homeLadderCommand = new LadderHomeC();
+    m_homeLadderCommand.start();
   }
 
   @Override
