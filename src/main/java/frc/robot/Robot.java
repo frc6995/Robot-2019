@@ -14,7 +14,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
-
 import frc.robot.subsystems.*;
 
 /**
@@ -36,8 +35,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotInit() {
-    m_hatchMechS = new HatchMechS();
+    // Instantiate Subsystems Here
     m_drivebaseS = new DrivebaseS();
+    m_hatchMechS = new HatchMechS();
+    
+
+    // Do not instantiate Subsystem below this line!
 
     m_oi = new OI();
 

@@ -15,3 +15,4 @@ public class OI {
     public OI() {
         hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
     }
+}
