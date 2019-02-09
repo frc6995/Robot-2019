@@ -62,5 +62,3 @@ public class RobotMap {
   public static final int LADDER_LEVEL_THREE = 200; //change as needed
 
 }
-
-
