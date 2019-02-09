@@ -1,9 +1,3 @@
-
-
-/**
- * This xbox command uses the two triggers for forwards and back with the left stick acting as rotation and X is the throttle
- */
-
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -33,7 +27,7 @@ public class DriveArcadeXboxC extends Command {
     moveSpeed = forwardSpeed - backwardSpeed;
     rotSpeed = Robot.m_oi.xbox.left_stick_x();
 
-    if(Robot.m_oi.xbox.getRawButtonPressed(RobotMap.BUTTON_THROTTLE_CHANGE)) {
+    if(Robot.m_oi.xbox.left_bumper()) {
       switch(numberPressed) {
         case 0: throt = 0.80; numberPressed = 1; break;
         case 1: throt = 0.65; numberPressed = 2; break;
@@ -41,7 +35,7 @@ public class DriveArcadeXboxC extends Command {
         case 3: throt = 1.00; numberPressed = 0; break;
         default: throt = 1.00; numberPressed = 0; break;
       }
-    } else if(Robot.m_oi.xbox.getRawButtonPressed(RobotMap.BUTTON_THROTTLE_RESET)) {
+    } else if(Robot.m_oi.xbox.right_bumper()) {
       throt = 1;
       numberPressed = 0;
     }
