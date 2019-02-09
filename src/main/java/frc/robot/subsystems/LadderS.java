@@ -54,8 +54,8 @@ public class LadderS extends Subsystem {
   }
 
   public LadderS() {
-    ladderTalonA = new WPI_TalonSRX(RobotMap.LADDER_MOTOR_A_TALON_CAN_ID);  
-    ladderTalonB = new WPI_TalonSRX(RobotMap.LADDER_MOTOR_B_TALON_CAN_ID);    
+    ladderTalonA = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_MOTOR_A_TALON_CAN_ID);  
+    ladderTalonB = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_MOTOR_B_TALON_CAN_ID);    
     
     ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
     ladderTopLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_TOP);

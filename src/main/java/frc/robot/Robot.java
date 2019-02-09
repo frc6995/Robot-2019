@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
-import frc.robot.commands.HomeLadderC;
+import frc.robot.commands.LadderHomeC;
 import frc.robot.subsystems.*;
 
 /**
@@ -56,7 +56,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Drive Control", drive_chooser);
 
     //Resets the ladder whenever we start the robot
-    m_homeLadderCommand = new HomeLadderC();
+    m_homeLadderCommand = new LadderHomeC();
     m_homeLadderCommand.start();
   }
 
