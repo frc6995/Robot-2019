@@ -8,10 +8,10 @@ import frc.robot.RobotMap;
 
 //WARNING: THIS IS A BACKUP COMMAND THAT HASN'T BEEN WORKED ON MUCH
 
-public class MoveLadderC extends Command {
+public class LadderMoveC extends Command {
 
 
-  public MoveLadderC() {
+  public LadderMoveC() {
     requires(Robot.m_ladderS);
   }
 

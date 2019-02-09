@@ -3,8 +3,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ChangeLadderLevelC extends Command {
-  public ChangeLadderLevelC() {
+public class LadderChangeLevelC extends Command {
+  public LadderChangeLevelC() {
 
   }
 

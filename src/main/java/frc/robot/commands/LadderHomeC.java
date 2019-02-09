@@ -4,10 +4,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 //Moves the ladder down to the home positoin and resets the encoders
-public class HomeLadderC extends Command {
+public class LadderHomeC extends Command {
   public boolean finished = false;
 
-  public HomeLadderC() {
+  public LadderHomeC() {
     requires(Robot.m_ladderS);
   }
 

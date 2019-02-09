@@ -7,8 +7,8 @@ import frc.robot.Robot;
 //Warning: Will not finish on its own!
 //See RunLadderPID for how to run the ladder to a position, and for how I think the command group will work
 
-public class HoldLadderPIDC extends Command {
-  public HoldLadderPIDC() {
+public class LadderHoldPIDC extends Command {
+  public LadderHoldPIDC() {
     requires(Robot.m_ladderS);
     
     this.setInterruptible(true);
