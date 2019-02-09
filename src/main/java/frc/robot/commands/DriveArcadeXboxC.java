@@ -8,7 +8,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 public class DriveArcadeXboxC extends Command {
   private double forwardSpeed = 0;
@@ -28,11 +27,11 @@ public class DriveArcadeXboxC extends Command {
 
   @Override
   protected void execute() {
-    forwardSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX_DRIVE_FORWARD_SPEED);
-    backwardSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX_DRIVE_BACKWARD_SPEED);
-
+    forwardSpeed = -Robot.m_oi.xbox.left_trigger();
+    backwardSpeed = -Robot.m_oi.xbox.right_trigger();
+    
     moveSpeed = forwardSpeed - backwardSpeed;
-    rotSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX_DRIVE_LEFT_RIGHT);
+    rotSpeed = Robot.m_oi.xbox.left_stick_x();
 
     if(Robot.m_oi.xbox.getRawButtonPressed(RobotMap.BUTTON_THROTTLE_CHANGE)) {
       switch(numberPressed) {
@@ -46,7 +45,7 @@ public class DriveArcadeXboxC extends Command {
       throt = 1;
       numberPressed = 0;
     }
-    
+
     Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throt);
   }
 

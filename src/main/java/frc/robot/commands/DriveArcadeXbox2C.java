@@ -4,7 +4,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
 public class DriveArcadeXbox2C extends Command {
   private double forwardBackSpeed = 0;
@@ -23,10 +22,10 @@ public class DriveArcadeXbox2C extends Command {
 
   @Override
   protected void execute() {
-    forwardBackSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX2_DRIVE_FORWARD_BACK);
-    rotationSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX2_DRIVE_LEFT_RIGHT);
+    forwardBackSpeed = Robot.m_oi.xbox.left_stick_y();
+    rotationSpeed = Robot.m_oi.xbox.right_stick_x();
 
-    if(Robot.m_oi.xbox.getBButtonPressed()) {
+    if(Robot.m_oi.xbox.b()) {
       switch(numberPressed) {
         case 0: throt = 0.80; numberPressed = 1; break;
         case 1: throt = 0.65; numberPressed = 2; break;
@@ -34,7 +33,7 @@ public class DriveArcadeXbox2C extends Command {
         case 3: throt = 1.00; numberPressed = 0; break;
         default: throt = 1.00; numberPressed = 0; break;
       }
-    } else if(Robot.m_oi.xbox.getAButtonPressed()) {
+    } else if(Robot.m_oi.xbox.a()) {
       throt = 1;
       numberPressed = 0;
     }

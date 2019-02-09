@@ -43,8 +43,7 @@ public class AlignTargetC extends Command {
   tx = txEntry.getDouble(0.0);
   ty = tyEntry.getDouble(0.0);
 
-if (Robot.m_oi.xbox.getRawButton(3));
-{
+if (Robot.m_oi.xbox.x()) {
         double heading_error = -tx;
         double distance_error = -ty;
         double steering_adjust = 0.0f;

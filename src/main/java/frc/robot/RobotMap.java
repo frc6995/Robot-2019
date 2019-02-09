@@ -56,3 +56,4 @@ public class RobotMap {
   public final static int BUTTON_THROTTLE_CHANGE = 2;
   public final static int BUTTON_THROTTLE_RESET = 3;
 }
+
