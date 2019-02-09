@@ -1,5 +1,3 @@
-
-
 package frc.robot;
 
 public class RobotMap {
@@ -7,8 +5,11 @@ public class RobotMap {
   //Talons
   public final static int CAN_ID_TALON_DRIVEBASE_LEFT_F = 2;
   public final static int CAN_ID_TALON_DRIVEBASE_RIGHT_F = 3;
-  public final static int CAN_ID_TALON_DRIVEBASE_LEFT_B = 4;
-  public final static int CAN_ID_TALON_DRIVEBASE_RIGHT_B = 5;
+  //VictorSPXs
+  public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_M = 6;
+  public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_M = 7;
+  public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_B = 4;
+  public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_B = 5;
 
   //Power Control Module
   public final static int PCM_ID_DSOLENOID_HATCHMECH = 1;
