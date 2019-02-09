@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.LadderHomeC;
+import frc.robot.commands.LadderManualC;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
@@ -50,7 +51,7 @@ public class LadderS extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-   setDefaultCommand(new LadderHomeC());
+   setDefaultCommand(new LadderManualC());
   }
 
   public LadderS() {

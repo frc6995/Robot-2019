@@ -27,14 +27,14 @@ public class RobotMap {
 
   //OI - XBox
   public final static int OI_XBOX = 0;
-  public static final int XBOX_DRIVE_LEFT_RIGHT = 0; 
+  public static final int XBOX_DRIVE_LEFT_RIGHT = 1; 
   public static final int XBOX_DRIVE_FORWARD_SPEED = 2;
   public static final int XBOX_DRIVE_BACKWARD_SPEED = 3;
   public static final int XBOX2_DRIVE_LEFT_RIGHT = 4;
   public static final int XBOX2_DRIVE_FORWARD_BACK = 1;
 
   //XBox Buttons
-  public final static int BUTTON_HATCH_TOGGLE = 0;
+  public final static int BUTTON_HATCH_TOGGLE = 1;
 
   //Limit switch constants
   public static final int DIO_LIMIT_LADDER_TOP = 1;
