@@ -104,8 +104,8 @@ public class Xbox {
      * 
      * @param portNo : the port on the driver station that the Xbox is plugged into.
      */
-    public Xbox(int portNo) {
-        xbox = new XboxController(portNo);
+    public Xbox(int port) {
+        xbox = new XboxController(port);
         a = new JoystickButton(xbox, BUTTON_A);
         b = new JoystickButton(xbox, BUTTON_B);
         x = new JoystickButton(xbox, BUTTON_X);
