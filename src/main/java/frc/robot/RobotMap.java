@@ -3,16 +3,16 @@ package frc.robot;
 public class RobotMap {
   //CAN bus
   //Talons
-  public final static int CAN_ID_TALON_DRIVEBASE_LEFT_F = 2;
-  public final static int CAN_ID_TALON_DRIVEBASE_RIGHT_F = 3;
+  public final static int CAN_ID_TALON_DRIVEBASE_LEFT = 10;
+  public final static int CAN_ID_TALON_DRIVEBASE_RIGHT = 11;
   //VictorSPXs
-  public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_M = 6;
-  public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_M = 7;
-  public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_B = 4;
-  public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_B = 5;
+  public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_1 = 20;
+  public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_1 = 22;
+  public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_2 = 21;
+  public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
   
-  public final static int CAN_ID_TALON_LADDER_MOTOR_A_TALON_CAN_ID = 6;
-  public final static int CAN_ID_TALON_LADDER_MOTOR_B_TALON_CAN_ID = 7;
+  public final static int CAN_ID_TALON_LADDER_A = 12;
+  public final static int CAN_ID_TALON_LADDER_B = 13;
 
   public final static int OI_JOYSTICK = 0;
   public final static int LADDER_UP_BUTTON = 4;  // change as needed

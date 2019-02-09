@@ -24,17 +24,17 @@ public class DrivebaseS extends Subsystem {
   }
 
   public DrivebaseS() {
-    driveLeftFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT_F);
-    driveLeftMiddle = new VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_M);
-    driveLeftBack = new VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_B);
-    driveRightFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_RIGHT_F);
-    driveRightMiddle = new VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_RIGHT_M);
-    driveRightBack = new VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_RIGHT_B);
+    driveLeftFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT);
+    driveLeftMiddle = new VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_1);
+    driveLeftBack = new VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_2);
+    driveRightFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_RIGHT);
+    driveRightMiddle = new VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_RIGHT_1);
+    driveRightBack = new VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_RIGHT_2);
 
-    driveLeftBack.set(ControlMode.Follower, RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT_F);
-    driveLeftMiddle.set(ControlMode.Follower, RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT_F);
-    driveRightBack.set(ControlMode.Follower, RobotMap.CAN_ID_TALON_DRIVEBASE_RIGHT_F);
-    driveRightMiddle.set(ControlMode.Follower, RobotMap.CAN_ID_TALON_DRIVEBASE_RIGHT_F);
+    driveLeftBack.set(ControlMode.Follower, RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT);
+    driveLeftMiddle.set(ControlMode.Follower, RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT);
+    driveRightBack.set(ControlMode.Follower, RobotMap.CAN_ID_TALON_DRIVEBASE_RIGHT);
+    driveRightMiddle.set(ControlMode.Follower, RobotMap.CAN_ID_TALON_DRIVEBASE_RIGHT);
     differentialDrive = new DifferentialDrive(driveLeftFront, driveRightFront);
  
     driveLeftFront.setNeutralMode(NeutralMode.Brake);
