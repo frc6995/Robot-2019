@@ -1,23 +1,3 @@
-/**
-   * XBOX one Button mapping reference
-   * 0 = A
-   * 1 = B
-   * 2 = X
-   * 3 = Y
-   * 4 = Left Bumper
-   * 5 = Right Bumper
-   * 6 = Left Trigger (might be mapped as an analog input)
-   * 7 = Right Trigger (might be mapped as an analog input)
-   * 8 = Left center button (what used to be back)
-   * 9 = Right center button (what used to be start)
-   * 10 = Left Joystick press
-   * 11 = Right Joystick press
-   * 12 = Dpad up
-   * 13 = Dpad down
-   * 14 = Dpad Left
-   * 15 = Dpad Right
-   */
-
 package frc.robot;
 
 public class RobotMap {
@@ -53,6 +33,7 @@ public class RobotMap {
 
   //Limit switch constants
   public static final int DIO_LIMIT_LADDER_TOP = 1;
+  public static final int DIO_LIMIT_LADDER_BOTTOM = 2;
 
   /**
    *Ladder Encoder Constants   

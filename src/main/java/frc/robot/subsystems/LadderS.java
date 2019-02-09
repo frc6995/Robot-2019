@@ -25,6 +25,7 @@ public class LadderS extends Subsystem {
   private WPI_TalonSRX ladderTalonB = null;
 
   private DigitalInput ladderBottomLimitSwitch;
+  private DigitalInput ladderTopLimitSwitch;
 
   private int currentLadderLevel = 1; //0 = home level, 1 = rocket level 1, 2 = rocket level 2, 3 = rocket level 3.
   private int nextLadderLevel = 1;
@@ -56,7 +57,8 @@ public class LadderS extends Subsystem {
     ladderTalonA = new WPI_TalonSRX(RobotMap.LADDER_MOTOR_A_TALON_CAN_ID);  
     ladderTalonB = new WPI_TalonSRX(RobotMap.LADDER_MOTOR_B_TALON_CAN_ID);    
     
-    ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_TOP);
+    ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
+    ladderTopLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_TOP);
   }
 
   public void setLadderPower(double power){
@@ -70,15 +72,22 @@ public class LadderS extends Subsystem {
     return (ladderTalonA.getSensorCollection().getQuadraturePosition());  
   }
 
-  public int getError(){
+  public int getError(){ /*I don't think this will work. 
+  getCurrentLadderLevel() returns either 1, 2, or 3, and the ladder levels are in increments of 100.
+  We will need to convert the current ladder level into that ladder level's encoder count and then subtract.
+  I created a getCurrentLadderLevelEncoderCount() function, and added it in comments below. ~JoeyFabel
+  */
     if (nextLadderLevel == 1) {
       return (getCurrentLadderLevel() - RobotMap.LADDER_LEVEL_ONE);
+      //return (getCurrentLadderLevelEncoderCount() - RobotMap.LADDER_LEVEL_ONE);
     }
     else if (nextLadderLevel == 2) {
       return (getCurrentLadderLevel() - RobotMap.LADDER_LEVEL_TWO);
+      //return (getCurrentLadderLevelEncoderCount() - RobotMap.LADDER_LEVEL_TWO);
     }
     else if (nextLadderLevel == 3) {
       return (getCurrentLadderLevel() - RobotMap.LADDER_LEVEL_THREE);
+      //return (getCurrentLadderLevelEncoderCount() - RobotMap.LADDER_LEVEL_THREE);
     }
     else {
       return 0;
@@ -141,6 +150,20 @@ public class LadderS extends Subsystem {
   public int getCurrentLadderLevel(){
     return currentLadderLevel;
   }
+  public int getCurrentLadderLevelEncoderCount(){
+    if (getCurrentLadderLevel() == 1) {
+      return RobotMap.LADDER_LEVEL_ONE;
+    }
+    else if (getCurrentLadderLevel() == 2) {
+      return RobotMap.LADDER_LEVEL_TWO;
+    }
+    else if (getCurrentLadderLevel() == 3) {
+      return RobotMap.LADDER_LEVEL_THREE;
+    }
+    else {
+      return 0;
+    }
+  }
 
   public void setNextLadderLevel(int nextLevel){
     nextLadderLevel = nextLevel;
@@ -153,6 +176,10 @@ public class LadderS extends Subsystem {
   public boolean lowerLimitSwitchPressed(){
     //Returns true if the sensor is pressed, false if it is not
     return ladderBottomLimitSwitch.get();
+  }
+  
+  public boolean upperKimitSwitchPressed(){
+    return ladderTopLimitSwitch.get();
   }
 
   public void resetEncoder() {

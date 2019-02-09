@@ -32,29 +32,29 @@ public class MoveLadderC extends Command {
           Robot.m_ladderS.setLadderPower(-1);
         } while (Robot.m_ladderS.getLadderEncoderCount() >= RobotMap.LADDER_LEVEL_ONE);
         Robot.m_ladderS.setCurrentLadderLevel(1);
-      }
-      //if moving down to level 1
+      }      //if moving down to level 1
+
       else if (Robot.m_ladderS.getNextLadderLevel() == 2 && Robot.m_ladderS.getCurrentLadderLevel() == 1) {  
         do {
           Robot.m_ladderS.setLadderPower(1);
         } while (Robot.m_ladderS.getLadderEncoderCount() <= RobotMap.LADDER_LEVEL_TWO);
         Robot.m_ladderS.setCurrentLadderLevel(2);
-      } 
-      //if moving up from level 1 to level 2
+      }     //if moving up from level 1 to level 2
+
       else if (Robot.m_ladderS.getNextLadderLevel() == 2 && Robot.m_ladderS.getCurrentLadderLevel() == 3) {
         do {
           Robot.m_ladderS.setLadderPower(-1);
         } while (Robot.m_ladderS.getLadderEncoderCount() >= RobotMap.LADDER_LEVEL_TWO);
         Robot.m_ladderS.setCurrentLadderLevel(2);
-      }
-      //if moving down from level 3 to level 2
+      }      //if moving down from level 3 to level 2
+
       else if (Robot.m_ladderS.getNextLadderLevel() == 3) {
         do {
           Robot.m_ladderS.setLadderPower(1);
         } while (Robot.m_ladderS.getLadderEncoderCount() <= RobotMap.LADDER_LEVEL_THREE);
         Robot.m_ladderS.setCurrentLadderLevel(3);
-      }
-      //if moving up to level 3 
+      }      //if moving up to level 3 
+    
     } 
       
   }

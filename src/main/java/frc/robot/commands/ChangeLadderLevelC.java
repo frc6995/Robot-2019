@@ -1,12 +1,11 @@
-
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ChangeLadderLevelC extends Command {
-  public ChangeLadderLevelC(int ladderLevel) {
-    Robot.m_ladderS.setNextLadderLevel(ladderLevel);
+  public ChangeLadderLevelC() {
+
   }
 
   @Override
@@ -14,14 +13,23 @@ public class ChangeLadderLevelC extends Command {
   }
 
   @Override
-  protected void execute() {  
+  protected void execute() {
+    if (Robot.m_oi.xbox.getAButtonPressed() == true) { //Change buttons to button board once available.
+        Robot.m_ladderS.setNextLadderLevel(1);
+    }
+    else if (Robot.m_oi.xbox.getBButtonPressed() == true) {
+      Robot.m_ladderS.setNextLadderLevel(2);
+    }
+    else if (Robot.m_oi.xbox.getXButtonPressed() == true) {
+      Robot.m_ladderS.setNextLadderLevel(3);
+    }
   }
 
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
-  
+
   @Override
   protected void end() {
   }
