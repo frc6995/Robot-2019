@@ -25,12 +25,6 @@ public class RobotMap {
   public final static int DSOLENOID_HATCHMECH_FORWARD = 1;
   public final static int DSOLENOID_HATCHMECH_REVERSE = 0;
 
-
-  //OI - xbox
-
-  //OI - Joystick
-  public final static int OI_JOYSTICK = 1;
-
   //OI - XBox
   public final static int OI_XBOX = 0;
   public static final int XBOX_DRIVE_LEFT_RIGHT = 0; 

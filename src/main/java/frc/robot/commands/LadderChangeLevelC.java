@@ -14,13 +14,13 @@ public class LadderChangeLevelC extends Command {
 
   @Override
   protected void execute() {
-    if (Robot.m_oi.xbox.getAButtonPressed() == true) { //Change buttons to button board once available.
+    if (Robot.m_oi.xbox.a() == true) { //Change buttons to button board once available.
         Robot.m_ladderS.setNextLadderLevel(1);
     }
-    else if (Robot.m_oi.xbox.getBButtonPressed() == true) {
+    else if (Robot.m_oi.xbox.b() == true) {
       Robot.m_ladderS.setNextLadderLevel(2);
     }
-    else if (Robot.m_oi.xbox.getXButtonPressed() == true) {
+    else if (Robot.m_oi.xbox.x() == true) {
       Robot.m_ladderS.setNextLadderLevel(3);
     }
   }
