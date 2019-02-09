@@ -1,13 +1,4 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
 
-/**
- * This is the xbox command that uses the left and right sticks to control movement with a toggleable throttle using the buttons B and A
- */
 
 package frc.robot.commands;
 
@@ -23,20 +14,17 @@ public class DriveArcadeXbox2C extends Command {
   private int numberPressed = 0;
 
   public DriveArcadeXbox2C() {
-    // Use requires() here to declare subsystem dependencies
     requires(Robot.m_drivebaseS);
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    forwardBackSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_LEFT_Y_AXIS);
-    rotationSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.DRIVE_XBOX_RIGHT_X_AXIS);
+    forwardBackSpeed = -Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX2_DRIVE_FORWARD_BACK);
+    rotationSpeed = Robot.m_oi.xbox.getRawAxis(RobotMap.XBOX2_DRIVE_LEFT_RIGHT);
 
     if(Robot.m_oi.xbox.getBButtonPressed()) {
       switch(numberPressed) {
@@ -54,19 +42,15 @@ public class DriveArcadeXbox2C extends Command {
     Robot.m_drivebaseS.arcadeDrive(forwardBackSpeed, rotationSpeed, throt);
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
   }
