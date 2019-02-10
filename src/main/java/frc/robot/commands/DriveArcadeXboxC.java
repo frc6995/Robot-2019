@@ -8,7 +8,7 @@ public class DriveArcadeXboxC extends Command {
   private double backwardSpeed = 0; 
   private double moveSpeed = 0;
   private double rotSpeed = 0;
-  private double throt = 0;
+  private double throt = 1;
   private int numberPressed = 0;
 
   public DriveArcadeXboxC() {

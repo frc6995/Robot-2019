@@ -81,12 +81,12 @@ public class Xbox {
     private final static int BUTTON_RIGHT_STICK = 10;
 
     // AXIS
-    private final static int AXIS_LEFT_STICK_X = 1;
-    private final static int AXIS_LEFT_STICK_Y = 2;
-    private final static int AXIS_RIGHT_STICK_X = 3;
-    private final static int AXIS_RIGHT_STICK_Y = 4;
-    private final static int AXIS_LEFT_TRIGGER = 5;
-    private final static int AXIS_RIGHT_TRIGGER = 6;
+    private final static int AXIS_LEFT_STICK_X = 0;
+    private final static int AXIS_LEFT_STICK_Y = 1;
+    private final static int AXIS_RIGHT_STICK_X = 4;
+    private final static int AXIS_RIGHT_STICK_Y = 5;
+    private final static int AXIS_LEFT_TRIGGER = 2;
+    private final static int AXIS_RIGHT_TRIGGER = 3;
 
     // DPAD
     private final static int DPAD_UP = DPAD(POV.UP);
@@ -102,7 +102,7 @@ public class Xbox {
     /**
      * Construct instance of the Xbox class.
      * 
-     * @param portNo : the port on the driver station that the Xbox is plugged into.
+     * @param port : the port on the driver station that the Xbox is plugged into.
      */
     public Xbox(int port) {
         xbox = new XboxController(port);
