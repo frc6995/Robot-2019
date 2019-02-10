@@ -3,7 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.HatchMechToggleCG;
+import frc.robot.commands.hatch.HatchMechToggleCG;
 
 public class OI {
 
