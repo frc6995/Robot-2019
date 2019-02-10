@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.DriveArcadeXbox2C;
 import frc.robot.commands.DriveArcadeXboxC;
-import frc.robot.commands.LadderHomeC;
+import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.subsystems.*;
 
 /**
