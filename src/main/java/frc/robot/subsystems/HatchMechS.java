@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.HatchMechRetractC;
+import frc.robot.commands.hatch.HatchMechRetractC;
 
 public class HatchMechS extends Subsystem {
   
