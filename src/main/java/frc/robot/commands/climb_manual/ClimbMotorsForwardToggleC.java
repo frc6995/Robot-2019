@@ -3,8 +3,8 @@ package frc.robot.commands.climb_manual;
 import frc.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class ClimbMotorsToggleC extends Command {
-  public ClimbMotorsToggleC() {
+public class ClimbMotorsForwardToggleC extends Command {
+  public ClimbMotorsForwardToggleC() {
     requires(Robot.m_ClimbMotorControlS);
     requires(Robot.m_drivebaseS);
   }

@@ -8,7 +8,7 @@ import frc.robot.commands.climb_manual.ClimbFrontToggleC;
 import frc.robot.commands.climb_manual.ClimbMotorsForwardC;
 import frc.robot.commands.climb_manual.ClimbMotorsReverseC;
 import frc.robot.commands.climb_manual.ClimbMotorsStopC;
-import frc.robot.commands.climb_manual.ClimbMotorsToggleC;
+import frc.robot.commands.climb_manual.ClimbMotorsForwardToggleC;
 import frc.robot.commands.climb_manual.ClimbRearToggleC;
 
 import frc.robot.commands.climb.ClimbPlatformCG;
@@ -31,7 +31,7 @@ public class OI {
         //backups
         xbox.x_toggleOnPress(new ClimbFrontToggleC());
         xbox.y_toggleOnPress(new ClimbRearToggleC());
-        xbox.a_toggleOnPress(new ClimbMotorsToggleC());
+        xbox.a_toggleOnPress(new ClimbMotorsForwardToggleC());
 
         xbox.dpad_up_runOnPressed(new ClimbMotorsForwardC());
         xbox.dpad_up_runOnRelease(new ClimbMotorsStopC());

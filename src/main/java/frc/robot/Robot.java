@@ -17,6 +17,8 @@ import frc.robot.commands.drive.DriveArcadeXbox2C;
 import frc.robot.commands.drive.DriveArcadeXboxC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.subsystems.*;
+import frc.robot.commands.climb_manual.*;
+import frc.robot.commands.climb.ClimbPlatformCG;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -55,7 +57,13 @@ public class Robot extends TimedRobot {
 
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
+
     SmartDashboard.putData("Drive Control", drive_chooser);
+
+    SmartDashboard.putData("Climber Front Toggle", new ClimbFrontToggleC());
+    SmartDashboard.putData("Climber Rear Toggle", new ClimbRearToggleC());
+    SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardToggleC());
+    SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG());
 
     //Resets the ladder whenever we start the robot
     m_homeLadderCommand = new LadderHomeC();
