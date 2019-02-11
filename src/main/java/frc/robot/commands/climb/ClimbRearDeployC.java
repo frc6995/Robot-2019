@@ -1,11 +1,11 @@
-package frc.robot.commands;
+package frc.robot.commands.climb;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot; 
+import frc.robot.Robot;
 
-public class ClimbFrontDeployC extends Command {
-  public ClimbFrontDeployC() {
-    requires (Robot.m_ClimbFrontS);
+public class ClimbRearDeployC extends Command {
+  public ClimbRearDeployC() {
+    requires(Robot.m_ClimbRearS);
   }
 
   @Override
@@ -14,7 +14,7 @@ public class ClimbFrontDeployC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbFrontS.deployFront();
+    Robot.m_ClimbRearS.deployRear();
   }
 
   @Override

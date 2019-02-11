@@ -3,13 +3,16 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.ClimbFrontToggleC;
-import frc.robot.commands.ClimbMotorsForwardC;
-import frc.robot.commands.ClimbMotorsReverseC;
-import frc.robot.commands.ClimbMotorsStopC;
-import frc.robot.commands.ClimbMotorsToggleC;
-import frc.robot.commands.ClimbPlatformCG;
-import frc.robot.commands.ClimbRearToggleC;
+
+import frc.robot.commands.climb_manual.ClimbFrontToggleC;
+import frc.robot.commands.climb_manual.ClimbMotorsForwardC;
+import frc.robot.commands.climb_manual.ClimbMotorsReverseC;
+import frc.robot.commands.climb_manual.ClimbMotorsStopC;
+import frc.robot.commands.climb_manual.ClimbMotorsToggleC;
+import frc.robot.commands.climb_manual.ClimbRearToggleC;
+
+import frc.robot.commands.climb.ClimbPlatformCG;
+
 import frc.robot.commands.hatch.HatchMechToggleCG;
 
 public class OI {

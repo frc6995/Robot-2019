@@ -1,11 +1,12 @@
-package frc.robot.commands;
+package frc.robot.commands.climb_manual;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimbRearDeployC extends Command {
-  public ClimbRearDeployC() {
-    requires(Robot.m_ClimbRearS);
+public class ClimbMotorsStopC extends Command {
+  public ClimbMotorsStopC() {
+    requires(Robot.m_ClimbMotorControlS);
+    requires(Robot.m_drivebaseS);
   }
 
   @Override
@@ -14,7 +15,8 @@ public class ClimbRearDeployC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbRearS.deployRear();
+    Robot.m_ClimbMotorControlS.motorStop();
+    Robot.m_drivebaseS.arcadeDrive(0, 0, 0);
   }
 
   @Override
