@@ -1,23 +1,3 @@
-/**
-   * XBOX one Button mapping reference
-   * 0 = A
-   * 1 = B
-   * 2 = X
-   * 3 = Y
-   * 4 = Left Bumper
-   * 5 = Right Bumper
-   * 6 = Left Trigger (might be mapped as an analog input)
-   * 7 = Right Trigger (might be mapped as an analog input)
-   * 8 = Left center button (what used to be back)
-   * 9 = Right center button (what used to be start)
-   * 10 = Left Joystick press
-   * 11 = Right Joystick press
-   * 12 = Dpad up
-   * 13 = Dpad down
-   * 14 = Dpad Left
-   * 15 = Dpad Right
-   */
-
 package frc.robot;
  
 
@@ -26,44 +6,51 @@ package frc.robot;
 public class RobotMap {
   //CAN bus
   //Talons
-  public final static int DRIVEBASE_LEFT_TALON_CAN_ID = 2;
-  public final static int DRIVEBASE_RIGHT_TALON_CAN_ID = 3;
-  public final static int DRIVEBASE_LEFTB_TALON_CAN_ID = 4;
-  public final static int DRIVEBASE_RIGHTB_TALON_CAN_ID = 5;
+  public final static int CAN_ID_TALON_DRIVEBASE_LEFT = 10;
+  public final static int CAN_ID_TALON_DRIVEBASE_RIGHT = 11;
+  //VictorSPXs
+  public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_1 = 20;
+  public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_1 = 22;
+  public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_2 = 21;
+  public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
+  
+  public final static int CAN_ID_TALON_LADDER_A = 12;
+  public final static int CAN_ID_TALON_LADDER_B = 13;
 
-//OI - joystick
   public final static int OI_JOYSTICK = 0;
-  //HatchMech constants
+  public final static int LADDER_UP_BUTTON = 4;  // change as needed
+  public final static int LADDER_DOWN_BUTTON = 5; //change as needed
+  
+  //Power Control Module
   public final static int PCM_ID_DSOLENOID_HATCHMECH = 1;
+
+  //HatchMech constants
   public final static int DSOLENOID_HATCHMECH_FORWARD = 1;
   public final static int DSOLENOID_HATCHMECH_REVERSE = 0;
 
-  //OI - joystick
-  public final static int DRIVE_STICK_MOVE_AXIS = 1;
-  public final static int DRIVE_STICK_LEFTRIGHT_AXIS = 0;
-  public final static int DRIVE_STICK_ROTATE_AXIS = 2;
-  public final static int DRIVE_STICK_THROT_AXIS = 3;
-  //climber buttons
-  public final static int BUTTON_FRONT_TOGGLE = 3;
-  public final static int BUTTON_REAR_TOGGLE = 4;
-  public final static int BUTTON_CLIMB_BOX = 2;
-  public final static int BUTTON_CLIMB_MOTORS_TOGGLE = 1;
-
-  //OI - xbox
+  //OI - XBox
   public final static int OI_XBOX = 0;
-  public static final int DRIVE_XBOX_LEFT_X_AXIS = 0;
-  public static final int DRIVE_XBOX_LEFT_Y_AXIS = 1; 
-  public static final int DRIVE_XBOX_LEFT_TRIGGER = 2;
-  public static final int DRIVE_XBOX_RIGHT_TRIGGER = 3;
+  public static final int XBOX_DRIVE_LEFT_RIGHT = 1; 
+  public static final int XBOX_DRIVE_FORWARD_SPEED = 2;
+  public static final int XBOX_DRIVE_BACKWARD_SPEED = 3;
+  public static final int XBOX2_DRIVE_LEFT_RIGHT = 4;
+  public static final int XBOX2_DRIVE_FORWARD_BACK = 1;
 
-//Climb constants
-  public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT = 1;
-  public final static int PCM_ID_DSOLENOID_CLIMBER_REAR = 2; //doesn't exist, most likely 2
-  public final static int DIO_LIMIT_CLIMBER_FRONT = 0;
-  public final static int DIO_LIMIT_CLIMBER_REAR = 1; //doesn't exist, most likely 1
-  public final static int PWM_ID_SPARK_CLIMB_MOVEMENT = 7; //doesn't exist, most likely 7, counting down
-  
-  public static final int DRIVE_XBOX_RIGHT_X_AXIS = 4;
-  public final static int BUTTON_HATCH_TOGGLE = 0;
-  //public static final int DRIVE_XBOX_RIGHT_Y_AXIS = 5;
+  //XBox Buttons
+  public final static int BUTTON_HATCH_TOGGLE = 1;
+
+  //Limit switch constants
+  public static final int DIO_LIMIT_LADDER_TOP = 1;
+  public static final int DIO_LIMIT_LADDER_BOTTOM = 2;
+
+  /**
+   *Ladder Encoder Constants   
+   */  
+  public static final int LADDER_LEVEL_ONE = 0;
+  public static final int LADDER_LEVEL_TWO = 100; //change as needed
+  public static final int LADDER_LEVEL_THREE = 200; //change as needed
+
+  public final static int BUTTON_THROTTLE_CHANGE = 2;
+  public final static int BUTTON_THROTTLE_RESET = 3;
 }
+

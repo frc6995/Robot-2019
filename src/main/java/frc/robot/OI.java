@@ -1,20 +1,19 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
+import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.RobotMap;
 import frc.robot.commands.ClimbFrontToggleC;
+import frc.robot.commands.ClimbMotorsToggleC;
 import frc.robot.commands.ClimbPlatformCG;
 import frc.robot.commands.ClimbRearToggleC;
-import frc.robot.commands.ClimbMotorsToggleC;
-import frc.robot.commands.HatchMechToggleCG;
-
+import frc.robot.commands.hatch.HatchMechToggleCG;
 
 public class OI {
-    public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
 
-    public final XboxController xbox = new XboxController(RobotMap.OI_XBOX);
+    public Xbox xbox = new Xbox(RobotMap.OI_XBOX);
+  
+    public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
 
     public final JoystickButton hatchToggle = new JoystickButton(stick, RobotMap.BUTTON_HATCH_TOGGLE);
     
