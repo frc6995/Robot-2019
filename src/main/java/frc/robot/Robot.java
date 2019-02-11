@@ -29,6 +29,9 @@ public class Robot extends TimedRobot {
   public static HatchMechS m_hatchMechS;
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
+  public static ClimbFrontS m_ClimbFrontS;
+  public static ClimbRearS m_ClimbRearS;
+  public static ClimbMotorControlS m_ClimbMotorControlS;
   
 
   public static OI m_oi;
@@ -45,6 +48,9 @@ public class Robot extends TimedRobot {
     m_drivebaseS = new DrivebaseS();
     m_ladderS = new LadderS();
     m_hatchMechS = new HatchMechS();
+    m_ClimbFrontS = new ClimbFrontS();
+    m_ClimbRearS = new ClimbRearS();
+    m_ClimbMotorControlS = new ClimbMotorControlS();
     m_oi = new OI();
 
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());

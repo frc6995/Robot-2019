@@ -23,6 +23,8 @@ public class RobotMap {
   
   //Power Control Module
   public final static int PCM_ID_DSOLENOID_HATCHMECH = 1;
+  public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT = 2;
+  public final static int PCM_ID_DSOLENOID_CLIMBER_REAR = 3;
 
   //HatchMech constants
   public final static int DSOLENOID_HATCHMECH_FORWARD = 1;
@@ -42,6 +44,8 @@ public class RobotMap {
   //Limit switch constants
   public static final int DIO_LIMIT_LADDER_TOP = 1;
   public static final int DIO_LIMIT_LADDER_BOTTOM = 2;
+  public static final int DIO_LIMIT_CLIMBER_FRONT = 3;
+  public static final int DIO_LIMIT_CLIMBER_REAR = 4;
 
   /**
    *Ladder Encoder Constants   
@@ -52,5 +56,6 @@ public class RobotMap {
 
   public final static int BUTTON_THROTTLE_CHANGE = 2;
   public final static int BUTTON_THROTTLE_RESET = 3;
+public static final int PWM_ID_SPARK_CLIMB_MOVEMENT = 0;
 }
 

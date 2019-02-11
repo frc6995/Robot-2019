@@ -22,4 +22,8 @@ public class ClimbMotorControlS extends Subsystem {
   public void motorStop() {
     climbMotor.set(0.0);
   }
+
+  public void motorReverse() {
+    climbMotor.set(-0.5);
+  }
 }
