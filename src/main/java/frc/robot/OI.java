@@ -4,6 +4,9 @@ import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ClimbFrontToggleC;
+import frc.robot.commands.ClimbMotorsForwardC;
+import frc.robot.commands.ClimbMotorsReverseC;
+import frc.robot.commands.ClimbMotorsStopC;
 import frc.robot.commands.ClimbMotorsToggleC;
 import frc.robot.commands.ClimbPlatformCG;
 import frc.robot.commands.ClimbRearToggleC;
@@ -29,5 +32,10 @@ public class OI {
         xbox.y_toggleOnPress(new ClimbRearToggleC());
         xbox.a_toggleOnPress(new ClimbMotorsToggleC());
         xbox.b_toggleOnPress(new ClimbPlatformCG());
+
+        xbox.dpad_up_runOnPressed(new ClimbMotorsForwardC());
+        xbox.dpad_up_runOnRelease(new ClimbMotorsStopC());
+        xbox.dpad_down_runOnPressed(new ClimbMotorsReverseC());
+        xbox.dpad_down_runOnRelease(new ClimbMotorsStopC());
     }
 }
