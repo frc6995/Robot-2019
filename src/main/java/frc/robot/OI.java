@@ -20,18 +20,15 @@ public class OI {
 
     public final JoystickButton hatchToggle = new JoystickButton(stick, RobotMap.BUTTON_HATCH_TOGGLE);
 
-    //public final JoystickButton climbFront = new JoystickButton(stick, RobotMap.BUTTON_FRONT_TOGGLE); //bad naming...
-    //public final JoystickButton climbRear = new JoystickButton(stick, RobotMap.BUTTON_REAR_TOGGLE); //bad naming...
-    //public final JoystickButton climbBox = new JoystickButton(stick, RobotMap.BUTTON_CLIMB_BOX);
-    //public final JoystickButton climbMotorsToggle = new JoystickButton(stick, RobotMap.BUTTON_CLIMB_MOTORS_TOGGLE);
-
     public OI() {
         hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
+
+        xbox.b_toggleOnPress(new ClimbPlatformCG());
         
+        //backups
         xbox.x_toggleOnPress(new ClimbFrontToggleC());
         xbox.y_toggleOnPress(new ClimbRearToggleC());
         xbox.a_toggleOnPress(new ClimbMotorsToggleC());
-        xbox.b_toggleOnPress(new ClimbPlatformCG());
 
         xbox.dpad_up_runOnPressed(new ClimbMotorsForwardC());
         xbox.dpad_up_runOnRelease(new ClimbMotorsStopC());
