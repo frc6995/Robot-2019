@@ -1,11 +1,15 @@
 package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 //Moves the ladder down to the home positoin and resets the encoders
 public class LadderHomeC extends Command {
   public boolean finished = false;
+
+  private int i = 0;
+private boolean encodersReset = false;
 
   public LadderHomeC() {
     requires(Robot.m_ladderS);
@@ -19,18 +23,26 @@ public class LadderHomeC extends Command {
   @Override
   protected void execute() {
     //Move ladder slightly up.
-    while(Robot.m_ladderS.lowerLimitSwitchPressed() == false){
-      Robot.m_ladderS.setLadderPower(0.3);
-    }
+    SmartDashboard.putNumber("i", i);
+    SmartDashboard.putBoolean("Enc reset", encodersReset);
+    SmartDashboard.putBoolean("Limit", Robot.m_ladderS.lowerLimitSwitchPressed());
 
-    //Move ladder down while the limit switch is not closed.
-    while (Robot.m_ladderS.lowerLimitSwitchPressed()) {
-      Robot.m_ladderS.setLadderPower(-0.3);
+    if (i < 20 && encodersReset == false) {
+    i += 1;
+    Robot.m_ladderS.setLadderPower(0.3);
+    } else {
+      if (Robot.m_ladderS.lowerLimitSwitchPressed() == false) {
+        Robot.m_ladderS.setLadderPower(-0.3);
+      } else if (Robot.m_ladderS.lowerLimitSwitchPressed() == true) {
+        Robot.m_ladderS.resetEncoder();        
+        Robot.m_ladderS.setLadderPower(0);
+        i = 0;
+        encodersReset = true;
+        finished = true;
+
+      }      
     }
     
-    Robot.m_ladderS.resetEncoder();
-    
-    finished = true;
   }
 
   @Override
@@ -40,6 +52,7 @@ public class LadderHomeC extends Command {
 
   @Override
   protected void end() {
+    //encodersReset = false;
   }
 
   @Override

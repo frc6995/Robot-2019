@@ -15,6 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.drive.DriveArcadeXbox2C;
 import frc.robot.commands.drive.DriveArcadeXboxC;
+import frc.robot.commands.ladder.LadderChangeLevelC;
+import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.subsystems.*;
 
@@ -36,6 +38,8 @@ public class Robot extends TimedRobot {
   public Command m_autonomousCommand;
   public Command m_driveCommand;
   public Command m_homeLadderCommand;
+  public Command m_holdLadderCommand;
+  public Command m_changeLadderLevelCommand;
   public SendableChooser<Command> drive_chooser = new SendableChooser<>();
 
   public DigitalInput limitSwitch;
@@ -50,16 +54,22 @@ public class Robot extends TimedRobot {
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
+    
+    //m_holdLadderCommand = new LadderHoldPIDC();
+    //m_changeLadderLevelCommand = new LadderChangeLevelC();
 
-    //Resets the ladder whenever we start the robot
+    //Resets the ladder whenever we start the robot.
     m_homeLadderCommand = new LadderHomeC();
-    m_homeLadderCommand.start();
+    //m_homeLadderCommand.start();
   }
 
   @Override
   public void robotPeriodic() {
     m_driveCommand = drive_chooser.getSelected();
     m_driveCommand.start();
+    //m_holdLadderCommand.start();
+    ///m_changeLadderLevelCommand.start();
+    SmartDashboard.putBoolean("Limit", m_ladderS.lowerLimitSwitchPressed());
   }
 
   @Override
