@@ -3,8 +3,8 @@ package frc.robot.commands.climb;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot; 
 
-public class ClimbFrontDeployC extends Command {
-  public ClimbFrontDeployC() {
+public class ClimbFrontLiftC extends Command {
+  public ClimbFrontLiftC() {
     requires (Robot.m_ClimbFrontS);
   }
 
