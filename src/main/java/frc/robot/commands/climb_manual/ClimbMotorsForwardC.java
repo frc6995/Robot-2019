@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ClimbMotorsForwardC extends Command {
   public ClimbMotorsForwardC() {
-    requires(Robot.m_ClimbMotorControlS);
+    requires(Robot.m_ClimbCrawlerS);
     requires(Robot.m_drivebaseS);
   }
 
@@ -15,7 +15,7 @@ public class ClimbMotorsForwardC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbMotorControlS.motorForward();
+    Robot.m_ClimbCrawlerS.motorForward();
     Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1);
   }
 

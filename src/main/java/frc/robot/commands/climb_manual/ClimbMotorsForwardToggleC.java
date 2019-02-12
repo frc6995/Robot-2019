@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ClimbMotorsForwardToggleC extends Command {
   public ClimbMotorsForwardToggleC() {
-    requires(Robot.m_ClimbMotorControlS);
+    requires(Robot.m_ClimbCrawlerS);
     requires(Robot.m_drivebaseS);
   }
 
@@ -15,7 +15,7 @@ public class ClimbMotorsForwardToggleC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbMotorControlS.motorForward();
+    Robot.m_ClimbCrawlerS.motorForward();
     Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1); //might have to switch to visionDrive.
   }
 
@@ -26,7 +26,7 @@ public class ClimbMotorsForwardToggleC extends Command {
 
   @Override
   protected void end() {
-    Robot.m_ClimbMotorControlS.motorStop();
+    Robot.m_ClimbCrawlerS.motorStop();
     Robot.m_drivebaseS.arcadeDrive(0, 0, 0); //probably has to switch to visionDrive
   }
 

@@ -5,7 +5,7 @@ import frc.robot.Robot;
 
 public class ClimbMotorsStopC extends Command {
   public ClimbMotorsStopC() {
-    requires(Robot.m_ClimbMotorControlS);
+    requires(Robot.m_ClimbCrawlerS);
     requires(Robot.m_drivebaseS);
   }
 
@@ -15,7 +15,7 @@ public class ClimbMotorsStopC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbMotorControlS.motorStop();
+    Robot.m_ClimbCrawlerS.motorStop();
     Robot.m_drivebaseS.arcadeDrive(0, 0, 0);
   }
 

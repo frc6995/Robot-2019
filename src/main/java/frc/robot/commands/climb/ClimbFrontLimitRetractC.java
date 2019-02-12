@@ -6,7 +6,7 @@ import frc.robot.Robot;
 public class ClimbFrontLimitRetractC extends Command {
   public ClimbFrontLimitRetractC() {
     requires(Robot.m_ClimbFrontS);
-    requires(Robot.m_ClimbMotorControlS);
+    requires(Robot.m_ClimbCrawlerS);
   }
 
   @Override
@@ -15,11 +15,11 @@ public class ClimbFrontLimitRetractC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbMotorControlS.motorForward();
+    Robot.m_ClimbCrawlerS.motorForward();
     while (Robot.m_ClimbFrontS.cSwitchFront() == true){
         Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1); //probably has to switch to visionDrive bc/ of deadzone.
     }
-    Robot.m_ClimbMotorControlS.motorStop();
+    Robot.m_ClimbCrawlerS.motorStop();
     Robot.m_ClimbFrontS.retractFront();
   }
 
@@ -34,6 +34,6 @@ public class ClimbFrontLimitRetractC extends Command {
 
   @Override
   protected void interrupted() {
-    Robot.m_ClimbMotorControlS.motorStop();
+    Robot.m_ClimbCrawlerS.motorStop();
   }
 }

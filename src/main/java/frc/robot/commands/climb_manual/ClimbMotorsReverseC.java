@@ -5,7 +5,7 @@ import frc.robot.Robot;
 
 public class ClimbMotorsReverseC extends Command {
   public ClimbMotorsReverseC() {
-    requires(Robot.m_ClimbMotorControlS);
+    requires(Robot.m_ClimbCrawlerS);
     requires(Robot.m_drivebaseS);
   }
 
@@ -15,7 +15,7 @@ public class ClimbMotorsReverseC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbMotorControlS.motorReverse();
+    Robot.m_ClimbCrawlerS.motorReverse();
     Robot.m_drivebaseS.arcadeDrive(-0.1, 0, 1);
   }
 
