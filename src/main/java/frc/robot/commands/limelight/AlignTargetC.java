@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands;
+package frc.robot.commands.limelight;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -43,8 +43,7 @@ public class AlignTargetC extends Command {
   tx = txEntry.getDouble(0.0);
   ty = tyEntry.getDouble(0.0);
 
-if (Robot.m_oi.stick.getRawButton(9) || Robot.m_oi.xbox.x());
-{
+if (Robot.m_oi.xbox.x()) {
         double heading_error = -tx;
         double distance_error = -ty;
         double steering_adjust = 0.0f;
