@@ -27,5 +27,6 @@ public class LadderChangeLevelC extends Command {
 
   @Override
   protected void interrupted() {
+    end();
   }
 }

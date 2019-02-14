@@ -122,7 +122,7 @@ public class LadderS extends Subsystem {
       //Example: "Holding at level 3."
       ladderStatus = "Holding at level: " + getCurrentLadderLevel() + ".";
     }else if(!isAtSetPoint() && ladderPIDActive){
-      //Example: Moving down to level 0.
+      //Example: "Moving down to level 0."
       ladderStatus = "Moving ";
       if(ladderTalonA.getMotorOutputPercent() > 0){
         ladderStatus += "up ";
