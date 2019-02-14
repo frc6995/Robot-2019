@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class LadderChangeLevelC extends Command {
-  public LadderChangeLevelC() {
-
+  public LadderChangeLevelC(int nextLevel) {
+    Robot.m_ladderS.setNextLadderLevel(nextLevel);
   }
 
   @Override
@@ -14,20 +14,11 @@ public class LadderChangeLevelC extends Command {
 
   @Override
   protected void execute() {
-    if (Robot.m_oi.xbox.a() == true) { //Change buttons to button board once available.
-        Robot.m_ladderS.setNextLadderLevel(1);
-    }
-    else if (Robot.m_oi.xbox.b() == true) {
-      Robot.m_ladderS.setNextLadderLevel(2);
-    }
-    else if (Robot.m_oi.xbox.x() == true) {
-      Robot.m_ladderS.setNextLadderLevel(3);
-    }
   }
 
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   @Override
