@@ -69,14 +69,14 @@ public class AlignTargetC extends Command {
     KpAim = SmartDashboard.getNumber("kpAim", KpAim); //pull control constants from smartdashboard.
     KpDistance = SmartDashboard.getNumber("kpDistance", KpDistance);
 
-    if (Robot.m_oi.xbox.x()) {
+    if (true) {//(Robot.m_oi.xbox.x()) {
       double heading_error = -tx;
       double distance_error = ty; //shueja-personal: Might be negative, need to test.
 
       steering_adjust = heading_error * KpAim; //basic proportional control
       distance_adjust = KpDistance * distance_error;
       
-      double max_steering = 0.75;
+      double max_steering = 0.1;
 
       if (steering_adjust > max_steering) {
         steering_adjust = max_steering;
