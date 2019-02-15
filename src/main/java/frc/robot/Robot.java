@@ -18,7 +18,7 @@ import frc.robot.commands.drive.DriveArcadeXboxC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderManualMoveC;
-import frc.robot.commands.ladder.displayLadderStatusC;
+import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.subsystems.*;
 
 /**
@@ -38,7 +38,6 @@ public class Robot extends TimedRobot {
   public Command m_autonomousCommand;
   public Command m_driveCommand;
   public Command m_homeLadderCommand;
-  public Command m_holdLadderCommand;
   public Command m_ladderManualMove;
   public Command m_ladderDisplayStatus;
   public SendableChooser<Command> drive_chooser = new SendableChooser<>();
@@ -52,19 +51,16 @@ public class Robot extends TimedRobot {
     m_hatchMechS = new HatchMechS();
     m_oi = new OI();
     
-
-    
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
     
     //Resets the ladder whenever we start the robot.
-    //m_holdLadderCommand = new LadderHoldPIDC();
     //m_holdLadderCommand.start();
     //m_homeLadderCommand.start(); Disabled so we can test other things first
 
-    m_ladderManualMove = new LadderManualMoveC();
-    m_ladderDisplayStatus = new displayLadderStatusC();
+    //m_ladderManualMove = new LadderManualMoveC();
+    m_ladderDisplayStatus = new LadderDisplayStatusC();
   }
 
   @Override
@@ -90,6 +86,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
     }
+    m_ladderS.resetEncoder();
   }
 
   @Override
@@ -102,6 +99,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    //m_ladderS.resetEncoder();
   }
 
   @Override

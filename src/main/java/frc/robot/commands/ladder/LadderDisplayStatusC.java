@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 //Method to display ladder status, regardless of what command is running on the ladder
-public class displayLadderStatusC extends Command {
-  public displayLadderStatusC() {
+public class LadderDisplayStatusC extends Command {
+  public LadderDisplayStatusC() {
     //Does not "require" the ladder subsystem, as it is only passively displaying the status
   }
 

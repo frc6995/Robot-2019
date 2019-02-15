@@ -34,6 +34,15 @@ public class AlignTargetC extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    /**
+     * if(SmartDashboard.getNumber("kpAim",Integer.MAX) = Integer.MAX){ //make sure kpAim is on smartdashboard 
+     *  SmartDashboard.putNumber("kpAim", kpAim);
+     * }
+     * else{
+     *  kpAim = SmartDashboard.getNumber("kpAim", kpAim);
+     * }
+     */
+
   }
 
   // Called repeatedly when this Command is scheduled to run

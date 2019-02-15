@@ -19,9 +19,9 @@ public class autoScoreHatchCG extends CommandGroup {
 
     //Move up to the set ladder level, and swap to holding
     addSequential(new LadderMovePIDC());
-    addParallel(new LadderHoldPIDC());
     
     //Score hatch
+    addParallel(new LadderHoldPIDC());
     addSequential(new HatchMechToggleCG());
 
     //Return to level 0
