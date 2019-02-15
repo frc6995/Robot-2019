@@ -44,7 +44,7 @@ public class LadderS extends Subsystem {
   //Preportoinal constant
   private double ladderKp = 0.35;
   //Integral constant
-  private double ladderKi = 0.001;
+  private double ladderKi = 0;
   //Derivative constant
   private double ladderKd = 0.0;
   //Feedforward = power needed to hold the ladder in a constant spot
@@ -63,7 +63,6 @@ public class LadderS extends Subsystem {
     ladderTalonA = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_A);  
     ladderTalonB = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_B);    
 
-    //      !Commented for testing!
     ladderTalonA.setNeutralMode(NeutralMode.Brake);
     ladderTalonB.setNeutralMode(NeutralMode.Brake);
 
@@ -102,7 +101,7 @@ public class LadderS extends Subsystem {
     //Sets the max power that the PID can apply
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, 0.4);
 
-    //Selects the PID profile slo
+    //Selects the PID profile slot
     ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
 
     ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
@@ -112,6 +111,7 @@ public class LadderS extends Subsystem {
 
     //Overides any other commands and makes sure the ladder inits not moving
     setLadderPower(0);
+    ladderTalonA.neutralOutput();
   }
 
   public void setLadderPower(double power){
@@ -147,6 +147,7 @@ public class LadderS extends Subsystem {
     SmartDashboard.putNumber("Power", ladderTalonA.getMotorOutputPercent());
     SmartDashboard.putNumber("Set point", ladderTalonA.getClosedLoopTarget());
     SmartDashboard.putNumber("Integral sum", ladderTalonA.getIntegralAccumulator());
+    SmartDashboard.putNumber("Derivative", ladderTalonA.getErrorDerivative());
 
     //   !Saftey code for testing!
     SmartDashboard.putBoolean("Enabled", Robot.m_oi.xbox.a());

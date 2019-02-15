@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.ladder.LadderChangeLevelC;
 import frc.robot.commands.ladder.LadderMovePIDC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
@@ -23,8 +24,9 @@ public class OI {
     
     public OI() {
         //hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
-        xbox.y_toggleOnPress(new LadderHoldPIDC());
-        xbox.x_toggleOnPress(new LadderMovePIDC());
+
+        SmartDashboard.putData("LadderHoldPIDC", new LadderHoldPIDC());
+        SmartDashboard.putData("LadderMovePIDC", new LadderMovePIDC());
 
         ladderLevelOne.whenPressed(new LadderChangeLevelC(1));
         ladderLevelTwo.whenPressed(new LadderChangeLevelC(2));
