@@ -5,6 +5,7 @@ import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ladder.LadderChangeLevelC;
 import frc.robot.commands.ladder.LadderMovePIDC;
+import frc.robot.commands.ladder.LadderHoldPIDC;
 
 public class OI {
 
@@ -16,9 +17,9 @@ public class OI {
     
     public OI() {
         //hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
-        xbox.y_toggleOnPress(new LadderMovePIDC());
-        xbox.x_runOnPressed(new LadderChangeLevelC(0));
-        xbox.a_runOnPressed(new LadderChangeLevelC(1));
-        xbox.b_runOnPressed(new LadderChangeLevelC(2));
+        xbox.y_toggleOnPress(new LadderHoldPIDC());
+        //xbox.x_runOnPressed(new LadderChangeLevelC(0));
+        //xbox.a_runOnPressed(new LadderChangeLevelC(1));
+        //xbox.b_runOnPressed(new LadderChangeLevelC(2));
     }
 }

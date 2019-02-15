@@ -9,7 +9,7 @@ public class LadderHomeC extends Command {
   public boolean finished = false;
 
   private int i = 0;
-private boolean encodersReset = false;
+  private boolean encodersReset = false;
 
   public LadderHomeC() {
     requires(Robot.m_ladderS);
