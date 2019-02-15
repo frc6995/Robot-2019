@@ -25,7 +25,6 @@ private boolean encodersReset = false;
     //Move ladder slightly up.
     SmartDashboard.putNumber("i", i);
     SmartDashboard.putBoolean("Enc reset", encodersReset);
-    SmartDashboard.putBoolean("Limit", Robot.m_ladderS.lowerLimitSwitchPressed());
 
     if (i < 20 && encodersReset == false) {
     i += 1;
@@ -39,10 +38,8 @@ private boolean encodersReset = false;
         i = 0;
         encodersReset = true;
         finished = true;
-
       }      
     }
-    
   }
 
   @Override

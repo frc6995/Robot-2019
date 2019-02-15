@@ -36,6 +36,7 @@ public class RobotMap {
   public final static int BUTTON_HATCH_TOGGLE = 1;
   public final static int BUTTON_LADDER_LEVEL_ONE = 2;
 
+
   //Limit switch constants
   public static final int DIO_LIMIT_LADDER_TOP = 1;
   public static final int DIO_LIMIT_LADDER_BOTTOM = 2;
@@ -43,6 +44,7 @@ public class RobotMap {
   /**
    *Ladder Encoder Constants   
    */  
+  public static final int LADDER_LEVEL_ZERO = 0; //The home locatoin
   public static final int LADDER_LEVEL_ONE = 0;
   public static final int LADDER_LEVEL_TWO = 10; //change as needed
   public static final int LADDER_LEVEL_THREE = 20; //change as needed

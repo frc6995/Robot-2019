@@ -3,7 +3,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.hatch.HatchMechToggleCG;
+import frc.robot.commands.ladder.LadderChangeLevelC;
+import frc.robot.commands.ladder.LadderMovePIDC;
 
 public class OI {
 
@@ -12,8 +13,12 @@ public class OI {
     public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
 
     public final JoystickButton hatchToggle = new JoystickButton(stick, RobotMap.BUTTON_HATCH_TOGGLE);
-
+    
     public OI() {
-        hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
+        //hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
+        xbox.y_toggleOnPress(new LadderMovePIDC());
+        xbox.x_runOnPressed(new LadderChangeLevelC(0));
+        xbox.a_runOnPressed(new LadderChangeLevelC(1));
+        xbox.b_runOnPressed(new LadderChangeLevelC(2));
     }
 }

@@ -4,6 +4,8 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.OI;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.commands.ladder.LadderHomeC;
 
@@ -13,6 +15,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 public class LadderS extends Subsystem {
 
+  //TalonA is left and has the encoder plugged into it, TalonB is right
   private WPI_TalonSRX ladderTalonA = null;
   private WPI_TalonSRX ladderTalonB = null;
 
@@ -23,7 +26,7 @@ public class LadderS extends Subsystem {
   private int currentLadderLevel = 0; 
   private int nextLadderLevel = 0;
 
-  //The range where we will consider ourselves "at" the set point
+  //The range in encoder counts where we will consider ourselves "at" the set point
   private int setPointRange = 10;
   //Counts how many loops we have been within the ladder set point
   private int countWithinSetPoint = 0;
@@ -39,7 +42,7 @@ public class LadderS extends Subsystem {
   //Feedforward = power needed to hold the ladder in a constant spot
   private double ladderKf = 0;
 
-  //The talon PID slot we are using
+  //The talon PID slot we are using, this should not change as we 
   public static final int LADDER_PID_SLOT = 0;
 
   @Override
@@ -52,6 +55,7 @@ public class LadderS extends Subsystem {
     ladderTalonA = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_A);  
     ladderTalonB = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_B);    
 
+    //      !Commented for testing!
     //ladderTalonA.setNeutralMode(NeutralMode.Brake);
     //ladderTalonB.setNeutralMode(NeutralMode.Brake);
 
@@ -59,12 +63,13 @@ public class LadderS extends Subsystem {
     
     ladderTalonA.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
     
+    //Configs P, I, D and F using the constants
     ladderTalonA.config_kP(LADDER_PID_SLOT, ladderKp);
     ladderTalonA.config_kI(LADDER_PID_SLOT, ladderKi);
     ladderTalonA.config_kD(LADDER_PID_SLOT, ladderKd);
     ladderTalonA.config_kF(LADDER_PID_SLOT, ladderKf);
     
-    //SAFTEY CODE FOR TESTING
+    //    !Saftey code for testing!
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, 0.2);
 
     ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
@@ -94,6 +99,7 @@ public class LadderS extends Subsystem {
 
   public void disablePID(){
     ladderPIDActive = false;
+    //Running a "set power" command will ("should") stop any active position control
     setLadderPower(0);
   }
 
@@ -105,7 +111,13 @@ public class LadderS extends Subsystem {
     SmartDashboard.putNumber("Power", ladderTalonA.getMotorOutputPercent());
     SmartDashboard.putNumber("Set point", ladderTalonA.getClosedLoopTarget());
 
-    ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
+    //   !Saftey code for testing!
+    if(Robot.m_oi.xbox.left_bumper()){
+      ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
+    }else{
+      ladderTalonA.set(0);
+    }
+    
 
     //If we are within the set point range add 1 to countWithinSetPoint, else set it to 0
     if(Math.abs(getError())<setPointRange){
@@ -156,7 +168,10 @@ public class LadderS extends Subsystem {
   }
 
   public int getLadderSetPointEncoderCount(){
-    if (getNextLadderLevel() == 1) {
+    
+    if(getNextLadderLevel() == 0){
+      return RobotMap.LADDER_LEVEL_ZERO;
+    }else if (getNextLadderLevel() == 1) {
       return RobotMap.LADDER_LEVEL_ONE;
     }
     else if (getNextLadderLevel() == 2) {
