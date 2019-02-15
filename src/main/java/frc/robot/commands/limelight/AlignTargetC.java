@@ -1,4 +1,4 @@
-package frc.robot.commands;
+package frc.robot.commands.limelight;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -57,46 +57,48 @@ public class AlignTargetC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-      cam = camMode.getDouble(0);
-        tx = txEntry.getDouble(0.0); //get offsets from limelight
-        ty = tyEntry.getDouble(0.0);
-        ta = taEntry.getDouble(0.0);
+    cam = camMode.getDouble(0);
+    tx = txEntry.getDouble(0.0); //get offsets from limelight
+    ty = tyEntry.getDouble(0.0);
+    ta = taEntry.getDouble(0.0);
 
-        SmartDashboard.putNumber("Tx", tx);
-        SmartDashboard.putNumber("Ty", ty);
-        SmartDashboard.putNumber("Ta", ta);
-        SmartDashboard.putNumber("Heading error", heading_error);
-        KpAim = SmartDashboard.getNumber("kpAim", KpAim); //pull control constants from smartdashboard.
-        KpDistance = SmartDashboard.getNumber("kpDistance", KpDistance);
+    SmartDashboard.putNumber("Tx", tx);
+    SmartDashboard.putNumber("Ty", ty);
+    SmartDashboard.putNumber("Ta", ta);
+    SmartDashboard.putNumber("Heading error", heading_error);
+    KpAim = SmartDashboard.getNumber("kpAim", KpAim); //pull control constants from smartdashboard.
+    KpDistance = SmartDashboard.getNumber("kpDistance", KpDistance);
 
-        double heading_error = -tx;
-        double distance_error = ty; //shueja-personal: Might be negative, need to test.
+    if (Robot.m_oi.xbox.x()) {
+      double heading_error = -tx;
+      double distance_error = ty; //shueja-personal: Might be negative, need to test.
 
-        steering_adjust = heading_error * KpAim; //basic proportional control
-        distance_adjust = KpDistance * distance_error;
-        
-        double max_steering = 0.75;
+      steering_adjust = heading_error * KpAim; //basic proportional control
+      distance_adjust = KpDistance * distance_error;
+      
+      double max_steering = 0.75;
 
-        if (steering_adjust > max_steering) {
-          steering_adjust = max_steering;
-        }
-        else if (steering_adjust < -max_steering) {
-          steering_adjust = -max_steering;
-        }
-        if (distance_adjust > max_steering) {
-          distance_adjust = max_steering;
-        }
-        else if (distance_adjust < -max_steering) {
-          distance_adjust = -max_steering;
-        }
+      if (steering_adjust > max_steering) {
+        steering_adjust = max_steering;
+      }
+      else if (steering_adjust < -max_steering) {
+        steering_adjust = -max_steering;
+      }
+      if (distance_adjust > max_steering) {
+        distance_adjust = max_steering;
+      }
+      else if (distance_adjust < -max_steering) {
+        distance_adjust = -max_steering;
+      }
+    
         //Adds a maximum and miniumum to the Robots turning speed
         //and adds a maximum/minimum to the forward-backward speed
  
-        SmartDashboard.putNumber("Steering", steering_adjust);
+      SmartDashboard.putNumber("Steering", steering_adjust);
 
-        Robot.m_drivebaseS.visionDrive(distance_adjust, steering_adjust);
-      }
-
+      Robot.m_drivebaseS.visionDrive(distance_adjust, steering_adjust);
+    }
+  }
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
