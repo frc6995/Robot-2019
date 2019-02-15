@@ -38,7 +38,7 @@ public class RobotMap {
 
 
   //OI - Button board
-  public final static int OI_BUTTONBOARD = 3;
+  public final static int OI_BUTTONBOARD = 2;
   public final static int BUTTONBOARD_LADDER_LEVEL_ONE = 1;
   public final static int BUTTONBOARD_LADDER_LEVEL_TWO = 2;
   public final static int BUTTONBOARD_LADDER_LEVEL_THREE = 3; 
@@ -51,9 +51,9 @@ public class RobotMap {
    *Ladder Encoder Constants   
    */  
   public static final int LADDER_LEVEL_ZERO = 0; //The home locatoin
-  public static final int LADDER_LEVEL_ONE = 0;
-  public static final int LADDER_LEVEL_TWO = 200; //change as needed
-  public static final int LADDER_LEVEL_THREE = 300; //change as needed
+  public static final int LADDER_LEVEL_ONE = -0;
+  public static final int LADDER_LEVEL_TWO = -1000; //change as needed
+  public static final int LADDER_LEVEL_THREE = -2000; //change as needed
 
   public final static int BUTTON_THROTTLE_CHANGE = 2;
   public final static int BUTTON_THROTTLE_RESET = 3;

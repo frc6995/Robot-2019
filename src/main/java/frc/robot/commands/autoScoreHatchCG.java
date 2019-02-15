@@ -27,7 +27,7 @@ public class autoScoreHatchCG extends CommandGroup {
     //Return to level 0
     addSequential(new LadderChangeLevelC(0));
     addSequential(new LadderMovePIDC());
-
+    
     //Insert back away?
   }
 }

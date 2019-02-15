@@ -41,7 +41,7 @@ public class LadderS extends Subsystem {
   
   //PID "constants"
   private boolean ladderPIDActive = true;
-  //Preportoinal constant
+  //Proportional constant
   private double ladderKp = 0.35;
   //Integral constant
   private double ladderKi = 0;
@@ -95,7 +95,7 @@ public class LadderS extends Subsystem {
     //The zone where the integral turns on
     ladderTalonA.config_IntegralZone(LADDER_PID_SLOT, 500);
 
-    //Makes it so we don't start pushing the ladder at full power imeedietly, takes 0.5 seconds to ramp to full
+    //Makes it so we don't start pushing the ladder at full power immediately, takes 0.5 seconds to ramp to full
     ladderTalonA.configClosedloopRamp(0.5);
 
     //Sets the max power that the PID can apply
@@ -145,11 +145,14 @@ public class LadderS extends Subsystem {
     SmartDashboard.putNumber("Error", getError());
     SmartDashboard.putBoolean("IsAtSetPoint", isAtSetPoint());
     SmartDashboard.putNumber("Power", ladderTalonA.getMotorOutputPercent());
-    SmartDashboard.putNumber("Set point", ladderTalonA.getClosedLoopTarget());
+    SmartDashboard.putNumber("Talon Set point", ladderTalonA.getClosedLoopTarget());
+    SmartDashboard.putNumber("Code Set point", getLadderSetPointEncoderCount());
+    SmartDashboard.putNumber("Next ladder level", nextLadderLevel);
     SmartDashboard.putNumber("Integral sum", ladderTalonA.getIntegralAccumulator());
     SmartDashboard.putNumber("Derivative", ladderTalonA.getErrorDerivative());
+    SmartDashboard.putNumber("Ladder level", getNextLadderLevel());
 
-    //   !Saftey code for testing!
+    //   !Safety code for testing!
     SmartDashboard.putBoolean("Enabled", Robot.m_oi.xbox.a());
     if(Robot.m_oi.xbox.a()){
       ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
@@ -157,7 +160,7 @@ public class LadderS extends Subsystem {
       
       //Tuning code
 
-      if(SmartDashboard.getNumber("kpL", Integer.MAX_VALUE) == Integer.MAX_VALUE){ //make sure kpAim is on smartdashboard 
+      if(SmartDashboard.getNumber("kpL", Integer.MAX_VALUE) == Integer.MAX_VALUE){ //make sure kpL is on smartdashboard 
         SmartDashboard.putNumber("kpL", ladderKp);
       }
       else{
@@ -226,6 +229,7 @@ public class LadderS extends Subsystem {
     //If we have been within our range for at least 50 cycles (1 second), return true
     if(countWithinSetPoint > 50){
       currentLadderLevel = nextLadderLevel;
+      countWithinSetPoint = 0;
       return true;
     }else{
       return false;

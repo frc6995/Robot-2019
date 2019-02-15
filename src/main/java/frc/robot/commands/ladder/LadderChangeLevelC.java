@@ -4,8 +4,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class LadderChangeLevelC extends Command {
+  int nextLadderLevel = 0;
+
   public LadderChangeLevelC(int nextLevel) {
-    Robot.m_ladderS.setNextLadderLevel(nextLevel);
+    nextLadderLevel = nextLevel;
   }
 
   @Override
@@ -14,6 +16,8 @@ public class LadderChangeLevelC extends Command {
 
   @Override
   protected void execute() {
+    System.out.println("Changed to level: " + nextLadderLevel);
+    Robot.m_ladderS.setNextLadderLevel(nextLadderLevel);
   }
 
   @Override
@@ -23,6 +27,7 @@ public class LadderChangeLevelC extends Command {
 
   @Override
   protected void end() {
+    Robot.m_ladderS.setNextLadderLevel(nextLadderLevel);
   }
 
   @Override
