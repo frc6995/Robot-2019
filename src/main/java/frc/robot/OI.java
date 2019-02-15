@@ -26,16 +26,16 @@ public class OI {
     public OI() {
         hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
 
-        xbox.b_toggleOnPress(new ClimbPlatformCG());
+        //xbox.b_toggleOnPress(new ClimbPlatformCG());
         
         //backups
-        xbox.x_toggleOnPress(new ClimbFrontToggleC());
-        xbox.y_toggleOnPress(new ClimbRearToggleC());
-        xbox.a_toggleOnPress(new ClimbMotorsForwardToggleC());
+        //xbox.x_toggleOnPress(new ClimbFrontToggleC());
+        //xbox.y_toggleOnPress(new ClimbRearToggleC());
+        //xbox.a_toggleOnPress(new ClimbMotorsForwardToggleC());
 
-        xbox.dpad_up_runOnPressed(new ClimbMotorsForwardC());
-        xbox.dpad_up_runOnRelease(new ClimbMotorsStopC());
-        xbox.dpad_down_runOnPressed(new ClimbMotorsReverseC());
-        xbox.dpad_down_runOnRelease(new ClimbMotorsStopC());
+        //xbox.dpad_up_runOnPressed(new ClimbMotorsForwardC());
+        //xbox.dpad_up_runOnRelease(new ClimbMotorsStopC());
+        //xbox.dpad_down_runOnPressed(new ClimbMotorsReverseC());
+        //xbox.dpad_down_runOnRelease(new ClimbMotorsStopC());
     }
 }
