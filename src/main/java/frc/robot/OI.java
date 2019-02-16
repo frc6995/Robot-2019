@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.ladder.LadderChangeLevelC;
 import frc.robot.commands.ladder.LadderMovePIDC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
+import frc.robot.commands.ladder.LadderHomeC;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
 
@@ -21,5 +23,8 @@ public class OI {
         //xbox.x_runOnPressed(new LadderChangeLevelC(0));
         //xbox.a_runOnPressed(new LadderChangeLevelC(1));
         //xbox.b_runOnPressed(new LadderChangeLevelC(2));
+
+        SmartDashboard.putData("LadderHomeC", new LadderHomeC());
+
     }
 }

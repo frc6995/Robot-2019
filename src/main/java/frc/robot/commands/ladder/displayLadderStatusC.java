@@ -24,6 +24,7 @@ public class displayLadderStatusC extends Command {
 
     SmartDashboard.putNumber("ladder Encoder", Robot.m_ladderS.getLadderEncoderCount());
     
+    SmartDashboard.putNumber("ladder level", Robot.m_ladderS.getCurrentLadderLevel());
   }
   
   @Override

@@ -55,7 +55,7 @@ public class LadderS extends Subsystem {
   @Override
   public void initDefaultCommand() {
     //Commented out so we can test other things first
-    //setDefaultCommand(new LadderHomeC());
+    setDefaultCommand(new LadderHomeC());
   }
 
   public LadderS() {
@@ -95,9 +95,10 @@ public class LadderS extends Subsystem {
     ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
     ladderTopLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_TOP);
 
-    resetEncoder();
+  /*  resetEncoder();
 
     setLadderPower(0);
+    commented out so I can test LadderHomeC   */ 
   }
 
   public void setLadderPower(double power){

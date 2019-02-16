@@ -39,7 +39,7 @@ public class RobotMap {
 
   //Limit switch constants
   public static final int DIO_LIMIT_LADDER_TOP = 1;
-  public static final int DIO_LIMIT_LADDER_BOTTOM = 2;
+  public static final int DIO_LIMIT_LADDER_BOTTOM = 0;
 
   /**
    *Ladder Encoder Constants   
