@@ -3,6 +3,7 @@ package frc.robot.controllermap;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 public class JStick {
     private static Joystick joystick;
@@ -126,6 +127,22 @@ public class JStick {
         else {
             return false;
         }
+    }
+
+    public void button_1_runOnPress(Command command) {
+        one_trigger.whenPressed(command);
+    }
+    public void button_1_runOnRelease(Command command) {
+        one_trigger.whenReleased(command);
+    }
+    public void button_1_toggleOnPress(Command command) {
+        one_trigger.toggleWhenPressed(command);
+    }
+    public void button_1_cancelOnPress(Command command) {
+        one_trigger.cancelWhenPressed(command);
+    }
+    public void button_1_runWhileHeld(Command command) {
+        one_trigger.whileHeld(command);
     }
 
     public boolean button_2() {
