@@ -6,9 +6,8 @@ import frc.robot.Robot;
 
 //Moves the ladder down to the home positoin and resets the encoders
 public class LadderHomeC extends Command {
-  public boolean finished = false;
-
-  private int i = 0;
+  public boolean finished;
+  private int i;
   private boolean encodersReset;
 
   public LadderHomeC() {
@@ -19,7 +18,8 @@ public class LadderHomeC extends Command {
   @Override
   protected void initialize() {
     encodersReset = false;
-
+    finished = false;
+    i = 0;
   }
 
   @Override
@@ -43,7 +43,6 @@ public class LadderHomeC extends Command {
         Robot.m_ladderS.setLadderPower(0);
         encodersReset = true;
         finished = true;
-        end();
       }      
     }
   }
@@ -55,8 +54,9 @@ public class LadderHomeC extends Command {
 
   @Override
   protected void end() {
-    i = 0;
     encodersReset = false;
+    finished = false;
+    i = 0;
   }
 
   @Override
