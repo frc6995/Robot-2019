@@ -18,7 +18,7 @@ import edu.wpi.first.networktables.NetworkTableInstance;
  * 
  * IMPORTANT!!! MAKE SURE "IGNORE NETWORK TABLES" is set to false.
  */
-public class AlignTargetC extends Command {
+public class VisionAlignTargetC extends Command {
   NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
   
   NetworkTableEntry txEntry = table.getEntry("tx");
@@ -40,7 +40,7 @@ public class AlignTargetC extends Command {
   double pipeline = 0.0;
   int sumInRange = 0;
 
-  public AlignTargetC() {
+  public VisionAlignTargetC() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_drivebaseS);

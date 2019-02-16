@@ -14,8 +14,8 @@ public class VisionScoreCG extends CommandGroup {
 
   public VisionScoreCG() {
 
-    addSequential(new AlignTargetC());
-    addSequential(new AlignTargetC());
+    addSequential(new VisionAlignTargetC());
+    addSequential(new VisionAlignTargetC());
     addSequential(new DriveForTimeC(3), 3);
 
   }

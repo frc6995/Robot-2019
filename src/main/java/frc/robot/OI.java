@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.AlignTargetC;
+import frc.robot.commands.VisionAlignTargetC;
 import frc.robot.commands.VisionScoreCG;
 
 /**
