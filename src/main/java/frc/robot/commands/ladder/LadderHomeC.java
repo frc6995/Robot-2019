@@ -27,7 +27,6 @@ public class LadderHomeC extends Command {
     //Move ladder slightly up.
     SmartDashboard.putNumber("i", i);
     SmartDashboard.putBoolean("Enc reset", encodersReset);
-
     if (i < 20) {
       i += 1;
       Robot.m_ladderS.setLadderPower(-0.2); //negative is up, positive is down.
@@ -38,8 +37,7 @@ public class LadderHomeC extends Command {
         System.out.print("Bringing ladder down");
       } 
       else {
-        System.out.print("Reseting Encoders");
-        Robot.m_ladderS.resetEncoder();        
+        System.out.print("Reseting Encoders");    
         Robot.m_ladderS.setLadderPower(0);
         encodersReset = true;
         finished = true;
@@ -54,6 +52,7 @@ public class LadderHomeC extends Command {
 
   @Override
   protected void end() {
+    Robot.m_ladderS.resetEncoder();
     encodersReset = false;
     finished = false;
     i = 0;
