@@ -128,7 +128,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_1_runOnPress(Command command) {
         one_trigger.whenPressed(command);
     }
@@ -153,7 +152,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_2_runOnPress(Command command) {
         two_thumb.whenPressed(command);
     }
@@ -178,7 +176,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_3_runOnPress(Command command) {
         three_topBottomLeft.whenPressed(command);
     }
@@ -203,7 +200,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_4_runOnPress(Command command) {
         four_topBottomRight.whenPressed(command);
     }
@@ -228,7 +224,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_5_runOnPress(Command command) {
         five_topTopLeft.whenPressed(command);
     }
@@ -253,7 +248,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_6_runOnPress(Command command) {
         six_topTopRight.whenPressed(command);
     }
@@ -278,7 +272,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_7_runOnPress(Command command) {
         seven_leftTopLeft.whenPressed(command);
     }
@@ -303,7 +296,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_8_runOnPress(Command command) {
         eight_leftTopRight.whenPressed(command);
     }
@@ -328,7 +320,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_9_runOnPress(Command command) {
         nine_leftMiddleLeft.whenPressed(command);
     }
@@ -353,7 +344,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_10_runOnPress(Command command) {
         ten_leftMiddleRight.whenPressed(command);
     }
@@ -378,7 +368,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_11_runOnPress(Command command) {
         eleven_leftBottomLeft.whenPressed(command);
     }
@@ -403,7 +392,6 @@ public class JStick {
             return false;
         }
     }
-
     public void button_12_runOnPress(Command command) {
         twelve_leftBottomRIght.whenPressed(command);
     }
