@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 public class DrivebaseS extends Subsystem {
@@ -48,7 +49,10 @@ public class DrivebaseS extends Subsystem {
   }
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
-    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * throttle);
+    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * 0.65);
+    //Rotation throttle disabled, uses xbox joystick X to determine speed
+    //Keep in mind for other usage of arcadeDrive
+    SmartDashboard.putNumber("Throttle", throttle);
   }
 
   //visionDrive added for VisionAlign. It has no motor deadzones.

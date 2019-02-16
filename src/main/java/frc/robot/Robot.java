@@ -72,8 +72,8 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    //m_driveCommand = drive_chooser.getSelected();
-    //m_driveCommand.start();
+    m_driveCommand = drive_chooser.getSelected();
+    m_driveCommand.start();
     //m_ladderManualMoveC.start();
     m_ladderDisplayStatusC.start();
   }
