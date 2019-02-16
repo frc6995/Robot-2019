@@ -32,8 +32,6 @@ public class OI {
         SmartDashboard.putData("2", new LadderChangeLevelC(2));
         SmartDashboard.putData("3", new LadderChangeLevelC(3));
 
-        xbox.x_runOnPressed(new LadderChangeLevelC(2));
-
         ladderLevelOne.whileHeld(new LadderChangeLevelC(1));
         ladderLevelTwo.whileHeld(new LadderChangeLevelC(2));
         ladderLevelThree.whileHeld(new LadderChangeLevelC(3));

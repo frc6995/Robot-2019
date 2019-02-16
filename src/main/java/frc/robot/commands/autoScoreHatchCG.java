@@ -9,9 +9,7 @@ import frc.robot.commands.limelight.AlignTargetC;
 
 
 public class autoScoreHatchCG extends CommandGroup {
-  /**
-   * Add your docs here.
-   */
+  
   public autoScoreHatchCG() {
 
     //Only uncomment and test when we have merged with the auto align branch

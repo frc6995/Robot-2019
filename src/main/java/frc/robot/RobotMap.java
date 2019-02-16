@@ -34,7 +34,6 @@ public class RobotMap {
 
   //XBox Buttons
   public final static int BUTTON_HATCH_TOGGLE = 1;
-  public final static int BUTTON_LADDER_LEVEL_ONE = 2;
 
 
   //OI - Button board
