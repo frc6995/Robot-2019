@@ -49,7 +49,7 @@ public class RobotMap {
   /**
    *Ladder Encoder Constants   
    */  
-  public static final int LADDER_LEVEL_ZERO = 0; //The home locatoin
+  public static final int LADDER_LEVEL_ZERO = 0; //The home location
   public static final int LADDER_LEVEL_ONE = -0;
   public static final int LADDER_LEVEL_TWO = -1000; //change as needed
   public static final int LADDER_LEVEL_THREE = -2000; //change as needed

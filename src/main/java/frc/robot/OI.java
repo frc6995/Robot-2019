@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.HatchMechToggleCG;
 import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.commands.ladder.LadderMovePIDC;
@@ -25,7 +26,12 @@ public class OI {
     
     public OI() {
         hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
+        xbox.x_toggleOnPress(new VisionAlignCG());
 
+        //For testing purposes
+        SmartDashboard.putData("Drive for 3 Secs", new DriveForTimeC(3));
+        SmartDashboard.putData("Vision Align Target", new VisionAlignTargetC());
+        SmartDashboard.putData("Vision Align CG", new VisionAlignCG());
         SmartDashboard.putData("LadderHoldPIDC", new LadderHoldPIDC());
         SmartDashboard.putData("LadderMovePIDC", new LadderMovePIDC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
