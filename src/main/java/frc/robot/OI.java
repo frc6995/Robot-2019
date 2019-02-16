@@ -1,33 +1,24 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
+import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+<<<<<<< HEAD
 import frc.robot.commands.VisionAlignTargetC;
 import frc.robot.commands.VisionScoreCG;
+=======
+import frc.robot.commands.hatch.HatchMechToggleCG;
+>>>>>>> 26266c3762cd68720365ff545474434ba32d95ae
 
-/**
- * This class is the glue that binds the controls on the physical operator
- * interface to the commands and command groups that allow control of the robot.
- */
 public class OI {
-    public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
-    public XboxController xbox = new XboxController(RobotMap.OI_XBOX);
-    public final JoystickButton alignCargoRocket = new JoystickButton(stick, 1);
-    /*Xbox buttons: 1=A, 2=B, 3=X, 4=Y, LB = 5, RB = 6, Select = 7, Start = 8, LStick In = 9, RStick In = 10
-    Axes: LStick X, LStick Y, L Trigger, R Trigger, RStick X, Rstick Y
-    */
 
-    public OI(){
-        // joystick
-        alignCargoRocket.toggleWhenPressed(new VisionScoreCG());    
+    public Xbox xbox = new Xbox(RobotMap.OI_XBOX);
+  
+    public final Joystick stick = new Joystick(RobotMap.OI_JOYSTICK);
+
+    public final JoystickButton hatchToggle = new JoystickButton(stick, RobotMap.BUTTON_HATCH_TOGGLE);
+
+    public OI() {
+        hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
     }
 }
