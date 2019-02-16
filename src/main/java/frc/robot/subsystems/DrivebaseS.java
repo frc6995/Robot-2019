@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.robot.RobotMap;
 
@@ -50,5 +49,11 @@ public class DrivebaseS extends Subsystem {
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
     differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * throttle);
+  }
+
+  //visionDrive added for VisionAlign. It has no motor deadzones.
+  public void visionDrive(double moveSpeed, double rotateSpeed) {
+    driveLeftFront.set(moveSpeed + rotateSpeed);
+    driveRightFront.set(-moveSpeed + rotateSpeed);
   }
 }
