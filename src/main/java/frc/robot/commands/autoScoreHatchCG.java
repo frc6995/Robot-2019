@@ -10,7 +10,7 @@ public class AutoScoreHatchCG extends CommandGroup {
   
   public AutoScoreHatchCG() {
 
-    //Only uncomment and test when we have merged with the auto align branch
+    //Only uncomment and test when we have merged with the auto align branch 
     //addSequential(new AlignTargetC());
 
     //Move up to the set ladder level, and swap to holding

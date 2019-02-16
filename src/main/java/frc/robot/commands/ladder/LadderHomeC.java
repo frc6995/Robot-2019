@@ -21,15 +21,15 @@ public class LadderHomeC extends Command {
   protected void execute() {
     SmartDashboard.putBoolean("Ladder At Bottom\n(Was Ladder Up)", ladderDown);
 
+    //Move up while the limit switch is pressed, and the ladder down
     if(Robot.m_ladderS.lowerLimitSwitchPressed() && !ladderDown){
-      //Move up while the limit switch is pressed, and the ladder down
       Robot.m_ladderS.setLadderPower(0.3);
+    //Move down when the ladder is up
     }else if(!Robot.m_ladderS.lowerLimitSwitchPressed()){
-      //Move down when the ladder is up
       ladderDown = true;
       Robot.m_ladderS.setLadderPower(-0.1);
+    //When the limit switched gets pressed while the ladder is up, stop the ladder, reset the encoders and end.
     }else if(Robot.m_ladderS.lowerLimitSwitchPressed() && ladderDown){
-      //When the limit switched gets pressed while the ladder is up, stop the ladder, reset the encoders and end.
       Robot.m_ladderS.setLadderPower(0);
       Robot.m_ladderS.resetEncoder();
       finished = true;
