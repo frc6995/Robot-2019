@@ -13,11 +13,13 @@ public class LadderHomeC extends Command {
 
   public LadderHomeC() {
     requires(Robot.m_ladderS);
+    this.setInterruptible(false);
   }
 
   @Override
   protected void initialize() {
     encodersReset = false;
+
   }
 
   @Override
@@ -26,16 +28,21 @@ public class LadderHomeC extends Command {
     SmartDashboard.putNumber("i", i);
     SmartDashboard.putBoolean("Enc reset", encodersReset);
 
-    if (i < 20 /*&& encodersReset == false*/) {
-    i += 1;
-    Robot.m_ladderS.setLadderPower(-0.2); //negative is up, positive is down.
-    } else {
+    if (i < 20) {
+      i += 1;
+      Robot.m_ladderS.setLadderPower(-0.2); //negative is up, positive is down.
+    } 
+    else {
       if (Robot.m_ladderS.lowerLimitSwitchPressed() == false) {
         Robot.m_ladderS.setLadderPower(0.1);
-      } else if (Robot.m_ladderS.lowerLimitSwitchPressed() == true) {
+        System.out.print("Bringing ladder down");
+      } 
+      else {
+        System.out.print("Reseting Encoders");
         Robot.m_ladderS.resetEncoder();        
         Robot.m_ladderS.setLadderPower(0);
         encodersReset = true;
+        finished = true;
         end();
       }      
     }
