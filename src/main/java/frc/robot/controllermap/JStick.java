@@ -183,7 +183,7 @@ public class JStick {
     }
 
     public boolean button_8() {
-        if(two_thumb.get()) {
+        if(eight_leftTopRight.get()) {
             return true;
         }
         else {
