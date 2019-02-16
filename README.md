@@ -90,7 +90,16 @@ Install the FRC Update Suite from National Instruments which will allow you to c
 	b. For more detailed instructions for setting up Git for the first time see 
 	https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup.
 	
-### 4. CTRE Phoenix Library (for Talons)
-	When creating a project from scratch and wanting to utilize Talons, you will need to install the 
-	CTRE Phoenix vendor library using the instructions found here: 
-	https://phoenix-documentation.readthedocs.io/en/latest/ch05a_CppJava.html
+### 4. CTRE Phoenix Library/Tuner (for Talons)
+
+	Download and install the latest version of the CTRE Phoenix Framework Installer (link below). As of 
+	2/10/2019 it is 5.13.0.0. Be sure to install the Phoenix Tuner along with roboRIO-FRC-C++/Java (Phoenix
+	Library).
+	http://www.ctr-electronics.com/hro.html#product_tabs_technical_resources
+	
+	You can find directions on using the Phoenix Library and Tuner at 
+	https://phoenix-documentation.readthedocs.io/en/latest/ch01_PhoeSoftRefManual.html
+	
+	Be sure to check their blog posts during build season for any updates
+	https://phoenix-documentation.readthedocs.io/en/latest/blog/blogs.html
+	

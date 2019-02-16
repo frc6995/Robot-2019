@@ -734,7 +734,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean left_bumper() {
-        if (xbox.getStartButton()) {
+        if (xbox.getBumper(Hand.kLeft)) {
             return true;
         } else {
             return false;
@@ -792,7 +792,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean right_bumper() {
-        if (xbox.getStartButton()) {
+        if (xbox.getBumper(Hand.kRight)) {
             return true;
         } else {
             return false;

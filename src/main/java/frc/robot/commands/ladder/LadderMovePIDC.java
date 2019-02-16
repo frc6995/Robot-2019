@@ -9,23 +9,23 @@ import frc.robot.Robot;
  * The sequence for moving the ladder to a position and then running other commands is
  * 
  *  -- Sets the ladder to run to position 1, runs there and then holds at that position
- * sequential(LadderRunPIDC())
+ * sequential(LadderMovePIDC())
  * parallel(LadderHoldPIDC())
  * 
  * -- Whatever you need to do (runs during the HoldLadderPIDC)
  * sequential(DoAThing())
  * 
- *  -- Sets the ladder back to position 0, and then goes there. Releacing control of the ladder when we reach it.
+ *  -- Sets the ladder back to position 0, and then goes there. Releasing control of the ladder when we reach it.
  * sequential(ChangeLadderLevel(0))
- * sequential(LadderRunPIDC())
+ * sequential(LadderMovePIDC())
  *  */
 
-public class LadderRunPIDC extends Command {
+public class LadderMovePIDC extends Command {
   
-  public LadderRunPIDC() {
+  public LadderMovePIDC() {
     requires(Robot.m_ladderS);
-    //This command should not be interupted, but we may want to change this
-    //We could always use a toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interuptable.
+    //This command should not be interrupted, but we may want to change this
+    //We could always use a toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptable.
     this.setInterruptible(false);
 
     Robot.m_ladderS.enablePID();
