@@ -15,14 +15,12 @@ public class LadderHomeC extends Command {
 
   @Override
   protected void initialize() {
-    
   }
 
   @Override
   protected void execute() {
     SmartDashboard.putBoolean("Ladder At Bottom\n(Was Ladder Up)", ladderDown);
 
-    
     if(Robot.m_ladderS.lowerLimitSwitchPressed() && !ladderDown){
       //Move up while the limit switch is pressed, and the ladder down
       Robot.m_ladderS.setLadderPower(0.3);
@@ -45,7 +43,6 @@ public class LadderHomeC extends Command {
 
   @Override
   protected void end() {
-    //encodersReset = false;
   }
 
   @Override

@@ -3,6 +3,8 @@ package frc.robot.commands.ladder;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+//Allows driver to manually move ladder using xbox right stick y axis
+
 public class LadderManualMoveC extends Command {
   public LadderManualMoveC() {
     requires(Robot.m_ladderS);

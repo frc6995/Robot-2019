@@ -16,14 +16,12 @@ public class LadderDisplayStatusC extends Command {
 
   @Override
   protected void execute() {
-    //This method is designed for just competitoin display code
+    //This method is designed for just competition display code
     Robot.m_ladderS.displayStatus();
 
     //Put any other testing display code you need here
     SmartDashboard.putBoolean("Limit", Robot.m_ladderS.lowerLimitSwitchPressed());
-
     SmartDashboard.putNumber("ladder Encoder", Robot.m_ladderS.getLadderEncoderCount());
-    
   }
   
   @Override

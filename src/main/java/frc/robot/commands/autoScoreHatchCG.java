@@ -2,15 +2,13 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.hatch.HatchMechToggleCG;
-import frc.robot.commands.ladder.LadderChangeLevelC;
-import frc.robot.commands.ladder.LadderHoldPIDC;
-import frc.robot.commands.ladder.LadderMovePIDC;
+import frc.robot.commands.ladder.*;
 import frc.robot.commands.limelight.AlignTargetC;
 
 
-public class autoScoreHatchCG extends CommandGroup {
+public class AutoScoreHatchCG extends CommandGroup {
   
-  public autoScoreHatchCG() {
+  public AutoScoreHatchCG() {
 
     //Only uncomment and test when we have merged with the auto align branch
     //addSequential(new AlignTargetC());
@@ -23,7 +21,7 @@ public class autoScoreHatchCG extends CommandGroup {
     addSequential(new HatchMechToggleCG());
 
     //Return to level 0
-    addSequential(new LadderChangeLevelC(0));
+    addSequential(new LadderSetLevelC(0));
     addSequential(new LadderMovePIDC());
     
     //Insert back away?
