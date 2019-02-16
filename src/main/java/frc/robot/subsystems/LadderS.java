@@ -4,10 +4,10 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.OI;
+//import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.commands.ladder.LadderHomeC;
+//import frc.robot.commands.ladder.LadderHomeC;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
@@ -116,7 +116,7 @@ public class LadderS extends Subsystem {
 
   public void setLadderPower(double power){
     //Positive is up, negative is down  -VERIFY
-    ladderTalonA.set( ControlMode.PercentOutput ,power);
+    ladderTalonA.set(ControlMode.PercentOutput, power);
   }
 
   public double getLadderEncoderCount() {
@@ -245,9 +245,8 @@ public class LadderS extends Subsystem {
   }
 
   public int getLadderSetPointEncoderCount(){
-    
     if(getNextLadderLevel() == 0){
-      return RobotMap.LADDER_LEVEL_ZERO;
+      return RobotMap.LADDER_LEVEL_ZERO; //cushion level
     }else if (getNextLadderLevel() == 1) {
       return RobotMap.LADDER_LEVEL_ONE;
     }
