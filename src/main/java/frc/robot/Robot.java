@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot;
 
 import edu.wpi.cscore.HttpCamera;
@@ -20,7 +13,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.commands.drive.DriveArcadeXbox2C;
 import frc.robot.commands.drive.DriveArcadeXboxC;
-import frc.robot.commands.ladder.LadderHomeC;
+//import frc.robot.commands.ladder.LadderHoldPIDC;
+//import frc.robot.commands.ladder.LadderHomeC;
+//import frc.robot.commands.ladder.LadderManualMoveC;
+import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.subsystems.*;
 
 /**
@@ -35,10 +31,13 @@ public class Robot extends TimedRobot {
   public static LadderS m_ladderS;
   public static HatchMechS m_hatchMechS;
   
+
   public static OI m_oi;
   public Command m_autonomousCommand;
   public Command m_driveCommand;
-  public Command m_homeLadderCommand;
+  public Command m_homeLadderC;
+  public Command m_ladderManualMoveC;
+  public Command m_ladderDisplayStatusC;
   public SendableChooser<Command> drive_chooser = new SendableChooser<>();
 
   public DigitalInput limitSwitch;
@@ -49,10 +48,14 @@ public class Robot extends TimedRobot {
     m_ladderS = new LadderS();
     m_hatchMechS = new HatchMechS();
     m_oi = new OI();
-
+    
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
+    
+    //Resets the ladder whenever we start the robot.
+    //m_holdLadderC.start();
+    //m_homeLadderC.start(); Disabled so we can test other things first
 
     //Resets the ladder whenever we start the robot
     //m_homeLadderCommand = new LadderHomeC();
@@ -63,12 +66,16 @@ public class Robot extends TimedRobot {
     HttpCamera limelight = new HttpCamera("limelight", "http://10.69.95.11:5800", HttpCameraKind.kMJPGStreamer);
     limelight.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     cs.startAutomaticCapture(limelight);
+    //m_ladderManualMoveC = new LadderManualMoveC();
+    m_ladderDisplayStatusC = new LadderDisplayStatusC();
   }
 
   @Override
   public void robotPeriodic() {
-    m_driveCommand = drive_chooser.getSelected();
-    m_driveCommand.start();
+    //m_driveCommand = drive_chooser.getSelected();
+    //m_driveCommand.start();
+    //m_ladderManualMoveC.start();
+    m_ladderDisplayStatusC.start();
   }
 
   @Override
@@ -86,6 +93,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.start();
     }
+    m_ladderS.resetEncoder();
   }
 
   @Override
@@ -98,6 +106,7 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    //m_ladderS.resetEncoder();
   }
 
   @Override
