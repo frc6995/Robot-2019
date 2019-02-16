@@ -49,6 +49,8 @@ public class DrivebaseS extends Subsystem {
   }
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
-    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * throttle);
+    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * 0.65);
+    //Rotation throttle disabled, uses xbox joystick X to determine speed
+    //Keep in mind for other usage of arcadeDrive
   }
 }
