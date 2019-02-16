@@ -25,6 +25,5 @@ public class OI {
         //xbox.b_runOnPressed(new LadderChangeLevelC(2));
 
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
-
     }
 }

@@ -55,7 +55,7 @@ public class LadderS extends Subsystem {
   @Override
   public void initDefaultCommand() {
     //Commented out so we can test other things first
-    setDefaultCommand(new LadderHomeC());
+   // setDefaultCommand(new LadderHomeC());
   }
 
   public LadderS() {
