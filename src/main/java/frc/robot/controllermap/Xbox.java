@@ -45,26 +45,16 @@ public class Xbox {
 
     private static int DPAD(POV pov) {
         switch (pov) {
-        case UP:
-            return 0;
-        case UP_RIGHT:
-            return 45;
-        case RIGHT:
-            return 90;
-        case DOWN_RIGHT:
-            return 135;
-        case DOWN:
-            return 180;
-        case DOWN_LEFT:
-            return 225;
-        case LEFT:
-            return 270;
-        case UP_LEFT:
-            return 315;
-        case CENTER:
-            return -1;
-        default:
-            return -1;
+        case UP: return 0;
+        case UP_RIGHT: return 45;
+        case RIGHT: return 90;
+        case DOWN_RIGHT: return 135;
+        case DOWN: return 180;
+        case DOWN_LEFT: return 225;
+        case LEFT: return 270;
+        case UP_LEFT: return 315;
+        case CENTER: return -1;
+        default: return -1;
         }
     }
 
