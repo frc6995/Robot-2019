@@ -1,17 +1,17 @@
-package frc.robot.commands;
+package frc.robot.commands.hatch;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.hatch.HatchMechToggleCG;
 import frc.robot.commands.ladder.*;
-import frc.robot.commands.limelight.AlignTargetC;
 
-
-public class AutoScoreHatchCG extends CommandGroup {
+public class HatchLevelScoreCG extends CommandGroup {
   
-  public AutoScoreHatchCG() {
+  public HatchLevelScoreCG() {
 
     //Only uncomment and test when we have merged with the auto align branch 
-    //addSequential(new AlignTargetC());
+    //addSequential(new VisionAlignCG());
+
+    //HOW WILL THE CORRECT LEVEL GET SET???? SEEMS BETTER TO KEEP VISION ALIGN SEPARATE FROM LADDER/SCORING
 
     //Move up to the set ladder level, and swap to holding
     addSequential(new LadderMovePIDC());
