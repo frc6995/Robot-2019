@@ -60,13 +60,13 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putData("Drive Control", drive_chooser);
 
-    SmartDashboard.putData("Climber Front Toggle", new ClimbFrontToggleC());
-    SmartDashboard.putData("Climber Rear Toggle", new ClimbRearToggleC());
-    SmartDashboard.putData("Climber Motors Reverse Toggle", new ClimbMotorsReverseToggleC());
-    SmartDashboard.putData("Motors Forward", new ClimbMotorsForwardC());
-    SmartDashboard.putData("Motors Reverse", new ClimbMotorsReverseC());
-    SmartDashboard.putData("Motors Stop", new ClimbMotorsStopC());
-
+    SmartDashboard.putData("Climber Front DSol Toggle", new ClimbFrontToggleC());
+    SmartDashboard.putData("Climber Rear DSol Toggle", new ClimbRearToggleC());
+    SmartDashboard.putData("Climber Motors Reverse T", new ClimbMotorsReverseToggleC());
+    SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
+    SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC());
+    SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
+    
     SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG());
 
     SmartDashboard.putString("WARNING", "Test on a bench first! It may drive very fast.");
