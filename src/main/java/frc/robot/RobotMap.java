@@ -46,8 +46,8 @@ public class RobotMap {
    */  
   public static final int LADDER_LEVEL_ZERO = 0; //The home locatoin
   public static final int LADDER_LEVEL_ONE = 0;
-  public static final int LADDER_LEVEL_TWO = 10; //change as needed
-  public static final int LADDER_LEVEL_THREE = 20; //change as needed
+  public static final int LADDER_LEVEL_TWO = 3625; //change as needed
+  public static final int LADDER_LEVEL_THREE = 7160; //change as needed
 
   public final static int BUTTON_THROTTLE_CHANGE = 2;
   public final static int BUTTON_THROTTLE_RESET = 3;
