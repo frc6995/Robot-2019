@@ -1,13 +1,16 @@
 package frc.robot.commands.ladder;
 
+import com.sun.source.tree.WhileLoopTree;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
-//Moves the ladder down to the home positoin and resets the encoders
+//Moves the ladder down to the home position and resets the encoders
 public class LadderHomeC extends Command {
   public boolean finished;
   private int i;
+  private int j;
   private boolean encodersReset;
 
   public LadderHomeC() {
@@ -20,6 +23,7 @@ public class LadderHomeC extends Command {
     encodersReset = false;
     finished = false;
     i = 0;
+    j = 0;
   }
 
   @Override
@@ -32,16 +36,25 @@ public class LadderHomeC extends Command {
       Robot.m_ladderS.setLadderPower(-0.2); //negative is up, positive is down.
     } 
     else {
-      if (Robot.m_ladderS.lowerLimitSwitchPressed() == false) {
+      j += 1;
+      if (Robot.m_ladderS.lowerLimitSwitchPressed() == false && j < 100) {
         Robot.m_ladderS.setLadderPower(0.1);
         System.out.print("Bringing ladder down");
       } 
+      else if (j >= 100) {
+        SmartDashboard.putString("Manually reset encoders", "Manually reset encoders");
+         while (!Robot.m_oi.xbox.left_stick()) {
+            Robot.m_ladderS.setLadderPower(0.1);
+         }
+         finished = true;
+         Robot.m_ladderS.resetEncoder();
+        }
       else {
         System.out.print("Reseting Encoders");    
         Robot.m_ladderS.setLadderPower(0);
         encodersReset = true;
         finished = true;
-      }      
+      }   
     }
   }
 
