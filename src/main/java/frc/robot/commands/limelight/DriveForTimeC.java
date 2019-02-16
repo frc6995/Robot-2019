@@ -7,7 +7,7 @@ public class DriveForTimeC extends Command {
   public DriveForTimeC(double time) {
     requires(Robot.m_drivebaseS);
     this.setTimeout(time);
-    this.setInterruptible(false); //This command cannot be overruled by other commands (it can still be canceled though)
+    //this.setInterruptible(false); //This command cannot be overruled by other commands (it can still be canceled though)
   }
 
   @Override
