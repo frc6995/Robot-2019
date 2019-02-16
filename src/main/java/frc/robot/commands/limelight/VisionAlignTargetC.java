@@ -43,7 +43,7 @@ public class VisionAlignTargetC extends Command {
 
   @Override
   protected void initialize() {
-    this.setInterruptible(false); //Prevents drivebase from overriding this command.
+    //this.setInterruptible(false); //Prevents drivebase from overriding this command.
     pipelineEntry.setDouble(0); //Sets pipeline to Vision Align pipeline
   }
 
