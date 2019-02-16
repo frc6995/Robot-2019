@@ -17,7 +17,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.limelight.AlignTargetC;
+import frc.robot.commands.limelight.VisionAlignTargetC;
 import frc.robot.commands.limelight.DriveForTimeC;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.commands.drive.DriveArcadeXbox2C;
@@ -57,7 +57,7 @@ public class Robot extends TimedRobot {
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
     SmartDashboard.putData("Drive for 3 Secs", new DriveForTimeC(3));
-    SmartDashboard.putData("V Align", new AlignTargetC());
+    SmartDashboard.putData("V Align", new VisionAlignTargetC());
 
     //Resets the ladder whenever we start the robot
     m_homeLadderCommand = new LadderHomeC();
