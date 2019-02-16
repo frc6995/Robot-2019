@@ -17,8 +17,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.limelight.VisionAlignTargetC;
-import frc.robot.commands.limelight.DriveForTimeC;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.commands.drive.DriveArcadeXbox2C;
 import frc.robot.commands.drive.DriveArcadeXboxC;
@@ -33,11 +31,10 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static HatchMechS m_hatchMechS;
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
+  public static HatchMechS m_hatchMechS;
   
-
   public static OI m_oi;
   public Command m_autonomousCommand;
   public Command m_driveCommand;
@@ -56,13 +53,12 @@ public class Robot extends TimedRobot {
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
     SmartDashboard.putData("Drive Control", drive_chooser);
-    SmartDashboard.putData("Drive for 3 Secs", new DriveForTimeC(3));
-    SmartDashboard.putData("V Align", new VisionAlignTargetC());
 
     //Resets the ladder whenever we start the robot
-    m_homeLadderCommand = new LadderHomeC();
-    m_homeLadderCommand.start();
+    //m_homeLadderCommand = new LadderHomeC();
+    //m_homeLadderCommand.start();
 
+    //Limelight setup to use camera
     CameraServer cs = CameraServer.getInstance();
     HttpCamera limelight = new HttpCamera("limelight", "http://10.69.95.11:5800", HttpCameraKind.kMJPGStreamer);
     limelight.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);

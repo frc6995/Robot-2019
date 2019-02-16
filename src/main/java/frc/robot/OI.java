@@ -3,7 +3,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.limelight.VisionAlignTargetC;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.HatchMechToggleCG;
 
 public class OI {
@@ -16,5 +17,10 @@ public class OI {
 
     public OI() {
         hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
+        xbox.x_toggleOnPress(new VisionScoreCG());
+
+        //For testing purposes
+        SmartDashboard.putData("Drive for 3 Secs", new DriveForTimeC(3));
+        SmartDashboard.putData("Vision Align", new VisionAlignTargetC());
     }
 }
