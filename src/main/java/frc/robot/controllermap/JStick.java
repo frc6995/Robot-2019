@@ -28,6 +28,7 @@ public class JStick {
     private static POVButton hat_up_right;
     private static POVButton hat_down_left;
     private static POVButton hat_down_right;
+    private static POVButton hat_center;
 
     private enum POV {
         UP, DOWN, LEFT, RIGHT, UP_RIGHT, UP_LEFT, DOWN_LEFT, DOWN_RIGHT, CENTER;
@@ -73,6 +74,7 @@ public class JStick {
     private final static int HAT_UP_RIGHT = HAT(POV.UP_RIGHT);
     private final static int HAT_DOWN_LEFT = HAT(POV.DOWN_LEFT);
     private final static int HAT_DOWN_RIGHT = HAT(POV.DOWN_RIGHT);
+    private final static int HAT_CENTER = HAT(POV.CENTER);
 
     public JStick(int port) {
         joystick = new Joystick(port);
@@ -96,6 +98,7 @@ public class JStick {
         hat_up_right = new POVButton(joystick, HAT_UP_RIGHT);
         hat_down_left = new POVButton(joystick, HAT_DOWN_LEFT);
         hat_down_right = new POVButton(joystick, HAT_DOWN_RIGHT);
+        hat_center = new POVButton(joystick, HAT_CENTER);
     }
 
     public double stick_x() {
@@ -588,5 +591,29 @@ public class JStick {
     }
     public void hat_down_right_runWhileHeld(Command command) {
         hat_down_right.whileHeld(command);
+    }
+
+    public boolean hat_center() {
+        if(hat_center.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public void hat_center_runOnPress(Command command) {
+        hat_center.whenPressed(command);
+    }
+    public void hat_center_runOnRelease(Command command) {
+        hat_center.whenReleased(command);
+    }
+    public void hat_center_toggleOnPress(Command command) {
+        hat_center.toggleWhenPressed(command);
+    }
+    public void hat_center_cancelOnPress(Command command) {
+        hat_center.cancelWhenPressed(command);
+    }
+    public void hat_center_runWhileHeld(Command command) {
+        hat_center.whileHeld(command);
     }
 }
