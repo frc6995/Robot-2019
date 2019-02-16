@@ -36,7 +36,6 @@ public class LadderHomeC extends Command {
         Robot.m_ladderS.resetEncoder();        
         Robot.m_ladderS.setLadderPower(0);
         encodersReset = true;
-        //finished = true;
         end();
       }      
     }
