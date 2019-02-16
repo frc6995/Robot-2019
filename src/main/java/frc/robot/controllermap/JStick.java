@@ -2,6 +2,7 @@ package frc.robot.controllermap;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.POVButton;
 
 public class JStick {
     private static Joystick joystick;
@@ -17,6 +18,15 @@ public class JStick {
     private static JoystickButton ten_leftMiddleRight;
     private static JoystickButton eleven_leftBottomLeft;
     private static JoystickButton twelve_leftBottomRIght;
+
+    private static POVButton dpad_up;
+    private static POVButton dpad_down;
+    private static POVButton dpad_left;
+    private static POVButton dpad_right;
+    private static POVButton dpad_up_left;
+    private static POVButton dpad_up_right;
+    private static POVButton dpad_down_left;
+    private static POVButton dpad_down_right;
 
     private enum POV {
         UP, DOWN, LEFT, RIGHT, UP_RIGHT, UP_LEFT, DOWN_LEFT, DOWN_RIGHT, CENTER;
@@ -47,8 +57,25 @@ public class JStick {
         }
     }
 
+    private final static int BUTTON_1 = 1;
+    private final static int BUTTON_2 = 2;
+    private final static int BUTTON_3 = 3;
+    private final static int BUTTON_4 = 4;
+    private final static int BUTTON_5 = 5;
+    private final static int BUTTON_6 = 6;
+    private final static int BUTTON_7 = 7;
+    private final static int BUTTON_8 = 8;
+    private final static int BUTTON_9 = 9;
+    private final static int BUTTON_10 = 10;
+    private final static int BUTTON_11 = 11;
+    private final static int BUTTON_12 = 12;
+
+    private final static int AXIS_X = 1;
+    private final static int AXIS_Y = 2;
+
     public JStick(int port) {
         joystick = new Joystick(port);
+        one_trigger = new JoystickButton(joystick, BUTTON_1);
     }
 
 }
