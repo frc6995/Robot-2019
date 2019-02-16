@@ -33,24 +33,19 @@ public class LadderHomeWithoutLSwitchC extends Command {
           finished = true;
           end();
         }
-
-
     }
-
-
-
-
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return finished;
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
+    i = 0;
+    j = 0;
+    finished = false;
   }
 
   // Called when another command which requires one or more of the same
