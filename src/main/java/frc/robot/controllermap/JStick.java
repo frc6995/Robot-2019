@@ -72,6 +72,7 @@ public class JStick {
 
     private final static int AXIS_X = 1;
     private final static int AXIS_Y = 2;
+    private final static int AXIS_THROT = 3;
 
     public JStick(int port) {
         joystick = new Joystick(port);
