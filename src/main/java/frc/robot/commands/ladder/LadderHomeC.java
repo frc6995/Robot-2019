@@ -6,9 +6,8 @@ import frc.robot.Robot;
 
 //Moves the ladder down to the home positoin and resets the encoders
 public class LadderHomeC extends Command {
-  public boolean finished = false;
-
-  private int i = 0;
+  public boolean finished;
+  private int i;
   private boolean encodersReset;
 
   public LadderHomeC() {
@@ -19,7 +18,8 @@ public class LadderHomeC extends Command {
   @Override
   protected void initialize() {
     encodersReset = false;
-
+    finished = false;
+    i = 0;
   }
 
   @Override
@@ -27,7 +27,6 @@ public class LadderHomeC extends Command {
     //Move ladder slightly up.
     SmartDashboard.putNumber("i", i);
     SmartDashboard.putBoolean("Enc reset", encodersReset);
-
     if (i < 20) {
       i += 1;
       Robot.m_ladderS.setLadderPower(-0.2); //negative is up, positive is down.
@@ -38,12 +37,10 @@ public class LadderHomeC extends Command {
         System.out.print("Bringing ladder down");
       } 
       else {
-        System.out.print("Reseting Encoders");
-        Robot.m_ladderS.resetEncoder();        
+        System.out.print("Reseting Encoders");    
         Robot.m_ladderS.setLadderPower(0);
         encodersReset = true;
         finished = true;
-        end();
       }      
     }
   }
@@ -55,8 +52,10 @@ public class LadderHomeC extends Command {
 
   @Override
   protected void end() {
-    i = 0;
+    Robot.m_ladderS.resetEncoder();
     encodersReset = false;
+    finished = false;
+    i = 0;
   }
 
   @Override
