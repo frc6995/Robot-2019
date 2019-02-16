@@ -3,139 +3,232 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import frc.robot.OI;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.commands.ladder.LadderHomeC;
+//import frc.robot.commands.ladder.LadderHomeC;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-public class LadderS extends Subsystem {
-  /*
-  if (Robot.m_oi.xbox.getBumperPressed(Hand.kRight)) {
-    Robot.m_ladderS.SetNextLadderLevel(1);
-  } // if right bumper is pressed, set the next ladder level to 1.
-  else if (Robot.m_oi.xbox.getBumperPressed(Hand.kLeft)) {
-    Robot.m_ladderS.SetNextLadderLevel(2);
-  } //if left bumper is pressed, set the next ladder level to 2.
-  if (Robot.m_oi.xbox.getTriggerAxis(Hand.kLeft) <= 0.6) {
-    Robot.m_ladderS.SetNextLadderLevel(3);
-  }
-  */
 
+// - Make sure we know what units the talon is using for its set point/error
+// - Make the encoder up when the ladder goes up
+// - Make the ladder go up when the motor goes forward (positive power)
+// - 
+
+public class LadderS extends Subsystem {
+
+  //TalonA is left and has the encoder plugged into it, TalonB is right
   private WPI_TalonSRX ladderTalonA = null;
   private WPI_TalonSRX ladderTalonB = null;
 
   private DigitalInput ladderBottomLimitSwitch;
   private DigitalInput ladderTopLimitSwitch;
 
-  private int currentLadderLevel = 1; //0 = home level, 1 = rocket level 1, 2 = rocket level 2, 3 = rocket level 3.
-  private int nextLadderLevel = 1;
+  //0 = home level, 1 = rocket level 1, 2 = rocket level 2, 3 = rocket level 3.
+  private int currentLadderLevel = 0; 
+  private int nextLadderLevel = 0;
 
-  //The range where we will consider ourselves "at" the set point
-  private int setPointRange = 10;
+  //The range in encoder counts where we will consider ourselves "at" the set point
+  private int setPointRange = 200;
+
   //Counts how many loops we have been within the ladder set point
   private int countWithinSetPoint = 0;
   
-  // -- PID constants --
-  private boolean ladderPIDActive = false;
-  //Preportoinal constant
-  private double ladderKp = 0.01;
+  //PID "constants"
+  private boolean ladderPIDActive = true;
+  //Proportional constant
+  private double ladderKp = 0.35;
   //Integral constant
-  private double ladderKi = 0.0;
-  //Sum error
-  private double sumError = 0;
-  //Threshold when we turn the integral on
-  private int iThreshold = 50;
+  private double ladderKi = 0;
+  //Derivative constant
+  private double ladderKd = 0.0;
   //Feedforward = power needed to hold the ladder in a constant spot
-  private double ladderKf = 0.2;
+  private double ladderKf = 0;
+
+  //The talon PID slot we are using, this should not change as we 
+  public static final int LADDER_PID_SLOT = 0;
 
   @Override
   public void initDefaultCommand() {
-   //setDefaultCommand(new LadderHomeC());
+    //Commented out so we can test other things first
+    //setDefaultCommand(new LadderHomeC());
   }
 
   public LadderS() {
     ladderTalonA = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_A);  
     ladderTalonB = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_B);    
+
+    ladderTalonA.setNeutralMode(NeutralMode.Brake);
+    ladderTalonB.setNeutralMode(NeutralMode.Brake);
+
+    //Sensor reverse
+    ladderTalonA.setSensorPhase(false);
+
+    //Motor reverse
+    ladderTalonA.setInverted(true);
+    ladderTalonB.setInverted(true);
+
+    //B follows A
+    ladderTalonB.follow(ladderTalonA);
     
+    //Selects the Quad encoder as the feedback sensor
+    ladderTalonA.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    
+    //Makes sure we are not multiplying the counts by anything
+    ladderTalonA.configSelectedFeedbackCoefficient(1.0);
+
+    //Doesn't apply to voltage control
+    ladderTalonA.configForwardSoftLimitThreshold(500);
+    ladderTalonA.configForwardSoftLimitEnable(true);
+
+    //Configs P, I, D and F using the constants
+    ladderTalonA.config_kP(LADDER_PID_SLOT, ladderKp);
+    ladderTalonA.config_kI(LADDER_PID_SLOT, ladderKi);
+    ladderTalonA.config_kD(LADDER_PID_SLOT, ladderKd);
+    ladderTalonA.config_kF(LADDER_PID_SLOT, ladderKf);
+
+    //The zone where the integral turns on
+    ladderTalonA.config_IntegralZone(LADDER_PID_SLOT, 500);
+
+    //Makes it so we don't start pushing the ladder at full power immediately, takes 0.5 seconds to ramp to full
+    ladderTalonA.configClosedloopRamp(0.5);
+
+    //Sets the max power that the PID can apply
+    ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, 0.4);
+
+    //Selects the PID profile slot
+    ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
+
     ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
     ladderTopLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_TOP);
+
+    resetEncoder();
+
+    //Overides any other commands and makes sure the ladder inits not moving
+    setLadderPower(0);
+    ladderTalonA.neutralOutput();
   }
 
   public void setLadderPower(double power){
-    //Positive is up, negative is down
-    ladderTalonA.set(power);
-    ladderTalonB.set(power);
+    //Positive is up, negative is down  -VERIFY
+    ladderTalonA.set(ControlMode.PercentOutput, power);
   }
 
   public double getLadderEncoderCount() {
-    //Positive us up, negative is down
+    //Positive us up, negative is down  -VERIFY
     return (ladderTalonA.getSensorCollection().getQuadraturePosition());  
   }
 
-  public int getError(){ /*I don't think this will work. 
-  getCurrentLadderLevel() returns either 1, 2, or 3, and the ladder levels are in increments of 100.
-  We will need to convert the current ladder level into that ladder level's encoder count and then subtract.
-  I created a getCurrentLadderLevelEncoderCount() function, and added it in comments below. ~JoeyFabel
-  */
-    if (nextLadderLevel == 1) {
-      return (getCurrentLadderLevel() - RobotMap.LADDER_LEVEL_ONE);
-      //return (getCurrentLadderLevelEncoderCount() - RobotMap.LADDER_LEVEL_ONE);
-    }
-    else if (nextLadderLevel == 2) {
-      return (getCurrentLadderLevel() - RobotMap.LADDER_LEVEL_TWO);
-      //return (getCurrentLadderLevelEncoderCount() - RobotMap.LADDER_LEVEL_TWO);
-    }
-    else if (nextLadderLevel == 3) {
-      return (getCurrentLadderLevel() - RobotMap.LADDER_LEVEL_THREE);
-      //return (getCurrentLadderLevelEncoderCount() - RobotMap.LADDER_LEVEL_THREE);
-    }
-    else {
-      return 0;
-    }
+  public int getError(){
+    return ladderTalonA.getClosedLoopError();
   }
 
   public void enablePID(){
     ladderPIDActive = true;
+    //ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
   }
 
   public void disablePID(){
     ladderPIDActive = false;
+    //Running a "set power" command will ("should") stop any active position control
+    setLadderPower(0);
   }
 
   public void runPID(){
-    if(ladderPIDActive){
-      //Retrives the error based on the current set point
-      int error = getError();
+    //Tuning/testing outputs
+    SmartDashboard.putNumber("Encoder pos", ladderTalonA.getSensorCollection().getQuadraturePosition());
+    SmartDashboard.putNumber("Error", getError());
+    SmartDashboard.putBoolean("IsAtSetPoint", isAtSetPoint());
+    SmartDashboard.putNumber("Power", ladderTalonA.getMotorOutputPercent());
+    SmartDashboard.putNumber("Talon Set point", ladderTalonA.getClosedLoopTarget());
+    SmartDashboard.putNumber("Code Set point", getLadderSetPointEncoderCount());
+    SmartDashboard.putNumber("Next ladder level", nextLadderLevel);
+    SmartDashboard.putNumber("Integral sum", ladderTalonA.getIntegralAccumulator());
+    SmartDashboard.putNumber("Derivative", ladderTalonA.getErrorDerivative());
+    SmartDashboard.putNumber("Ladder level", getNextLadderLevel());
+
+    //   !Safety code for testing!
+    SmartDashboard.putBoolean("Enabled", Robot.m_oi.xbox.a());
+    if(Robot.m_oi.xbox.a()){
+      ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
+    }else{
       
-      //                P term                  I term        F term
-      double power = error * ladderKp + sumError * ladderKi + ladderKf;
-      
-      //Only "turns on" the integral when we need it
-      if(Math.abs(error)<iThreshold){
-        //Sums the error
-        sumError += error;
-      }else{
-        //Resets the sumError term when we don't need it
-        sumError = 0;
+      //Tuning code
+
+      if(SmartDashboard.getNumber("kpL", Integer.MAX_VALUE) == Integer.MAX_VALUE){ //make sure kpL is on smartdashboard 
+        SmartDashboard.putNumber("kpL", ladderKp);
+      }
+      else{
+        ladderKp = SmartDashboard.getNumber("kpL", ladderKp);
+        ladderTalonA.config_kP(LADDER_PID_SLOT, ladderKp);
+      }
+
+      if(SmartDashboard.getNumber("kiL", Integer.MAX_VALUE) == Integer.MAX_VALUE){ //make sure kpAim is on smartdashboard 
+        SmartDashboard.putNumber("kiL", ladderKi);
+      }
+      else{
+        ladderKi = SmartDashboard.getNumber("kiL", ladderKi);
+      ladderTalonA.config_kI(LADDER_PID_SLOT, ladderKi);
+      }
+
+      if(SmartDashboard.getNumber("kdL", Integer.MAX_VALUE) == Integer.MAX_VALUE){ //make sure kpAim is on smartdashboard 
+        SmartDashboard.putNumber("kdL", ladderKd);
+      }
+      else{
+        ladderKd = SmartDashboard.getNumber("kdL", ladderKd);
+        ladderTalonA.config_kD(LADDER_PID_SLOT, ladderKd);
+      }
+
+      if(SmartDashboard.getNumber("kfL", Integer.MAX_VALUE) == Integer.MAX_VALUE){ //make sure kpAim is on smartdashboard 
+        SmartDashboard.putNumber("kfL", ladderKf);
+      }
+      else{
+        ladderKf = SmartDashboard.getNumber("kfL", ladderKf);
+        ladderTalonA.config_kF(LADDER_PID_SLOT, ladderKf);
       }
       
-      setLadderPower(power);
-    }else{
-      setLadderPower(0);
+      ladderTalonA.set(ControlMode.PercentOutput,0);
     }
-
+    
     //If we are within the set point range add 1 to countWithinSetPoint, else set it to 0
     if(Math.abs(getError())<setPointRange){
       countWithinSetPoint++;
     }else{
-      countWithinSetPoint = 0;
+     countWithinSetPoint = 0;
     }
   }
   
+  public void displayStatus(){
+    String ladderStatus = "null";
+
+    if(isAtSetPoint() && ladderPIDActive){
+      //Example: "Holding at level 3."
+      ladderStatus = "Holding at level: " + getCurrentLadderLevel() + ".";
+    }else if(!isAtSetPoint() && ladderPIDActive){
+      //Example: "Moving down to level 0."
+      ladderStatus = "Moving ";
+      if(ladderTalonA.getMotorOutputPercent() > 0){
+        ladderStatus += "up ";
+      }else{
+        ladderStatus += "down ";
+      }
+      ladderStatus += "to level " + getNextLadderLevel() + ".";
+    }else if(!ladderPIDActive){
+      ladderStatus = "Idle";
+    }
+
+    SmartDashboard.putString("Ladder status", ladderStatus);
+  }
+
   public boolean isAtSetPoint(){
-    //If we have been within our range for at least 20 cycles (1 second... I think) return true
-    if(countWithinSetPoint > 20){
-      //Resets countWithinSetPoint so next time we start at 0, we might have to make this its own command
+    //If we have been within our range for at least 50 cycles (1 second), return true
+    if(countWithinSetPoint > 50){
+      currentLadderLevel = nextLadderLevel;
       countWithinSetPoint = 0;
       return true;
     }else{
@@ -150,14 +243,17 @@ public class LadderS extends Subsystem {
   public int getCurrentLadderLevel(){
     return currentLadderLevel;
   }
-  public int getCurrentLadderLevelEncoderCount(){
-    if (getCurrentLadderLevel() == 1) {
+
+  public int getLadderSetPointEncoderCount(){
+    if(getNextLadderLevel() == 0){
+      return RobotMap.LADDER_LEVEL_ZERO; //cushion level
+    }else if (getNextLadderLevel() == 1) {
       return RobotMap.LADDER_LEVEL_ONE;
     }
-    else if (getCurrentLadderLevel() == 2) {
+    else if (getNextLadderLevel() == 2) {
       return RobotMap.LADDER_LEVEL_TWO;
     }
-    else if (getCurrentLadderLevel() == 3) {
+    else if (getNextLadderLevel() == 3) {
       return RobotMap.LADDER_LEVEL_THREE;
     }
     else {
@@ -184,5 +280,6 @@ public class LadderS extends Subsystem {
 
   public void resetEncoder() {
     ladderTalonA.getSensorCollection().setQuadraturePosition(0, 500);
+    ladderTalonA.setSelectedSensorPosition(0);
   }
 }
