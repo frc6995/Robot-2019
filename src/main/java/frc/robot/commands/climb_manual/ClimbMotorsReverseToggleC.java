@@ -19,7 +19,7 @@ public class ClimbMotorsReverseToggleC extends Command {
   @Override
   protected void execute() {
     Robot.m_ClimbCrawlerS.motorReverse();
-    Robot.m_drivebaseS.arcadeDrive(-0.1, 0, 1); //might have to switch to visionDrive.
+    Robot.m_drivebaseS.arcadeDrive(-0.1, 0, 1); 
   }
 
   @Override
@@ -30,7 +30,7 @@ public class ClimbMotorsReverseToggleC extends Command {
   @Override
   protected void end() {
     Robot.m_ClimbCrawlerS.motorStop();
-    Robot.m_drivebaseS.arcadeDrive(0, 0, 0); //probably has to switch to visionDrive
+    Robot.m_drivebaseS.arcadeDrive(0, 0, 0); 
   }
 
   @Override

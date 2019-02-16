@@ -17,8 +17,6 @@ import frc.robot.commands.drive.DriveArcadeXbox2C;
 import frc.robot.commands.drive.DriveArcadeXboxC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.subsystems.*;
-import frc.robot.commands.climb_manual.*;
-import frc.robot.commands.climb.ClimbPlatformCG;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,9 +26,9 @@ import frc.robot.commands.climb.ClimbPlatformCG;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static HatchMechS m_hatchMechS;
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
+  public static HatchMechS m_hatchMechS;
   public static ClimbFrontS m_ClimbFrontS;
   public static ClimbRearS m_ClimbRearS;
   public static ClimbCrawlerS m_ClimbCrawlerS;
@@ -53,6 +51,7 @@ public class Robot extends TimedRobot {
     m_ClimbFrontS = new ClimbFrontS();
     m_ClimbRearS = new ClimbRearS();
     m_ClimbCrawlerS = new ClimbCrawlerS();
+
     m_oi = new OI();
 
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
@@ -60,20 +59,9 @@ public class Robot extends TimedRobot {
 
     SmartDashboard.putData("Drive Control", drive_chooser);
 
-    SmartDashboard.putData("Climber Front DSol Toggle", new ClimbFrontToggleC());
-    SmartDashboard.putData("Climber Rear DSol Toggle", new ClimbRearToggleC());
-    SmartDashboard.putData("Climber Motors Reverse T", new ClimbMotorsReverseToggleC());
-    SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
-    SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC());
-    SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
-    
-    SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG());
-
-    SmartDashboard.putString("WARNING", "Test on a bench first! It may drive very fast.");
-
     //Resets the ladder whenever we start the robot
-    m_homeLadderCommand = new LadderHomeC();
-    m_homeLadderCommand.start();
+    //m_homeLadderCommand = new LadderHomeC();
+    //m_homeLadderCommand.start();
   }
 
   @Override
