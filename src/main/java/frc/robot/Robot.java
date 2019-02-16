@@ -63,7 +63,13 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData("Climber Front Toggle", new ClimbFrontToggleC());
     SmartDashboard.putData("Climber Rear Toggle", new ClimbRearToggleC());
     SmartDashboard.putData("Climber Motors Reverse Toggle", new ClimbMotorsReverseToggleC());
+    SmartDashboard.putData("Motors Forward", new ClimbMotorsForwardC());
+    SmartDashboard.putData("Motors Reverse", new ClimbMotorsReverseC());
+    SmartDashboard.putData("Motors Stop", new ClimbMotorsStopC());
+
     SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG());
+
+    SmartDashboard.putString("WARNING", "Test on a bench first! It may drive very fast.");
 
     //Resets the ladder whenever we start the robot
     m_homeLadderCommand = new LadderHomeC();
