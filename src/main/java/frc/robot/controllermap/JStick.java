@@ -407,4 +407,76 @@ public class JStick {
     public void button_12_runWhileHeld(Command command) {
         twelve_leftBottomRIght.whileHeld(command);
     }
+
+    public boolean hat_up() {
+        if(hat_up.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean hat_down() {
+        if(hat_down.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean hat_left() {
+        if(hat_left.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean hat_right() {
+        if(hat_right.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean hat_up_left() {
+        if(hat_up_left.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean hat_up_right() {
+        if(hat_up_right.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean hat_down_left() {
+        if(hat_down_left.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean hat_down_right() {
+        if(hat_down_right.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
