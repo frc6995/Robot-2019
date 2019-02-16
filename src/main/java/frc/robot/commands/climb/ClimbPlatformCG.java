@@ -9,7 +9,7 @@ public class ClimbPlatformCG extends CommandGroup {
   public ClimbPlatformCG() {
     addParallel(new ClimbFrontLiftC());
     addSequential(new ClimbRearLiftC());
-    addSequential(new ClimbFrontLimitLowerC());
-    addSequential(new ClimbRearLimitLowerC());
+    addSequential(new ClimbRearLimitLowerC()); // The robot is backing onto the platforms, so rear first.
+    addSequential(new ClimbFrontLimitLowerC()); // The motors are on the front cylinders
   }
 }

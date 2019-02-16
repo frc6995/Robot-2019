@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Spark;
 import frc.robot.RobotMap;
 
 public class ClimbCrawlerS extends Subsystem {
+
   public Spark climbMotor = null;
 
   public ClimbCrawlerS() {
@@ -15,6 +16,8 @@ public class ClimbCrawlerS extends Subsystem {
   public void initDefaultCommand() {
   }
 
+  // These are defined here so motors are not set in the commands
+
   public void motorForward() {
     climbMotor.set(0.5);
   }
@@ -24,6 +27,7 @@ public class ClimbCrawlerS extends Subsystem {
   }
 
   public void motorReverse() {
+    // In this case, the motor will have to reverse onto the platforms, see NOTE in FrontS.
     climbMotor.set(-0.5);
   }
 }

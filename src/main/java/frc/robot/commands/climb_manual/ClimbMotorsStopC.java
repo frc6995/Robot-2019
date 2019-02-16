@@ -3,6 +3,8 @@ package frc.robot.commands.climb_manual;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+// Possibly can be used as an override for the command group as well as for ForwardC/ReverseC
+
 public class ClimbMotorsStopC extends Command {
   public ClimbMotorsStopC() {
     requires(Robot.m_ClimbCrawlerS);

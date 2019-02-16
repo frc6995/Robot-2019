@@ -3,6 +3,8 @@ package frc.robot.commands.climb;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot; 
 
+//This just lifts sets the front solenoids to forward (up).
+
 public class ClimbFrontLiftC extends Command {
   public ClimbFrontLiftC() {
     requires (Robot.m_ClimbFrontS);

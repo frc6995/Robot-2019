@@ -3,6 +3,8 @@ package frc.robot.commands.climb_manual;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+// Used entirely for testing, not even backup. Simply turns the motors on. Use MotorsStopC to end.
+
 public class ClimbMotorsReverseC extends Command {
   public ClimbMotorsReverseC() {
     requires(Robot.m_ClimbCrawlerS);

@@ -15,9 +15,9 @@ public class ClimbRearLimitLowerC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbCrawlerS.motorForward();
+    Robot.m_ClimbCrawlerS.motorReverse();
     while(Robot.m_ClimbRearS.cSwitchRear() == true){
-      Robot.m_drivebaseS.arcadeDrive(0.1, 0, 1);//probably has to switch to visionDrive
+      Robot.m_drivebaseS.arcadeDrive(-0.1, 0, 1);// may need negative throttle instead of move speed
     }
     Robot.m_ClimbCrawlerS.motorStop();
     Robot.m_ClimbRearS.retractRear();
