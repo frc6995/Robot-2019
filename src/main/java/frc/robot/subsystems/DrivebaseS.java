@@ -48,7 +48,7 @@ public class DrivebaseS extends Subsystem {
   }
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
-    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed);
+    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * throttle);
   }
 
   //visionDrive added for VisionAlign. It has no motor deadzones.
