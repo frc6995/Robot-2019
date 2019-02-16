@@ -129,22 +129,6 @@ public class Xbox {
         return xbox.getRawAxis(AXIS_LEFT_STICK_X);
     }
 
-    public boolean left_stick_x_up() {
-        if(this.left_stick_x() >= 0.9) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean left_stick_x_down() {
-        if(this.left_stick_x() <= -0.9) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     /**
      * Returns the Y axis value from the Xbox's left stick.
      * 
@@ -152,22 +136,6 @@ public class Xbox {
      */
     public double left_stick_y() {
         return xbox.getRawAxis(AXIS_LEFT_STICK_Y);
-    }
-    
-    public boolean left_stick_y_right() {
-        if(this.left_stick_y() >= 0.9) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean left_stick_y_left() {
-        if(this.left_stick_y() <= -0.9) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -179,21 +147,6 @@ public class Xbox {
         return xbox.getRawAxis(AXIS_RIGHT_STICK_X);
     }
 
-    public boolean right_stick_x_up() {
-        if(this.right_stick_x() >= 0.9) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean right_stick_x_down() {
-        if(this.right_stick_x() <= -0.9) {
-            return true;
-        } else {
-            return false;
-        }
-    }
     /**
      * Returns the Y axis value from the Xbox's right stick.
      * 
@@ -203,21 +156,6 @@ public class Xbox {
         return xbox.getRawAxis(AXIS_RIGHT_STICK_Y);
     }
 
-    public boolean right_stick_y_right() {
-        if(this.right_stick_y() >= 0.9) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean right_stick_y_left() {
-        if(this.right_stick_y() <= -0.9) {
-            return true;
-        } else {
-            return false;
-        }
-    }
     /**
      * Returns the value from the Xbox's right trigger.
      * 
@@ -225,14 +163,6 @@ public class Xbox {
      */
     public double right_trigger() {
         return xbox.getRawAxis(AXIS_RIGHT_TRIGGER);
-    }
-
-    public boolean right_trigger_in() {
-        if(this.right_trigger() >= 0.9) {
-            return true;
-        } else {
-            return false;
-        }
     }
 
     /**
@@ -243,14 +173,7 @@ public class Xbox {
     public double left_trigger() {
         return xbox.getRawAxis(AXIS_LEFT_TRIGGER);
     }
-
-    public boolean left_trigger_in() {
-        if(this.left_trigger() >= 0.9) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    
     /**
      * BUTTONS
      */
