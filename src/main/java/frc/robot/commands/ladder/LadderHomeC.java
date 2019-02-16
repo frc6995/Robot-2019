@@ -1,11 +1,13 @@
 package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
-//Moves the ladder down to the home positoin and resets the encoders
+//Moves the ladder down to the home position and resets the encoders
 public class LadderHomeC extends Command {
   public boolean finished = false;
+  private boolean ladderDown = false;
 
   public LadderHomeC() {
     requires(Robot.m_ladderS);
@@ -13,24 +15,25 @@ public class LadderHomeC extends Command {
 
   @Override
   protected void initialize() {
-    
   }
 
   @Override
   protected void execute() {
-    //Move ladder slightly up.
-    while(Robot.m_ladderS.lowerLimitSwitchPressed() == false){
-      Robot.m_ladderS.setLadderPower(0.3);
-    }
+    SmartDashboard.putBoolean("Ladder At Bottom\n(Was Ladder Up)", ladderDown);
 
-    //Move ladder down while the limit switch is not closed.
-    while (Robot.m_ladderS.lowerLimitSwitchPressed()) {
-      Robot.m_ladderS.setLadderPower(-0.3);
+    //Move up while the limit switch is pressed, and the ladder down
+    if(Robot.m_ladderS.lowerLimitSwitchPressed() && !ladderDown){
+      Robot.m_ladderS.setLadderPower(0.3);
+    //Move down when the ladder is up
+    }else if(!Robot.m_ladderS.lowerLimitSwitchPressed()){
+      ladderDown = true;
+      Robot.m_ladderS.setLadderPower(-0.1);
+    //When the limit switched gets pressed while the ladder is up, stop the ladder, reset the encoders and end.
+    }else if(Robot.m_ladderS.lowerLimitSwitchPressed() && ladderDown){
+      Robot.m_ladderS.setLadderPower(0);
+      Robot.m_ladderS.resetEncoder();
+      finished = true;
     }
-    
-    Robot.m_ladderS.resetEncoder();
-    
-    finished = true;
   }
 
   @Override

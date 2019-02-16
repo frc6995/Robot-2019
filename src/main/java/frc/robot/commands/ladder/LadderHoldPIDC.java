@@ -3,15 +3,15 @@ package frc.robot.commands.ladder;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-//Holds the ladder at a PID value until interupted by a RunLadderPID command. 
+//Holds the ladder at a PID value until interrupted by a RunLadderPID command. 
 //Warning: Will not finish on its own!
-//See RunLadderPID for how to run the ladder to a position, and for how I think the command group will work
+//See RunLadderPID for how to run the ladder to a position, and for how a command group will work
 
 public class LadderHoldPIDC extends Command {
   public LadderHoldPIDC() {
     requires(Robot.m_ladderS);
     
-    this.setInterruptible(true);
+    this.setInterruptible(false);
 
     Robot.m_ladderS.enablePID();
   }
