@@ -416,6 +416,21 @@ public class JStick {
             return false;
         }
     }
+    public void hat_up_runOnPress(Command command) {
+        hat_up.whenPressed(command);
+    }
+    public void hat_up_runOnRelease(Command command) {
+        hat_up.whenReleased(command);
+    }
+    public void hat_up_toggleOnPress(Command command) {
+        hat_up.toggleWhenPressed(command);
+    }
+    public void hat_up_cancelOnPress(Command command) {
+        hat_up.cancelWhenPressed(command);
+    }
+    public void hat_up_runWhileHeld(Command command) {
+        hat_up.whileHeld(command);
+    }
 
     public boolean hat_down() {
         if(hat_down.get()) {
@@ -424,6 +439,21 @@ public class JStick {
         else {
             return false;
         }
+    }
+    public void hat_down_runOnPress(Command command) {
+        hat_down.whenPressed(command);
+    }
+    public void hat_down_runOnRelease(Command command) {
+        hat_down.whenReleased(command);
+    }
+    public void hat_down_toggleOnPress(Command command) {
+        hat_down.toggleWhenPressed(command);
+    }
+    public void hat_down_cancelOnPress(Command command) {
+        hat_down.cancelWhenPressed(command);
+    }
+    public void hat_down_runWhileHeld(Command command) {
+        hat_down.whileHeld(command);
     }
 
     public boolean hat_left() {
@@ -434,6 +464,21 @@ public class JStick {
             return false;
         }
     }
+    public void hat_left_runOnPress(Command command) {
+        hat_left.whenPressed(command);
+    }
+    public void hat_left_runOnRelease(Command command) {
+        hat_left.whenReleased(command);
+    }
+    public void hat_left_toggleOnPress(Command command) {
+        hat_left.toggleWhenPressed(command);
+    }
+    public void hat_left_cancelOnPress(Command command) {
+        hat_left.cancelWhenPressed(command);
+    }
+    public void hat_left_runWhileHeld(Command command) {
+        hat_left.whileHeld(command);
+    }
 
     public boolean hat_right() {
         if(hat_right.get()) {
@@ -442,6 +487,21 @@ public class JStick {
         else {
             return false;
         }
+    }
+    public void hat_right_runOnPress(Command command) {
+        hat_right.whenPressed(command);
+    }
+    public void hat_right_runOnRelease(Command command) {
+        hat_right.whenReleased(command);
+    }
+    public void hat_right_toggleOnPress(Command command) {
+        hat_right.toggleWhenPressed(command);
+    }
+    public void hat_right_cancelOnPress(Command command) {
+        hat_right.cancelWhenPressed(command);
+    }
+    public void hat_right_runWhileHeld(Command command) {
+        hat_right.whileHeld(command);
     }
 
     public boolean hat_up_left() {
@@ -452,6 +512,21 @@ public class JStick {
             return false;
         }
     }
+    public void hat_up_left_runOnPress(Command command) {
+        hat_up_left.whenPressed(command);
+    }
+    public void hat_up_left_runOnRelease(Command command) {
+        hat_up_left.whenReleased(command);
+    }
+    public void hat_up_left_toggleOnPress(Command command) {
+        hat_up_left.toggleWhenPressed(command);
+    }
+    public void hat_up_left_cancelOnPress(Command command) {
+        hat_up_left.cancelWhenPressed(command);
+    }
+    public void hat_up_left_runWhileHeld(Command command) {
+        hat_up_left.whileHeld(command);
+    }
 
     public boolean hat_up_right() {
         if(hat_up_right.get()) {
@@ -460,6 +535,21 @@ public class JStick {
         else {
             return false;
         }
+    }
+    public void hat_up_right_runOnPress(Command command) {
+        hat_up_right.whenPressed(command);
+    }
+    public void hat_up_right_runOnRelease(Command command) {
+        hat_up_right.whenReleased(command);
+    }
+    public void hat_up_right_toggleOnPress(Command command) {
+        hat_up_right.toggleWhenPressed(command);
+    }
+    public void hat_up_right_cancelOnPress(Command command) {
+        hat_up_right.cancelWhenPressed(command);
+    }
+    public void hat_up_right_runWhileHeld(Command command) {
+        hat_up_right.whileHeld(command);
     }
 
     public boolean hat_down_left() {
@@ -470,6 +560,21 @@ public class JStick {
             return false;
         }
     }
+    public void hat_down_left_runOnPress(Command command) {
+        hat_down_left.whenPressed(command);
+    }
+    public void hat_down_left_runOnRelease(Command command) {
+        hat_down_left.whenReleased(command);
+    }
+    public void hat_down_left_toggleOnPress(Command command) {
+        hat_down_left.toggleWhenPressed(command);
+    }
+    public void hat_down_left_cancelOnPress(Command command) {
+        hat_down_left.cancelWhenPressed(command);
+    }
+    public void hat_down_left_runWhileHeld(Command command) {
+        hat_down_left.whileHeld(command);
+    }
 
     public boolean hat_down_right() {
         if(hat_down_right.get()) {
@@ -478,5 +583,20 @@ public class JStick {
         else {
             return false;
         }
+    }
+    public void hat_down_right_runOnPress(Command command) {
+        hat_down_right.whenPressed(command);
+    }
+    public void hat_down_right_runOnRelease(Command command) {
+        hat_down_right.whenReleased(command);
+    }
+    public void hat_down_right_toggleOnPress(Command command) {
+        hat_down_right.toggleWhenPressed(command);
+    }
+    public void hat_down_right_cancelOnPress(Command command) {
+        hat_down_right.cancelWhenPressed(command);
+    }
+    public void hat_down_right_runWhileHeld(Command command) {
+        hat_down_right.whileHeld(command);
     }
 }
