@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.hatch.HatchMechToggleCG;
 import frc.robot.commands.ladder.LadderChangeLevelC;
 import frc.robot.commands.ladder.LadderMovePIDC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
@@ -23,7 +24,7 @@ public class OI {
     public final JoystickButton ladderLevelThree = new JoystickButton(buttonBoard, RobotMap.BUTTONBOARD_LADDER_LEVEL_THREE);
     
     public OI() {
-        //hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
+        hatchToggle.toggleWhenPressed(new HatchMechToggleCG());
 
         SmartDashboard.putData("LadderHoldPIDC", new LadderHoldPIDC());
         SmartDashboard.putData("LadderMovePIDC", new LadderMovePIDC());

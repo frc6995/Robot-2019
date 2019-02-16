@@ -30,9 +30,9 @@ public class Robot extends TimedRobot {
 
   public Command m_autonomousCommand;
   public Command m_driveCommand;
-  public Command m_homeLadderCommand;
-  public Command m_ladderManualMove;
-  public Command m_ladderDisplayStatus;
+  public Command m_homeLadderC;
+  public Command m_ladderManualMoveC;
+  public Command m_ladderDisplayStatusC;
   public SendableChooser<Command> drive_chooser = new SendableChooser<>();
 
   public DigitalInput limitSwitch;
@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
     //m_homeLadderCommand.start(); Disabled so we can test other things first
 
     //m_ladderManualMove = new LadderManualMoveC();
-    m_ladderDisplayStatus = new LadderDisplayStatusC();
+    m_ladderDisplayStatusC = new LadderDisplayStatusC();
   }
 
   @Override
@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
     //m_driveCommand = drive_chooser.getSelected();
     //m_driveCommand.start();
     //m_ladderManualMove.start();
-    m_ladderDisplayStatus.start();
+    m_ladderDisplayStatusC.start();
   }
 
   @Override
