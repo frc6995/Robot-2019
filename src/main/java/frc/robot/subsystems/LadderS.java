@@ -81,7 +81,7 @@ public class LadderS extends Subsystem {
     ladderTalonA.configSelectedFeedbackCoefficient(1.0);
 
     // Doesn't apply to voltage control
-    ladderTalonA.configForwardSoftLimitThreshold(500);
+    ladderTalonA.configForwardSoftLimitThreshold(8000);
     ladderTalonA.configForwardSoftLimitEnable(true);
 
     // Configs P, I, D and F using the constants
