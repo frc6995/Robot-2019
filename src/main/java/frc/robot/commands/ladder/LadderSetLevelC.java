@@ -2,13 +2,14 @@ package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.subsystems.LadderS.LadderLevel;
 
 //Method to set the level the ladder to should travel to next
 
 public class LadderSetLevelC extends Command {
-  int nextLadderLevel = 0;
+  LadderLevel nextLadderLevel = LadderLevel.LEVEL_ONE;
 
-  public LadderSetLevelC(int nextLevel) {
+  public LadderSetLevelC(LadderLevel nextLevel) {
     nextLadderLevel = nextLevel;
   }
 

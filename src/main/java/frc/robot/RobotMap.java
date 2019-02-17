@@ -43,13 +43,15 @@ public class RobotMap {
 
   //Limit switch constants
   public static final int DIO_LIMIT_LADDER_TOP = 1;
-  public static final int DIO_LIMIT_LADDER_BOTTOM = 2;
+  public static final int DIO_LIMIT_LADDER_BOTTOM = 0;
 
-   //Ladder Encoder Constants   
-  public static final int LADDER_LEVEL_ZERO = 0; //The home location
-  public static final int LADDER_LEVEL_ONE = -0;
-  public static final int LADDER_LEVEL_TWO = -1000; //change as needed
-  public static final int LADDER_LEVEL_THREE = -2000; //change as needed
+  /**
+   *Ladder Encoder Constants   
+   */  
+  public static final int LADDER_LEVEL_ZERO = 0; //The home locatoin
+  public static final int LADDER_LEVEL_VISION = 0;
+  public static final int LADDER_LEVEL_TWO = 3625; //change as needed
+  public static final int LADDER_LEVEL_THREE = 7160; //change as needed
 
   public final static int BUTTON_THROTTLE_CHANGE = 2;
   public final static int BUTTON_THROTTLE_RESET = 3;
