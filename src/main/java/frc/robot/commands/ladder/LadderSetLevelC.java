@@ -15,6 +15,9 @@ public class LadderSetLevelC extends Command {
 
   @Override
   protected void initialize() {
+    if(nextLadderLevel == LadderLevel.LEVEL_ONE && Robot.m_ladderS.getCurrentLadderLevel() != LadderLevel.LEVEL_ONE) {
+      nextLadderLevel = LadderLevel.LEVEL_VISION; // this makes a "cushion" so it can drift down to level one.
+    }
   }
 
   @Override

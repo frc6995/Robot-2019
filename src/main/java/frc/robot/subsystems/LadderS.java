@@ -216,7 +216,7 @@ public class LadderS extends Subsystem {
 
     if (isAtSetPoint() && ladderPIDActive) {
       // Example: "Holding at level 3."
-      ladderStatus = "Holding at level: " + getCurrentLadderLevel() + ".";
+      ladderStatus = "Holding at level: " + LadderLevelToString(getCurrentLadderLevel()) + ".";
     } else if (!isAtSetPoint() && ladderPIDActive) {
       // Example: "Moving down to level 0."
       ladderStatus = "Moving ";
@@ -225,7 +225,7 @@ public class LadderS extends Subsystem {
       } else {
         ladderStatus += "down ";
       }
-      ladderStatus += "to level " + getNextLadderLevel() + ".";
+      ladderStatus += "to level " + LadderLevelToString(getNextLadderLevel()) + ".";
     } else if (!ladderPIDActive) {
       ladderStatus = "Idle";
     }
