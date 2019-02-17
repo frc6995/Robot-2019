@@ -67,6 +67,7 @@ public class LadderHomeC extends Command {
     encodersReset = false;
     finished = false;
     i = 0;
+    j = 0;
   }
 
   @Override

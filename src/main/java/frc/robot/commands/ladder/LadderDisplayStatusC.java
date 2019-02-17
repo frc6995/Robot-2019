@@ -5,8 +5,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 //Method to display ladder status, regardless of what command is running on the ladder
-public class displayLadderStatusC extends Command {
-  public displayLadderStatusC() {
+public class LadderDisplayStatusC extends Command {
+  public LadderDisplayStatusC() {
     //Does not "require" the ladder subsystem, as it is only passively displaying the status
   }
 
@@ -16,12 +16,11 @@ public class displayLadderStatusC extends Command {
 
   @Override
   protected void execute() {
-    //This method is designed for just competitoin display code
+    //This method is designed for just competition display code
     Robot.m_ladderS.displayStatus();
 
     //Put any other testing display code you need here
     SmartDashboard.putBoolean("Limit", Robot.m_ladderS.lowerLimitSwitchPressed());
-
     SmartDashboard.putNumber("ladder Encoder", Robot.m_ladderS.getLadderEncoderCount());
     
     SmartDashboard.putNumber("ladder level", Robot.m_ladderS.getCurrentLadderLevel());

@@ -14,8 +14,6 @@ public class RobotMap {
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_1 = 22;
   public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_2 = 21;
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
-
-  public final static int OI_JOYSTICK = 0;
   
   //Power Control Module
   public final static int PCM_ID_DSOLENOID_HATCHMECH = 1;
@@ -32,10 +30,16 @@ public class RobotMap {
   public static final int XBOX2_DRIVE_LEFT_RIGHT = 4;
   public static final int XBOX2_DRIVE_FORWARD_BACK = 1;
 
-  //XBox Buttons
-  public final static int BUTTON_HATCH_TOGGLE = 1;
-  public final static int BUTTON_LADDER_LEVEL_ONE = 2;
+  //OI - Button board
+  public final static int OI_BUTTONBOARD = 1;
+  public final static int BUTTONBOARD_LADDER_LEVEL_ONE = 1;
+  public final static int BUTTONBOARD_LADDER_LEVEL_TWO = 2;
+  public final static int BUTTONBOARD_LADDER_LEVEL_THREE = 3; 
 
+  public final static int OI_JOYSTICK = 2;
+ 
+  //Joystick Buttons
+  public final static int BUTTON_HATCH_TOGGLE = 1;
 
   //Limit switch constants
   public static final int DIO_LIMIT_LADDER_TOP = 1;
