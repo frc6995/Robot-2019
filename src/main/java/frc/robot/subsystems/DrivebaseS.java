@@ -7,6 +7,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.commands.drive.DriveArcadeXboxC;
 
 public class DrivebaseS extends Subsystem {
 
@@ -21,6 +22,7 @@ public class DrivebaseS extends Subsystem {
   
   @Override
   protected void initDefaultCommand() {
+    setDefaultCommand(new DriveArcadeXboxC());
   }
 
   public DrivebaseS() {
