@@ -38,13 +38,13 @@ public class LadderHomeC extends Command {
     else {
       j += 1;
       if (Robot.m_ladderS.lowerLimitSwitchPressed() == false && j < 100) {
-        Robot.m_ladderS.setLadderPower(0.1);
+        Robot.m_ladderS.setLadderPower(0.05);
         System.out.print("Bringing ladder down");
       } 
       else if (j >= 100) {
         SmartDashboard.putString("Manually reset encoders", "Manually reset encoders");
          while (!Robot.m_oi.xbox.left_stick()) {
-            Robot.m_ladderS.setLadderPower(0.1);
+            Robot.m_ladderS.setLadderPower(0.05);
          }
          finished = true;
          Robot.m_ladderS.resetEncoder();
