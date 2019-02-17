@@ -17,8 +17,6 @@ public class RobotMap {
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_1 = 22;
   public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_2 = 21;
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
-
-  public final static int OI_JOYSTICK = 0;
   
   //Power Control Module
   public final static int PCM_ID_DSOLENOID_HATCHMECH = 1;
@@ -37,16 +35,18 @@ public class RobotMap {
   public static final int XBOX2_DRIVE_LEFT_RIGHT = 4;
   public static final int XBOX2_DRIVE_FORWARD_BACK = 1;
 
-  //XBox Buttons
-  public final static int BUTTON_HATCH_TOGGLE = 1;
-
   //OI - Button board
-  public final static int OI_BUTTONBOARD = 2;
+  public final static int OI_BUTTONBOARD = 1;
   public final static int BUTTONBOARD_LADDER_LEVEL_ONE = 1;
   public final static int BUTTONBOARD_LADDER_LEVEL_TWO = 2;
   public final static int BUTTONBOARD_LADDER_LEVEL_THREE = 3; 
   public final static int BUTTONBOARD_CLIMB_TOGGLE = 4;
   public final static int BUTTONBOARD_CLIMB_CONFIRMED = 5;
+
+  public final static int OI_JOYSTICK = 2;
+ 
+  //Joystick Buttons
+  public final static int BUTTON_HATCH_TOGGLE = 1;
 
   //Limit switch constants
   public static final int DIO_LIMIT_LADDER_TOP = 1;
@@ -54,10 +54,8 @@ public class RobotMap {
   public static final int DIO_LIMIT_CLIMBER_FRONT = 3;
   public static final int DIO_LIMIT_CLIMBER_REAR = 4;
 
-  /**
-   *Ladder Encoder Constants   
-   */  
-  public static final int LADDER_LEVEL_ZERO = 0; //The home locatoin
+   //Ladder Encoder Constants   
+  public static final int LADDER_LEVEL_ZERO = 0; //The home location
   public static final int LADDER_LEVEL_ONE = -0;
   public static final int LADDER_LEVEL_TWO = -1000; //change as needed
   public static final int LADDER_LEVEL_THREE = -2000; //change as needed

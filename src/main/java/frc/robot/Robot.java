@@ -1,11 +1,16 @@
 package frc.robot;
 
+import edu.wpi.cscore.HttpCamera;
+import edu.wpi.cscore.VideoSource;
+import edu.wpi.cscore.HttpCamera.HttpCameraKind;
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.subsystems.DrivebaseS;
 import frc.robot.commands.drive.DriveArcadeXbox2C;
 import frc.robot.commands.drive.DriveArcadeXboxC;
 //import frc.robot.commands.ladder.LadderHoldPIDC;
@@ -30,7 +35,6 @@ public class Robot extends TimedRobot {
   public static ClimbCrawlerS m_ClimbCrawlerS;
 
   public static OI m_oi;
-
   public Command m_autonomousCommand;
   public Command m_driveCommand;
   public Command m_homeLadderC;
@@ -62,13 +66,20 @@ public class Robot extends TimedRobot {
 
     //Resets the ladder whenever we start the robot
     //m_homeLadderCommand = new LadderHomeC();
+    //m_homeLadderCommand.start();
+
+    //Limelight setup to use camera
+    CameraServer cs = CameraServer.getInstance();
+    HttpCamera limelight = new HttpCamera("limelight", "http://10.69.95.11:5800", HttpCameraKind.kMJPGStreamer);
+    limelight.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
+    cs.startAutomaticCapture(limelight);
     //m_ladderManualMoveC = new LadderManualMoveC();
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
   }
 
   public void robotPeriodic() {
-    //m_driveCommand = drive_chooser.getSelected();
-    //m_driveCommand.start();
+    m_driveCommand = drive_chooser.getSelected();
+    m_driveCommand.start();
     //m_ladderManualMoveC.start();
     m_ladderDisplayStatusC.start();
   }
