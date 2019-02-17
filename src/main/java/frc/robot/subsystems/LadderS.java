@@ -103,7 +103,7 @@ public class LadderS extends Subsystem {
 
   public void setLadderPower(double power){
     //Positive is up, negative is down  -VERIFY
-    ladderTalonA.set(power);
+    ladderTalonA.set(-power);
   }
 
   public double getLadderEncoderCount() {
