@@ -7,6 +7,7 @@ import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.limelight.*;
+import frc.robot.commands.hatch.HatchLevelScoreCG;
 import frc.robot.commands.hatch.HatchMechToggleCG;
 import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.commands.ladder.LadderMovePIDC;
@@ -34,9 +35,9 @@ public class OI {
         SmartDashboard.putData("Set Ladder to L2", new LadderSetLevelC(2));
         SmartDashboard.putData("Set Ladder to L3", new LadderSetLevelC(3));
 
-        buttonBoard.thumb_runWhileHeld(new LadderSetLevelC(1));
-        buttonBoard.index_runWhileHeld(new LadderSetLevelC(2));
-        buttonBoard.middle_runWhileHeld(new LadderSetLevelC(3));
+        buttonBoard.thumb_runWhileHeld(new HatchLevelScoreCG(1));
+        buttonBoard.index_runWhileHeld(new HatchLevelScoreCG(2));
+        buttonBoard.middle_runWhileHeld(new HatchLevelScoreCG(3));
 
     }
 }
