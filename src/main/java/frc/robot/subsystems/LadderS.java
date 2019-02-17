@@ -282,7 +282,7 @@ public class LadderS extends Subsystem {
   }
 
   public void resetEncoder() {
-    ladderTalonA.getSensorCollection().setQuadraturePosition(0, 500);
+    ladderTalonA.getSensorCollection().setQuadraturePosition(3, 500);
     ladderTalonA.setSelectedSensorPosition(0);
   }
 
