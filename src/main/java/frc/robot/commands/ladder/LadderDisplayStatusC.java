@@ -23,7 +23,7 @@ public class LadderDisplayStatusC extends Command {
     SmartDashboard.putBoolean("Limit", Robot.m_ladderS.lowerLimitSwitchPressed());
     SmartDashboard.putNumber("ladder Encoder", Robot.m_ladderS.getLadderEncoderCount());
     
-    SmartDashboard.putNumber("ladder level", Robot.m_ladderS.getCurrentLadderLevel());
+    SmartDashboard.putString("ladder level", Robot.m_ladderS.LadderLevelToString(Robot.m_ladderS.getNextLadderLevel()));
   }
   
   @Override

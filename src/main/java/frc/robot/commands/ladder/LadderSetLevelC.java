@@ -2,18 +2,22 @@ package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.subsystems.LadderS.LadderLevel;
 
 //Method to set the level the ladder to should travel to next
 
 public class LadderSetLevelC extends Command {
-  int nextLadderLevel = 0;
+  LadderLevel nextLadderLevel = LadderLevel.LEVEL_ONE;
 
-  public LadderSetLevelC(int nextLevel) {
+  public LadderSetLevelC(LadderLevel nextLevel) {
     nextLadderLevel = nextLevel;
   }
 
   @Override
   protected void initialize() {
+    if(nextLadderLevel == LadderLevel.LEVEL_ONE && Robot.m_ladderS.getCurrentLadderLevel() != LadderLevel.LEVEL_ONE) {
+      nextLadderLevel = LadderLevel.LEVEL_VISION; // this makes a "cushion" so it can drift down to level one.
+    }
   }
 
   @Override

@@ -3,13 +3,14 @@ package frc.robot.commands.hatch;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.hatch.HatchMechToggleCG;
 import frc.robot.commands.ladder.*;
+import frc.robot.subsystems.LadderS.LadderLevel;
 
 
 public class HatchLevelScoreCG extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public HatchLevelScoreCG(int level) {
+  public HatchLevelScoreCG(LadderLevel level) {
 
     //HOW WILL THE CORRECT LEVEL GET SET???? SEEMS BETTER TO KEEP VISION ALIGN SEPARATE FROM LADDER/SCORING
 
@@ -23,7 +24,7 @@ public class HatchLevelScoreCG extends CommandGroup {
     addSequential(new HatchMechToggleCG());
 
     //Return to level 0
-    addSequential(new LadderSetLevelC(0));
+    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_ONE));
     addSequential(new LadderMovePIDC());
     
     //Insert back away?
