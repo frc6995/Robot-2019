@@ -64,25 +64,25 @@ public class VisionAlignTargetC extends Command {
 
     double heading_error = -tx;
     double distance_error = ty;
-    double max_steering = 0.1;
+    double max_power = 0.1;
 
     //basic proportional control
     steering_adjust = heading_error * KpAim; 
     distance_adjust = KpDistance * distance_error;
 
     //Adds a maximum and miniumum to the Robots turning speed
-    if (steering_adjust > max_steering) {
-      steering_adjust = max_steering;
+    if (steering_adjust > max_power) {
+      steering_adjust = max_power;
     }
-    else if (steering_adjust < -max_steering) {
-      steering_adjust = -max_steering;
+    else if (steering_adjust < -max_power) {
+      steering_adjust = -max_power;
     }
     //Adds a maximum/minimum to the forward-backward speed
-    if (distance_adjust > max_steering) {
-      distance_adjust = max_steering;
+    if (distance_adjust > max_power) {
+      distance_adjust = max_power;
     }
-    else if (distance_adjust < -max_steering) {
-      distance_adjust = -max_steering;
+    else if (distance_adjust < -max_power) {
+      distance_adjust = -max_power;
     }
     SmartDashboard.putNumber("Vision Steer Adj", steering_adjust);
     SmartDashboard.putNumber("Vision Dist Adj", distance_adjust);
@@ -93,22 +93,26 @@ public class VisionAlignTargetC extends Command {
   protected boolean isFinished() {
     tx = txEntry.getDouble(0.0);
     ty = tyEntry.getDouble(0.0);
+
+    SmartDashboard.putNumber("sumInRange", sumInRange);
+    
     if (Math.abs(tx) <= 0.5 && Math.abs(ty) <= 1) {
-     // sumInRange+=1;
-      return true;     
-    }
-    else {
-      return false;
-    }/*   else if(sumInRange>40){
-      pipelineEntry.setDouble(1);
-      return true;
+      sumInRange+=1;
+      //return true;     
     }
     else {
       sumInRange = 0;
+      //return false;
+    } 
+    
+    if(sumInRange>40){
+      pipelineEntry.setDouble(1);
+      sumInRange = 0;
+      return true;
+    }else {
       pipelineEntry.setDouble(0);
       return false;
-    }*/
-   // return false;
+    }
   }
 
   @Override

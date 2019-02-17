@@ -14,11 +14,6 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-// - Make sure we know what units the talon is using for its set point/error
-// - Make the encoder up when the ladder goes up
-// - Make the ladder go up when the motor goes forward (positive power)
-// - 
-
 public class LadderS extends Subsystem {
   //Enumerate various ladder levels.
   public enum LadderLevel {
@@ -34,8 +29,6 @@ public class LadderS extends Subsystem {
   //1 = rocket level 1 / home, 2 = rocket level 2, 3 = rocket level 3.
   private LadderLevel currentLadderLevel = LadderLevel.LEVEL_ONE;
   private LadderLevel nextLadderLevel = LadderLevel.LEVEL_ONE;
-
-
 
   // The range in encoder counts where we will consider ourselves "at" the set
   // point
