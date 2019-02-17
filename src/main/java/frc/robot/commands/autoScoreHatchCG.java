@@ -12,11 +12,13 @@ public class autoScoreHatchCG extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public autoScoreHatchCG() {
+  public autoScoreHatchCG(int level) {
 
     //Only uncomment and test when we have merged with the auto align branch
     //addSequential(new AlignTargetC());
 
+    //set ladder level first.
+    addSequential(new LadderChangeLevelC(level));
     //Move up to the set ladder level, and swap to holding
     addSequential(new LadderMovePIDC());
     addParallel(new LadderHoldPIDC());
