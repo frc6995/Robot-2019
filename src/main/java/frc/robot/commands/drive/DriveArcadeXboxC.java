@@ -27,7 +27,7 @@ public class DriveArcadeXboxC extends Command {
     moveSpeed = forwardSpeed - backwardSpeed;
     rotSpeed = Robot.m_oi.xbox.left_stick_x();
 
-    if(Robot.m_oi.xbox.left_bumper()) {
+    if(Robot.m_oi.xbox.left_bumper_pressed()) {
       switch(numberPressed) {
         case 0: throt = 0.80; numberPressed = 1; break;
         case 1: throt = 0.65; numberPressed = 2; break;
@@ -54,5 +54,20 @@ public class DriveArcadeXboxC extends Command {
 
   @Override
   protected void interrupted() {
+  }
+
+  public int getNumberPressed(){
+    return numberPressed;
+  }
+  public void setNumberPressed(int numPressed){
+    numberPressed = numPressed;
+  }
+
+  public double getThrottle(){
+    return throt;
+  }
+
+  public void setThrottle(double throttle) {
+    throt = throttle;
   }
 }
