@@ -41,11 +41,10 @@ public class LadderHomeC extends Command {
       } 
       else if (j >= 100) {
         SmartDashboard.putString("Manually reset encoders", "Manually reset encoders");
-         while (!Robot.m_oi.xbox.left_stick()) {
+    /*     while (!Robot.m_oi.xbox.left_stick()) {
             Robot.m_ladderS.setLadderPower(-0.05);
          }
-         finished = true;
-         Robot.m_ladderS.resetEncoder();
+      */   finished = true;
         }
       else {
         System.out.print("Reseting Encoders");    

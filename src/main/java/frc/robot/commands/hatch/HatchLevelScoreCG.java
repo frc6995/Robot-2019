@@ -1,6 +1,7 @@
 package frc.robot.commands.hatch;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import frc.robot.commands.hatch.HatchMechToggleCG;
 import frc.robot.commands.ladder.*;
 import frc.robot.subsystems.LadderS.LadderLevel;
@@ -23,8 +24,11 @@ public class HatchLevelScoreCG extends CommandGroup {
     addParallel(new LadderHoldPIDC());
     addSequential(new HatchMechToggleCG());
 
+    //wait 1 second
+    addSequential(new WaitCommand(1));
+
     //Return to level 0
-    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_ONE));
+    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
     addSequential(new LadderMovePIDC());
     
     //Insert back away?

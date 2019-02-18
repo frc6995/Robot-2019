@@ -62,8 +62,9 @@ public class JStick {
     private final static int BUTTON_11 = 11;
     private final static int BUTTON_12 = 12;
 
-    private final static int AXIS_X = 1;
-    private final static int AXIS_Y = 2;
+    private final static int AXIS_X = 0;
+    private final static int AXIS_Y = 1;
+    private final static int AXIS_Z = 2;
     private final static int AXIS_THROT = 3;
 
     private final static int HAT_UP = HAT(POV.UP);
@@ -107,6 +108,10 @@ public class JStick {
 
     public double stick_y() {
         return joystick.getRawAxis(AXIS_Y);
+    }
+
+    public double stick_z() {
+        return joystick.getRawAxis(AXIS_Z);
     }
 
     public double stick_throt() {

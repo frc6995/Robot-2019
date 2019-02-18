@@ -20,14 +20,15 @@ import frc.robot.Robot;
  * sequential(LadderMovePIDC())
  *  */
 
-public class LadderMovePIDC extends Command {
+public class LadderMoveUpPIDC extends Command {
   
-  public LadderMovePIDC() {
+  public LadderMoveUpPIDC() {
     requires(Robot.m_ladderS);
     //This command should not be interrupted, but we may want to change this
     //We could always use a toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptable.
     this.setInterruptible(false);
 
+    Robot.m_ladderS.setMaxPIDPower(0.5);
     Robot.m_ladderS.enablePID();
   }
 

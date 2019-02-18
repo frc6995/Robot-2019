@@ -3,16 +3,14 @@ package frc.robot.commands.ladder;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-//Holds the ladder at a PID value until interrupted by a RunLadderPID command. 
-//Warning: Will not finish on its own!
-//See RunLadderPID for how to run the ladder to a position, and for how a command group will work
-
-public class LadderHoldPIDC extends Command {
-  public LadderHoldPIDC() {
+public class LadderMoveDownPIDC extends Command {
+  public LadderMoveDownPIDC() {
     requires(Robot.m_ladderS);
-    
+    //This command should not be interrupted, but we may want to change this
+    //We could always use a toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptable.
     this.setInterruptible(false);
-    Robot.m_ladderS.setMaxPIDPower(0.5);
+
+    Robot.m_ladderS.setMaxPIDPower(0.3);
     Robot.m_ladderS.enablePID();
   }
 
@@ -27,14 +25,14 @@ public class LadderHoldPIDC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.m_ladderS.isAtSetPoint();
   }
 
   @Override
   protected void end() {
-    //Might need to add some sort of "handoff" code to the RunLadderPID command
     Robot.m_ladderS.disablePID();
   }
+  
 
   @Override
   protected void interrupted() {
