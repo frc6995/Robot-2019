@@ -55,19 +55,4 @@ public class DriveArcadeXboxC extends Command {
   @Override
   protected void interrupted() {
   }
-
-  public int getNumberPressed(){
-    return numberPressed;
-  }
-  public void setNumberPressed(int numPressed){
-    numberPressed = numPressed;
-  }
-
-  public double getThrottle(){
-    return throt;
-  }
-
-  public void setThrottle(double throttle) {
-    throt = throttle;
-  }
 }
