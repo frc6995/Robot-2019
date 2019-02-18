@@ -11,7 +11,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DrivebaseS;
-import frc.robot.commands.drive.DriveArcadeXbox2C;
 import frc.robot.commands.drive.DriveArcadeXboxC;
 //import frc.robot.commands.ladder.LadderHoldPIDC;
 //import frc.robot.commands.ladder.LadderHomeC;
@@ -49,10 +48,6 @@ public class Robot extends TimedRobot {
     m_hatchMechS = new HatchMechS();
     m_oi = new OI();
     
-    drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
-    drive_chooser.addOption("XboxControl2", new DriveArcadeXbox2C());
-    SmartDashboard.putData("Drive Control", drive_chooser);
-    
     //Resets the ladder whenever we start the robot.
     //m_holdLadderC.start();
     //m_homeLadderC.start(); Disabled so we can test other things first
@@ -72,8 +67,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    m_driveCommand = drive_chooser.getSelected();
-    m_driveCommand.start();
     //m_ladderManualMoveC.start();
     m_ladderDisplayStatusC.start();
   }
