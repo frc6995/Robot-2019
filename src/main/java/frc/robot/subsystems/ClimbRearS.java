@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -9,12 +8,12 @@ import frc.robot.RobotMap;
 
 public class ClimbRearS extends Subsystem {
   
-  private static DoubleSolenoid climbMechanismRear;
+  private static Solenoid climbMechanismRear;
   private static DigitalInput climberRearSwitch;
 
   public ClimbRearS() {
     //likely 3 counting up and following the pattern, see ClimbFrontS.java
-    climbMechanismRear = new DoubleSolenoid(RobotMap.PCM_ID_DSOLENOID_CLIMBER_REAR, 2, 0); //possibly 3?? 2 for test
+    climbMechanismRear = new Solenoid(RobotMap.PCM_ID, RobotMap.PCM_ID_SOLENOID_CLIMBER_REAR); //possibly 3?? 2 for test
     climberRearSwitch = new DigitalInput(RobotMap.DIO_LIMIT_CLIMBER_REAR);
   }
 
@@ -27,10 +26,10 @@ public class ClimbRearS extends Subsystem {
   }
 
   public void deployRear() {
-    climbMechanismRear.set(Value.kForward);
+    climbMechanismRear.set(true);
   }
   
   public void retractRear() {
-    climbMechanismRear.set(Value.kReverse);
+    climbMechanismRear.set(false);
   }
 }

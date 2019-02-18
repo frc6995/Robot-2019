@@ -22,9 +22,10 @@ public class RobotMap {
   public final static int LADDER_DOWN_BUTTON = 5; //change as needed
   
   //Power Control Module
+  public final static int PCM_ID = 1;
   public final static int PCM_ID_DSOLENOID_HATCHMECH = 1;
-  public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT = 2;
-  public final static int PCM_ID_DSOLENOID_CLIMBER_REAR = 3;
+  public final static int PCM_ID_SOLENOID_CLIMBER_FRONT = 2;
+  public final static int PCM_ID_SOLENOID_CLIMBER_REAR = 3;
 
   //HatchMech constants
   public final static int DSOLENOID_HATCHMECH_FORWARD = 1;

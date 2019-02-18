@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -9,14 +8,14 @@ import frc.robot.RobotMap;
 
 public class ClimbFrontS extends Subsystem {
   
-  private static DoubleSolenoid climbMechanismFront;
+  private static Solenoid climbMechanismFront;
   private static DigitalInput climberFrontSwitch;
 
   public ClimbFrontS(){
     // With the solenoid in pcm port 2, the forward channel is 2.
     // The hatchmech in port 1 has a forward channel of 1.
     // PS, what channel is used when the PCM ID is 0???
-    climbMechanismFront = new DoubleSolenoid(RobotMap.PCM_ID_DSOLENOID_CLIMBER_FRONT, 2, 0); //why does channel change?
+    climbMechanismFront = new Solenoid(RobotMap.PCM_ID, RobotMap.PCM_ID_SOLENOID_CLIMBER_FRONT); //why does channel change?
     climberFrontSwitch = new DigitalInput(RobotMap.DIO_LIMIT_CLIMBER_FRONT);
   }
 
@@ -31,12 +30,12 @@ public class ClimbFrontS extends Subsystem {
   
   public void deployFront() {
     // The piston rod is pushed out.
-    climbMechanismFront.set(Value.kForward);
+    climbMechanismFront.set(true);
   }
   
   public void retractFront() {
     // the rod is sucked in.
-    climbMechanismFront.set(Value.kReverse);
+    climbMechanismFront.set(false);
   }
 
 }
