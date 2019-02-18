@@ -4,12 +4,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 // This is for testing/backup, it either deploys or retracts the cylinders.
-
 // On a toggle command like this the first press creates and execute the command but it does not finish.
 // The second press interrupts the command.
 
 public class ClimbFrontToggleC extends Command {
-    public boolean extended = false;
 
     public ClimbFrontToggleC () {
         requires (Robot.m_ClimbFrontS);

@@ -4,12 +4,14 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class ClimbPlatformCG extends CommandGroup {
   /**
-   * Climb one box
+   * Climb one box backwards (robot must enter platform backwards)
    */
-  public ClimbPlatformCG() {
-    addParallel(new ClimbFrontLiftC());
-    addSequential(new ClimbRearLiftC());
-    addSequential(new ClimbRearLimitLowerC()); // The robot is backing onto the platforms, so rear first.
-    addSequential(new ClimbFrontLimitLowerC()); // The motors are on the front cylinders
+  public ClimbPlatformCG(boolean climbconfirmed) {
+    if (climbconfirmed) {
+      addParallel(new ClimbFrontLiftC());
+      addSequential(new ClimbRearLiftC());
+      addSequential(new ClimbRearLimitLowerC());
+      addSequential(new ClimbFrontLimitLowerC());
+    }
   }
 }
