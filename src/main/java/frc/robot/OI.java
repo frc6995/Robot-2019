@@ -1,10 +1,8 @@
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.controllermap.BBoard;
 import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.HatchMechToggleCG;

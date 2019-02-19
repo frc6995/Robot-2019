@@ -48,9 +48,12 @@ public class Robot extends TimedRobot {
     m_hatchMechS = new HatchMechS();
     m_oi = new OI();
     
+<<<<<<< HEAD
     drive_chooser.setDefaultOption("XboxControl", new DriveArcadeXboxC());
     SmartDashboard.putData("Drive Control", drive_chooser);
     
+=======
+>>>>>>> 7d5bb0da9b470c2f3b602ce540367e118afe410e
     //Resets the ladder whenever we start the robot.
     //m_holdLadderC.start();
     //m_homeLadderC.start(); Disabled so we can test other things first
@@ -70,8 +73,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    m_driveCommand = drive_chooser.getSelected();
-    m_driveCommand.start();
     //m_ladderManualMoveC.start();
     m_ladderDisplayStatusC.start();
   }
