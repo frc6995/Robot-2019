@@ -48,7 +48,7 @@ public class OI {
         //For climber
         SmartDashboard.putData("Climber Front DSol Toggle", new ClimbFrontToggleC());
         SmartDashboard.putData("Climber Rear DSol Toggle", new ClimbRearToggleC());
-        SmartDashboard.putData("Climber Motors Forward T", new ClimbMotorsReverseToggleC());
+        SmartDashboard.putData("Climber Motors Forward T", new ClimbMotorsReverseToggleC(true));
         SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
         SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC());
         SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
@@ -61,12 +61,16 @@ public class OI {
         buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(3));
 
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
-        stick.button_7_runOnPress(new ClimbFrontToggleC());
-        stick.button_8_runOnPress(new ClimbRearToggleC());
-        stick.button_9_runOnPress(new ClimbMotorsForwardC());
-        stick.button_10_runOnPress(new ClimbMotorsReverseC());
-        stick.button_11_runOnPress(new ClimbMotorsReverseToggleC());
-        stick.button_12_runOnPress(new ClimbMotorsStopC());
+
+        stick.button_2_toggleOnPress(new ClimbBothToggleC());
+
+        stick.button_7_runOnPress(new ClimbFrontLowerC());
+        stick.button_8_runOnPress(new ClimbRearLowerC());
+
+        stick.button_9_runOnPress(new ClimbMotorsReverseToggleC(stick.button_10()));
+        //stick.button_10_runOnPress(new ClimbMotorsReverseC());
+        //stick.button_11_runOnPress(new ClimbMotorsReverseToggleC());
+        //stick.button_12_runOnPress(new ClimbMotorsStopC());
 
     }
 }

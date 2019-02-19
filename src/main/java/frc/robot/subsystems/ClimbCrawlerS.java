@@ -19,7 +19,7 @@ public class ClimbCrawlerS extends Subsystem {
   // These are defined here so motors are not set in the commands
 
   public void motorForward() {
-    climbMotor.set(1.0);
+    climbMotor.set(0.1);
   }
 
   public void motorStop() {
@@ -28,6 +28,6 @@ public class ClimbCrawlerS extends Subsystem {
 
   public void motorReverse() {
     // In this case, the motor will have to reverse onto the platforms, see NOTE in FrontS.
-    climbMotor.set(-1.0);
+    climbMotor.set(-0.1);
   }
 }
