@@ -3,6 +3,7 @@ package frc.robot.commands.ladder;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
+import frc.robot.subsystems.LadderS.LadderLevel;
 
 //Moves the ladder down to the home position and resets the encoders
 public class LadderHomeC extends Command {
@@ -57,12 +58,14 @@ public class LadderHomeC extends Command {
 
   @Override
   protected boolean isFinished() {
+
     return finished;
   }
 
   @Override
   protected void end() {
     Robot.m_ladderS.resetEncoder();
+    Robot.m_ladderS.setCurrentLadderLevel(LadderLevel.LEVEL_ONE);
     encodersReset = false;
     finished = false;
     i = 0;
