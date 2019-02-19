@@ -40,11 +40,11 @@ public class LadderS extends Subsystem {
   // PID "constants"
   private boolean ladderPIDActive = true;
   // Proportional constant
-  private double ladderKp = 0.35;
+  private double ladderKp = 0.5;
   // Integral constant
-  private double ladderKi = 0;
+  private double ladderKi = 0.001;
   // Derivative constant
-  private double ladderKd = 0.0;
+  private double ladderKd = 10.0;
   // Feedforward = power needed to hold the ladder in a constant spot
   private double ladderKf = 0;
 
@@ -81,7 +81,7 @@ public class LadderS extends Subsystem {
     ladderTalonA.configSelectedFeedbackCoefficient(1.0);
 
     // Doesn't apply to voltage control
-    ladderTalonA.configForwardSoftLimitThreshold(500);
+    ladderTalonA.configForwardSoftLimitThreshold(8000);
     ladderTalonA.configForwardSoftLimitEnable(true);
 
     // Configs P, I, D and F using the constants
@@ -91,7 +91,7 @@ public class LadderS extends Subsystem {
     ladderTalonA.config_kF(LADDER_PID_SLOT, ladderKf);
 
     // The zone where the integral turns on
-    ladderTalonA.config_IntegralZone(LADDER_PID_SLOT, 500);
+    ladderTalonA.config_IntegralZone(LADDER_PID_SLOT, 1000);
 
     // Makes it so we don't start pushing the ladder at full power immediately,
     // takes 0.5 seconds to ramp to full
@@ -117,6 +117,10 @@ public class LadderS extends Subsystem {
   public void setLadderPower(double power) {
     // Positive is up, negative is down -VERIFY
     ladderTalonA.set(ControlMode.PercentOutput, power);
+  }
+
+  public void setMaxPIDPower(double power){
+    ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, power);
   }
 
   public double getLadderEncoderCount() {

@@ -11,7 +11,7 @@ import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.HatchLevelScoreCG;
 import frc.robot.commands.hatch.HatchMechToggleCG;
 import frc.robot.commands.ladder.LadderSetLevelC;
-import frc.robot.commands.ladder.LadderMovePIDC;
+import frc.robot.commands.ladder.LadderMoveUpPIDC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
 
@@ -33,7 +33,7 @@ public class OI {
         SmartDashboard.putData("Vision Align Target", new VisionAlignTargetC());
         SmartDashboard.putData("Vision Align CG", new VisionAlignCG());
         SmartDashboard.putData("LadderHoldPIDC", new LadderHoldPIDC());
-        SmartDashboard.putData("LadderMovePIDC", new LadderMovePIDC());
+        SmartDashboard.putData("LadderMovePIDC", new LadderMoveUpPIDC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
         SmartDashboard.putData("Set Ladder to L2", new LadderSetLevelC(LadderLevel.LEVEL_TWO));
         SmartDashboard.putData("Set Ladder to L3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
