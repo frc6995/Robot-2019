@@ -35,6 +35,11 @@ public class DrivebaseS extends Subsystem {
     driveLeftMiddle.follow(driveLeftFront);
     driveLeftBack.follow(driveLeftFront);
     
+    driveLeftFront.configContinuousCurrentLimit(25);
+    driveRightFront.configContinuousCurrentLimit(25);
+    driveLeftFront.enableCurrentLimit(true);
+    driveRightFront.enableCurrentLimit(true);
+
     driveRightBack.follow(driveRightFront);
     driveRightMiddle.follow(driveRightFront);
 
