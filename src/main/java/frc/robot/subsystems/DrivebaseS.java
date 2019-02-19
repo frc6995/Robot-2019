@@ -17,6 +17,8 @@ public class DrivebaseS extends Subsystem {
   private WPI_VictorSPX driveRightMiddle = null;
   private WPI_VictorSPX driveRightBack = null;
 
+  private int drivebaseAmpLimit = 30;
+
   private DifferentialDrive differentialDrive = null;
   
   @Override
@@ -24,6 +26,9 @@ public class DrivebaseS extends Subsystem {
   }
 
   public DrivebaseS() {
+
+    SmartDashboard.putNumber("Amp Limit", drivebaseAmpLimit);
+
     driveLeftFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT);
     driveLeftMiddle = new WPI_VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_1);
     driveLeftBack = new WPI_VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_2);
@@ -35,8 +40,8 @@ public class DrivebaseS extends Subsystem {
     driveLeftMiddle.follow(driveLeftFront);
     driveLeftBack.follow(driveLeftFront);
     
-    driveLeftFront.configContinuousCurrentLimit(25);
-    driveRightFront.configContinuousCurrentLimit(25);
+    driveLeftFront.configContinuousCurrentLimit(drivebaseAmpLimit);
+    driveRightFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveLeftFront.enableCurrentLimit(true);
     driveRightFront.enableCurrentLimit(true);
 

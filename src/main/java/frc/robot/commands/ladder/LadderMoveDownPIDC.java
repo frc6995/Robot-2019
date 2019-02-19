@@ -2,6 +2,7 @@ package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 public class LadderMoveDownPIDC extends Command {
   public LadderMoveDownPIDC() {
@@ -24,7 +25,7 @@ public class LadderMoveDownPIDC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return Robot.m_ladderS.isAtSetPoint();
+    return Robot.m_ladderS.isAtSetPoint() || Robot.m_ladderS.getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION;
   }
 
   @Override

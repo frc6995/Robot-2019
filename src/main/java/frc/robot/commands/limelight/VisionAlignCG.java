@@ -15,9 +15,9 @@ public class VisionAlignCG extends CommandGroup {
     addSequential(new LadderMoveUpPIDC());
     addParallel(new LadderHoldPIDC());
 
-    addParallel(new VisionAlignTargetC());
+    addSequential(new VisionAlignTargetC());
     addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
-    addSequential(new LadderMoveUpPIDC());
+    addSequential(new LadderMoveDownPIDC());
 
     addSequential(new DriveForTimeC(2, 0.2), 2);
   }

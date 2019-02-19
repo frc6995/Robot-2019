@@ -24,11 +24,12 @@ public class DriveForTimeC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return false;
+    return isTimedOut();
   }
 
   @Override
   protected void end() {
+    Robot.m_drivebaseS.visionDrive(0, 0);
   }
 
   @Override

@@ -17,7 +17,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class LadderS extends Subsystem {
   //Enumerate various ladder levels.
   public enum LadderLevel {
-    LEVEL_ONE, LEVEL_VISION, LEVEL_TWO, LEVEL_THREE;
+    LEVEL_ONE, LEVEL_VISION, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE;
   }
   // TalonA is left and has the encoder plugged into it, TalonB is right
   private WPI_TalonSRX ladderTalonA = null;
@@ -40,9 +40,9 @@ public class LadderS extends Subsystem {
   // PID "constants"
   private boolean ladderPIDActive = true;
   // Proportional constant
-  private double ladderKp = 0.5;
+  private double ladderKp = 0.7;
   // Integral constant
-  private double ladderKi = 0.001;
+  private double ladderKi = 0.002;
   // Derivative constant
   private double ladderKd = 10.0;
   // Feedforward = power needed to hold the ladder in a constant spot
@@ -71,6 +71,8 @@ public class LadderS extends Subsystem {
     //ladderTalonA.setInverted(true);
     //ladderTalonB.setInverted(true);
 
+    ladderTalonA.configAllowableClosedloopError(LADDER_PID_SLOT, 0);
+    
     // B follows A
     ladderTalonB.follow(ladderTalonA);
 
@@ -159,8 +161,11 @@ public class LadderS extends Subsystem {
 
     // !Safety code for testing!
     SmartDashboard.putBoolean("Enabled", Robot.m_oi.xbox.a());
-    if (Robot.m_oi.xbox.a()) {
+    if (true) {
       ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
+      if(getError() == 0){
+        //ladderTalonA.setIntegralAccumulator(500000);
+      }
     } else {
 
       // Tuning code
@@ -255,8 +260,13 @@ public class LadderS extends Subsystem {
   }
 
   public int getLadderSetPointEncoderCount(){
+    SmartDashboard.putBoolean("Below Cushion", (getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION));
     if(getNextLadderLevel() == LadderLevel.LEVEL_ONE){
-      return RobotMap.LADDER_LEVEL_VISION; //cushion level
+      if (getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION) {
+        return RobotMap.LADDER_LEVEL_ONE;
+      }
+      else
+        return RobotMap.LADDER_LEVEL_CUSHION; 
     }else if (getNextLadderLevel() == LadderLevel.LEVEL_VISION) {
       return RobotMap.LADDER_LEVEL_VISION;
     }

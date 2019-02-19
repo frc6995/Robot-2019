@@ -8,8 +8,7 @@ import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.limelight.*;
-import frc.robot.commands.hatch.HatchLevelScoreCG;
-import frc.robot.commands.hatch.HatchMechToggleCG;
+import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
@@ -25,8 +24,9 @@ public class OI {
     
     public OI() {
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
+        stick.button_7_runOnPress(new HatchIntakeC());
+
         xbox.x_toggleOnPress(new VisionAlignCG());
-        xbox.y_toggleOnPress(new LadderHoldPIDC());
 
         //For testing purposes
         SmartDashboard.putData("Drive for 2 Secs", new DriveForTimeC(2,0.2));
@@ -35,12 +35,13 @@ public class OI {
         SmartDashboard.putData("LadderHoldPIDC", new LadderHoldPIDC());
         SmartDashboard.putData("LadderMovePIDC", new LadderMoveUpPIDC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
-        SmartDashboard.putData("Set Ladder to L2", new LadderSetLevelC(LadderLevel.LEVEL_TWO));
+        SmartDashboard.putData("Set Ladder to vision", new LadderSetLevelC(LadderLevel.LEVEL_VISION));
         SmartDashboard.putData("Set Ladder to L3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
+        SmartDashboard.putData("Hatch Intake", new HatchIntakeC());
 
         //buttonBoard.thumb_runWhileHeld(new ClimbPlatformCG(buttonBoard.pinky()));
-        buttonBoard.index_runWhileHeld(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.middle_runWhileHeld(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
+        buttonBoard.index_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
+        buttonBoard.middle_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
 
     }

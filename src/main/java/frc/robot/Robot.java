@@ -49,6 +49,8 @@ public class Robot extends TimedRobot {
     m_ladderS = new LadderS();
     m_hatchMechS = new HatchMechS();
     m_oi = new OI();
+
+    m_driveCommand = new DriveArcadeXboxC();
     
     //Resets the ladder whenever we start the robot.
 
@@ -67,8 +69,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
+   
+    m_ladderDisplayStatusC.start();
+    m_ladderManualMoveC.start();
+    m_driveCommand.start();
   }
-  
+
   @Override
   public void disabledInit() {
   }

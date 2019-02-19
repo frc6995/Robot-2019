@@ -11,6 +11,7 @@ public class LadderHomeC extends Command {
   private int i;
   private int j;
   private boolean encodersReset;
+  private double originalEncoderCount;
 
   public LadderHomeC() {
     requires(Robot.m_ladderS);
@@ -23,6 +24,7 @@ public class LadderHomeC extends Command {
     finished = false;
     i = 0;
     j = 0;
+    originalEncoderCount = Robot.m_ladderS.getLadderEncoderCount();
   }
 
   @Override
@@ -33,6 +35,10 @@ public class LadderHomeC extends Command {
     if (i < 20) {
       i += 1;
       Robot.m_ladderS.setLadderPower(0.2);
+      if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount()) {
+        SmartDashboard.putString("Oops","Encoder values have not changed!!!");
+        return;
+      }
     } 
     else {
       j += 1;

@@ -14,8 +14,6 @@ public class HatchLevelScoreCG extends CommandGroup {
    */
   public HatchLevelScoreCG(LadderLevel level) {
 
-    //HOW WILL THE CORRECT LEVEL GET SET???? SEEMS BETTER TO KEEP VISION ALIGN SEPARATE FROM LADDER/SCORING
-
     //set ladder level first.
     addSequential(new LadderSetLevelC(level));
     //Move up to the set ladder level, and swap to holding
@@ -29,9 +27,7 @@ public class HatchLevelScoreCG extends CommandGroup {
     addSequential(new WaitCommand(1));
     
     //Return to level 0
-    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
+    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CUSHION));
     addSequential(new LadderMoveDownPIDC());
-    
-    //Insert back away?
   }
 }
