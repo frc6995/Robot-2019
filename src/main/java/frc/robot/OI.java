@@ -29,7 +29,7 @@ public class OI {
         xbox.y_toggleOnPress(new LadderHoldPIDC());
 
         //For testing purposes
-        SmartDashboard.putData("Drive for 3 Secs", new DriveForTimeC(3));
+        SmartDashboard.putData("Drive for 2 Secs", new DriveForTimeC(2,0.2));
         SmartDashboard.putData("Vision Align Target", new VisionAlignTargetC());
         SmartDashboard.putData("Vision Align CG", new VisionAlignCG());
         SmartDashboard.putData("LadderHoldPIDC", new LadderHoldPIDC());
@@ -38,9 +38,10 @@ public class OI {
         SmartDashboard.putData("Set Ladder to L2", new LadderSetLevelC(LadderLevel.LEVEL_TWO));
         SmartDashboard.putData("Set Ladder to L3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
 
-        buttonBoard.thumb_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.index_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
-        buttonBoard.middle_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
+        //buttonBoard.thumb_runWhileHeld(new ClimbPlatformCG(buttonBoard.pinky()));
+        buttonBoard.index_runWhileHeld(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
+        buttonBoard.middle_runWhileHeld(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
+        buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
 
     }
 }

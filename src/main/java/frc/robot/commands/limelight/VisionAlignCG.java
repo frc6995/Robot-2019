@@ -11,14 +11,14 @@ import frc.robot.subsystems.LadderS.LadderLevel;
 public class VisionAlignCG extends CommandGroup {
 
   public VisionAlignCG() {
-    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_ONE));
-    addSequential(new LadderMoveDownPIDC());
+    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
+    addSequential(new LadderMoveUpPIDC());
     addParallel(new LadderHoldPIDC());
 
     addParallel(new VisionAlignTargetC());
-    addSequential(new DriveForTimeC(1), 1);
+    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
+    addSequential(new LadderMoveUpPIDC());
 
-    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_ONE));
-    addSequential(new LadderMoveDownPIDC());
+    addSequential(new DriveForTimeC(2, 0.2), 2);
   }
 }

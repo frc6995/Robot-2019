@@ -43,12 +43,13 @@ public class VisionAlignTargetC extends Command {
 
   @Override
   protected void initialize() {
-    //this.setInterruptible(false); //Prevents drivebase from overriding this command.
-    pipelineEntry.setDouble(0); //Sets pipeline to Vision Align pipeline
+    this.setInterruptible(false); //Prevents drivebase from overriding this command.
+    
   }
 
   @Override
   protected void execute() {
+    pipelineEntry.setDouble(0);  //Sets pipeline to Vision Align pipeline
     cam = camMode.getDouble(0);
     tx = txEntry.getDouble(0.0); //get offsets from limelight
     ty = tyEntry.getDouble(0.0);
@@ -64,7 +65,7 @@ public class VisionAlignTargetC extends Command {
 
     double heading_error = -tx;
     double distance_error = ty;
-    double max_power = 0.1;
+    double max_power = 0.2;
 
     //basic proportional control
     steering_adjust = heading_error * KpAim; 
@@ -96,7 +97,7 @@ public class VisionAlignTargetC extends Command {
 
     SmartDashboard.putNumber("sumInRange", sumInRange);
     
-    if (Math.abs(tx) <= 0.5 && Math.abs(ty) <= 1) {
+    if (Math.abs(tx) <= 1 && Math.abs(ty) <= 1) {
       sumInRange+=1;
       //return true;     
     }
@@ -105,7 +106,7 @@ public class VisionAlignTargetC extends Command {
       //return false;
     } 
     
-    if(sumInRange>40){
+    if(sumInRange>20){
       pipelineEntry.setDouble(1);
       sumInRange = 0;
       return true;
