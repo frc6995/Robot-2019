@@ -6,7 +6,7 @@ import frc.robot.commands.ladder.*;
 
 public class HatchLevelScoreCG extends CommandGroup {
   
-  public HatchLevelScoreCG() {
+  public HatchLevelScoreCG(int level) {
 
     //Only uncomment and test when we have merged with the auto align branch 
     //addSequential(new VisionAlignCG());
@@ -21,7 +21,7 @@ public class HatchLevelScoreCG extends CommandGroup {
     addSequential(new HatchMechToggleCG());
 
     //Return to level 0
-    addSequential(new LadderSetLevelC(0));
+    addSequential(new LadderSetLevelC(level));
     addSequential(new LadderMovePIDC());
     
     //Insert back away?

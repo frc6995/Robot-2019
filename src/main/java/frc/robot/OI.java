@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.climb_manual.*;
 import frc.robot.commands.climb.ClimbPlatformCG;
 import frc.robot.commands.limelight.*;
+import frc.robot.commands.hatch.HatchLevelScoreCG;
 import frc.robot.commands.hatch.HatchMechToggleCG;
 import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.commands.ladder.LadderMovePIDC;
@@ -54,10 +55,10 @@ public class OI {
         SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
                        
 
-        buttonBoard.thumb_runWhileHeld(new LadderSetLevelC(1));
-        buttonBoard.index_runWhileHeld(new LadderSetLevelC(2));
-        buttonBoard.middle_runWhileHeld(new LadderSetLevelC(3));
-        buttonBoard.ring_toggleOnPress(new ClimbPlatformCG(buttonBoard.pinky()));
+        buttonBoard.thumb_runWhileHeld(new ClimbPlatformCG(buttonBoard.pinky()));
+        buttonBoard.index_runWhileHeld(new HatchLevelScoreCG(1));
+        buttonBoard.middle_runWhileHeld(new HatchLevelScoreCG(2));
+        buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(3));
 
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
         stick.button_7_runOnPress(new ClimbFrontToggleC());
