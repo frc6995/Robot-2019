@@ -227,6 +227,9 @@ public class LadderS extends Subsystem {
     } else if (!ladderPIDActive) {
       ladderStatus = "Idle";
     }
+    else {
+      ladderStatus = "REKT";
+    }
 
     SmartDashboard.putString("Ladder status", ladderStatus);
   }

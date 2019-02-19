@@ -9,9 +9,7 @@ public class LadderMoveDownPIDC extends Command {
     //This command should not be interrupted, but we may want to change this
     //We could always use a toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptable.
     this.setInterruptible(false);
-
-    Robot.m_ladderS.setMaxPIDPower(0.3);
-    Robot.m_ladderS.enablePID();
+    //Robot.m_ladderS.enablePID();
   }
 
   @Override
@@ -20,6 +18,7 @@ public class LadderMoveDownPIDC extends Command {
 
   @Override
   protected void execute() {
+    Robot.m_ladderS.setMaxPIDPower(0.35);
     Robot.m_ladderS.runPID();
   }
 
