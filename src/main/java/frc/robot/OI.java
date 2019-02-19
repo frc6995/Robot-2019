@@ -38,9 +38,10 @@ public class OI {
         SmartDashboard.putData("Set Ladder to L2", new LadderSetLevelC(LadderLevel.LEVEL_TWO));
         SmartDashboard.putData("Set Ladder to L3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
 
-        buttonBoard.thumb_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.index_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
-        buttonBoard.middle_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
+        //buttonBoard.thumb_runWhileHeld(new ClimbPlatformCG(buttonBoard.pinky()));
+        buttonBoard.index_runWhileHeld(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
+        buttonBoard.middle_runWhileHeld(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
+        buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
 
     }
 }
