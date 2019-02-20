@@ -16,6 +16,8 @@ import frc.robot.commands.drive.DriveArcadeXboxC;
 //import frc.robot.commands.ladder.LadderHomeC;
 //import frc.robot.commands.ladder.LadderManualMoveC;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
+import frc.robot.commands.ladder.LadderHomeC;
+import frc.robot.commands.ladder.LadderManualMoveC;
 import frc.robot.subsystems.*;
 
 /**
@@ -47,28 +49,30 @@ public class Robot extends TimedRobot {
     m_ladderS = new LadderS();
     m_hatchMechS = new HatchMechS();
     m_oi = new OI();
+
+    m_driveCommand = new DriveArcadeXboxC();
     
     //Resets the ladder whenever we start the robot.
-    //m_holdLadderC.start();
-    //m_homeLadderC.start(); Disabled so we can test other things first
 
     //Resets the ladder whenever we start the robot
-    //m_homeLadderCommand = new LadderHomeC();
-    //m_homeLadderCommand.start();
+    //m_homeLadderC = new LadderHomeC();
+    //m_homeLadderC.start();
 
     //Limelight setup to use camera
     CameraServer cs = CameraServer.getInstance();
     HttpCamera limelight = new HttpCamera("limelight", "http://10.69.95.11:5800", HttpCameraKind.kMJPGStreamer);
     limelight.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     cs.startAutomaticCapture(limelight);
-    //m_ladderManualMoveC = new LadderManualMoveC();
+    m_ladderManualMoveC = new LadderManualMoveC();
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
   }
 
   @Override
   public void robotPeriodic() {
-    //m_ladderManualMoveC.start();
+   
     m_ladderDisplayStatusC.start();
+    m_ladderManualMoveC.start();
+    m_driveCommand.start();
   }
 
   @Override

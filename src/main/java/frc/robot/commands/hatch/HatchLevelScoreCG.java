@@ -1,29 +1,33 @@
 package frc.robot.commands.hatch;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 import frc.robot.commands.hatch.HatchMechToggleCG;
 import frc.robot.commands.ladder.*;
+import frc.robot.subsystems.LadderS.LadderLevel;
+import frc.robot.commands.ladder.LadderMoveUpPIDC;
+import frc.robot.commands.ladder.LadderMoveDownPIDC;
 
 public class HatchLevelScoreCG extends CommandGroup {
-  
-  public HatchLevelScoreCG() {
+  /**
+   * Add your docs here.
+   */
+  public HatchLevelScoreCG(LadderLevel level) {
 
-    //Only uncomment and test when we have merged with the auto align branch 
-    //addSequential(new VisionAlignCG());
-
-    //HOW WILL THE CORRECT LEVEL GET SET???? SEEMS BETTER TO KEEP VISION ALIGN SEPARATE FROM LADDER/SCORING
-
+    //set ladder level first.
+    addSequential(new LadderSetLevelC(level));
     //Move up to the set ladder level, and swap to holding
-    addSequential(new LadderMovePIDC());
+    addSequential(new LadderMoveUpPIDC());
     
     //Score hatch
     addParallel(new LadderHoldPIDC());
     addSequential(new HatchMechToggleCG());
 
-    //Return to level 0
-    addSequential(new LadderSetLevelC(0));
-    addSequential(new LadderMovePIDC());
+    //wait 1 second
+    addSequential(new WaitCommand(1));
     
-    //Insert back away?
+    //Return to level 0
+    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CUSHION));
+    addSequential(new LadderMoveDownPIDC());
   }
 }

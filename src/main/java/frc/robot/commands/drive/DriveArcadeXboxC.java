@@ -32,7 +32,9 @@ public class DriveArcadeXboxC extends Command {
         case 0: throt = 0.80; numberPressed = 1; break;
         case 1: throt = 0.65; numberPressed = 2; break;
         case 2: throt = 0.50; numberPressed = 3; break;
-        case 3: throt = 1.00; numberPressed = 0; break;
+        case 3: throt = 0.90; numberPressed = 4; break;
+        case 4: throt = 0.95; numberPressed = 5; break;
+        case 5: throt = 1.00; numberPressed = 0; break;
         default: throt = 1.00; numberPressed = 0; break;
       }
     } else if(Robot.m_oi.xbox.right_bumper()) {
