@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 // NOTE!!! The rear should be the side without the ladder, however, the side without the ladder should be going first.
@@ -25,6 +26,7 @@ public class ClimbFrontS extends Subsystem {
 
   public boolean cSwitchFront() {
     // returns the value of the front limit switch as a boolean. Used by the CG in the ClimbFrontLimitRetractC
+    SmartDashboard.putBoolean("Limit Front", climberFrontSwitch.get());
     return climberFrontSwitch.get();
   }
   

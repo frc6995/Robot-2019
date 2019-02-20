@@ -49,7 +49,7 @@ public class OI {
         SmartDashboard.putData("Set Ladder to L3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
         SmartDashboard.putData("Hatch Intake", new HatchIntakeC());
 
-        //buttonBoard.thumb_runWhileHeld(new ClimbPlatformCG(buttonBoard.pinky()));
+        buttonBoard.pinky_runWhileHeld(new ClimbPlatformCG(buttonBoard.thumb()));
         buttonBoard.index_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
         buttonBoard.middle_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
@@ -58,11 +58,20 @@ public class OI {
         //For climber
         SmartDashboard.putData("Climber Front DSol Toggle", new ClimbFrontToggleC());
         SmartDashboard.putData("Climber Rear DSol Toggle", new ClimbRearToggleC());
-        SmartDashboard.putData("Climber Motors Forward T", new ClimbMotorsReverseToggleC(true));
         SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
         SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC());
         SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
         SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
+
+        SmartDashboard.putData("AClimb Both Toggle", new ClimbBothToggleC());
+        SmartDashboard.putData("AClimb Motors Reverse", new ClimbMotorsReverseToggleC(true));
+        SmartDashboard.putData("BClimb Rear Reverse til Limit", new ClimbRearReverseLimitC());
+        SmartDashboard.putData("CClimb Rear til Retract", new ClimbRearReverseLimitRetractCG());
+        SmartDashboard.putData("DClimb Front Reverse til Limit", new ClimbFrontReverseLimitC());
+        SmartDashboard.putData("EClimb Front til Retract", new ClimbFrontReverseLimitRetractCG());
+
+        SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
+        SmartDashboard.putBoolean("Limit FrontCheck", Robot.m_ClimbFrontS.cSwitchFront());
 
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
 
@@ -75,6 +84,5 @@ public class OI {
         //stick.button_10_runOnPress(new ClimbMotorsReverseC());
         //stick.button_11_runOnPress(new ClimbMotorsReverseToggleC());
         //stick.button_12_runOnPress(new ClimbMotorsStopC());
-
     }
 }

@@ -2,6 +2,7 @@ package frc.robot.commands.climb_manual;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 
 // Used entirely for testing, not even backup. Simply turns the motors on. Use MotorsStopC to end.
 
@@ -18,7 +19,7 @@ public class ClimbMotorsReverseC extends Command {
   @Override
   protected void execute() {
     Robot.m_ClimbCrawlerS.motorReverse();
-    Robot.m_drivebaseS.arcadeDrive(-0.1, 0, 1);
+    Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
   }
 
   @Override

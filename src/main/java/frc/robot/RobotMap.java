@@ -24,6 +24,9 @@ public class RobotMap {
   public final static int PCM_ID_SOLENOID_CLIMBER_FRONT = 2;
   public final static int PCM_ID_SOLENOID_CLIMBER_REAR = 3;
 
+  // 
+  public static final int PWM_ID_SPARK_CLIMB_MOVEMENT = 0;
+
   //HatchMech constants
   public final static int DSOLENOID_HATCHMECH_FORWARD = 1;
   public final static int DSOLENOID_HATCHMECH_REVERSE = 0;
@@ -65,6 +68,8 @@ public class RobotMap {
 
   public final static int BUTTON_THROTTLE_CHANGE = 2;
   public final static int BUTTON_THROTTLE_RESET = 3;
-public static final int PWM_ID_SPARK_CLIMB_MOVEMENT = 0;
+
+  // Climb Constants
+  public static final double CLIMB_MOTORS_SPEED = 0.2;
 }
 

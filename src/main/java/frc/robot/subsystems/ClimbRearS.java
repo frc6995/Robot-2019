@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 // NOTE!!! The rear should be the side without the ladder, however, the side without the ladder should be going first.
@@ -22,6 +23,7 @@ public class ClimbRearS extends Subsystem {
   }
 
   public boolean cSwitchRear() {
+    SmartDashboard.putBoolean("LimitRear", climberRearSwitch.get());
     return climberRearSwitch.get();
   }
 

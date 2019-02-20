@@ -1,6 +1,7 @@
 package frc.robot.commands.climb_manual;
 
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 // This is a real override/backup, it will toggle the drivebase and climb motors on/off.
@@ -8,8 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class ClimbMotorsReverseToggleC extends Command {
   boolean EnabledB;
+
   public ClimbMotorsReverseToggleC(boolean enabled) {
-    boolean enabledB = enabled;
+    EnabledB = enabled;
     requires(Robot.m_ClimbCrawlerS);
     requires(Robot.m_drivebaseS);
   }
@@ -21,8 +23,9 @@ public class ClimbMotorsReverseToggleC extends Command {
   @Override
   protected void execute() {
     if (EnabledB == true) {
+      System.out.print("Run motors");
       Robot.m_ClimbCrawlerS.motorReverse();
-      Robot.m_drivebaseS.arcadeDrive(-0.1, 0, 1); 
+      Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1); 
     }
   }
 

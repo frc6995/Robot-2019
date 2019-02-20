@@ -19,7 +19,7 @@ public class ClimbFrontToggleC extends Command {
 
     @Override
     protected void execute() {
-        Robot.m_ClimbFrontS.deployFront();
+        Robot.m_ClimbFrontS.retractFront();
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ClimbFrontToggleC extends Command {
 
     @Override
     protected void end() {
-        Robot.m_ClimbFrontS.retractFront();
+        Robot.m_ClimbFrontS.deployFront();
     }
 
     @Override
