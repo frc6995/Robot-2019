@@ -28,10 +28,12 @@ public class ClimbRearS extends Subsystem {
   }
 
   public void deployRear() {
+    System.out.println("deployRear");
     climbMechanismRear.set(true);
   }
   
   public void retractRear() {
+    System.out.println("retractRear");
     climbMechanismRear.set(false);
   }
 }

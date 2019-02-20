@@ -32,10 +32,12 @@ public class ClimbFrontS extends Subsystem {
   
   public void deployFront() {
     // The piston rod is pushed out.
+    System.out.println("deployFront");
     climbMechanismFront.set(true);
   }
   
   public void retractFront() {
+    System.out.println("retractFront");
     // the rod is sucked in.
     climbMechanismFront.set(false);
   }

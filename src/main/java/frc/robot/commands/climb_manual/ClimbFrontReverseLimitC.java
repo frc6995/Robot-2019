@@ -23,6 +23,7 @@ public class ClimbFrontReverseLimitC extends Command {
 
   @Override
   protected void execute() {
+    System.out.println("ClimbFrontReversLimit");
     Robot.m_ClimbCrawlerS.motorReverse();
     Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
   }
@@ -30,8 +31,10 @@ public class ClimbFrontReverseLimitC extends Command {
   @Override
   protected boolean isFinished() {
     if (Robot.m_ClimbFrontS.cSwitchFront()) {
+      System.out.println("limit switch on");
       return false;
     } else {
+      System.out.println("limit switch off");
     return true;
     } 
   }

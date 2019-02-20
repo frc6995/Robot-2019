@@ -22,8 +22,9 @@ public class ClimbMotorsReverseToggleC extends Command {
 
   @Override
   protected void execute() {
+    System.out.println("Run motors execute");
     if (EnabledB == true) {
-      System.out.print("Run motors");
+      System.out.println("Run motors");
       Robot.m_ClimbCrawlerS.motorReverse();
       Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1); 
     }
@@ -36,8 +37,8 @@ public class ClimbMotorsReverseToggleC extends Command {
 
   @Override
   protected void end() {
-    Robot.m_ClimbCrawlerS.motorStop();
-    Robot.m_drivebaseS.arcadeDrive(0, 0, 0); 
+    // Robot.m_ClimbCrawlerS.motorStop();
+    // Robot.m_drivebaseS.arcadeDrive(0, 0, 0); 
   }
 
   @Override

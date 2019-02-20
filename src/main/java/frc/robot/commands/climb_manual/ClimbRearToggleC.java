@@ -19,7 +19,8 @@ public class ClimbRearToggleC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbRearS.retractRear();
+    System.out.println("ClimbRearToggle - deploy rear");
+    Robot.m_ClimbRearS.deployRear();
   }
 
   @Override
@@ -29,7 +30,9 @@ public class ClimbRearToggleC extends Command {
 
   @Override
   protected void end() {
-    Robot.m_ClimbRearS.deployRear();
+    System.out.println("ClimbRearToggle off");
+    Robot.m_ClimbRearS.retractRear();
+
   }
 
   @Override
