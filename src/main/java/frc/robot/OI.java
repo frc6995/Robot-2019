@@ -24,7 +24,7 @@ public class OI {
     
     public OI() {
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
-        stick.button_7_runOnPress(new HatchIntakeC());
+        //stick.button_7_runOnPress(new HatchIntakeC());
 
         xbox.x_toggleOnPress(new VisionAlignCG());
 
@@ -43,6 +43,7 @@ public class OI {
         buttonBoard.index_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
         buttonBoard.middle_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
+        buttonBoard.thumb_runOnPress(new HatchIntakeC());
 
     }
 }

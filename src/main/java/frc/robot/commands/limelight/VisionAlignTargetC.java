@@ -18,8 +18,8 @@ public class VisionAlignTargetC extends Command {
   NetworkTableEntry taEntry = table.getEntry("ta");
   NetworkTableEntry camMode = table.getEntry("camMode");
   NetworkTableEntry pipelineEntry = table.getEntry("pipeline");
-  double KpAim = -0.035f;
-  double KpDistance = -0.1f;
+  double KpAim = -0.025f;
+  double KpDistance = -0.08f;
   double min_aim_command = 0.05f;
   double cam = 0.0;
   double tx= 0.0;
@@ -65,7 +65,7 @@ public class VisionAlignTargetC extends Command {
 
     double heading_error = -tx;
     double distance_error = ty;
-    double max_power = 0.2;
+    double max_power = 0.5;
 
     //basic proportional control
     steering_adjust = heading_error * KpAim; 
