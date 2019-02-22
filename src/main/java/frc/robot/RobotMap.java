@@ -53,7 +53,7 @@ public class RobotMap {
   public final static int BUTTON_HATCH_TOGGLE = 1;
 
   //Limit switch constants
-  public static final int DIO_LIMIT_LADDER_TOP = 1;
+  public static final int DIO_LIMIT_LADDER_TOP = 1;  // Never got a Limit Switch for Top.
   public static final int DIO_LIMIT_LADDER_BOTTOM = 0;
   public static final int DIO_LIMIT_CLIMBER_REAR = 3;
   public static final int DIO_LIMIT_CLIMBER_FRONT = 2;
@@ -70,6 +70,6 @@ public class RobotMap {
   public final static int BUTTON_THROTTLE_RESET = 3;
 
   // Climb Constants
-  public static final double CLIMB_MOTORS_SPEED = 0.2;
+  public static final double CLIMB_MOTORS_SPEED = 0.4;  //PostChange: 0.2 was very slow; try 0.4
 }
 

@@ -3,7 +3,7 @@ package frc.robot.commands.climb;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-//This lifts the back of the robot using double solenoids
+//This lifts the back of the robot using solenoids
 
 public class ClimbRearLiftC extends Command {
   public ClimbRearLiftC() {

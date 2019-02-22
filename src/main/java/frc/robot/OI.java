@@ -59,20 +59,24 @@ public class OI {
         SmartDashboard.putData("Climber Front DSol Toggle", new ClimbFrontToggleC());
         SmartDashboard.putData("Climber Rear DSol Toggle", new ClimbRearToggleC());
         SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
-        SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC());
-        SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
-        SmartDashboard.putData("Rear Retract", new ClimbRearRetractC());
-        SmartDashboard.putData("Front Retract", new ClimbFrontRetractC());
         SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
 
+        // Sequence did not work. Climb Both Toggle was constantly deploying
         SmartDashboard.putData("AClimb Both Toggle", new ClimbBothToggleC());
-        SmartDashboard.putData("Climb Test", new ClimbTestLiftCG());
         SmartDashboard.putData("AClimb Motors Reverse", new ClimbMotorsReverseToggleC(true));
         SmartDashboard.putData("BClimb Rear Reverse til Limit", new ClimbRearReverseLimitC());
         SmartDashboard.putData("CClimb Rear til Retract", new ClimbRearReverseLimitRetractCG());
         SmartDashboard.putData("DClimb Front Reverse til Limit", new ClimbFrontReverseLimitC());
         SmartDashboard.putData("EClimb Front til Retract", new ClimbFrontReverseLimitRetractCG());
 
+        // Mostly working sequence - Not using limit switches
+        SmartDashboard.putData("Climb Test", new ClimbTestLiftCG());
+        SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC()); //drivebase not moving
+        SmartDashboard.putData("Rear Retract", new ClimbRearRetractC());
+        // Crawler still running, use Xbox to move drivebase
+        SmartDashboard.putData("Front Retract", new ClimbFrontRetractC());
+        SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
+        
         SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
         SmartDashboard.putBoolean("Limit FrontCheck", Robot.m_ClimbFrontS.cSwitchFront());
 
