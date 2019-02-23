@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.commands.drive.DriveArcadeXboxC;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
+import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderManualMoveC;
 import frc.robot.subsystems.*;
 
@@ -56,8 +57,8 @@ public class Robot extends TimedRobot {
     //Resets the ladder whenever we start the robot.
 
     //Resets the ladder whenever we start the robot
-    //m_homeLadderC = new LadderHomeC();
-    //m_homeLadderC.start();
+    m_homeLadderC = new LadderHomeC();
+    m_homeLadderC.start();
 
     //Limelight setup to use camera
     CameraServer cs = CameraServer.getInstance();
