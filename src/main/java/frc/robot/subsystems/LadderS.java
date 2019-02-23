@@ -114,6 +114,7 @@ public class LadderS extends Subsystem {
     setLadderPower(0);
     //commented out so I can test LadderHomeC   */ 
     ladderTalonA.neutralOutput(); //equivalent of setLadderPower(0) but w/ break
+    //ask Thomas about nuetralOutput.
   }
 
   public void setLadderPower(double power) {
