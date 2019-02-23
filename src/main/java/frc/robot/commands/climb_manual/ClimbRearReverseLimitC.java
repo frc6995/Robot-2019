@@ -25,7 +25,7 @@ public class ClimbRearReverseLimitC extends Command {
   @Override
   protected void execute() {
     Robot.m_ClimbCrawlerS.motorReverse();
-    Robot.m_drivebaseS.arcadeDrive(-0.5, 0, 1);
+    Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
     System.out.println("ClimbRearReverseLimit");
   }
 

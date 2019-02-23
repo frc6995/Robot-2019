@@ -11,6 +11,7 @@ public class ClimbFrontS extends Subsystem {
   
   private static Solenoid climbMechanismFront;
   private static DigitalInput climberFrontSwitch;
+  private boolean extended;
 
   public ClimbFrontS(){
     // With the solenoid in pcm port 2, the forward channel is 2.
@@ -18,6 +19,7 @@ public class ClimbFrontS extends Subsystem {
     // PS, what channel is used when the PCM ID is 0???
     climbMechanismFront = new Solenoid(RobotMap.PCM_ID, RobotMap.PCM_ID_SOLENOID_CLIMBER_FRONT); //why does channel change?
     climberFrontSwitch = new DigitalInput(RobotMap.DIO_LIMIT_CLIMBER_FRONT);
+    this.extended = false;
   }
 
   @Override
@@ -34,12 +36,17 @@ public class ClimbFrontS extends Subsystem {
     // The piston rod is pushed out.
     System.out.println("deployFront");
     climbMechanismFront.set(true);
+    this.extended = true;
   }
   
   public void retractFront() {
     System.out.println("retractFront");
     // the rod is sucked in.
     climbMechanismFront.set(false);
+    this.extended = false;
   }
 
+  public boolean getExtended() {
+    return this.extended;
+  }
 }

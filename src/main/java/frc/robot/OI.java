@@ -6,6 +6,9 @@ import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.climb_manual.*;
+import frc.robot.commands.climb_test.ClimbBothToggleNC;
+import frc.robot.commands.climb_test.ClimbFrontToggleNC;
+import frc.robot.commands.climb_test.ClimbRearToggleNC;
 import frc.robot.commands.climb.ClimbPlatformCG;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.*;
@@ -79,6 +82,9 @@ public class OI {
         
         SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
         SmartDashboard.putBoolean("Limit FrontCheck", Robot.m_ClimbFrontS.cSwitchFront());
+        SmartDashboard.putData("NEW Both Toggle", new ClimbBothToggleNC());
+        SmartDashboard.putData("NEW Front Toggle", new ClimbFrontToggleNC());
+        SmartDashboard.putData("NEW Rear Toggle", new ClimbRearToggleNC());
 
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
 

@@ -17,7 +17,7 @@ public class DrivebaseS extends Subsystem {
   private WPI_VictorSPX driveRightMiddle = null;
   private WPI_VictorSPX driveRightBack = null;
 
-  private int drivebaseAmpLimit = 30;
+  private int drivebaseAmpLimit = 20;
 
   private DifferentialDrive differentialDrive = null;
   

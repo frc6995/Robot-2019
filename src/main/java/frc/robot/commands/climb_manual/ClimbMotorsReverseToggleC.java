@@ -8,10 +8,10 @@ import edu.wpi.first.wpilibj.command.Command;
 // In combination with FrontToggleC and RearToggleC, the climb commands can be run independently.
 
 public class ClimbMotorsReverseToggleC extends Command {
-  boolean EnabledB;
+  private boolean EnabledB;
 
   public ClimbMotorsReverseToggleC(boolean enabled) {
-    EnabledB = enabled;
+    this.EnabledB = enabled;
     requires(Robot.m_ClimbCrawlerS);
     requires(Robot.m_drivebaseS);
   }
@@ -23,7 +23,7 @@ public class ClimbMotorsReverseToggleC extends Command {
   @Override
   protected void execute() {
     System.out.println("Run motors execute");
-    if (EnabledB == true) {
+    if (this.EnabledB == true) {
       System.out.println("Run motors");
       Robot.m_ClimbCrawlerS.motorReverse();
       Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1); 

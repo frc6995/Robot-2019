@@ -11,11 +11,13 @@ public class ClimbRearS extends Subsystem {
   
   private static Solenoid climbMechanismRear;
   private static DigitalInput climberRearSwitch;
+  private boolean extended;
 
   public ClimbRearS() {
     //likely 3 counting up and following the pattern, see ClimbFrontS.java
     climbMechanismRear = new Solenoid(RobotMap.PCM_ID, RobotMap.PCM_ID_SOLENOID_CLIMBER_REAR); //possibly 3?? 2 for test
     climberRearSwitch = new DigitalInput(RobotMap.DIO_LIMIT_CLIMBER_REAR);
+    this.extended = false;
   }
 
   @Override
@@ -30,10 +32,16 @@ public class ClimbRearS extends Subsystem {
   public void deployRear() {
     System.out.println("deployRear");
     climbMechanismRear.set(true);
+    this.extended = true;
   }
   
   public void retractRear() {
     System.out.println("retractRear");
     climbMechanismRear.set(false);
+    this.extended = false;
+  }
+
+  public boolean getExtended() {
+    return this.extended;
   }
 }
