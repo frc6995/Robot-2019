@@ -17,7 +17,10 @@ import frc.robot.Robot;
 */
 
 public class ClimbBothToggleC extends Command {
-  public ClimbBothToggleC() {
+  private boolean Enabled;
+  
+  public ClimbBothToggleC(boolean enabled) {
+    this.Enabled = enabled;
     requires(Robot.m_ClimbFrontS);
     requires(Robot.m_ClimbRearS);
   }
@@ -28,8 +31,10 @@ public class ClimbBothToggleC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbFrontS.deployFront();
-    Robot.m_ClimbRearS.deployRear();
+    if (this.Enabled == true) {
+      Robot.m_ClimbFrontS.deployFront();
+      Robot.m_ClimbRearS.deployRear();
+    }
   }
 
   @Override
