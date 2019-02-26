@@ -1,5 +1,6 @@
 package frc.robot.commands.climb_test;
 
+//import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -19,10 +20,13 @@ public class ClimbFrontToggleNC extends Command {
 
     @Override
     protected void execute() {
-        if (Robot.m_ClimbFrontS.getExtended() == true) {
-            Robot.m_ClimbFrontS.deployFront();
+        if (Robot.m_ClimbFrontS.getExtended() == true) { //(Robot.m_ClimbFrontS.getExtended() == Value.kForward)
+            Robot.m_ClimbFrontS.retractFront();
         }
-        else {
+        /* else if (Robot.m_ClimbFrontS.getExtended() == Value.kOff) {
+            Robot.m_ClimbFrontS.retractFront();
+        } */
+        else { //in DS mode, it would be reverse, so deploy still works
             Robot.m_ClimbFrontS.deployFront();
         }
     }

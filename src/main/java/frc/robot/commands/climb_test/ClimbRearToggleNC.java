@@ -19,11 +19,14 @@ public class ClimbRearToggleNC extends Command {
 
   @Override
   protected void execute() {
-    if (Robot.m_ClimbRearS.getExtended() == true) {
-      Robot.m_ClimbRearS.deployRear();
-    }
-    else {
+    if (Robot.m_ClimbRearS.getExtended() == true) { //(Robot.m_ClimbRearS.getExtended() == Value.kForward)
       Robot.m_ClimbRearS.retractRear();
+    }
+    /* else if (Robot.m_ClimbFrontS.getExtended() == Value.kOff) {
+      Robot.m_ClimbFrontS.retractFront();
+    } */
+    else { //all's left is kReverse, so deploy
+      Robot.m_ClimbRearS.deployRear();
     }
   }
 

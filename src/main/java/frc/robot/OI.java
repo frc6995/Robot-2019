@@ -41,7 +41,7 @@ public class OI {
         SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
         SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
         // Sequence did not work. Climb Both Toggle was constantly deploying
-        SmartDashboard.putData("AClimb Both Toggle", new ClimbBothToggleC());
+        SmartDashboard.putData("AClimb Both Toggle", new ClimbBothToggleC(true));
         SmartDashboard.putData("AClimb Motors Reverse", new ClimbMotorsReverseToggleC(true));
         SmartDashboard.putData("BClimb Rear Reverse til Limit", new ClimbRearReverseLimitC());
         SmartDashboard.putData("CClimb Rear til Retract", new ClimbRearReverseLimitRetractCG());
