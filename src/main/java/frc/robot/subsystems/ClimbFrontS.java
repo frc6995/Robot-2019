@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
+//To change to double Solenoids make changes in ClimbFrontS, ClimbRearS, and the test toggles (NC)
+
 // NOTE!!! The rear should be the side without the ladder, however, the side without the ladder should be going first.
 
 public class ClimbFrontS extends Subsystem {
