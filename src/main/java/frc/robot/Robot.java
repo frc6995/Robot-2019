@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.subsystems.DrivebaseS;
-import frc.robot.commands.drive.DriveArcadeXboxC;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
+import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderManualMoveC;
 import frc.robot.subsystems.*;
 
@@ -31,14 +31,16 @@ public class Robot extends TimedRobot {
   public static ClimbCrawlerS m_ClimbCrawlerS;
 
   public static OI m_oi;
-  public Command m_autonomousCommand;
-  public Command m_driveCommand;
-  public Command m_homeLadderC;
+  //public Command m_autonomousCommand;
+  //public Command m_driveCommand;
+  public Command m_ladderHomeC;
   public Command m_ladderManualMoveC;
   public Command m_ladderDisplayStatusC;
-  public SendableChooser<Command> drive_chooser = new SendableChooser<>();
+  //public SendableChooser<Command> drive_chooser = new SendableChooser<>();
+  public SendableChooser<Command> climb_direction = new SendableChooser<>();
 
-  public DigitalInput limitSwitch;
+  public DigitalInput limitSwitch; //What naming convention should we use here?
+
   @Override
   public void robotInit() {
     // Instantiate Subsystems Here
@@ -51,28 +53,27 @@ public class Robot extends TimedRobot {
 
     m_oi = new OI();
 
-    m_driveCommand = new DriveArcadeXboxC();
-    
-    //Resets the ladder whenever we start the robot.
-
-    //Resets the ladder whenever we start the robot
-    //m_homeLadderC = new LadderHomeC();
-    //m_homeLadderC.start();
+    m_ladderHomeC = new LadderHomeC();
+    /* Move to robotPeriodic? 
+    m_ladderHomeC.start();
+    */
+    m_ladderManualMoveC = new LadderManualMoveC();
+    m_ladderDisplayStatusC = new LadderDisplayStatusC();
 
     //Limelight setup to use camera
     CameraServer cs = CameraServer.getInstance();
     HttpCamera limelight = new HttpCamera("limelight", "http://10.69.95.11:5800", HttpCameraKind.kMJPGStreamer);
     limelight.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     cs.startAutomaticCapture(limelight);
-    m_ladderManualMoveC = new LadderManualMoveC();
-    m_ladderDisplayStatusC = new LadderDisplayStatusC();
   }
 
   public void robotPeriodic() {
    
     m_ladderDisplayStatusC.start();
     m_ladderManualMoveC.start();
-    m_driveCommand.start();
+    // Shouldn't we do ladderHome here so it resets after every enable? Post Change
+    //Resets the ladder whenever we enable the robot
+    m_ladderHomeC.start();
   }
 
   @Override
@@ -86,11 +87,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    m_autonomousCommand = drive_chooser.getSelected();
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
-    }
-    m_ladderS.resetEncoder();
   }
 
   @Override
@@ -100,10 +96,6 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
-    }
-    //m_ladderS.resetEncoder();
   }
 
   @Override

@@ -22,11 +22,8 @@ public class HatchIntakeC extends CommandGroup {
     //set ladder level first.
     addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
 
-    //Move up to the set ladder level, and swap to holding
+    //Move up to the set ladder level and drive backwards
     addParallel(new LadderMoveUpPIDC());
-    
-    //Drive backwards
-    //addParallel(new LadderHoldPIDC());
     addSequential(new DriveForTimeC(1,-0.2));
    
     //Return to level 1

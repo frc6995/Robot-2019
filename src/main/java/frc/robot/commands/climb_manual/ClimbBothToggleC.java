@@ -10,39 +10,44 @@ package frc.robot.commands.climb_manual;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
+/* When testing as the first command in a series of manual executed commands, we received 
+** unpredictable results when we retracted front or rear (sometimes rear retracted front).
+** Debug comments showed that this command, because it never finishes until toggled, continually
+** deploys. Do not toggle commands that only occur once unless you do it in initialize.
+*/
+
 public class ClimbBothToggleC extends Command {
-  public ClimbBothToggleC() {
+  private boolean Enabled;
+  
+  public ClimbBothToggleC(boolean enabled) {
+    this.Enabled = enabled;
     requires(Robot.m_ClimbFrontS);
     requires(Robot.m_ClimbRearS);
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_ClimbFrontS.deployFront();
-    Robot.m_ClimbRearS.deployRear();
+    if (this.Enabled == true) {
+      Robot.m_ClimbFrontS.deployFront();
+      Robot.m_ClimbRearS.deployRear();
+    }
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return false;
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
     Robot.m_ClimbFrontS.retractFront();
     Robot.m_ClimbRearS.retractRear();
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
     end();

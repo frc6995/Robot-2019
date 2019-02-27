@@ -7,10 +7,10 @@ import frc.robot.RobotMap;
 public class LadderMoveDownPIDC extends Command {
   public LadderMoveDownPIDC() {
     requires(Robot.m_ladderS);
-    //This command should not be interrupted, but we may want to change this
-    //We could always use a toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptable.
+    //This command should not be interrupted, but we may want to change this -- WHY?
+    //We could always use a toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptible.
     this.setInterruptible(false);
-    //Robot.m_ladderS.enablePID();
+    //Robot.m_ladderS.enablePID();  Can we remove this?
   }
 
   @Override

@@ -24,6 +24,7 @@ public class ClimbFrontRetractC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    System.out.println("ClimbFrontRetractC");
     Robot.m_ClimbFrontS.retractFront();
   }
 

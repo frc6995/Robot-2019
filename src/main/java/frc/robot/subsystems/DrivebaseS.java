@@ -7,6 +7,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.commands.drive.DriveArcadeXboxC;
 
 public class DrivebaseS extends Subsystem {
 
@@ -17,17 +18,19 @@ public class DrivebaseS extends Subsystem {
   private WPI_VictorSPX driveRightMiddle = null;
   private WPI_VictorSPX driveRightBack = null;
 
-  private int drivebaseAmpLimit = 30;
+  private int drivebaseAmpLimit = 20;
 
   private DifferentialDrive differentialDrive = null;
   
   @Override
   protected void initDefaultCommand() {
+    setDefaultCommand(new DriveArcadeXboxC());
   }
 
   public DrivebaseS() {
 
     SmartDashboard.putNumber("Amp Limit", drivebaseAmpLimit);
+    drivebaseAmpLimit = (int) SmartDashboard.getNumber("Amp Limit", 20);
 
     driveLeftFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT);
     driveLeftMiddle = new WPI_VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_1);
@@ -59,9 +62,9 @@ public class DrivebaseS extends Subsystem {
   }
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
-    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * 0.65);
-    //Rotation throttle disabled, uses xbox joystick X to determine speed
+    //Rotation throttle disabled per driver request
     //Keep in mind for other usage of arcadeDrive
+    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * 0.65);
     SmartDashboard.putNumber("Throttle", throttle);
   }
 

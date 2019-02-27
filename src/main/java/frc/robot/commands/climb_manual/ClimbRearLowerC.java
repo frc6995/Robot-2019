@@ -16,6 +16,7 @@ public class ClimbRearLowerC extends Command {
 
   @Override
   protected void execute() {
+    System.out.println("ClimbRearLower - Retract");
     Robot.m_ClimbRearS.retractRear();
   }
 

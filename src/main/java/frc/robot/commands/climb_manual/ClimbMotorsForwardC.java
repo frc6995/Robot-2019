@@ -5,6 +5,10 @@ import frc.robot.RobotMap;
 import edu.wpi.first.wpilibj.command.Command;
 
 // Used entirely for testing, not even backup. Simply turns the motors on. Use MotorsStopC to end.
+// !!! Drivebase motors did not move. 
+// I bet the problem is that the drivebase uses Talons and the default behavior is to brake when
+// not applying speed to motors (where as the crawler is using a spark that doesn't have that issue).
+// Since the command finishes immediately, the drivebase stops.
 
 public class ClimbMotorsForwardC extends Command {
   public ClimbMotorsForwardC() {
@@ -24,7 +28,9 @@ public class ClimbMotorsForwardC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return true;
+    //return true;
+    //PostChange
+    return false;
   }
 
   @Override
