@@ -27,6 +27,7 @@ public class ClimbRetractStageC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    //The dead code is because climb_motors_speed is a constant
     if (RobotMap.CLIMB_MOTORS_SPEED > 0) {
       if (this.stage == 1) {
         Robot.m_ClimbFrontS.retractFront();

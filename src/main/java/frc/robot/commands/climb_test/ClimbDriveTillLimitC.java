@@ -36,6 +36,7 @@ public class ClimbDriveTillLimitC extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
+    //The dead code is because climb_motors_speed is a constant
     if (RobotMap.CLIMB_MOTORS_SPEED > 0 && this.stage == 1 && Robot.m_ClimbFrontS.cSwitchFront() == false) { //false is tripped
       return true;
     }
