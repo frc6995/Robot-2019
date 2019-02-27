@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 import frc.robot.subsystems.LadderS.LadderLevel;
 
-//Method to set the level the ladder to should travel to next
+//Method to set the level the ladder should travel to next; Does not actually move the ladder
 
 public class LadderSetLevelC extends Command {
   LadderLevel nextLadderLevel = LadderLevel.LEVEL_ONE;
@@ -15,14 +15,6 @@ public class LadderSetLevelC extends Command {
 
   @Override
   protected void initialize() {
-    /*
-    if(nextLadderLevel == Robot.m_ladderS.getCurrentLadderLevel()) {
-      ;
-    }
-    if(nextLadderLevel == LadderLevel.LEVEL_ONE) {
-      nextLadderLevel = LadderLevel.LEVEL_VISION; // this makes a "cushion" so it can drift down to level one.
-    }
-    */
   }
 
   @Override

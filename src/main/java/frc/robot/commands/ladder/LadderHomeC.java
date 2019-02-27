@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.subsystems.LadderS.LadderLevel;
 
-//Moves the ladder down to the home position and resets the encoders
+//Moves the ladder down to the home position and resets the encoders; Runs when robot is enabled
 public class LadderHomeC extends Command {
   public boolean finished;
   private int i;
@@ -30,12 +30,13 @@ public class LadderHomeC extends Command {
   @Override
   protected void execute() {
     //Move ladder slightly up.
-    SmartDashboard.putNumber("i", i);
+    //SmartDashboard.putNumber("i", i); - Can we remove this?
     SmartDashboard.putBoolean("Enc reset", encodersReset);
     if (i < 20) {
       i += 1;
       Robot.m_ladderS.setLadderPower(0.2);
       if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount()) {
+        //Do we need this on the driverstation? If yes, what should driver do?
         SmartDashboard.putString("Oops","Encoder values have not changed!!!");
         return;
       }
@@ -47,6 +48,7 @@ public class LadderHomeC extends Command {
         System.out.print("Bringing ladder down");
       } 
       else if (j >= 100) {
+        //How do they reset encoders manually? Is there a command to reset on Driverstation?
         SmartDashboard.putString("Manually reset encoders", "Manually reset encoders");
     /*     while (!Robot.m_oi.xbox.left_stick()) {
             Robot.m_ladderS.setLadderPower(-0.05);
@@ -54,7 +56,7 @@ public class LadderHomeC extends Command {
       */   finished = true;
         }
       else {
-        System.out.print("Reseting Encoders");    
+        System.out.print("Resetting Encoders");    
         Robot.m_ladderS.setLadderPower(0);
         encodersReset = true;
         finished = true;
@@ -64,7 +66,6 @@ public class LadderHomeC extends Command {
 
   @Override
   protected boolean isFinished() {
-
     return finished;
   }
 

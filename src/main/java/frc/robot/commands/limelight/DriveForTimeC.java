@@ -10,7 +10,6 @@ public class DriveForTimeC extends Command {
     requires(Robot.m_drivebaseS);
     this.setTimeout(time);
     drivePower = power;
-    //this.setInterruptible(false); //This command cannot be overruled by other commands (it can still be canceled though)
   }
 
   @Override
@@ -34,5 +33,6 @@ public class DriveForTimeC extends Command {
 
   @Override
   protected void interrupted() {
+    end();
   }
 }

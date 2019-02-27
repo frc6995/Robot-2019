@@ -19,7 +19,7 @@ public class ClimbRearS extends Subsystem {
   public ClimbRearS() {
     //likely 4 & 5
     climbMechanismRear = new Solenoid(RobotMap.PCM_ID, RobotMap.PCM_ID_SOLENOID_CLIMBER_REAR); //possibly 3?? 2 for test
-    //climbMechanismFront = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.PCM_ID_DSOLENOID_CLIMBER_REAR_FORWARD, RobotMap.PCM_ID_DSOLENOID_CLIMBER_REAR_REVERSE);
+    //climbMechanismRear = new DoubleSolenoid(RobotMap.PCM_ID, RobotMap.PCM_ID_DSOLENOID_CLIMBER_REAR_FORWARD, RobotMap.PCM_ID_DSOLENOID_CLIMBER_REAR_REVERSE);
     climberRearSwitch = new DigitalInput(RobotMap.DIO_LIMIT_CLIMBER_REAR);
     this.extended = false;
     //this.Extended = Value.kReverse;
@@ -37,6 +37,7 @@ public class ClimbRearS extends Subsystem {
   public void deployRear() {
     System.out.println("deployRear");
     climbMechanismRear.set(true);
+    // Should this be Value.kForward?
     //climbMechanismRear.set(kForward);
     this.extended = true;
     //this.Extended = Value.kForward;
@@ -45,6 +46,7 @@ public class ClimbRearS extends Subsystem {
   public void retractRear() {
     System.out.println("retractRear");
     climbMechanismRear.set(false);
+    // Should this be Value.kReverse?
     //climbMechanismRear.set(kReverse);
     this.extended = false;
     //this.Extended = Value.kReverse;
