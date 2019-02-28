@@ -1,13 +1,12 @@
-package frc.robot.commands.climb_test;
+package frc.robot.commands.climb_backup;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
-import frc.robot.RobotMap;
 
-// Used entirely for testing, not even backup. Simply turns the motors on. Use MotorsStopC to end.
+// Possibly can be used as an override for the command group as well as for ForwardC/ReverseC
 
-public class ClimbMotorsReverseC extends Command {
-  public ClimbMotorsReverseC() {
+public class ClimbMotorsStopC extends Command {
+  public ClimbMotorsStopC() {
     requires(Robot.m_ClimbCrawlerS);
     requires(Robot.m_drivebaseS);
   }
@@ -18,8 +17,8 @@ public class ClimbMotorsReverseC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbCrawlerS.motorReverse();
-    Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
+    Robot.m_ClimbCrawlerS.motorStop();
+    Robot.m_drivebaseS.arcadeDrive(0, 0, 0);
   }
 
   @Override

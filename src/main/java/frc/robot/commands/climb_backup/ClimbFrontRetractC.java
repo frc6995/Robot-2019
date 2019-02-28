@@ -5,15 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.climb_manual;
+package frc.robot.commands.climb_backup;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ClimbFrontRetractC extends Command {
   public ClimbFrontRetractC() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    requires(Robot.m_ClimbFrontS);
   }
 
   // Called just before this Command runs the first time

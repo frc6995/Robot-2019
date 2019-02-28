@@ -2,7 +2,7 @@ package frc.robot.commands.climb;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
-import frc.robot.commands.climb_manual.ClimbMotorsStopC;
+//import frc.robot.commands.climb_manual.ClimbMotorsStopC;
 
 public class ClimbPlatformCG extends CommandGroup {
   /**

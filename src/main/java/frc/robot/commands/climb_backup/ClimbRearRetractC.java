@@ -5,15 +5,14 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.climb_manual;
+package frc.robot.commands.climb_backup;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class ClimbRearRetractC extends Command {
   public ClimbRearRetractC() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    requires(Robot.m_ClimbRearS);
   }
 
   // Called just before this Command runs the first time
@@ -24,7 +23,7 @@ public class ClimbRearRetractC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("ClimbRearRetract");
+    System.out.println("ClimbRearRetractC");
     Robot.m_ClimbRearS.retractRear();
   }
 
