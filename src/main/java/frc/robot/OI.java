@@ -19,21 +19,16 @@ public class OI {
     public final BBoard buttonBoard = new BBoard(RobotMap.OI_BUTTONBOARD);
 
     public OI() {
-        //For testing purposes
+        //FOR TESTING PURPOSES
         //For climber
-        //SmartDashboard.putData("Climber Front DSol Toggle", new ClimbFrontToggleC());
-        //SmartDashboard.putData("Climber Rear DSol Toggle", new ClimbRearToggleC());
-        //SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
-        //SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
- 
-        // Mostly working sequence - Not using limit switches
+        // Mostly working sequence from 2/19/19 - Not using limit switches
         SmartDashboard.putData("Climb Test", new ClimbTestLiftCG());
         SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC()); //drivebase not moving
         SmartDashboard.putData("Rear Retract", new ClimbRearRetractC());
-            // Crawler still running, use Xbox to move drivebase
+            // Crawler still running, used Xbox to move drivebase
         SmartDashboard.putData("Front Retract", new ClimbFrontRetractC());
         SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
-        //more testing
+        //For Testing at competition
         SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
         SmartDashboard.putBoolean("Limit FrontCheck", Robot.m_ClimbFrontS.cSwitchFront());
         SmartDashboard.putData("NEW Both Toggle", new ClimbBothToggleNC());
@@ -62,12 +57,14 @@ public class OI {
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
         stick.button_3_runOnPress(new ClimbRearRetractC());  //change to retract 2nd half - TODO
         stick.button_5_runOnPress(new ClimbFrontRetractC()); //change to retract 1st half - TODO
+        //stick.button_6_runWhileHeld(new ClimbMotorsStartC()); - TODO
+        //stick.stick_x() - ClimbMotorsStartC - turn drivebase - TODO
+        //stick.stick_y() - ClimbMotorsStartC - drive forward - TODO
         //stick.button_7() - Holds Ladder position when manually operated
         //stick.button_8() - Moves Ladder up 
         stick.button_9_runOnPress(new ClimbMotorsStopC());
         //Need to run whilepressed if using Double Solenoid
         stick.button_11_runOnPress(new ClimbBothToggleC(stick.button_12()));
-        //stick.stick_x() - Climb Manual - turn drivebase - TODO
-        //stick.stick_y() - Climb Manual - drive forward - TODO
+
     }
 }

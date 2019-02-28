@@ -4,11 +4,9 @@ import edu.wpi.cscore.HttpCamera;
 import edu.wpi.cscore.VideoSource;
 import edu.wpi.cscore.HttpCamera.HttpCameraKind;
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHomeC;
@@ -31,15 +29,9 @@ public class Robot extends TimedRobot {
   public static ClimbCrawlerS m_ClimbCrawlerS;
 
   public static OI m_oi;
-  //public Command m_autonomousCommand;
-  //public Command m_driveCommand;
   public Command m_ladderHomeC;
   public Command m_ladderManualMoveC;
   public Command m_ladderDisplayStatusC;
-  //public SendableChooser<Command> drive_chooser = new SendableChooser<>();
-  public SendableChooser<Command> climb_direction = new SendableChooser<>();
-
-  public DigitalInput limitSwitch; //What naming convention should we use here?
 
   @Override
   public void robotInit() {
@@ -53,10 +45,10 @@ public class Robot extends TimedRobot {
 
     m_oi = new OI();
 
+    //Resets the ladder encoder count whenever the robot is rebooted.
     m_ladderHomeC = new LadderHomeC();
-    /* Move to robotPeriodic? 
-    m_ladderHomeC.start();
-    */
+    m_ladderHomeC.start();  // Is running this once after starting robot enough?
+  
     m_ladderManualMoveC = new LadderManualMoveC();
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
 
@@ -71,9 +63,6 @@ public class Robot extends TimedRobot {
    
     m_ladderDisplayStatusC.start();
     m_ladderManualMoveC.start();
-    // Shouldn't we do ladderHome here so it resets after every enable? Post Change
-    //Resets the ladder whenever we enable the robot
-    m_ladderHomeC.start();
   }
 
   @Override
