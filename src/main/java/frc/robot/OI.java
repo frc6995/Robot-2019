@@ -55,6 +55,7 @@ public class OI {
         buttonBoard.pinky_runWhileHeld(new ClimbPlatformCG(buttonBoard.thumb()));
 
         //Joystick Assignments
+        //Why is HatchMech on Toggle???
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
         stick.button_3_runOnPress(new ClimbRearRetractC());  //change to retract 2nd half - TODO
         stick.button_5_runOnPress(new ClimbFrontRetractC()); //change to retract 1st half - TODO

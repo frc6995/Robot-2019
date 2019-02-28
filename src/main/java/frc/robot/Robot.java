@@ -7,6 +7,7 @@ import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHomeC;
@@ -59,6 +60,16 @@ public class Robot extends TimedRobot {
     HttpCamera limelight = new HttpCamera("limelight", "http://10.69.95.11:5800", HttpCameraKind.kMJPGStreamer);
     limelight.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     cs.startAutomaticCapture(limelight);
+
+    //Helpful for debugging; shows all running commands and what command is using subsystem
+    SmartDashboard.putData(Scheduler.getInstance());
+    SmartDashboard.putData(m_drivebaseS);
+    SmartDashboard.putData(m_ladderS);
+    SmartDashboard.putData(m_hatchMechS);
+    SmartDashboard.putData(m_ClimbFrontS);
+    SmartDashboard.putData(m_ClimbRearS);
+    SmartDashboard.putData(m_ClimbCrawlerS);
+    SmartDashboard.putData(m_CargoShooterS);
   }
 
   public void robotPeriodic() {
