@@ -27,6 +27,7 @@ public class RobotMap {
 
   // PWM 
   public static final int PWM_ID_SPARK_CLIMB_MOVEMENT = 0;
+  public static final int PWM_ID_SPARK_CARGO_SHOOTER = 1;
 
   //OI - XBox
   public final static int OI_XBOX = 0;

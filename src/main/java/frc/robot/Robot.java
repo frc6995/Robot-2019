@@ -27,6 +27,7 @@ public class Robot extends TimedRobot {
   public static ClimbFrontS m_ClimbFrontS;
   public static ClimbRearS m_ClimbRearS;
   public static ClimbCrawlerS m_ClimbCrawlerS;
+  public static CargoShooterS m_CargoShooterS;
 
   public static OI m_oi;
   public Command m_ladderHomeC;
@@ -42,6 +43,7 @@ public class Robot extends TimedRobot {
     m_ClimbFrontS = new ClimbFrontS();
     m_ClimbRearS = new ClimbRearS();
     m_ClimbCrawlerS = new ClimbCrawlerS();
+    m_CargoShooterS = new CargoShooterS();
 
     m_oi = new OI();
 

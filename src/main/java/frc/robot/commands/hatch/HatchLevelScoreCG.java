@@ -10,6 +10,7 @@ import frc.robot.commands.ladder.LadderMoveDownPIDC;
 
 public class HatchLevelScoreCG extends CommandGroup {
   /**
+   * !!! USE LADDERLEVELSCORE INSTEAD !!!
    * Moves to the desired ladder level and deploys the Hatch Cover
    */
   public HatchLevelScoreCG(LadderLevel level) {

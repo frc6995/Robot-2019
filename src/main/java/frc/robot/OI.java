@@ -12,6 +12,7 @@ import frc.robot.commands.climb_test.ClimbRearToggleNC;
 import frc.robot.commands.climb.ClimbPlatformCG;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.*;
+import frc.robot.commands.ladder.LadderLevelScoreCG;
 
 public class OI {
     public final Xbox xbox = new Xbox(RobotMap.OI_XBOX);
@@ -47,9 +48,9 @@ public class OI {
 
         //Button Board Assignments
         buttonBoard.thumb_runOnPress(new HatchIntakeC());
-        buttonBoard.index_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.middle_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
-        buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
+        buttonBoard.index_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_ONE));
+        buttonBoard.middle_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_TWO));
+        buttonBoard.ring_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_THREE));
         //Need to change this to everything but lift - TODO
         buttonBoard.pinky_runWhileHeld(new ClimbPlatformCG(buttonBoard.thumb()));
 
