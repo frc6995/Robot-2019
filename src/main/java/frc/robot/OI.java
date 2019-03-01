@@ -5,11 +5,15 @@ import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.climb_manual.*;
 import frc.robot.commands.climb_test.ClimbBothToggleNC;
-import frc.robot.commands.climb_test.ClimbFrontToggleNC;
-import frc.robot.commands.climb_test.ClimbRearToggleNC;
+import frc.robot.commands.climb_test.ClimbPlatformBetterCG;
+import frc.robot.commands.climb.ClimbMotorsStopC;
 import frc.robot.commands.climb.ClimbPlatformCG;
+import frc.robot.commands.climb_backup.ClimbBothLiftC;
+import frc.robot.commands.climb_backup.ClimbFrontRetractC;
+import frc.robot.commands.climb_backup.ClimbMotorsForwardC;
+import frc.robot.commands.climb_backup.ClimbMotorsReverseC;
+import frc.robot.commands.climb_backup.ClimbRearRetractC;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.LadderSetLevelC;
@@ -36,30 +40,23 @@ public class OI {
         SmartDashboard.putData("Set Ladder to L3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
         SmartDashboard.putData("Hatch Intake", new HatchIntakeC());
         //For climber
-        SmartDashboard.putData("Climber Front DSol Toggle", new ClimbFrontToggleC());
-        SmartDashboard.putData("Climber Rear DSol Toggle", new ClimbRearToggleC());
         SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
-        SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
-        // Sequence did not work. Climb Both Toggle was constantly deploying
-        SmartDashboard.putData("AClimb Both Toggle", new ClimbBothToggleC(true));
-        SmartDashboard.putData("AClimb Motors Reverse", new ClimbMotorsReverseToggleC(true));
-        SmartDashboard.putData("BClimb Rear Reverse til Limit", new ClimbRearReverseLimitC());
-        SmartDashboard.putData("CClimb Rear til Retract", new ClimbRearReverseLimitRetractCG());
-        SmartDashboard.putData("DClimb Front Reverse til Limit", new ClimbFrontReverseLimitC());
-        SmartDashboard.putData("EClimb Front til Retract", new ClimbFrontReverseLimitRetractCG());
-        // Mostly working sequence - Not using limit switches
-        SmartDashboard.putData("Climb Test", new ClimbTestLiftCG());
         SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC()); //drivebase not moving
-        SmartDashboard.putData("Rear Retract", new ClimbRearRetractC());
-        // Crawler still running, use Xbox to move drivebase
-        SmartDashboard.putData("Front Retract", new ClimbFrontRetractC());
         SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
-        //more testing
+
         SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
-        SmartDashboard.putBoolean("Limit FrontCheck", Robot.m_ClimbFrontS.cSwitchFront());
+        SmartDashboard.putBoolean("LimitFront Check", Robot.m_ClimbFrontS.cSwitchFront());
+
+        SmartDashboard.putData("Front Retract", new ClimbFrontRetractC());
+        SmartDashboard.putData("Rear Retract", new ClimbRearRetractC());
+
+        SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
+        SmartDashboard.putData("Better ClimbPlatformCG", new ClimbPlatformBetterCG());
+        // Mostly working sequence - Not using limit switches
+        SmartDashboard.putData("Climb Lift", new ClimbBothLiftC(true)); //was ClimbTestLiftCG
+        
+        //more testing
         SmartDashboard.putData("NEW Both Toggle", new ClimbBothToggleNC());
-        SmartDashboard.putData("NEW Front Toggle", new ClimbFrontToggleNC());
-        SmartDashboard.putData("NEW Rear Toggle", new ClimbRearToggleNC());
 
 
         xbox.x_toggleOnPress(new VisionAlignCG());
@@ -77,6 +74,6 @@ public class OI {
         stick.button_5_runOnPress(new ClimbFrontRetractC());
 
         stick.button_9_runOnPress(new ClimbMotorsStopC());
-        stick.button_11_runOnPress(new ClimbBothToggleC(stick.button_12()));
+        stick.button_11_runOnPress(new ClimbBothLiftC(stick.button_12()));
     }
 }
