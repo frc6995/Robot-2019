@@ -23,7 +23,7 @@ public class OI {
         SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC()); //relative to climb speed
         SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC()); //relative to climb speed
         SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
-        SmartDashboard.putData("Climber Motors Start", new ClimbMotorsStartC());
+        SmartDashboard.putData("Climber Motors Start", new ClimbMotorsDriveC());
         SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
         SmartDashboard.putBoolean("LimitFront Check", Robot.m_ClimbFrontS.cSwitchFront());
         SmartDashboard.putData("Front Retract", new ClimbFrontRetractC());
@@ -60,7 +60,7 @@ public class OI {
         stick.button_1_runOnPress(new HatchMechCG());
         stick.button_3_runOnPress(new ClimbRetractStageC(2));
         stick.button_5_runOnPress(new ClimbRetractStageC(1));
-        stick.button_6_runWhileHeld(new ClimbMotorsStartC());
+        stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
         //stick.button_7() - Holds Ladder position when manually operated
         //stick.button_8() - Moves Ladder up 
         stick.button_9_runOnPress(new ClimbMotorsStopC());

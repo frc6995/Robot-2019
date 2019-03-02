@@ -3,10 +3,10 @@ package frc.robot.commands.climb;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimbMotorsStartC extends Command {
+public class ClimbMotorsDriveC extends Command {
   private double x = 0;
   private double y = 0;
-  public ClimbMotorsStartC() {
+  public ClimbMotorsDriveC() {
     requires(Robot.m_ClimbCrawlerS);
     requires(Robot.m_drivebaseS);
   }
