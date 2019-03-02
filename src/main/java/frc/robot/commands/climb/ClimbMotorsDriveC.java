@@ -19,14 +19,14 @@ public class ClimbMotorsDriveC extends Command {
   protected void execute() {
     this.y = Robot.m_oi.stick.stick_y();
     this.x = Robot.m_oi.stick.stick_x();
-    if (this.y<0.1) {
+    if (Math.abs(this.y)<0.1) {
       this.y = 0.0;
     }
-    if (this.x<0.1) {
+    if (Math.abs(this.x)<0.1) {
       this.x = 0.0;
     }
     Robot.m_ClimbCrawlerS.motorSet(this.y);
-    Robot.m_drivebaseS.arcadeDrive(this.y, this.x, 0.7); //possibly 1
+    Robot.m_drivebaseS.arcadeDrive(this.y, this.x, 0.7); //TODO - Determine appropriate speed
   }
 
   @Override
