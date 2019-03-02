@@ -1,13 +1,11 @@
-package frc.robot.commands.climb;
+package frc.robot.commands.Cargo;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-//This lifts the back of the robot using solenoids
-
-public class ClimbRearLiftC extends Command {
-  public ClimbRearLiftC() {
-    requires(Robot.m_ClimbRearS);
+public class CargoShooterC extends Command {
+  public CargoShooterC() {
+    requires(Robot.m_CargoShooterS);
   }
 
   @Override
@@ -16,19 +14,22 @@ public class ClimbRearLiftC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbRearS.deployRear();
+    Robot.m_CargoShooterS.setSpeed(1);
   }
 
   @Override
   protected boolean isFinished() {
-    return true;
+    //Use command time out value to stop command
+    return false;
   }
 
   @Override
   protected void end() {
+    Robot.m_CargoShooterS.setSpeed(0);
   }
 
   @Override
   protected void interrupted() {
+    end();
   }
 }

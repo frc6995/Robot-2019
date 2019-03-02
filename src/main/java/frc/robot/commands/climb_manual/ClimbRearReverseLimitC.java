@@ -26,13 +26,16 @@ public class ClimbRearReverseLimitC extends Command {
   protected void execute() {
     Robot.m_ClimbCrawlerS.motorReverse();
     Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
+    System.out.println("ClimbRearReverseLimit");
   }
 
   @Override
   protected boolean isFinished() {
     if (Robot.m_ClimbRearS.cSwitchRear()) {
+      System.out.println("rear switch on");
       return false;
     } else {
+      System.out.println("rear switch off");
     return true;
     } 
   }

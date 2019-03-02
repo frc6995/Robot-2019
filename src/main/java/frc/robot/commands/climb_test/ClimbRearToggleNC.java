@@ -1,4 +1,4 @@
-package frc.robot.commands.climb_manual;
+package frc.robot.commands.climb_test;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -7,9 +7,9 @@ import frc.robot.Robot;
 // On a toggle command like this the first press creates and execute the command but it does not finish.
 // The second press interrupts the command.
 
-public class ClimbRearToggleC extends Command {
+public class ClimbRearToggleNC extends Command {
 
-  public ClimbRearToggleC() {
+  public ClimbRearToggleNC() {
     requires(Robot.m_ClimbRearS);
   }
 
@@ -19,8 +19,15 @@ public class ClimbRearToggleC extends Command {
 
   @Override
   protected void execute() {
-    System.out.println("ClimbRearToggle - deploy rear");
-    Robot.m_ClimbRearS.deployRear();
+    if (Robot.m_ClimbRearS.getExtended() == true) { //(Robot.m_ClimbRearS.getExtended() == Value.kForward)
+      Robot.m_ClimbRearS.retractRear();
+    }
+    /* else if (Robot.m_ClimbFrontS.getExtended() == Value.kOff) {
+      Robot.m_ClimbFrontS.retractFront();
+    } */
+    else { //all's left is kReverse, so deploy
+      Robot.m_ClimbRearS.deployRear();
+    }
   }
 
   @Override
@@ -30,9 +37,7 @@ public class ClimbRearToggleC extends Command {
 
   @Override
   protected void end() {
-    System.out.println("ClimbRearToggle off");
     Robot.m_ClimbRearS.retractRear();
-
   }
 
   @Override

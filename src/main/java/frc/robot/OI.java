@@ -6,83 +6,67 @@ import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.climb_manual.*;
+import frc.robot.commands.climb_test.ClimbBothToggleNC;
+import frc.robot.commands.climb_test.ClimbFrontToggleNC;
+import frc.robot.commands.climb_test.ClimbRearToggleNC;
 import frc.robot.commands.climb.ClimbPlatformCG;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.*;
-import frc.robot.commands.ladder.LadderSetLevelC;
-import frc.robot.commands.ladder.LadderMoveUpPIDC;
-import frc.robot.commands.ladder.LadderHoldPIDC;
-import frc.robot.commands.ladder.LadderHomeC;
+import frc.robot.commands.ladder.LadderLevelScoreCG;
 
 public class OI {
-
     public final Xbox xbox = new Xbox(RobotMap.OI_XBOX);
-    
     public final JStick stick = new JStick(RobotMap.OI_JOYSTICK);
     public final BBoard buttonBoard = new BBoard(RobotMap.OI_BUTTONBOARD);
 
     public OI() {
-        stick.button_1_toggleOnPress(new HatchMechToggleCG());
-        //stick.button_7_runOnPress(new HatchIntakeC());
-
-
-        //backups
-        //xbox.x_toggleOnPress(new ClimbFrontToggleC());
-        //xbox.y_toggleOnPress(new ClimbRearToggleC());
-        //xbox.a_toggleOnPress(new ClimbMotorsReverseToggleC());
-
-        //xbox.dpad_up_runOnPressed(new ClimbMotorsForwardC());
-        //xbox.dpad_up_runOnRelease(new ClimbMotorsStopC());
-        //xbox.dpad_down_runOnPressed(new ClimbMotorsReverseC());
-        //xbox.dpad_down_runOnRelease(new ClimbMotorsStopC());    
-        
-        xbox.x_toggleOnPress(new VisionAlignCG());
-
-        //For testing purposes
-        SmartDashboard.putData("Drive for 2 Secs", new DriveForTimeC(2,0.2));
-        SmartDashboard.putData("Vision Align Target", new VisionAlignTargetC());
-        SmartDashboard.putData("Vision Align CG", new VisionAlignCG());
-        SmartDashboard.putData("LadderHoldPIDC", new LadderHoldPIDC());
-        SmartDashboard.putData("LadderMovePIDC", new LadderMoveUpPIDC());
-        SmartDashboard.putData("LadderHomeC", new LadderHomeC());
-        SmartDashboard.putData("Set Ladder to vision", new LadderSetLevelC(LadderLevel.LEVEL_VISION));
-        SmartDashboard.putData("Set Ladder to L3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
-        SmartDashboard.putData("Hatch Intake", new HatchIntakeC());
-
-        buttonBoard.pinky_runWhileHeld(new ClimbPlatformCG(buttonBoard.thumb()));
-        buttonBoard.index_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.middle_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
-        buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
-        buttonBoard.thumb_runOnPress(new HatchIntakeC());
-
+        //FOR TESTING PURPOSES
         //For climber
-        SmartDashboard.putData("Climber Front DSol Toggle", new ClimbFrontToggleC());
-        SmartDashboard.putData("Climber Rear DSol Toggle", new ClimbRearToggleC());
-        SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
-        SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC());
+        // Mostly working sequence from 2/19/19 - Not using limit switches
+        SmartDashboard.putData("Climb Test", new ClimbTestLiftCG());
+        SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC()); //drivebase not moving
+        SmartDashboard.putData("Rear Retract", new ClimbRearRetractC());
+            // Crawler still running, used Xbox to move drivebase
+        SmartDashboard.putData("Front Retract", new ClimbFrontRetractC());
         SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
-        SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
-
-        SmartDashboard.putData("AClimb Both Toggle", new ClimbBothToggleC());
-        SmartDashboard.putData("AClimb Motors Reverse", new ClimbMotorsReverseToggleC(true));
-        SmartDashboard.putData("BClimb Rear Reverse til Limit", new ClimbRearReverseLimitC());
-        SmartDashboard.putData("CClimb Rear til Retract", new ClimbRearReverseLimitRetractCG());
-        SmartDashboard.putData("DClimb Front Reverse til Limit", new ClimbFrontReverseLimitC());
-        SmartDashboard.putData("EClimb Front til Retract", new ClimbFrontReverseLimitRetractCG());
-
+        //For Testing at competition
         SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
         SmartDashboard.putBoolean("Limit FrontCheck", Robot.m_ClimbFrontS.cSwitchFront());
+        SmartDashboard.putData("NEW Both Toggle", new ClimbBothToggleNC());
+        SmartDashboard.putData("NEW Front Toggle", new ClimbFrontToggleNC());
+        SmartDashboard.putData("NEW Rear Toggle", new ClimbRearToggleNC());
 
+        //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
+
+        //Xbox Assignments
+        //xbox.left_trigger()  -- DriveArcadeXboxC used for Driving Backwards
+        //xbox.right_trigger() -- DriveArcadeXboxC used for Driving Forwards
+        //xbox.left_bumper()   -- DriveArcadeXboxC used for decrementing throttle
+        //xbox.right_bumper()  -- DriveArcadeXboxC used for setting throttle to max
+        //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
+        xbox.x_toggleOnPress(new VisionAlignCG());
+
+        //Button Board Assignments
+        buttonBoard.thumb_runOnPress(new HatchIntakeC());
+        buttonBoard.index_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_ONE));
+        buttonBoard.middle_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_TWO));
+        buttonBoard.ring_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_THREE));
+        //Need to change this to everything but lift - TODO
+        buttonBoard.pinky_runWhileHeld(new ClimbPlatformCG(buttonBoard.thumb()));
+
+        //Joystick Assignments
+        //Why is HatchMech on Toggle???
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
+        stick.button_3_runOnPress(new ClimbRearRetractC());  //change to retract 2nd half - TODO
+        stick.button_5_runOnPress(new ClimbFrontRetractC()); //change to retract 1st half - TODO
+        //stick.button_6_runWhileHeld(new ClimbMotorsStartC()); - TODO
+        //stick.stick_x() - ClimbMotorsStartC - turn drivebase - TODO
+        //stick.stick_y() - ClimbMotorsStartC - drive forward - TODO
+        //stick.button_7() - Holds Ladder position when manually operated
+        //stick.button_8() - Moves Ladder up 
+        stick.button_9_runOnPress(new ClimbMotorsStopC());
+        //Need to run whilepressed if using Double Solenoid
+        stick.button_11_runOnPress(new ClimbBothToggleC(stick.button_12()));
 
-        stick.button_2_toggleOnPress(new ClimbBothToggleC());
-
-        stick.button_7_runOnPress(new ClimbFrontLowerC());
-        stick.button_8_runOnPress(new ClimbRearLowerC());
-
-        stick.button_9_runOnPress(new ClimbMotorsReverseToggleC(stick.button_10()));
-        //stick.button_10_runOnPress(new ClimbMotorsReverseC());
-        //stick.button_11_runOnPress(new ClimbMotorsReverseToggleC());
-        //stick.button_12_runOnPress(new ClimbMotorsStopC());
     }
 }

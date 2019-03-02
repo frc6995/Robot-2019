@@ -10,8 +10,7 @@ public class HatchMechS extends Subsystem {
   private static Solenoid hatchMechanism;
 
   public HatchMechS(){
-    //Creates a new double solenoid object
-    hatchMechanism = new Solenoid(1, 1);
+    hatchMechanism = new Solenoid(RobotMap.PCM_ID, RobotMap.PCM_ID_SOLENOID_HATCHMECH);
   }
 
   @Override
@@ -19,7 +18,6 @@ public class HatchMechS extends Subsystem {
     setDefaultCommand(new HatchMechRetractC());
   }
   
-  //Retract the cylinders
   public void retract() {
     hatchMechanism.set(false);
   }
