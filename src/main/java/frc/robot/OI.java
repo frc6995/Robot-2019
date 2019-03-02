@@ -51,7 +51,7 @@ public class OI {
         SmartDashboard.putData("Rear Retract", new ClimbRearRetractC());
 
         SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
-        SmartDashboard.putData("Better ClimbPlatformCG", new ClimbPlatformBetterCG());
+        SmartDashboard.putData("Better ClimbPlatformCG", new ClimbPlatformBetterCG(true));
         // Mostly working sequence - Not using limit switches
         SmartDashboard.putData("Climb Lift", new ClimbBothLiftC(true)); //was ClimbTestLiftCG
         

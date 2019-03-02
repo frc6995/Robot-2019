@@ -31,7 +31,7 @@ public class ClimbRearS extends Subsystem {
 
   public boolean cSwitchRear() {
     SmartDashboard.putBoolean("LimitRear", climberRearSwitch.get());
-    return climberRearSwitch.get();
+    return !climberRearSwitch.get(); //now true is clicked
   }
 
   public void deployRear() {

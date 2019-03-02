@@ -10,12 +10,10 @@ public class ClimbBothToggleNC extends Command {
     requires(Robot.m_ClimbRearS);
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     if (Robot.m_ClimbFrontS.getExtended() == true && Robot.m_ClimbRearS.getExtended() == true) { //(Robot.m_ClimbFrontS.getExtended() == Value.kForward && Robot.m_ClimbRearS.getExtended() == Value.kForward)
@@ -36,19 +34,15 @@ public class ClimbBothToggleNC extends Command {
     }
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
     return true;
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
   }

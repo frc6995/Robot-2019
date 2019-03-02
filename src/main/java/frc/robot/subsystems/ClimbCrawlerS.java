@@ -18,6 +18,10 @@ public class ClimbCrawlerS extends Subsystem {
 
   // These are defined here so motors are not set in the commands
 
+  public void motorSet(double value) {
+    climbMotor.set(value);
+  }
+
   public void motorForward() {
     climbMotor.set(RobotMap.CLIMB_MOTORS_SPEED);
   }

@@ -22,7 +22,7 @@ public class ClimbFrontLimitLowerC extends Command {
   protected void execute() {
     Robot.m_ClimbCrawlerS.motorReverse(); //reversing onto the platform, this will be the last of the 2 to run.
     /* PostChange 
-    while (Robot.m_ClimbFrontS.cSwitchFront() == true){
+    while (Robot.m_ClimbFrontS.cSwitchFront() == false){
         Robot.m_drivebaseS.arcadeDrive(-0.1, 0, 1); // deadzone is 0.02
     }
     Robot.m_ClimbCrawlerS.motorStop();
@@ -35,7 +35,7 @@ public class ClimbFrontLimitLowerC extends Command {
   protected boolean isFinished() {
     // PostChange
     //return true;
-    return !Robot.m_ClimbFrontS.cSwitchFront();
+    return Robot.m_ClimbFrontS.cSwitchFront(); //removed ! - Sam 2-28
   }
 
   @Override
