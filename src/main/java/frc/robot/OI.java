@@ -6,6 +6,7 @@ import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.climb_test.ClimbBothToggleNC;
+import frc.robot.commands.climb_test.ClimbMotorsStartC;
 import frc.robot.commands.climb_test.ClimbPlatformBetterCG;
 import frc.robot.commands.climb_test.ClimbRetractStageC;
 import frc.robot.commands.climb.ClimbMotorsStopC;
@@ -73,6 +74,8 @@ public class OI {
 
         stick.button_3_runOnPress(new ClimbRetractStageC(2));
         stick.button_5_runOnPress(new ClimbRetractStageC(1));
+
+        stick.button_6_runWhileHeld(new ClimbMotorsStartC());
 
         stick.button_9_runOnPress(new ClimbMotorsStopC());
         stick.button_11_runOnPress(new ClimbBothLiftC(stick.button_12()));
