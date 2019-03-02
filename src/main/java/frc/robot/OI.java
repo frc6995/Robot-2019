@@ -7,6 +7,7 @@ import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.climb_test.ClimbBothToggleNC;
 import frc.robot.commands.climb_test.ClimbPlatformBetterCG;
+import frc.robot.commands.climb_test.ClimbRetractStageC;
 import frc.robot.commands.climb.ClimbMotorsStopC;
 import frc.robot.commands.climb.ClimbPlatformCG;
 import frc.robot.commands.climb_backup.ClimbBothLiftC;
@@ -62,7 +63,7 @@ public class OI {
         xbox.x_toggleOnPress(new VisionAlignCG());
 
 
-        buttonBoard.pinky_runWhileHeld(new ClimbPlatformCG(buttonBoard.thumb()));
+        buttonBoard.pinky_runWhileHeld(new ClimbPlatformBetterCG(buttonBoard.thumb()));
         buttonBoard.index_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
         buttonBoard.middle_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
@@ -70,8 +71,8 @@ public class OI {
 
         stick.button_1_toggleOnPress(new HatchMechToggleCG());
 
-        stick.button_3_runOnPress(new ClimbRearRetractC());
-        stick.button_5_runOnPress(new ClimbFrontRetractC());
+        stick.button_3_runOnPress(new ClimbRetractStageC(2));
+        stick.button_5_runOnPress(new ClimbRetractStageC(1));
 
         stick.button_9_runOnPress(new ClimbMotorsStopC());
         stick.button_11_runOnPress(new ClimbBothLiftC(stick.button_12()));
