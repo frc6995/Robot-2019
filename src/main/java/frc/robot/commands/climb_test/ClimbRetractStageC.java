@@ -13,10 +13,12 @@ import frc.robot.RobotMap;
 
 public class ClimbRetractStageC extends Command {
   private int stage;
+  private double speed;
   public ClimbRetractStageC(int stage) {
     requires(Robot.m_ClimbFrontS);
     requires(Robot.m_ClimbRearS);
     this.stage = stage;
+    this.speed = RobotMap.CLIMB_MOTORS_SPEED;
   }
 
   // Called just before this Command runs the first time
@@ -28,7 +30,7 @@ public class ClimbRetractStageC extends Command {
   @Override
   protected void execute() {
     //The dead code is because climb_motors_speed is a constant
-    if (RobotMap.CLIMB_MOTORS_SPEED > 0) {
+    if (this.speed > 0) {
       if (this.stage == 1) {
         Robot.m_ClimbFrontS.retractFront();
       }
@@ -36,7 +38,7 @@ public class ClimbRetractStageC extends Command {
         Robot.m_ClimbRearS.retractRear();
       }
     }
-    else if (RobotMap.CLIMB_MOTORS_SPEED < 0) {
+    else if (this.speed < 0) {
       if (this.stage == 1) {
         Robot.m_ClimbRearS.retractRear();
       }
