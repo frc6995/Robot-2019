@@ -22,12 +22,18 @@ public class DrivebaseS extends Subsystem {
 
   private DifferentialDrive differentialDrive = null;
   
+  private int drivebaseAmpLimit = 20;
+
   @Override
   protected void initDefaultCommand() {
     setDefaultCommand(new DriveArcadeXboxC());
   }
 
   public DrivebaseS() {
+
+    SmartDashboard.putNumber("Amp Limit", drivebaseAmpLimit);
+    drivebaseAmpLimit = (int) SmartDashboard.getNumber("Amp Limit", 20);
+
     driveLeftFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT);
     driveLeftMiddle = new WPI_VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_1);
     driveLeftBack = new WPI_VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_2);
@@ -64,11 +70,11 @@ public class DrivebaseS extends Subsystem {
     driveRightBack.setNeutralMode(NeutralMode.Brake);
 
     driveLeftFront.enableCurrentLimit(true);
-    driveLeftFront.configContinuousCurrentLimit(30);
+    driveLeftFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveLeftFront.configPeakCurrentDuration(0);
 
     driveRightFront.enableCurrentLimit(true);
-    driveRightFront.configContinuousCurrentLimit(30);
+    driveRightFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveRightFront.configPeakCurrentDuration(0);
 
     differentialDrive.setRightSideInverted(false);
