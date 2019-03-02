@@ -22,6 +22,8 @@ public class LadderDisplayStatusC extends Command {
     //Put any other testing display code you need here
     SmartDashboard.putBoolean("Limit", Robot.m_ladderS.lowerLimitSwitchPressed());
     SmartDashboard.putNumber("ladder Encoder", Robot.m_ladderS.getLadderEncoderCount());
+    
+    SmartDashboard.putString("ladder level", Robot.m_ladderS.LadderLevelToString(Robot.m_ladderS.getNextLadderLevel()));
   }
   
   @Override

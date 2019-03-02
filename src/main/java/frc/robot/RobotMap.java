@@ -1,4 +1,7 @@
 package frc.robot;
+ 
+
+
 
 public class RobotMap {
   //CAN bus
@@ -16,7 +19,13 @@ public class RobotMap {
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
   
   //Power Control Module
+  public final static int PCM_ID = 1;
   public final static int PCM_ID_DSOLENOID_HATCHMECH = 1;
+  public final static int PCM_ID_SOLENOID_CLIMBER_FRONT = 2;
+  public final static int PCM_ID_SOLENOID_CLIMBER_REAR = 3;
+
+  // 
+  public static final int PWM_ID_SPARK_CLIMB_MOVEMENT = 0;
 
   //HatchMech constants
   public final static int DSOLENOID_HATCHMECH_FORWARD = 1;
@@ -35,6 +44,8 @@ public class RobotMap {
   public final static int BUTTONBOARD_LADDER_LEVEL_ONE = 1;
   public final static int BUTTONBOARD_LADDER_LEVEL_TWO = 2;
   public final static int BUTTONBOARD_LADDER_LEVEL_THREE = 3; 
+  public final static int BUTTONBOARD_CLIMB_TOGGLE = 4;
+  public final static int BUTTONBOARD_CLIMB_CONFIRMED = 5;
 
   public final static int OI_JOYSTICK = 2;
  
@@ -43,15 +54,22 @@ public class RobotMap {
 
   //Limit switch constants
   public static final int DIO_LIMIT_LADDER_TOP = 1;
-  public static final int DIO_LIMIT_LADDER_BOTTOM = 2;
-
-   //Ladder Encoder Constants   
-  public static final int LADDER_LEVEL_ZERO = 0; //The home location
-  public static final int LADDER_LEVEL_ONE = -0;
-  public static final int LADDER_LEVEL_TWO = -1000; //change as needed
-  public static final int LADDER_LEVEL_THREE = -2000; //change as needed
+  public static final int DIO_LIMIT_LADDER_BOTTOM = 0;
+  public static final int DIO_LIMIT_CLIMBER_REAR = 3;
+  public static final int DIO_LIMIT_CLIMBER_FRONT = 2;
+  /**
+   *Ladder Encoder Constants   
+   */  
+  public static final int LADDER_LEVEL_ONE = 0; //The home location
+  public static final int LADDER_LEVEL_VISION = 700;
+  public static final int LADDER_LEVEL_CUSHION = 2500;
+  public static final int LADDER_LEVEL_TWO = 3625; //change as needed
+  public static final int LADDER_LEVEL_THREE = 7160; //change as needed
 
   public final static int BUTTON_THROTTLE_CHANGE = 2;
   public final static int BUTTON_THROTTLE_RESET = 3;
+
+  // Climb Constants
+  public static final double CLIMB_MOTORS_SPEED = 0.2;
 }
 

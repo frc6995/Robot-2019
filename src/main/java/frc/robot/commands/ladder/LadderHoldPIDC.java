@@ -12,8 +12,7 @@ public class LadderHoldPIDC extends Command {
     requires(Robot.m_ladderS);
     
     this.setInterruptible(false);
-
-    Robot.m_ladderS.enablePID();
+    Robot.m_ladderS.setMaxPIDPower(0.5);
   }
 
   @Override
@@ -22,7 +21,10 @@ public class LadderHoldPIDC extends Command {
 
   @Override
   protected void execute() {
+    Robot.m_ladderS.setMaxPIDPower(0.7);
+    
     Robot.m_ladderS.runPID();
+    //Robot.m_ladderS.setLadderPower(0.15);
   }
 
   @Override

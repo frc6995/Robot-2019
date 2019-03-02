@@ -18,8 +18,8 @@ public class VisionAlignTargetC extends Command {
   NetworkTableEntry taEntry = table.getEntry("ta");
   NetworkTableEntry camMode = table.getEntry("camMode");
   NetworkTableEntry pipelineEntry = table.getEntry("pipeline");
-  double KpAim = -0.035f;
-  double KpDistance = -0.1f;
+  double KpAim = -0.025f;
+  double KpDistance = -0.08f;
   double min_aim_command = 0.05f;
   double cam = 0.0;
   double tx= 0.0;
@@ -43,12 +43,13 @@ public class VisionAlignTargetC extends Command {
 
   @Override
   protected void initialize() {
-    //this.setInterruptible(false); //Prevents drivebase from overriding this command.
-    pipelineEntry.setDouble(0); //Sets pipeline to Vision Align pipeline
+    this.setInterruptible(false); //Prevents drivebase from overriding this command.
+    
   }
 
   @Override
   protected void execute() {
+    pipelineEntry.setDouble(0);  //Sets pipeline to Vision Align pipeline
     cam = camMode.getDouble(0);
     tx = txEntry.getDouble(0.0); //get offsets from limelight
     ty = tyEntry.getDouble(0.0);
@@ -64,25 +65,25 @@ public class VisionAlignTargetC extends Command {
 
     double heading_error = -tx;
     double distance_error = ty;
-    double max_steering = 0.1;
+    double max_power = 0.5;
 
     //basic proportional control
     steering_adjust = heading_error * KpAim; 
     distance_adjust = KpDistance * distance_error;
 
     //Adds a maximum and miniumum to the Robots turning speed
-    if (steering_adjust > max_steering) {
-      steering_adjust = max_steering;
+    if (steering_adjust > max_power) {
+      steering_adjust = max_power;
     }
-    else if (steering_adjust < -max_steering) {
-      steering_adjust = -max_steering;
+    else if (steering_adjust < -max_power) {
+      steering_adjust = -max_power;
     }
     //Adds a maximum/minimum to the forward-backward speed
-    if (distance_adjust > max_steering) {
-      distance_adjust = max_steering;
+    if (distance_adjust > max_power) {
+      distance_adjust = max_power;
     }
-    else if (distance_adjust < -max_steering) {
-      distance_adjust = -max_steering;
+    else if (distance_adjust < -max_power) {
+      distance_adjust = -max_power;
     }
     SmartDashboard.putNumber("Vision Steer Adj", steering_adjust);
     SmartDashboard.putNumber("Vision Dist Adj", distance_adjust);
@@ -93,22 +94,26 @@ public class VisionAlignTargetC extends Command {
   protected boolean isFinished() {
     tx = txEntry.getDouble(0.0);
     ty = tyEntry.getDouble(0.0);
-    if (Math.abs(tx) <= 0.5 && Math.abs(ty) <= 1) {
-     // sumInRange+=1;
-      return true;     
-    }
-    else {
-      return false;
-    }/*   else if(sumInRange>40){
-      pipelineEntry.setDouble(1);
-      return true;
+
+    SmartDashboard.putNumber("sumInRange", sumInRange);
+    
+    if (Math.abs(tx) <= 1 && Math.abs(ty) <= 1) {
+      sumInRange+=1;
+      //return true;     
     }
     else {
       sumInRange = 0;
+      //return false;
+    } 
+    
+    if(sumInRange>20){
+      pipelineEntry.setDouble(1);
+      sumInRange = 0;
+      return true;
+    }else {
       pipelineEntry.setDouble(0);
       return false;
-    }*/
-   // return false;
+    }
   }
 
   @Override
