@@ -6,15 +6,8 @@ import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.climb_test.ClimbBothToggleNC;
-import frc.robot.commands.climb_test.ClimbMotorsStartC;
-import frc.robot.commands.climb_test.ClimbPlatformBetterCG;
-import frc.robot.commands.climb_test.ClimbRetractStageC;
-import frc.robot.commands.climb.ClimbMotorsStopC;
-import frc.robot.commands.climb_backup.ClimbBothLiftC;
-import frc.robot.commands.climb_backup.ClimbFrontRetractC;
-import frc.robot.commands.climb_backup.ClimbMotorsForwardC;
-import frc.robot.commands.climb_backup.ClimbMotorsReverseC;
-import frc.robot.commands.climb_backup.ClimbRearRetractC;
+import frc.robot.commands.climb_backup.*;
+import frc.robot.commands.climb.*;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
@@ -27,16 +20,17 @@ public class OI {
     public OI() {
         //FOR TESTING PURPOSES
         //For climber
-        SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
-        SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC()); //drivebase not moving
+        SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC()); //relative to climb speed
+        SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC()); //relative to climb speed
         SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
+        SmartDashboard.putData("Climber Motors Start", new ClimbMotorsStartC());
         SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
         SmartDashboard.putBoolean("LimitFront Check", Robot.m_ClimbFrontS.cSwitchFront());
         SmartDashboard.putData("Front Retract", new ClimbFrontRetractC());
         SmartDashboard.putData("Rear Retract", new ClimbRearRetractC());
-        SmartDashboard.putData("Better ClimbPlatformCG", new ClimbPlatformBetterCG(true));
-        // Mostly working sequence - Not using limit switches
-        SmartDashboard.putData("Climb Lift", new ClimbBothLiftC(true)); //was ClimbTestLiftCG
+        SmartDashboard.putData("ClimbPlatformBetterCG", new ClimbPlatformBetterCG(true));
+        SmartDashboard.putData("Climb Lift (SS)", new ClimbBothLiftC(true)); 
+        SmartDashboard.putData("Climb LIft (DS)", new ClimbBothDSLiftC(true));
         
         //more testing
         SmartDashboard.putData("NEW Both Toggle", new ClimbBothToggleNC());
@@ -70,7 +64,7 @@ public class OI {
         //stick.button_7() - Holds Ladder position when manually operated
         //stick.button_8() - Moves Ladder up 
         stick.button_9_runOnPress(new ClimbMotorsStopC());
-        //Need to run whilepressed if using Double Solenoid
+        //stick.button_11_runWhileHeld(new ClimbBothDSLiftC(stick.button_12()));
         stick.button_11_runOnPress(new ClimbBothLiftC(stick.button_12()));
         //stick.stick_x() - Climb Manual - turn drivebase
         //stick.stick_y() - Climb Manual - drive forward

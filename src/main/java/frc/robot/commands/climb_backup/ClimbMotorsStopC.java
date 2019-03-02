@@ -17,7 +17,7 @@ public class ClimbMotorsStopC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbCrawlerS.motorStop();
+    Robot.m_ClimbCrawlerS.motorSet(0);
     Robot.m_drivebaseS.arcadeDrive(0, 0, 0);
   }
 

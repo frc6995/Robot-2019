@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
-//To change to double Solenoids make changes in ClimbFrontS, ClimbRearS, and the test toggles (NC)
+//To change to double Solenoids make changes in ClimbFrontS, ClimbRearS, OI, and the test toggles (NC)
 
-// NOTE!!! The rear should be the side without the ladder, however, the side without the ladder should be going first.
+// NOTE!!! The front is the side with the ladder, regardless of driving direction
 
 public class ClimbFrontS extends Subsystem {
   
@@ -56,11 +56,13 @@ public class ClimbFrontS extends Subsystem {
     //this.Extended = Value.kReverse;
   }
 
-/*   public void offFront() {
+  public void offFront() {
+  /*
     System.out.println("offFront");
     climbMechanismFront.set(Value.kOff);
     this.Extended = Value.kOff;
-  } */
+    */
+  }
 
   public boolean getExtended() { //public Value getExtended() {
     return this.extended;

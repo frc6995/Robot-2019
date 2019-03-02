@@ -1,38 +1,42 @@
-package frc.robot.commands.climb_backup;
+package frc.robot.commands.climb;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimbBothLiftC extends Command {
+//Used to lift with Double Solenoid. Command finishes when button released.
+public class ClimbBothDSLiftC extends Command {
   private boolean enabled;
-  public ClimbBothLiftC(boolean enabled) {
+
+  public ClimbBothDSLiftC(boolean enabled) {
     requires(Robot.m_ClimbFrontS);
     requires(Robot.m_ClimbRearS);
-    this.enabled = enabled;
   }
 
   @Override
   protected void initialize() {
-  }
-
-  @Override
-  protected void execute() {
-    if (this.enabled) {
+    if (enabled){
       Robot.m_ClimbFrontS.deployFront();
       Robot.m_ClimbRearS.deployRear();
     }
   }
 
   @Override
+  protected void execute() {
+  }
+
+  @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   @Override
   protected void end() {
+    Robot.m_ClimbFrontS.offFront();
+    Robot.m_ClimbRearS.offRear();
   }
 
   @Override
   protected void interrupted() {
+    end();
   }
 }

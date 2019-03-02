@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
-// NOTE!!! The rear should be the side without the ladder, however, the side without the ladder should be going first.
+// NOTE!!! The rear is the side without the ladder, regardless of driving direction
 
 public class ClimbRearS extends Subsystem {
   
@@ -52,11 +52,13 @@ public class ClimbRearS extends Subsystem {
     //this.Extended = Value.kReverse;
   }
 
-  /* public void offFront() {
+  public void offRear() {
+    /*
     System.out.println("offRear");
     climbMechanismRear.set(Value.kOff);
     this.Extended = Value.kOff;
-  } */
+    */
+  } 
 
   public boolean getExtended() { //public Value getExtended() {
     return this.extended;

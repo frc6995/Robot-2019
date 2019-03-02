@@ -22,7 +22,7 @@ public class ClimbMotorsForwardC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbCrawlerS.motorForward();
+    Robot.m_ClimbCrawlerS.motorSet(RobotMap.CLIMB_MOTORS_SPEED);
     Robot.m_drivebaseS.arcadeDrive(RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
   }
 

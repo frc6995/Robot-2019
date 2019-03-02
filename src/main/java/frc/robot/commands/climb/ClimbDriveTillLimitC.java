@@ -1,4 +1,4 @@
-package frc.robot.commands.climb_test;
+package frc.robot.commands.climb;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -22,22 +22,22 @@ public class ClimbDriveTillLimitC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbCrawlerS.motorForward();
+    Robot.m_ClimbCrawlerS.motorSet(RobotMap.CLIMB_MOTORS_SPEED);
     Robot.m_drivebaseS.arcadeDrive(RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
   }
 
   @Override
   protected boolean isFinished() {
-    if (this.speed > 0 && this.stage == 1 && Robot.m_ClimbFrontS.cSwitchFront() == true) { //true is triggered
+    if (this.speed > 0 && this.stage == 1 && Robot.m_ClimbFrontS.cSwitchFront()) {
       return true;
     }
-    else if (this.speed > 0 && this.stage == 2 && Robot.m_ClimbRearS.cSwitchRear() == true) {
+    else if (this.speed > 0 && this.stage == 2 && Robot.m_ClimbRearS.cSwitchRear()) {
       return true;
     }
-    else if (this.speed < 0 && this.stage == 1 && Robot.m_ClimbRearS.cSwitchRear() == true) { //true is triggered
+    else if (this.speed < 0 && this.stage == 1 && Robot.m_ClimbRearS.cSwitchRear()) {
       return true;
     }
-    else if (this.speed < 0 && this.stage == 2 && Robot.m_ClimbFrontS.cSwitchFront() == true) {
+    else if (this.speed < 0 && this.stage == 2 && Robot.m_ClimbFrontS.cSwitchFront()) {
       return true;
     }
     else {
@@ -47,7 +47,7 @@ public class ClimbDriveTillLimitC extends Command {
 
   @Override
   protected void end() {
-    Robot.m_ClimbCrawlerS.motorStop();
+    Robot.m_ClimbCrawlerS.motorSet(0);
   }
 
   @Override

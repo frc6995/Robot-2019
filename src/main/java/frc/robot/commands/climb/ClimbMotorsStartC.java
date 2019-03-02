@@ -1,4 +1,4 @@
-package frc.robot.commands.climb_test;
+package frc.robot.commands.climb;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -36,7 +36,7 @@ public class ClimbMotorsStartC extends Command {
 
   @Override
   protected void end() {
-    Robot.m_ClimbCrawlerS.motorStop();
+    Robot.m_ClimbCrawlerS.motorSet(0);
   }
 
   @Override

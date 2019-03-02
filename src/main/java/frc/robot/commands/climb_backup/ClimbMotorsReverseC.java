@@ -24,7 +24,7 @@ public class ClimbMotorsReverseC extends Command {
   @Override
   protected void execute() {
     System.out.println("ClimbMotorsReverseC");
-    Robot.m_ClimbCrawlerS.motorReverse();
+    Robot.m_ClimbCrawlerS.motorSet(-RobotMap.CLIMB_MOTORS_SPEED);
     Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
   }
 

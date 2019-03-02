@@ -20,17 +20,4 @@ public class ClimbCrawlerS extends Subsystem {
   public void motorSet(double motorSpeed) {
     climbMotor.set(motorSpeed);
   }
-
-  public void motorForward() {
-    climbMotor.set(RobotMap.CLIMB_MOTORS_SPEED);
-  }
-  
-  public void motorStop() {
-    climbMotor.set(0.0);
-  }
-
-  public void motorReverse() {
-    // In this case, the motor will have to reverse onto the platforms, see NOTE in FrontS.
-    climbMotor.set(-RobotMap.CLIMB_MOTORS_SPEED);
-  }
 }
