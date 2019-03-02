@@ -3,34 +3,35 @@ package frc.robot.commands.climb_test;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-// Possibly can be used as an override for the command group as well as for ForwardC/ReverseC
-
-public class ClimbMotorsStopC extends Command {
-  public ClimbMotorsStopC() {
-    requires(Robot.m_ClimbCrawlerS);
-    requires(Robot.m_drivebaseS);
+public class ClimbLiftNC extends Command {
+  public ClimbLiftNC() {
+    requires(Robot.m_ClimbFrontS);
+    requires(Robot.m_ClimbRearS);
   }
 
   @Override
   protected void initialize() {
+    Robot.m_ClimbFrontS.deployFront();
+    Robot.m_ClimbRearS.deployRear();
   }
 
   @Override
   protected void execute() {
-    Robot.m_ClimbCrawlerS.motorStop();
-    Robot.m_drivebaseS.arcadeDrive(0, 0, 0);
   }
 
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   @Override
   protected void end() {
+    //Robot.m_ClimbFrontS.offFront();
+    //Robot.m_ClimbRearS.offRear();
   }
 
   @Override
   protected void interrupted() {
+    end();
   }
 }

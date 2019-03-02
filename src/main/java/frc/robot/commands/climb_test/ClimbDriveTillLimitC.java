@@ -1,10 +1,3 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.commands.climb_test;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -13,40 +6,38 @@ import frc.robot.RobotMap;
 
 public class ClimbDriveTillLimitC extends Command {
   private int stage;
+  private double speed;
   public ClimbDriveTillLimitC(int stage) {
     requires(Robot.m_ClimbFrontS);
     requires(Robot.m_ClimbRearS);
     requires(Robot.m_ClimbCrawlerS);
     requires(Robot.m_drivebaseS);
     this.stage = stage;
+    this.speed = RobotMap.CLIMB_MOTORS_SPEED;
   }
 
-  // Called just before this Command runs the first time
   @Override
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
     Robot.m_ClimbCrawlerS.motorForward();
     Robot.m_drivebaseS.arcadeDrive(RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
   }
 
-  // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    //The dead code is because climb_motors_speed is a constant
-    if (RobotMap.CLIMB_MOTORS_SPEED > 0 && this.stage == 1 && Robot.m_ClimbFrontS.cSwitchFront() == false) { //false is tripped
+    if (this.speed > 0 && this.stage == 1 && Robot.m_ClimbFrontS.cSwitchFront() == true) { //true is triggered
       return true;
     }
-    else if (RobotMap.CLIMB_MOTORS_SPEED > 0 && this.stage == 2 && Robot.m_ClimbRearS.cSwitchRear() == false) {
+    else if (this.speed > 0 && this.stage == 2 && Robot.m_ClimbRearS.cSwitchRear() == true) {
       return true;
     }
-    else if (RobotMap.CLIMB_MOTORS_SPEED < 0 && this.stage == 1 && Robot.m_ClimbRearS.cSwitchRear() == false) { //false is tripped
+    else if (this.speed < 0 && this.stage == 1 && Robot.m_ClimbRearS.cSwitchRear() == true) { //true is triggered
       return true;
     }
-    else if (RobotMap.CLIMB_MOTORS_SPEED < 0 && this.stage == 2 && Robot.m_ClimbFrontS.cSwitchFront() == false) {
+    else if (this.speed < 0 && this.stage == 2 && Robot.m_ClimbFrontS.cSwitchFront() == true) {
       return true;
     }
     else {
@@ -54,14 +45,13 @@ public class ClimbDriveTillLimitC extends Command {
     }
   }
 
-  // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_ClimbCrawlerS.motorStop();
   }
 
-  // Called when another command which requires one or more of the same
-  // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 }
