@@ -25,7 +25,8 @@ public class LadderMoveDownPIDC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return Robot.m_ladderS.isAtSetPoint() || Robot.m_ladderS.getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION;
+    return Robot.m_ladderS.isAtSetPoint() || 
+            Robot.m_ladderS.getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION;
   }
 
   @Override

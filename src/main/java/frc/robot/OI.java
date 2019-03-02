@@ -12,7 +12,7 @@ import frc.robot.commands.climb_test.ClimbRearToggleNC;
 import frc.robot.commands.climb.ClimbPlatformCG;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.*;
-import frc.robot.commands.ladder.LadderLevelScoreCG;
+import frc.robot.commands.ladder.*;
 
 public class OI {
     public final Xbox xbox = new Xbox(RobotMap.OI_XBOX);
@@ -36,6 +36,10 @@ public class OI {
         SmartDashboard.putData("NEW Front Toggle", new ClimbFrontToggleNC());
         SmartDashboard.putData("NEW Rear Toggle", new ClimbRearToggleNC());
 
+        //SmartDashboard Commands for Emergency Use
+        SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
+        SmartDashboard.putData("LadderHomeC", new LadderHomeC());
+
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 
         //Xbox Assignments
@@ -55,8 +59,7 @@ public class OI {
         buttonBoard.pinky_runWhileHeld(new ClimbPlatformCG(buttonBoard.thumb()));
 
         //Joystick Assignments
-        //Why is HatchMech on Toggle???
-        stick.button_1_toggleOnPress(new HatchMechToggleCG());
+        stick.button_1_runOnPress(new HatchMechCG());
         stick.button_3_runOnPress(new ClimbRearRetractC());  //change to retract 2nd half - TODO
         stick.button_5_runOnPress(new ClimbFrontRetractC()); //change to retract 1st half - TODO
         //stick.button_6_runWhileHeld(new ClimbMotorsStartC()); - TODO

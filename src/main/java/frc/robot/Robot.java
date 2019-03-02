@@ -50,7 +50,7 @@ public class Robot extends TimedRobot {
 
     //Resets the ladder encoder count whenever the robot is rebooted.
     m_ladderHomeC = new LadderHomeC();
-    m_ladderHomeC.start();  // Is running this once after starting robot enough?
+    m_ladderHomeC.start();
   
     m_ladderManualMoveC = new LadderManualMoveC();
     m_ladderDisplayStatusC = new LadderDisplayStatusC();

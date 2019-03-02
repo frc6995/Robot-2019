@@ -30,13 +30,12 @@ public class LadderHomeC extends Command {
   @Override
   protected void execute() {
     //Move ladder slightly up.
-    //SmartDashboard.putNumber("i", i); - Can we remove this?
     SmartDashboard.putBoolean("Enc reset", encodersReset);
     if (i < 20) {
       i += 1;
       Robot.m_ladderS.setLadderPower(0.2);
-      if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount()) {
-        //Do we need this on the driverstation? If yes, what should driver do?
+      if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount() && 
+          Robot.m_ladderS.getLadderEncoderCount() != 0) {
         SmartDashboard.putString("Oops","Encoder values have not changed!!!");
         return;
       }
@@ -48,12 +47,8 @@ public class LadderHomeC extends Command {
         System.out.print("Bringing ladder down");
       } 
       else if (j >= 100) {
-        //How do they reset encoders manually? Is there a command to reset on Driverstation?
         SmartDashboard.putString("Manually reset encoders", "Manually reset encoders");
-    /*     while (!Robot.m_oi.xbox.left_stick()) {
-            Robot.m_ladderS.setLadderPower(-0.05);
-         }
-      */   finished = true;
+        finished = true;
         }
       else {
         System.out.print("Resetting Encoders");    

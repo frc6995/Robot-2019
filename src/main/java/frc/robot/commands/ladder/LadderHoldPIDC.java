@@ -11,8 +11,8 @@ public class LadderHoldPIDC extends Command {
   public LadderHoldPIDC() {
     requires(Robot.m_ladderS);
     
-    this.setInterruptible(false);  //How does this command stop if it isn't interruptible?
-    Robot.m_ladderS.setMaxPIDPower(0.5); //Why initialized to .5 then set to .7 in execute?
+    this.setInterruptible(false);
+    //Robot.m_ladderS.setMaxPIDPower(0.5); //Why initialized to .5 then set to .7 in execute?
   }
 
   @Override

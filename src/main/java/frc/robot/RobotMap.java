@@ -40,7 +40,6 @@ public class RobotMap {
   public final static int OI_JOYSTICK = 2;
 
   //Limit switch constants
-  public static final int DIO_LIMIT_LADDER_TOP = 1;  // Never got a Limit Switch for Top.
   public static final int DIO_LIMIT_LADDER_BOTTOM = 0;
   public static final int DIO_LIMIT_CLIMBER_FRONT = 2;
   public static final int DIO_LIMIT_CLIMBER_REAR = 3;
@@ -53,6 +52,7 @@ public class RobotMap {
   public static final int LADDER_LEVEL_THREE = 7160; //change as needed
 
   // Climb Constants
+  //Motor Speed: Positive if climbing forward - Negative if climbing backwards
   public static final double CLIMB_MOTORS_SPEED = 0.4;  //PostChange: 0.2 was very slow; try 0.4
 }
 

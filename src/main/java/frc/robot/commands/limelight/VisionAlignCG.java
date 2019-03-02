@@ -17,10 +17,10 @@ public class VisionAlignCG extends CommandGroup {
 
     addSequential(new VisionAlignTargetC());
 
-    // Why are we setting the Ladder Level again? Isn't it already at Vision?
+    // TODO Why are we setting the Ladder Level again? Isn't it already at Vision?
     addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
     addSequential(new LadderMoveDownPIDC());
-    // Are we driving forward enough?
+    // TODO Are we driving forward enough?
     addSequential(new DriveForTimeC(2, 0.2), 2);
   }
 }

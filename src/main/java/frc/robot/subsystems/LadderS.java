@@ -5,8 +5,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
-import frc.robot.commands.ladder.LadderHomeC;
-
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -36,7 +34,7 @@ public class LadderS extends Subsystem {
   // PID "constants"
   private boolean ladderPIDActive = true;
   // Proportional constant
-  private double ladderKp = 0.7;
+  private double ladderKp = 0.7;  //May need to decrease if ladder is lighter
   // Integral constant
   private double ladderKi = 0.002;
   // Derivative constant
@@ -49,7 +47,6 @@ public class LadderS extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-   // setDefaultCommand(new LadderHomeC());  - Do we want this here for comp?
   }
 
   public LadderS() {
@@ -74,7 +71,7 @@ public class LadderS extends Subsystem {
     ladderTalonA.configSelectedFeedbackCoefficient(1.0);
 
     // Doesn't apply to voltage control
-    ladderTalonA.configForwardSoftLimitThreshold(8000);
+    ladderTalonA.configForwardSoftLimitThreshold(8000);  //Stops the ladder at the top
     ladderTalonA.configForwardSoftLimitEnable(true);
 
     // Configs P, I, D and F using the constants
@@ -97,14 +94,9 @@ public class LadderS extends Subsystem {
     ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
 
     ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
-    ladderTopLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_TOP);
 
-    resetEncoder();
-
-    // Overides any other commands and makes sure the ladder inits not moving
+    // Overides any other commands and makes sure the ladder is not moving
     setLadderPower(0);
-    ladderTalonA.neutralOutput(); //equivalent of setLadderPower(0) but w/break
-    //ask Thomas about neutralOutput.
   }
 
   public void setLadderPower(double power) {
@@ -117,7 +109,7 @@ public class LadderS extends Subsystem {
   }
 
   public double getLadderEncoderCount() {
-    // Positive us up, negative is down
+    // Positive is up, negative is down
     return (ladderTalonA.getSensorCollection().getQuadraturePosition());
   }
 
@@ -127,7 +119,6 @@ public class LadderS extends Subsystem {
 
   public void enablePID() {
     ladderPIDActive = true;
-    // ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());  - Delete?
   }
 
   public void disablePID() {
@@ -150,10 +141,6 @@ public class LadderS extends Subsystem {
     SmartDashboard.putString("Ladder level",LadderLevelToString(getNextLadderLevel()));
 
     ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
-    //Should we remove getError check?
-    if(getError() == 0){
-      //ladderTalonA.setIntegralAccumulator(500000);
-    } 
 
     // If we are within the set point range add 1 to countWithinSetPoint, else set to 0
     if (Math.abs(getError()) < setPointRange) {
@@ -256,6 +243,8 @@ public class LadderS extends Subsystem {
         return "1";
       case LEVEL_VISION:
         return "Vision";
+      case LEVEL_CUSHION:
+        return "Cushion";
       case LEVEL_TWO:
         return "2";
       case LEVEL_THREE:

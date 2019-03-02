@@ -3,9 +3,8 @@ package frc.robot.commands.ladder;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-//Allows driver to manually move ladder using joystick buttons 8 & 7.
-public class LadderManualMoveC extends Command {
-  public LadderManualMoveC() {
+public class LadderResetEncoderC extends Command {
+  public LadderResetEncoderC() {
     requires(Robot.m_ladderS);
   }
 
@@ -15,15 +14,12 @@ public class LadderManualMoveC extends Command {
 
   @Override
   protected void execute() {
-    if (Robot.m_oi.stick.button_8()) {
-      Robot.m_ladderS.setLadderPower(0.5);
-    }  else if (Robot.m_oi.stick.button_7()) {
-      Robot.m_ladderS.setLadderPower(0.1);
-    }
+    Robot.m_ladderS.resetEncoder();
   }
+
   @Override
   protected boolean isFinished() {
-    return false;
+    return true;
   }
 
   @Override

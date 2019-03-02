@@ -3,7 +3,7 @@ package frc.robot.commands.ladder;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 import frc.robot.commands.Cargo.CargoShooterC;
-import frc.robot.commands.hatch.HatchMechToggleCG;
+import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.subsystems.LadderS.LadderLevel;
 
 public class LadderLevelScoreCG extends CommandGroup {
@@ -23,7 +23,7 @@ public class LadderLevelScoreCG extends CommandGroup {
       if (shootCargo){
         addSequential(new CargoShooterC(), 3);
       } else {
-        addSequential(new HatchMechToggleCG());
+        addSequential(new HatchMechCG());
       }
   
       //wait 1 second
