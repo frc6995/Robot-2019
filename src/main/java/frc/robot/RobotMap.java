@@ -14,6 +14,8 @@ public class RobotMap {
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_1 = 22;
   public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_2 = 21;
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
+
+  public static final int CAN_ID_TALON_CARGO = 15;
   
   //Pneumatics Control Module
   public final static int PCM_ID = 1;
@@ -54,7 +56,5 @@ public class RobotMap {
   // Climb Constants
   //Motor Speed: Positive if climbing forward - Negative if climbing backwards
   public static final double CLIMB_MOTORS_SPEED = 0.4;  //PostChange: 0.2 was very slow; try 0.4
-  
-  public static final int CAN_ID_TALON_CARGO = 15;
 }
 

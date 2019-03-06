@@ -13,6 +13,8 @@ public class CargoShooterS extends Subsystem {
   public CargoShooterS(){
     //cargoShooterMotor = new Spark(RobotMap.PWM_ID_SPARK_CARGO_SHOOTER);
     cargoShooterMotor = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_CARGO);
+    cargoShooterMotor.configContinuousCurrentLimit(20);
+    cargoShooterMotor.enableCurrentLimit(true);
   }
 
   @Override
