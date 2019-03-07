@@ -48,9 +48,7 @@ public class Robot extends TimedRobot {
 
     m_oi = new OI();
 
-    //Resets the ladder encoder count whenever the robot is rebooted.
     m_ladderHomeC = new LadderHomeC();
-    m_ladderHomeC.start();
   
     m_ladderManualMoveC = new LadderManualMoveC();
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
@@ -89,6 +87,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    m_ladderHomeC.start();
   }
 
   @Override
@@ -98,6 +97,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    m_ladderHomeC.start();
   }
 
   @Override

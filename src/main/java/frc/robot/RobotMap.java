@@ -45,6 +45,7 @@ public class RobotMap {
   public static final int DIO_LIMIT_LADDER_BOTTOM = 0;
   public static final int DIO_LIMIT_CLIMBER_FRONT = 2;
   public static final int DIO_LIMIT_CLIMBER_REAR = 3;
+  public static final int DIO_LIMIT_CARGO = 4;
 
   //Ladder Encoder Constants   
   public static final int LADDER_LEVEL_ONE = 0; //The home location

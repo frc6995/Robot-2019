@@ -62,10 +62,10 @@ public class OI {
         stick.button_5_runOnPress(new ClimbRetractStageC(1));
         stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
         //stick.button_7() - Holds Ladder position when manually operated
-        //stick.button_8() - Moves Ladder up 
+        //stick.button_8() - Moves Ladmder up
         stick.button_9_runOnPress(new ClimbMotorsStopC());
-        //stick.button_11_runWhileHeld(new ClimbBothDSLiftC(stick.button_12()));
-        stick.button_11_runOnPress(new ClimbBothLiftC(stick.button_12()));
+        stick.button_11_runWhileHeld(new ClimbBothDSLiftC(true));
+        //stick.button_11_runOnPress(new ClimbBothLiftC(stick.button_12()));
         //stick.stick_x() - Climb Manual - turn drivebase
         //stick.stick_y() - Climb Manual - drive forward
     }

@@ -35,19 +35,21 @@ public class VisionAlignTargetC extends Command {
 
   public VisionAlignTargetC() {
     requires(Robot.m_drivebaseS);
-    pipelineEntry.setDouble(0);
+    pipelineEntry.setDouble(1);
+    ledMode.setDouble(0);
   }
 
   @Override
   protected void initialize() {
     //To interrupt this command, use the toggle feature
     this.setInterruptible(false); //Prevents drivebase from overriding this command.
-    pipelineEntry.setDouble(0);  //Sets pipeline to Vision Align pipeline
-    ledMode.setDouble(3);        //Force LED Light On.
   }
 
   @Override
   protected void execute() {
+    pipelineEntry.setDouble(0);  //Sets pipeline to Vision Align pipeline
+    ledMode.setDouble(3);        //Force LED Light On.
+
     //Get offsets from limelight
     tx = txEntry.getDouble(0.0);
     ty = tyEntry.getDouble(0.0);

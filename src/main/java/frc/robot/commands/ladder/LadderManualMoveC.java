@@ -15,11 +15,11 @@ public class LadderManualMoveC extends Command {
 
   @Override
   protected void execute() {
-    if (Robot.m_oi.stick.button_8()) {
+    /*if (Robot.m_oi.stick.button_8()) {
       Robot.m_ladderS.setLadderPower(0.5);
     }  else if (Robot.m_oi.stick.button_7()) {
       Robot.m_ladderS.setLadderPower(0.1);
-    }
+    }*/
   }
   @Override
   protected boolean isFinished() {

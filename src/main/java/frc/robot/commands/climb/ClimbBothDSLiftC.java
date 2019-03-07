@@ -10,18 +10,24 @@ public class ClimbBothDSLiftC extends Command {
   public ClimbBothDSLiftC(boolean enabled) {
     requires(Robot.m_ClimbFrontS);
     requires(Robot.m_ClimbRearS);
+    this.enabled = enabled;
   }
 
   @Override
   protected void initialize() {
-    if (enabled){
+    System.out.println("DS Lift Init");
+    if (this.enabled){
       Robot.m_ClimbFrontS.deployFront();
       Robot.m_ClimbRearS.deployRear();
     }
   }
-
+ 
   @Override
   protected void execute() {
+    /* if (this.enabled){
+      Robot.m_ClimbFrontS.deployFront();
+      Robot.m_ClimbRearS.deployRear();
+    } */
   }
 
   @Override
