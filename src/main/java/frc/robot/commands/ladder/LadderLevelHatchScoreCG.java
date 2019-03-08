@@ -1,10 +1,7 @@
 package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.ConditionalCommand;
 import edu.wpi.first.wpilibj.command.WaitCommand;
-import frc.robot.Robot;
-import frc.robot.commands.Cargo.CargoShooterC;
 import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.subsystems.LadderS.LadderLevel;
 

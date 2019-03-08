@@ -13,8 +13,6 @@ import frc.robot.commands.Cargo.CargoShooterC;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderManualMoveC;
-import frc.robot.commands.ladder.LadderLevelCargoScoreCG;
-import frc.robot.commands.ladder.LadderLevelHatchScoreCG;
 import frc.robot.subsystems.*;
 
 /**
