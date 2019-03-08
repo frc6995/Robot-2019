@@ -176,7 +176,7 @@ public class LadderS extends Subsystem {
 
   public boolean isAtSetPoint() {
     // If we have been within our range for at least 50 cycles (1 second), return true
-    if (countWithinSetPoint > 50) {
+    if (countWithinSetPoint > 25) {
       currentLadderLevel = nextLadderLevel;
       countWithinSetPoint = 0;
       return true;
