@@ -201,7 +201,8 @@ public class LadderS extends Subsystem {
       }
       else
         return RobotMap.LADDER_LEVEL_CUSHION; 
-    }else if (getNextLadderLevel() == LadderLevel.LEVEL_VISION) {
+    }
+    else if (getNextLadderLevel() == LadderLevel.LEVEL_VISION) {
       return RobotMap.LADDER_LEVEL_VISION;
     }
     else if (getNextLadderLevel() == LadderLevel.LEVEL_TWO) {
@@ -209,6 +210,12 @@ public class LadderS extends Subsystem {
     }
     else if (getNextLadderLevel() == LadderLevel.LEVEL_THREE) {
       return RobotMap.LADDER_LEVEL_THREE;
+    }
+    else if (getNextLadderLevel() == LadderLevel.LEVEL_CARGO_INTAKE) {
+      return RobotMap.LADDER_LEVEL_CARGO_INTAKE;
+    }
+    else if (getNextLadderLevel() == LadderLevel.LEVEL_ROCKET_CARGO_VISION) {
+      return RobotMap.LADDER_LEVEL_ROCKET_CARGO_VISION;
     }
     else {
       return 0;
