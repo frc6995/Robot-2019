@@ -8,6 +8,8 @@ public class DriveForwardC extends Command {
   private double power;
   private double time;
 
+  //TODO - This is a duplicate of DriveForTimeC.java, I did not realize this in time, after competition decide which one to keep.
+
   /**
    * Command for driving in a line at a set speed for a certain amount of time.
    * (May not be perfectly straight since drive is lacking a PID controller.)

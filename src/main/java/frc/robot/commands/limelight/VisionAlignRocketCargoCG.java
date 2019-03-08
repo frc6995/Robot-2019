@@ -21,4 +21,3 @@ public class VisionAlignRocketCargoCG extends CommandGroup {
     addSequential(new DriveForTimeC(2, 0.2), 2);
   }
 }
-//TODO make more code emojis.
