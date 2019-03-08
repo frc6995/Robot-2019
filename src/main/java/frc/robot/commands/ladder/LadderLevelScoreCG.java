@@ -1,7 +1,9 @@
 package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.ConditionalCommand;
 import edu.wpi.first.wpilibj.command.WaitCommand;
+import frc.robot.Robot;
 import frc.robot.commands.Cargo.CargoShooterC;
 import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.subsystems.LadderS.LadderLevel;
@@ -13,6 +15,7 @@ public class LadderLevelScoreCG extends CommandGroup {
    */
   public LadderLevelScoreCG(boolean shootCargo,LadderLevel level) {
 
+      boolean thumbHeld = Robot.m_oi.buttonBoard.thumb();
       //set ladder level first.
       addSequential(new LadderSetLevelC(level));
       //Move up to the set ladder level, and swap to holding
@@ -20,8 +23,8 @@ public class LadderLevelScoreCG extends CommandGroup {
       
       addParallel(new LadderHoldPIDC());
       //Score cargo or hatch
-      if (shootCargo){
-        addSequential(new CargoShooterC(), 3);
+      if (thumbHeld){
+        addSequential(new CargoShooterC());
       } else {
         addSequential(new HatchMechCG());
       }

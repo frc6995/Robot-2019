@@ -7,6 +7,7 @@ import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.climb_test.ClimbBothToggleNC;
 import frc.robot.commands.climb_backup.*;
+import frc.robot.commands.Cargo.CargoIntakeC;
 import frc.robot.commands.climb.*;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.*;
@@ -54,17 +55,18 @@ public class OI {
         buttonBoard.index_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_ONE));
         buttonBoard.middle_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_TWO));
         buttonBoard.ring_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_THREE));
-        buttonBoard.pinky_runWhileHeld(new ClimbPlatformBetterCG(buttonBoard.thumb()));
+        //buttonBoard.pinky_runWhileHeld(new ClimbPlatformBetterCG(buttonBoard.thumb()));
 
         //Joystick Assignments
         stick.button_1_runOnPress(new HatchMechCG());
-        stick.button_3_runOnPress(new ClimbRetractStageC(2));
-        stick.button_5_runOnPress(new ClimbRetractStageC(1));
-        stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
+        //stick.button_3_runOnPress(new ClimbRetractStageC(2));
+        //stick.button_5_runOnPress(new ClimbRetractStageC(1));
+        stick.button_4_runOnPress(new CargoIntakeC());
+        //stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
         //stick.button_7() - Holds Ladder position when manually operated
         //stick.button_8() - Moves Ladmder up
-        stick.button_9_runOnPress(new ClimbMotorsStopC());
-        stick.button_11_runWhileHeld(new ClimbBothDSLiftC(true));
+        //stick.button_9_runOnPress(new ClimbMotorsStopC());
+        //stick.button_11_runWhileHeld(new ClimbBothDSLiftC(true));
         //stick.button_11_runOnPress(new ClimbBothLiftC(stick.button_12()));
         //stick.stick_x() - Climb Manual - turn drivebase
         //stick.stick_y() - Climb Manual - drive forward
