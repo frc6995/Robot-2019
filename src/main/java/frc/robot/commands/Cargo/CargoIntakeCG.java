@@ -33,13 +33,13 @@ public class CargoIntakeCG extends CommandGroup {
 
     //Aligns the robot to the cargo intake area
     //Sets the ladder level to the vision tracking level
-    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
+    //addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
     //moves the ladder up (TODO - this should probably be combined with the ladder down command at some point.)
-    addSequential(new LadderMoveUpPIDC());
+    //addSequential(new LadderMoveUpPIDC());
     //tells the command to hold the position
-    addParallel(new LadderHoldPIDC());
+    //addParallel(new LadderHoldPIDC());
     //aligns the robot to the target
-    addSequential(new VisionAlignTargetC());
+    //addSequential(new VisionAlignTargetC());
     //Changes the ladder to the position needed to intake the cargo
     addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CARGO_INTAKE));
     //TODO - moves the ladder up to the position (MAKE SURE THIS GETS CHANGED TO DOWN IF THE CARGO INTAKE IS BELOW VISION)
@@ -47,7 +47,7 @@ public class CargoIntakeCG extends CommandGroup {
     //holds the ladder position.
     addParallel(new LadderHoldPIDC());
     //drives forward for a set period of time at a set power.
-    addParallel(new DriveForwardC(0.3, 5));
+    //addParallel(new DriveForwardC(0.3, 5));
     //runs the intake command.
     addSequential(new CargoIntakeC());
   }

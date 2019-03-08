@@ -14,7 +14,7 @@ public class ScoreHatchOrCargoC extends InstantCommand {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     m_ladderLevelCargoScoreCG = new LadderLevelCargoScoreCG(ladderLevel);
-    m_ladderLevelHatchScoreCG = new LadderLevelCargoScoreCG(ladderLevel);
+    m_ladderLevelHatchScoreCG = new LadderLevelHatchScoreCG(ladderLevel);
   }
 
   // Called just before this Command runs the first time
@@ -25,7 +25,7 @@ public class ScoreHatchOrCargoC extends InstantCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    if(Robot.m_oi.buttonBoard.thumb()){
+    if(Robot.m_oi.buttonBoard.pinky()){
       m_ladderLevelCargoScoreCG.start();
       System.out.println("Cargo Score Started");
     }else{

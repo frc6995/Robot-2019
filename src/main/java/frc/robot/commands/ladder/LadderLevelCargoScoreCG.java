@@ -28,5 +28,6 @@ public class LadderLevelCargoScoreCG extends CommandGroup {
       //Return to level 0
       addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CUSHION));
       addSequential(new LadderMoveDownPIDC());
+      System.out.println("CargoScoreCG Finished");
   }
 }
