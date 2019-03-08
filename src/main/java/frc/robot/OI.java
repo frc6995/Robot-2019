@@ -52,6 +52,8 @@ public class OI {
         xbox.x_toggleOnPress(new VisionAlignCG());
         //Command group for aligning and starting the cargo intake.
         xbox.y_toggleOnPress(new CargoIntakeCG());
+        //command group for aligning at the higher level for the rocket cargo.
+        xbox.b_toggleOnPress(new VisionAlignRocketCargoCG());
 
         //Button Board Assignments
         buttonBoard.thumb_runOnPress(new HatchIntakeC());
