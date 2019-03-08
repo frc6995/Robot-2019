@@ -15,7 +15,7 @@ public class RobotMap {
   public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_2 = 21;
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
 
-  public static final int CAN_ID_TALON_CARGO = 15;
+  public static final int CAN_ID_TALON_CARGO = 30;
   
   //Pneumatics Control Module
   public final static int PCM_ID = 1;

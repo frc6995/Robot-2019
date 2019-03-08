@@ -14,6 +14,7 @@ public class HatchMechDeployC extends Command {
 
   @Override
   protected void execute() {
+    System.out.println("Hatch Deploy running");
     Robot.m_hatchMechS.deploy();
   }
 

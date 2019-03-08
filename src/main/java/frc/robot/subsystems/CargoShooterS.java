@@ -29,6 +29,6 @@ public class CargoShooterS extends Subsystem {
   }
 
   public boolean getCargoLimit() {
-    return cargoLimit.get();
+    return !cargoLimit.get();
   }
 }

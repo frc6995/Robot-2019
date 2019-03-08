@@ -9,9 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DrivebaseS;
+import frc.robot.commands.Cargo.CargoShooterC;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderManualMoveC;
+import frc.robot.commands.ladder.LadderLevelCargoScoreCG;
+import frc.robot.commands.ladder.LadderLevelHatchScoreCG;
 import frc.robot.subsystems.*;
 
 /**
@@ -68,6 +71,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData(m_ClimbRearS);
     SmartDashboard.putData(m_ClimbCrawlerS);
     SmartDashboard.putData(m_CargoShooterS);
+    SmartDashboard.putData("Run CargoShooterC", new CargoShooterC());
   }
 
   public void robotPeriodic() {
@@ -78,6 +82,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void disabledInit() {
+    SmartDashboard.putBoolean("Cargo Limit Switch", Robot.m_CargoShooterS.getCargoLimit());
   }
 
   @Override
@@ -92,6 +97,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
+    SmartDashboard.putBoolean("Cargo Limit Switch", Robot.m_CargoShooterS.getCargoLimit());
     Scheduler.getInstance().run();
   }
 
@@ -102,6 +108,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    SmartDashboard.putBoolean("Cargo Limit Switch", Robot.m_CargoShooterS.getCargoLimit());
     Scheduler.getInstance().run();
   }
   

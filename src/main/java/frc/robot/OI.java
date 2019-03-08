@@ -52,16 +52,16 @@ public class OI {
 
         //Button Board Assignments
         buttonBoard.thumb_runOnPress(new HatchIntakeC());
-        buttonBoard.index_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_ONE));
-        buttonBoard.middle_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_TWO));
-        buttonBoard.ring_toggleOnPress(new LadderLevelScoreCG(buttonBoard.thumb(), LadderLevel.LEVEL_THREE));
+        buttonBoard.index_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_ONE));
+        buttonBoard.middle_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_TWO));
+        buttonBoard.ring_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_THREE));
         //buttonBoard.pinky_runWhileHeld(new ClimbPlatformBetterCG(buttonBoard.thumb()));
 
         //Joystick Assignments
         stick.button_1_runOnPress(new HatchMechCG());
         //stick.button_3_runOnPress(new ClimbRetractStageC(2));
         //stick.button_5_runOnPress(new ClimbRetractStageC(1));
-        stick.button_4_runOnPress(new CargoIntakeC());
+        stick.button_4_toggleOnPress(new CargoIntakeC());
         //stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
         //stick.button_7() - Holds Ladder position when manually operated
         //stick.button_8() - Moves Ladmder up

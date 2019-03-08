@@ -8,26 +8,23 @@ import frc.robot.commands.Cargo.CargoShooterC;
 import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.subsystems.LadderS.LadderLevel;
 
-public class LadderLevelScoreCG extends CommandGroup {
+public class LadderLevelHatchScoreCG extends CommandGroup {
   /**
    * Move to the desired ladder level and deploy Hatch Cover or launch Cargo
    * If thumb pressed, then shoot cargo, else deploy hatch
    */
-  public LadderLevelScoreCG(boolean shootCargo,LadderLevel level) {
+  public LadderLevelHatchScoreCG(LadderLevel level) {
 
-      boolean thumbHeld = Robot.m_oi.buttonBoard.thumb();
+    System.out.println("LadderLevelHatchScore Created for LadderLevel " + level);
+
       //set ladder level first.
       addSequential(new LadderSetLevelC(level));
       //Move up to the set ladder level, and swap to holding
       addSequential(new LadderMoveUpPIDC());
       
       addParallel(new LadderHoldPIDC());
-      //Score cargo or hatch
-      if (thumbHeld){
-        addSequential(new CargoShooterC());
-      } else {
-        addSequential(new HatchMechCG());
-      }
+      //Score hatch
+      addSequential(new HatchMechCG());
   
       //wait 1 second
       addSequential(new WaitCommand(1));
