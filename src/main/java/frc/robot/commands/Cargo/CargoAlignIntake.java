@@ -8,41 +8,53 @@
 package frc.robot.commands.Cargo;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.Robot;
 
-public class CargoIntakeC extends Command {
+public class CargoAlignIntake extends Command {
 
-  public CargoIntakeC() {
-    requires(Robot.m_CargoShooterS);
+  private CommandGroup m_CargoIntakeCommandGroup;
+  private Command m_CargoIntakeCommand;
+
+  public CargoAlignIntake() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
+    requires(Robot.m_drivebaseS);
+
+    m_CargoIntakeCommandGroup = new CargoIntakeCG();
+    m_CargoIntakeCommand = new CargoIntakeC();
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    Robot.m_drivebaseS.arcadeDrive(0, 0, 0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_CargoShooterS.setSpeed(0.5);
+    m_CargoIntakeCommandGroup.start();
+    if(!m_CargoIntakeCommandGroup.isRunning()) {
+      Robot.m_drivebaseS.arcadeDrive(Robot.m_oi.xbox.left_stick_y(), 0, 0.5);
+      m_CargoIntakeCommand.start();
+    }
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return Robot.m_CargoShooterS.getCargoLimit();
+    return false;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_CargoShooterS.setSpeed(0.0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
-    end();
   }
 }

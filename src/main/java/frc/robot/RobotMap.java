@@ -53,6 +53,7 @@ public class RobotMap {
   public static final int LADDER_LEVEL_CUSHION = 2500;
   public static final int LADDER_LEVEL_TWO = 3625; //change as needed
   public static final int LADDER_LEVEL_THREE = 7160; //change as needed
+  public static final int LADDER_LEVEL_CARGO_INTAKE = 0;
 
   // Climb Constants
   //Motor Speed: Positive if climbing forward - Negative if climbing backwards
