@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.climb_test.ClimbBothToggleNC;
 import frc.robot.commands.climb_backup.*;
 import frc.robot.commands.Cargo.CargoIntakeC;
+import frc.robot.commands.Cargo.CargoIntakeCG;
 import frc.robot.commands.climb.*;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.*;
@@ -49,6 +50,8 @@ public class OI {
         //xbox.right_bumper()  -- DriveArcadeXboxC used for setting throttle to max
         //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
         xbox.x_toggleOnPress(new VisionAlignCG());
+        //Command group for aligning and starting the cargo intake.
+        xbox.y_toggleOnPress(new CargoIntakeCG());
 
         //Button Board Assignments
         buttonBoard.thumb_runOnPress(new HatchIntakeC());
