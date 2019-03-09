@@ -20,7 +20,9 @@ public class VisionAlignTargetC extends Command {
   NetworkTableEntry taEntry = table.getEntry("ta");
   NetworkTableEntry ledMode = table.getEntry(("ledMode"));
   NetworkTableEntry pipelineEntry = table.getEntry("pipeline");
-  double KpAim = -0.025f;
+  NetworkTableEntry camMode = table.getEntry("camMode");
+
+  double KpAim = -0.02f;
   double KpDistance = -0.08f;
   double min_aim_command = 0.05f;
   double tx= 0.0;
@@ -49,6 +51,7 @@ public class VisionAlignTargetC extends Command {
   protected void execute() {
     pipelineEntry.setDouble(0);  //Sets pipeline to Vision Align pipeline
     ledMode.setDouble(3);        //Force LED Light On.
+    //camMode.setDouble(0);        //Visoin procressing mode
 
     //Get offsets from limelight
     tx = txEntry.getDouble(0.0);

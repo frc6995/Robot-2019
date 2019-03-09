@@ -11,7 +11,7 @@ public class LadderLevelHatchScoreCG extends CommandGroup {
    * If thumb pressed, then shoot cargo, else deploy hatch
    */
   public LadderLevelHatchScoreCG(LadderLevel level) {
-
+    this.setInterruptible(true);
     System.out.println("LadderLevelHatchScore Created for LadderLevel " + level);
 
       //set ladder level first.

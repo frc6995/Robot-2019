@@ -50,12 +50,12 @@ public class RobotMap {
   //Ladder Encoder Constants   
   public static final int LADDER_LEVEL_ONE = 0; //The home location
   public static final int LADDER_LEVEL_VISION = 700;
-  public static final int LADDER_LEVEL_CUSHION = 2500;
+  public static final int LADDER_LEVEL_CUSHION = 3000;
   public static final int LADDER_LEVEL_TWO = 3625; //change as needed
   public static final int LADDER_LEVEL_THREE = 7160; //change as needed
   //TODO - set these values
-  public static final int LADDER_LEVEL_CARGO_INTAKE = 2000;
-  public static final int LADDER_LEVEL_ROCKET_CARGO_VISION = 0;
+  public static final int LADDER_LEVEL_CARGO_INTAKE = 1980;
+  public static final int LADDER_LEVEL_ROCKET_CARGO_VISION = 1900;
 
   // Climb Constants
   //Motor Speed: Positive if climbing forward - Negative if climbing backwards

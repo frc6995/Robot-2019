@@ -11,6 +11,7 @@ public class LadderLevelCargoScoreCG extends CommandGroup {
    * If thumb pressed, then shoot cargo, else deploy hatch
    */
   public LadderLevelCargoScoreCG(LadderLevel level) {
+    this.setInterruptible(true);
       System.out.println("LadderLevelCargoScore Created for LadderLevel " + level);
 
       //set ladder level first.
@@ -19,7 +20,7 @@ public class LadderLevelCargoScoreCG extends CommandGroup {
       addSequential(new LadderMoveUpPIDC());
       
       addParallel(new LadderHoldPIDC());
-      //Score hatch
+      //Score cargo
       addSequential(new CargoShooterC());
   
       //wait 1 second

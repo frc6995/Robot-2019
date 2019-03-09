@@ -10,6 +10,7 @@ package frc.robot.commands.Cargo;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.drive.DriveForwardC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
+import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
 import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.commands.limelight.VisionAlignTargetC;
@@ -30,16 +31,7 @@ public class CargoIntakeCG extends CommandGroup {
    * 7: runs the cargo intake command.
    */
   public CargoIntakeCG() {
-
-    //Aligns the robot to the cargo intake area
-    //Sets the ladder level to the vision tracking level
-    //addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
-    //moves the ladder up (TODO - this should probably be combined with the ladder down command at some point.)
-    //addSequential(new LadderMoveUpPIDC());
-    //tells the command to hold the position
-    //addParallel(new LadderHoldPIDC());
-    //aligns the robot to the target
-    //addSequential(new VisionAlignTargetC());
+    
     //Changes the ladder to the position needed to intake the cargo
     addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CARGO_INTAKE));
     //TODO - moves the ladder up to the position (MAKE SURE THIS GETS CHANGED TO DOWN IF THE CARGO INTAKE IS BELOW VISION)
@@ -50,5 +42,9 @@ public class CargoIntakeCG extends CommandGroup {
     //addParallel(new DriveForwardC(0.3, 5));
     //runs the intake command.
     addSequential(new CargoIntakeC());
+
+    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CUSHION));
+    addSequential(new LadderMoveDownPIDC());
+    System.out.println("LadderHatchScoreCG Finished");
   }
 }

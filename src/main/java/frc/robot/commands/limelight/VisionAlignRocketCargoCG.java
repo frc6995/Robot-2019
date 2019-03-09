@@ -18,6 +18,6 @@ public class VisionAlignRocketCargoCG extends CommandGroup {
     addSequential(new VisionAlignTargetC());
     addSequential(new LadderMoveDownPIDC());
     // TODO Are we driving forward enough?
-    addSequential(new DriveForTimeC(2, 0.2), 2);
+    //addSequential(new DriveForTimeC(2, 0.2));
   }
 }

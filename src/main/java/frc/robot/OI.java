@@ -21,22 +21,7 @@ public class OI {
 
     public OI() {
         //FOR TESTING PURPOSES
-        //For climber
-        SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC()); //relative to climb speed
-        SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC()); //relative to climb speed
-        SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
-        SmartDashboard.putData("Climber Motors Start", new ClimbMotorsDriveC());
-        SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
-        SmartDashboard.putBoolean("LimitFront Check", Robot.m_ClimbFrontS.cSwitchFront());
-        SmartDashboard.putData("Front Retract", new ClimbFrontRetractC());
-        SmartDashboard.putData("Rear Retract", new ClimbRearRetractC());
-        SmartDashboard.putData("ClimbPlatformBetterCG", new ClimbPlatformBetterCG(true));
-        SmartDashboard.putData("Climb Lift (SS)", new ClimbBothLiftC(true)); 
-        SmartDashboard.putData("Climb LIft (DS)", new ClimbBothDSLiftC(true));
         
-        //more testing
-        SmartDashboard.putData("NEW Both Toggle", new ClimbBothToggleNC());
-
         //SmartDashboard Commands for Emergency Use
         SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
@@ -50,10 +35,11 @@ public class OI {
         //xbox.right_bumper()  -- DriveArcadeXboxC used for setting throttle to max
         //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
         xbox.x_toggleOnPress(new VisionAlignCG());
+        xbox.a_toggleOnPress(new VisionAlignRocketCargoCG());
         //Command group for aligning and starting the cargo intake.
-        xbox.y_toggleOnPress(new CargoIntakeCG());
+        //xbox.y_toggleOnPress(new CargoIntakeCG());
         //command group for aligning at the higher level for the rocket cargo.
-        xbox.b_toggleOnPress(new VisionAlignRocketCargoCG());
+        //xbox.b_toggleOnPress(new VisionAlignRocketCargoCG());
 
         //Button Board Assignments
         buttonBoard.thumb_runOnPress(new HatchIntakeC());
@@ -66,7 +52,7 @@ public class OI {
         stick.button_1_runOnPress(new HatchMechCG());
         //stick.button_3_runOnPress(new ClimbRetractStageC(2));
         //stick.button_5_runOnPress(new ClimbRetractStageC(1));
-        stick.button_4_toggleOnPress(new CargoIntakeC());
+        stick.button_3_toggleOnPress(new CargoIntakeCG());
         //stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
         //stick.button_7() - Holds Ladder position when manually operated
         //stick.button_8() - Moves Ladmder up
