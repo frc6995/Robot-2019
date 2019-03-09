@@ -203,7 +203,8 @@ public class LadderS extends Subsystem {
       }
       else
         return RobotMap.LADDER_LEVEL_CUSHION; 
-    }else if (getNextLadderLevel() == LadderLevel.LEVEL_VISION) {
+    }
+    else if (getNextLadderLevel() == LadderLevel.LEVEL_VISION) {
       return RobotMap.LADDER_LEVEL_VISION;
     }
     else if (getNextLadderLevel() == LadderLevel.LEVEL_TWO) {
