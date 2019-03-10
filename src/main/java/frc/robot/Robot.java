@@ -14,9 +14,14 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.commands.Cargo.CargoShooterC;
+import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
+import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderManualMoveC;
+import frc.robot.commands.ladder.LadderMoveDownPIDC;
+import frc.robot.commands.ladder.LadderMoveUpPIDC;
+import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.commands.limelight.setCameraMode;
 import frc.robot.subsystems.*;
 
@@ -40,6 +45,13 @@ public class Robot extends TimedRobot {
   public Command m_ladderHomeC;
   public Command m_ladderManualMoveC;
   public Command m_ladderDisplayStatusC;
+
+  public static Command m_ladderMoveUpPIDC;
+  public static Command m_ladderMoveDownPIDC;
+  public static Command m_ladderHoldPIDC;
+  public static Command m_hatchMechCG;
+  public static Command m_cargoShooterC;
+
   public Command m_setCameraModeC;
 
   //public UsbCamera usbCam = CameraServer.getInstance().startAutomaticCapture();
@@ -60,7 +72,14 @@ public class Robot extends TimedRobot {
 
     m_ladderHomeC = new LadderHomeC();
   
-    m_ladderManualMoveC = new LadderManualMoveC();
+    //m_ladderManualMoveC = new LadderManualMoveC();
+    //m_ladderSetLevelC = new LadderSetLevelC(nextLevel);
+    m_ladderMoveUpPIDC = new LadderMoveUpPIDC();
+    m_ladderMoveDownPIDC = new LadderMoveDownPIDC();
+    m_ladderHoldPIDC = new LadderHoldPIDC();
+    m_hatchMechCG = new HatchMechCG();
+    m_cargoShooterC = new CargoShooterC();
+
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
     m_setCameraModeC = new setCameraMode();
 

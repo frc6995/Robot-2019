@@ -2,6 +2,7 @@ package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
+import frc.robot.Robot;
 import frc.robot.commands.Cargo.CargoShooterC;
 import frc.robot.subsystems.LadderS.LadderLevel;
 
@@ -11,24 +12,24 @@ public class LadderLevelCargoScoreCG extends CommandGroup {
    * If thumb pressed, then shoot cargo, else deploy hatch
    */
   public LadderLevelCargoScoreCG(LadderLevel level) {
-    this.setInterruptible(true);
+    //this.setInterruptible(true);
       System.out.println("LadderLevelCargoScore Created for LadderLevel " + level);
 
       //set ladder level first.
       addSequential(new LadderSetLevelC(level));
       //Move up to the set ladder level, and swap to holding
-      addSequential(new LadderMoveUpPIDC());
+      addSequential(Robot.m_ladderMoveUpPIDC);
       
-      addParallel(new LadderHoldPIDC());
+      addParallel(Robot.m_ladderHoldPIDC);
       //Score cargo
-      addSequential(new CargoShooterC());
+      addSequential(Robot.m_cargoShooterC);
   
       //wait 1 second
       addSequential(new WaitCommand(1));
       
       //Return to level 0
       addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CUSHION));
-      addSequential(new LadderMoveDownPIDC());
+      addSequential(Robot.m_ladderMoveDownPIDC);
       System.out.println("CargoScoreCG Finished");
   }
 }

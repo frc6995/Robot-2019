@@ -10,9 +10,9 @@ public class ScoreHatchOrCargoC extends InstantCommand {
 
   private Command m_ladderLevelCargoScoreCG;
   private Command m_ladderLevelHatchScoreCG;
-  private Command runningCommand;
+  //private Command runningCommand;
 
-  private boolean isStarted = false;
+  //private boolean isStarted = false;
   
   public ScoreHatchOrCargoC(LadderLevel ladderLevel) {
     // Use requires() here to declare subsystem dependencies
