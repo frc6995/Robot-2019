@@ -4,6 +4,8 @@ import frc.robot.controllermap.BBoard;
 import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
+import frc.robot.triggers.TestTriggerT;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.climb_test.ClimbBothToggleNC;
 import frc.robot.commands.climb_backup.*;
@@ -11,6 +13,8 @@ import frc.robot.commands.Cargo.CargoIntakeC;
 import frc.robot.commands.Cargo.CargoIntakeCG;
 import frc.robot.commands.climb.*;
 import frc.robot.commands.limelight.*;
+import frc.robot.commands.trigger_test.HatchDeployTriggerC;
+import frc.robot.commands.trigger_test.HatchMechTriggerCG;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
 
@@ -18,6 +22,7 @@ public class OI {
     public final Xbox xbox = new Xbox(RobotMap.OI_XBOX);
     public final JStick stick = new JStick(RobotMap.OI_JOYSTICK);
     public final BBoard buttonBoard = new BBoard(RobotMap.OI_BUTTONBOARD);
+    public final Trigger trigger = new TestTriggerT();
 
     public OI() {
         //FOR TESTING PURPOSES
@@ -58,7 +63,11 @@ public class OI {
         //stick.button_8() - Moves Ladmder up
         //stick.button_9_runOnPress(new ClimbMotorsStopC());
         //stick.button_11_runWhileHeld(new ClimbBothDSLiftC(true));
-        //stick.button_11_runOnPress(new ClimbBothLiftC(stick.button_12()));
+
+        //New Trigger Testing
+        //stick.button_11_runOnPress(new HatchDeployTriggerC()); //if button 12 is hit this deploys, else it retracts
+        stick.button_11_runOnPress(new HatchMechTriggerCG()); //if button 12 is also hit this runs normally.
+
         //stick.stick_x() - Climb Manual - turn drivebase
         //stick.stick_y() - Climb Manual - drive forward
     }

@@ -9,10 +9,12 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DrivebaseS;
+import frc.robot.triggers.TestTriggerT;
 import frc.robot.commands.Cargo.CargoShooterC;
 import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
@@ -54,6 +56,8 @@ public class Robot extends TimedRobot {
 
   public Command m_setCameraModeC;
 
+  public static Trigger t_testTriggerT;
+
   //public UsbCamera usbCam = CameraServer.getInstance().startAutomaticCapture();
 
 
@@ -82,6 +86,8 @@ public class Robot extends TimedRobot {
 
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
     m_setCameraModeC = new setCameraMode();
+
+    t_testTriggerT = new TestTriggerT();
 
     //Limelight setup to use camera
     CameraServer cs = CameraServer.getInstance();
