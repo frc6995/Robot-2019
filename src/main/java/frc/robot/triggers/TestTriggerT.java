@@ -16,6 +16,6 @@ import frc.robot.Robot;
 public class TestTriggerT extends Trigger {
   @Override
   public boolean get() {
-    return Robot.m_oi.stick.button_12();
+    return (Robot.m_oi.stick.button_11() && Robot.m_oi.stick.button_12());
   }
 }

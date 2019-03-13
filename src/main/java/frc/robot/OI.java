@@ -66,7 +66,9 @@ public class OI {
 
         //New Trigger Testing
         //stick.button_11_runOnPress(new HatchDeployTriggerC()); //if button 12 is hit this deploys, else it retracts
-        stick.button_11_runOnPress(new HatchMechTriggerCG()); //if button 12 is also hit this runs normally.
+        //stick.button_11_runOnPress(new HatchMechTriggerCG()); //if button 12 is also hit this runs normally.
+
+        trigger.whenActive(new HatchMechCG());
 
         //stick.stick_x() - Climb Manual - turn drivebase
         //stick.stick_y() - Climb Manual - drive forward
