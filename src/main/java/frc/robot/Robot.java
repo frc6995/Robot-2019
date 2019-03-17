@@ -87,7 +87,7 @@ public class Robot extends TimedRobot {
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
     m_setCameraModeC = new setCameraMode();
 
-    t_testTriggerT = new TestTriggerT();
+    //t_testTriggerT = new TestTriggerT();
 
     //Limelight setup to use camera
     CameraServer cs = CameraServer.getInstance();

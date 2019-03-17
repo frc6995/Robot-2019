@@ -10,6 +10,7 @@ public class ScoreHatchOrCargoC extends InstantCommand {
 
   private Command m_ladderLevelCargoScoreCG;
   private Command m_ladderLevelHatchScoreCG;
+  private LadderLevel level;
   //private Command runningCommand;
 
   //private boolean isStarted = false;
@@ -17,16 +18,16 @@ public class ScoreHatchOrCargoC extends InstantCommand {
   public ScoreHatchOrCargoC(LadderLevel ladderLevel) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    m_ladderLevelCargoScoreCG = new LadderLevelCargoScoreCG(ladderLevel);
-    m_ladderLevelHatchScoreCG = new LadderLevelHatchScoreCG(ladderLevel);
-
-    SmartDashboard.putData("Cargo ", m_ladderLevelCargoScoreCG);
-    SmartDashboard.putData("", m_ladderLevelCargoScoreCG);
+    this.level = ladderLevel;
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    m_ladderLevelCargoScoreCG = new LadderLevelCargoScoreCG(this.level);
+    m_ladderLevelHatchScoreCG = new LadderLevelHatchScoreCG(this.level);
+    SmartDashboard.putData("Cargo ", m_ladderLevelCargoScoreCG);
+    SmartDashboard.putData("", m_ladderLevelCargoScoreCG);
     m_ladderLevelCargoScoreCG.cancel();
     m_ladderLevelCargoScoreCG.close();
     m_ladderLevelHatchScoreCG.cancel();

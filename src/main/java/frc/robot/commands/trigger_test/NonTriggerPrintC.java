@@ -8,12 +8,11 @@
 package frc.robot.commands.trigger_test;
 
 import edu.wpi.first.wpilibj.command.Command;
-import frc.robot.Robot;
-//import frc.robot.commands.hatch.HatchMechDeployC;
 
-public class HatchDeployTriggerC extends Command {
-  public HatchDeployTriggerC() {
-    //requires(Robot.m_hatchMechS);
+public class NonTriggerPrintC extends Command {
+  public NonTriggerPrintC() {
+    // Use requires() here to declare subsystem dependencies
+    // eg. requires(chassis);
   }
 
   // Called just before this Command runs the first time
@@ -24,20 +23,13 @@ public class HatchDeployTriggerC extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    System.out.println("Executed HatchdeployTriggerC");
-    /* if (Robot.m_oi.trigger.get()) {
-      System.out.println("The Trigger Worked!! Yay!");
-      Robot.m_hatchMechS.deploy();
-    }
-    else {
-      Robot.m_hatchMechS.retract();
-    } */
+    System.out.println("Executed NonTriggerPrintC");
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return true;
+    return false;
   }
 
   // Called once after isFinished returns true

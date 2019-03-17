@@ -15,6 +15,7 @@ import frc.robot.commands.climb.*;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.trigger_test.HatchDeployTriggerC;
 import frc.robot.commands.trigger_test.HatchMechTriggerCG;
+import frc.robot.commands.trigger_test.NonTriggerPrintC;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
 
@@ -40,7 +41,11 @@ public class OI {
         //xbox.right_bumper()  -- DriveArcadeXboxC used for setting throttle to max
         //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
         xbox.x_toggleOnPress(new VisionAlignCG());
-        xbox.a_toggleOnPress(new VisionAlignRocketCargoCG());
+
+
+        //xbox.a_toggleOnPress(new VisionAlignRocketCargoCG());
+
+
         //Command group for aligning and starting the cargo intake.
         //xbox.y_toggleOnPress(new CargoIntakeCG());
         //command group for aligning at the higher level for the rocket cargo.
@@ -68,7 +73,8 @@ public class OI {
         //stick.button_11_runOnPress(new HatchDeployTriggerC()); //if button 12 is hit this deploys, else it retracts
         //stick.button_11_runOnPress(new HatchMechTriggerCG()); //if button 12 is also hit this runs normally.
 
-        trigger.whenActive(new HatchMechCG());
+        trigger.whenActive(new HatchDeployTriggerC());
+        xbox.a_runOnPressed(new NonTriggerPrintC());
 
         //stick.stick_x() - Climb Manual - turn drivebase
         //stick.stick_y() - Climb Manual - drive forward
