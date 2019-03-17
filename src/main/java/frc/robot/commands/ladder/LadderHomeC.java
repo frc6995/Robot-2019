@@ -31,14 +31,14 @@ public class LadderHomeC extends Command {
   protected void execute() {
     //Move ladder slightly up.
     SmartDashboard.putBoolean("Enc reset", encodersReset);
-    if (i < 20) {
+    if (i < 50) {
       i += 1;
       Robot.m_ladderS.setLadderPower(0.2);
-      if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount() && 
-          Robot.m_ladderS.getLadderEncoderCount() != 0) {
-        SmartDashboard.putString("Oops","Encoder values have not changed!!!");
-        return;
-      }
+      //if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount() && 
+      //    Robot.m_ladderS.getLadderEncoderCount() != 0) {
+      //  SmartDashboard.putString("Oops","Encoder values have not changed!!!");
+      //  return;
+      //}
     } 
     else {
       j += 1;

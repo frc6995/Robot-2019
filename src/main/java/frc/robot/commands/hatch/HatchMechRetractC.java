@@ -14,7 +14,7 @@ public class HatchMechRetractC extends Command {
 
   @Override
   protected void execute() {
-    System.out.println("Hatch Retract running");
+    //System.out.println("Hatch Retract running");
     Robot.m_hatchMechS.retract();
   }
 

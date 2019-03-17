@@ -38,7 +38,7 @@ public class LadderMoveUpPIDC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ladderS.setMaxPIDPower(0.7);
+    Robot.m_ladderS.setMaxPIDPower(0.95);
     Robot.m_ladderS.runPID();
   }
 
