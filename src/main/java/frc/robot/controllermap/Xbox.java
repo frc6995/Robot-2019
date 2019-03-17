@@ -647,12 +647,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean left_bumper() {
-        if (xbox.getBumper(Hand.kLeft)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+        return xbox.getBumper(Hand.kLeft);
 
     /**
      * Runs a command when the Xbox Left Bumper button is pressed.
@@ -705,11 +700,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean right_bumper() {
-        if (xbox.getBumper(Hand.kRight)) {
-            return true;
-        } else {
-            return false;
-        }
+        return xbox.getBumper(Hand.kRight);
     }
 
     /**
