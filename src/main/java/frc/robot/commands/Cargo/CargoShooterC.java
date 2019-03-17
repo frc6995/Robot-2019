@@ -10,17 +10,20 @@ public class CargoShooterC extends Command {
 
   @Override
   protected void initialize() {
+    this.setTimeout(1);
   }
 
   @Override
   protected void execute() {
-    Robot.m_CargoShooterS.setSpeed(1);
+    System.out.println("Cargo Shoot running");
+    Robot.m_CargoShooterS.setSpeed(-1);
   }
 
   @Override
   protected boolean isFinished() {
+    return isTimedOut();
     //Use command time out value to stop command
-    return false;
+    //return false;
   }
 
   @Override

@@ -1,17 +1,28 @@
 package frc.robot;
 
 import edu.wpi.cscore.HttpCamera;
+import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSource;
 import edu.wpi.cscore.HttpCamera.HttpCameraKind;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.NetworkTableEntry;
+import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.DrivebaseS;
+import frc.robot.commands.Cargo.CargoShooterC;
+import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
+import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderManualMoveC;
+import frc.robot.commands.ladder.LadderMoveDownPIDC;
+import frc.robot.commands.ladder.LadderMoveUpPIDC;
+import frc.robot.commands.ladder.LadderSetLevelC;
+import frc.robot.commands.limelight.setCameraMode;
 import frc.robot.subsystems.*;
 
 /**
@@ -35,6 +46,17 @@ public class Robot extends TimedRobot {
   public Command m_ladderManualMoveC;
   public Command m_ladderDisplayStatusC;
 
+  public static Command m_ladderMoveUpPIDC;
+  public static Command m_ladderMoveDownPIDC;
+  public static Command m_ladderHoldPIDC;
+  public static Command m_hatchMechCG;
+  public static Command m_cargoShooterC;
+
+  public Command m_setCameraModeC;
+
+  //public UsbCamera usbCam = CameraServer.getInstance().startAutomaticCapture();
+
+
   @Override
   public void robotInit() {
     // Instantiate Subsystems Here
@@ -48,16 +70,26 @@ public class Robot extends TimedRobot {
 
     m_oi = new OI();
 
-    //Resets the ladder encoder count whenever the robot is rebooted.
     m_ladderHomeC = new LadderHomeC();
-    m_ladderHomeC.start();  // Is running this once after starting robot enough?
   
-    m_ladderManualMoveC = new LadderManualMoveC();
+    //m_ladderManualMoveC = new LadderManualMoveC();
+    //m_ladderSetLevelC = new LadderSetLevelC(nextLevel);
+    m_ladderMoveUpPIDC = new LadderMoveUpPIDC();
+    m_ladderMoveDownPIDC = new LadderMoveDownPIDC();
+    m_ladderHoldPIDC = new LadderHoldPIDC();
+    m_hatchMechCG = new HatchMechCG();
+    m_cargoShooterC = new CargoShooterC();
+
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
+    m_setCameraModeC = new setCameraMode();
 
     //Limelight setup to use camera
     CameraServer cs = CameraServer.getInstance();
-    HttpCamera limelight = new HttpCamera("limelight", "http://10.69.95.11:5800", HttpCameraKind.kMJPGStreamer);
+
+    //usbCam.setResolution(320, 240);
+    //cs.startAutomaticCapture(usbCam);
+
+    HttpCamera limelight = new HttpCamera("limelightStream", "http://10.69.95.11:5800", HttpCameraKind.kMJPGStreamer);
     limelight.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
     cs.startAutomaticCapture(limelight);
 
@@ -66,20 +98,19 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData(m_drivebaseS);
     SmartDashboard.putData(m_ladderS);
     SmartDashboard.putData(m_hatchMechS);
-    SmartDashboard.putData(m_ClimbFrontS);
-    SmartDashboard.putData(m_ClimbRearS);
-    SmartDashboard.putData(m_ClimbCrawlerS);
     SmartDashboard.putData(m_CargoShooterS);
+    SmartDashboard.putData(m_setCameraModeC);
+    SmartDashboard.putData("Run CargoShooterC", new CargoShooterC());
   }
 
   public void robotPeriodic() {
-   
     m_ladderDisplayStatusC.start();
     m_ladderManualMoveC.start();
   }
 
   @Override
   public void disabledInit() {
+    SmartDashboard.putBoolean("Cargo Limit Switch", Robot.m_CargoShooterS.getCargoLimit());
   }
 
   @Override
@@ -89,19 +120,25 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    m_setCameraModeC.start();
+    m_ladderHomeC.start();
   }
 
   @Override
   public void autonomousPeriodic() {
+    SmartDashboard.putBoolean("Cargo Limit Switch", Robot.m_CargoShooterS.getCargoLimit());
     Scheduler.getInstance().run();
   }
 
   @Override
   public void teleopInit() {
+    //m_setCameraModeC.start();
+    m_ladderHomeC.start();
   }
 
   @Override
   public void teleopPeriodic() {
+    SmartDashboard.putBoolean("Cargo Limit Switch", Robot.m_CargoShooterS.getCargoLimit());
     Scheduler.getInstance().run();
   }
   

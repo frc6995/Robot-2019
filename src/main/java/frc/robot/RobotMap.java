@@ -14,6 +14,8 @@ public class RobotMap {
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_1 = 22;
   public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_2 = 21;
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
+
+  public static final int CAN_ID_TALON_CARGO = 30;
   
   //Pneumatics Control Module
   public final static int PCM_ID = 1;
@@ -40,19 +42,23 @@ public class RobotMap {
   public final static int OI_JOYSTICK = 2;
 
   //Limit switch constants
-  public static final int DIO_LIMIT_LADDER_TOP = 1;  // Never got a Limit Switch for Top.
   public static final int DIO_LIMIT_LADDER_BOTTOM = 0;
   public static final int DIO_LIMIT_CLIMBER_FRONT = 2;
   public static final int DIO_LIMIT_CLIMBER_REAR = 3;
+  public static final int DIO_LIMIT_CARGO = 4;
 
   //Ladder Encoder Constants   
   public static final int LADDER_LEVEL_ONE = 0; //The home location
   public static final int LADDER_LEVEL_VISION = 700;
-  public static final int LADDER_LEVEL_CUSHION = 2500;
+  public static final int LADDER_LEVEL_CUSHION = 3000;
   public static final int LADDER_LEVEL_TWO = 3625; //change as needed
   public static final int LADDER_LEVEL_THREE = 7160; //change as needed
+  //TODO - set these values
+  public static final int LADDER_LEVEL_CARGO_INTAKE = 1980;
+  public static final int LADDER_LEVEL_ROCKET_CARGO_VISION = 1900;
 
   // Climb Constants
+  //Motor Speed: Positive if climbing forward - Negative if climbing backwards
   public static final double CLIMB_MOTORS_SPEED = 0.4;  //PostChange: 0.2 was very slow; try 0.4
 }
 

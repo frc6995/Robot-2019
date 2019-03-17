@@ -16,21 +16,8 @@ public class ClimbCrawlerS extends Subsystem {
   public void initDefaultCommand() {
   }
 
-  public void motorForward() {
-    climbMotor.set(RobotMap.CLIMB_MOTORS_SPEED);
-  }
-
   // Pass positive speed to move forward, negative to go backwards)
-  public void motorStart(int motorspeed){
-    climbMotor.set(motorspeed);
-  }
-  
-  public void motorStop() {
-    climbMotor.set(0.0);
-  }
-
-  public void motorReverse() {
-    // In this case, the motor will have to reverse onto the platforms, see NOTE in FrontS.
-    climbMotor.set(-RobotMap.CLIMB_MOTORS_SPEED);
+  public void motorSet(double motorSpeed) {
+    climbMotor.set(motorSpeed);
   }
 }

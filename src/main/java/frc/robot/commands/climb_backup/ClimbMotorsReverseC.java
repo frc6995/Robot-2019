@@ -1,4 +1,4 @@
-package frc.robot.commands.climb_manual;
+package frc.robot.commands.climb_backup;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -24,7 +24,7 @@ public class ClimbMotorsReverseC extends Command {
   @Override
   protected void execute() {
     System.out.println("ClimbMotorsReverseC");
-    Robot.m_ClimbCrawlerS.motorReverse();
+    Robot.m_ClimbCrawlerS.motorSet(-RobotMap.CLIMB_MOTORS_SPEED);
     Robot.m_drivebaseS.arcadeDrive(-RobotMap.CLIMB_MOTORS_SPEED, 0, 1);
   }
 

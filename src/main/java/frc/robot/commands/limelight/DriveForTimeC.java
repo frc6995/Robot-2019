@@ -18,7 +18,7 @@ public class DriveForTimeC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_drivebaseS.visionDrive(drivePower, 0); //Moves the robot really slowly straight forwards
+    Robot.m_drivebaseS.visionDrive(drivePower, 0); //Moves the robot straight forwards
   }
 
   @Override

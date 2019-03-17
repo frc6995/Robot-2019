@@ -40,7 +40,7 @@ public class DriveArcadeXboxC extends Command {
       numberPressed = 0;
     }
 
-    Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throttle);
+    Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed*1.2, throttle);
   }
 
   @Override

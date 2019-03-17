@@ -1,6 +1,6 @@
 package frc.robot.commands.climb_test;
 
-//import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -16,19 +16,19 @@ public class ClimbBothToggleNC extends Command {
 
   @Override
   protected void execute() {
-    if (Robot.m_ClimbFrontS.getExtended() == true && Robot.m_ClimbRearS.getExtended() == true) { //(Robot.m_ClimbFrontS.getExtended() == Value.kForward && Robot.m_ClimbRearS.getExtended() == Value.kForward)
+    if (Robot.m_ClimbFrontS.getExtended() == Value.kForward && Robot.m_ClimbRearS.getExtended() == Value.kForward) {
       Robot.m_ClimbFrontS.deployFront();
       Robot.m_ClimbRearS.deployRear();
     }
-    else if (Robot.m_ClimbFrontS.getExtended() == false && Robot.m_ClimbRearS.getExtended() == false) { //(Robot.m_ClimbFrontS.getExtended() == Value.kReverse && Robot.m_ClimbRearS.getExtended() == Value.kReverse)
+    else if (Robot.m_ClimbFrontS.getExtended() == Value.kReverse && Robot.m_ClimbRearS.getExtended() == Value.kReverse) {
       Robot.m_ClimbFrontS.retractFront();
       Robot.m_ClimbRearS.retractRear();
     }
-    /* else if (Robot.m_ClimbFrontS.getExtended() == Value.kOff && Robot.m_ClimbRearS.getExtended() == Value.kOff) {
+    else if (Robot.m_ClimbFrontS.getExtended() == Value.kOff && Robot.m_ClimbRearS.getExtended() == Value.kOff) {
       //if both are off, it is probably better to lower than lift
       Robot.m_ClimbFrontS.retractFront();
       Robot.m_ClimbRearS.retractRear();
-    } */
+    }
     else {
       System.out.println("Returns are not equal: FAILED!");
     }

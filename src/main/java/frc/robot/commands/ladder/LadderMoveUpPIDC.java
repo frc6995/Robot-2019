@@ -26,12 +26,10 @@ public class LadderMoveUpPIDC extends Command {
   
   public LadderMoveUpPIDC() {
     requires(Robot.m_ladderS);
-    //This command should not be interrupted, but we may want to change this
-    //We could always use a toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptable.
-    this.setInterruptible(false);
 
-    
-    //Robot.m_ladderS.enablePID();
+    //This command should not be interrupted. We could always use a 
+    //toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptable.
+    this.setInterruptible(false);
   }
 
   @Override
@@ -40,7 +38,7 @@ public class LadderMoveUpPIDC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ladderS.setMaxPIDPower(0.7);
+    Robot.m_ladderS.setMaxPIDPower(0.95);
     Robot.m_ladderS.runPID();
   }
 

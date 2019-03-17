@@ -263,12 +263,7 @@ public class JStick {
     }
 
     public boolean button_7() {
-        if(seven_leftTopLeft.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return seven_leftTopLeft.get();
     }
     public void button_7_runOnPress(Command command) {
         seven_leftTopLeft.whenPressed(command);
@@ -287,12 +282,7 @@ public class JStick {
     }
 
     public boolean button_8() {
-        if(eight_leftTopRight.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return eight_leftTopRight.get();
     }
     public void button_8_runOnPress(Command command) {
         eight_leftTopRight.whenPressed(command);
