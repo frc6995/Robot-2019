@@ -1,11 +1,13 @@
-package frc.robot.commands.hatch;
+package frc.robot.commands.climb_backup;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class HatchMechDeployC extends Command {
-  public HatchMechDeployC() {
-    requires(Robot.m_hatchMechS);
+//This lifts the back of the robot using solenoids
+
+public class ClimbRearLiftC extends Command {
+  public ClimbRearLiftC() {
+    requires(Robot.m_ClimbRearS);
   }
 
   @Override
@@ -14,8 +16,7 @@ public class HatchMechDeployC extends Command {
 
   @Override
   protected void execute() {
-    System.out.println("Hatch Deploy running");
-    Robot.m_hatchMechS.deploy();
+    Robot.m_ClimbRearS.deployRear();
   }
 
   @Override

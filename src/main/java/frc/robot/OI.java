@@ -5,84 +5,61 @@ import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.climb_manual.*;
-import frc.robot.commands.climb.ClimbPlatformCG;
+import frc.robot.commands.climb_test.ClimbBothToggleNC;
+import frc.robot.commands.climb_backup.*;
+import frc.robot.commands.Cargo.CargoIntakeC;
+import frc.robot.commands.Cargo.CargoIntakeCG;
+import frc.robot.commands.climb.*;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.hatch.*;
-import frc.robot.commands.ladder.LadderSetLevelC;
-import frc.robot.commands.ladder.LadderMoveUpPIDC;
-import frc.robot.commands.ladder.LadderHoldPIDC;
-import frc.robot.commands.ladder.LadderHomeC;
+import frc.robot.commands.ladder.*;
 
 public class OI {
-
     public final Xbox xbox = new Xbox(RobotMap.OI_XBOX);
-    
     public final JStick stick = new JStick(RobotMap.OI_JOYSTICK);
     public final BBoard buttonBoard = new BBoard(RobotMap.OI_BUTTONBOARD);
 
     public OI() {
-        stick.button_1_toggleOnPress(new HatchMechToggleCG());
-        //stick.button_7_runOnPress(new HatchIntakeC());
-
-
-        //backups
-        //xbox.x_toggleOnPress(new ClimbFrontToggleC());
-        //xbox.y_toggleOnPress(new ClimbRearToggleC());
-        //xbox.a_toggleOnPress(new ClimbMotorsReverseToggleC());
-
-        //xbox.dpad_up_runOnPressed(new ClimbMotorsForwardC());
-        //xbox.dpad_up_runOnRelease(new ClimbMotorsStopC());
-        //xbox.dpad_down_runOnPressed(new ClimbMotorsReverseC());
-        //xbox.dpad_down_runOnRelease(new ClimbMotorsStopC());    
+        //FOR TESTING PURPOSES
         
-        xbox.x_toggleOnPress(new VisionAlignCG());
-
-        //For testing purposes
-        SmartDashboard.putData("Drive for 2 Secs", new DriveForTimeC(2,0.2));
-        SmartDashboard.putData("Vision Align Target", new VisionAlignTargetC());
-        SmartDashboard.putData("Vision Align CG", new VisionAlignCG());
-        SmartDashboard.putData("LadderHoldPIDC", new LadderHoldPIDC());
-        SmartDashboard.putData("LadderMovePIDC", new LadderMoveUpPIDC());
+        //SmartDashboard Commands for Emergency Use
+        SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
-        SmartDashboard.putData("Set Ladder to vision", new LadderSetLevelC(LadderLevel.LEVEL_VISION));
-        SmartDashboard.putData("Set Ladder to L3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
-        SmartDashboard.putData("Hatch Intake", new HatchIntakeC());
 
-        buttonBoard.pinky_runWhileHeld(new ClimbPlatformCG(buttonBoard.thumb()));
-        buttonBoard.index_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.middle_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_TWO));
-        buttonBoard.ring_toggleOnPress(new HatchLevelScoreCG(LadderLevel.LEVEL_THREE));
+        //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
+
+        //Xbox Assignments
+        //xbox.left_trigger()  -- DriveArcadeXboxC used for Driving Backwards
+        //xbox.right_trigger() -- DriveArcadeXboxC used for Driving Forwards
+        //xbox.left_bumper()   -- DriveArcadeXboxC used for decrementing throttle
+        //xbox.right_bumper()  -- DriveArcadeXboxC used for setting throttle to max
+        //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
+        xbox.x_toggleOnPress(new VisionAlignCG());
+        xbox.a_toggleOnPress(new VisionAlignRocketCargoCG());
+        //Command group for aligning and starting the cargo intake.
+        //xbox.y_toggleOnPress(new CargoIntakeCG());
+        //command group for aligning at the higher level for the rocket cargo.
+        //xbox.b_toggleOnPress(new VisionAlignRocketCargoCG());
+
+        //Button Board Assignments
         buttonBoard.thumb_runOnPress(new HatchIntakeC());
+        buttonBoard.index_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_ONE));
+        buttonBoard.middle_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_TWO));
+        buttonBoard.ring_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_THREE));
+        //buttonBoard.pinky_runWhileHeld(new ClimbPlatformBetterCG(buttonBoard.thumb()));
 
-        //For climber
-        SmartDashboard.putData("Climber Front DSol Toggle", new ClimbFrontToggleC());
-        SmartDashboard.putData("Climber Rear DSol Toggle", new ClimbRearToggleC());
-        SmartDashboard.putData("Climber Motors Forward", new ClimbMotorsForwardC());
-        SmartDashboard.putData("Climber Motors Reverse", new ClimbMotorsReverseC());
-        SmartDashboard.putData("Climber Motors Stop", new ClimbMotorsStopC());
-        SmartDashboard.putData("Climb Platform CG", new ClimbPlatformCG(true));
-
-        SmartDashboard.putData("AClimb Both Toggle", new ClimbBothToggleC());
-        SmartDashboard.putData("AClimb Motors Reverse", new ClimbMotorsReverseToggleC(true));
-        SmartDashboard.putData("BClimb Rear Reverse til Limit", new ClimbRearReverseLimitC());
-        SmartDashboard.putData("CClimb Rear til Retract", new ClimbRearReverseLimitRetractCG());
-        SmartDashboard.putData("DClimb Front Reverse til Limit", new ClimbFrontReverseLimitC());
-        SmartDashboard.putData("EClimb Front til Retract", new ClimbFrontReverseLimitRetractCG());
-
-        SmartDashboard.putBoolean("LimitRear Check", Robot.m_ClimbRearS.cSwitchRear());
-        SmartDashboard.putBoolean("Limit FrontCheck", Robot.m_ClimbFrontS.cSwitchFront());
-
-        stick.button_1_toggleOnPress(new HatchMechToggleCG());
-
-        stick.button_2_toggleOnPress(new ClimbBothToggleC());
-
-        stick.button_7_runOnPress(new ClimbFrontLowerC());
-        stick.button_8_runOnPress(new ClimbRearLowerC());
-
-        stick.button_9_runOnPress(new ClimbMotorsReverseToggleC(stick.button_10()));
-        //stick.button_10_runOnPress(new ClimbMotorsReverseC());
-        //stick.button_11_runOnPress(new ClimbMotorsReverseToggleC());
-        //stick.button_12_runOnPress(new ClimbMotorsStopC());
+        //Joystick Assignments
+        stick.button_1_runOnPress(new HatchMechCG());
+        //stick.button_3_runOnPress(new ClimbRetractStageC(2));
+        //stick.button_5_runOnPress(new ClimbRetractStageC(1));
+        stick.button_3_toggleOnPress(new CargoIntakeCG());
+        //stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
+        //stick.button_7() - Holds Ladder position when manually operated
+        //stick.button_8() - Moves Ladmder up
+        //stick.button_9_runOnPress(new ClimbMotorsStopC());
+        //stick.button_11_runWhileHeld(new ClimbBothDSLiftC(true));
+        //stick.button_11_runOnPress(new ClimbBothLiftC(stick.button_12()));
+        //stick.stick_x() - Climb Manual - turn drivebase
+        //stick.stick_y() - Climb Manual - drive forward
     }
 }

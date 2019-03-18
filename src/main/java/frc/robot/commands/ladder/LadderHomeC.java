@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.subsystems.LadderS.LadderLevel;
 
-//Moves the ladder down to the home position and resets the encoders
+//Moves the ladder down to the home position and resets the encoders; Runs when robot is enabled
 public class LadderHomeC extends Command {
   public boolean finished;
   private int i;
@@ -30,15 +30,15 @@ public class LadderHomeC extends Command {
   @Override
   protected void execute() {
     //Move ladder slightly up.
-    SmartDashboard.putNumber("i", i);
     SmartDashboard.putBoolean("Enc reset", encodersReset);
-    if (i < 20) {
+    if (i < 50) {
       i += 1;
       Robot.m_ladderS.setLadderPower(0.2);
-      if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount()) {
-        SmartDashboard.putString("Oops","Encoder values have not changed!!!");
-        return;
-      }
+      //if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount() && 
+      //    Robot.m_ladderS.getLadderEncoderCount() != 0) {
+      //  SmartDashboard.putString("Oops","Encoder values have not changed!!!");
+      //  return;
+      //}
     } 
     else {
       j += 1;
@@ -48,13 +48,10 @@ public class LadderHomeC extends Command {
       } 
       else if (j >= 100) {
         SmartDashboard.putString("Manually reset encoders", "Manually reset encoders");
-    /*     while (!Robot.m_oi.xbox.left_stick()) {
-            Robot.m_ladderS.setLadderPower(-0.05);
-         }
-      */   finished = true;
+        finished = true;
         }
       else {
-        System.out.print("Reseting Encoders");    
+        System.out.print("Resetting Encoders");    
         Robot.m_ladderS.setLadderPower(0);
         encodersReset = true;
         finished = true;
@@ -64,7 +61,6 @@ public class LadderHomeC extends Command {
 
   @Override
   protected boolean isFinished() {
-
     return finished;
   }
 

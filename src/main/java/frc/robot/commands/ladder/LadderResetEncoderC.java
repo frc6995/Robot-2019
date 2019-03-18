@@ -1,13 +1,11 @@
-package frc.robot.commands.climb;
+package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-//This lifts the back of the robot using double solenoids
-
-public class ClimbRearLiftC extends Command {
-  public ClimbRearLiftC() {
-    requires(Robot.m_ClimbRearS);
+public class LadderResetEncoderC extends Command {
+  public LadderResetEncoderC() {
+    requires(Robot.m_ladderS);
   }
 
   @Override
@@ -16,7 +14,7 @@ public class ClimbRearLiftC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbRearS.deployRear();
+    Robot.m_ladderS.resetEncoder();
   }
 
   @Override
