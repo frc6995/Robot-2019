@@ -103,3 +103,7 @@ Install the FRC Update Suite from National Instruments which will allow you to c
 	Be sure to check their blog posts during build season for any updates
 	https://phoenix-documentation.readthedocs.io/en/latest/blog/blogs.html
 	
+## 5. Installed FRC Radio Utility
+	You will need a utility to program the FRC radio on the robot. This is only needed when we first install a new 
+	radio or when we come home from competition. Everyone should have this utility available on their computer for 
+	support purposes. https://wpilib.screenstepslive.com/s/4485/m/13503/l/144986-programming-your-radio-for-home-use
