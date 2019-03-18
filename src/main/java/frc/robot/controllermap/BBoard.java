@@ -17,6 +17,11 @@ public class BBoard {
     private final static int BUTTON_3 = 3;
     private final static int BUTTON_4 = 4;
     private final static int BUTTON_5 = 5;
+    private final static int BUTTON_6 = 6;
+    private final static int BUTTON_7 = 7;
+    private final static int BUTTON_8 = 8;
+    private final static int BUTTON_9 = 9;
+    private final static int BUTTON_10 = 10;
 
     public BBoard(int port) {
         joystick = new Joystick(port);
