@@ -12,11 +12,18 @@ public class BBoard {
     private static JoystickButton left_ring;
     private static JoystickButton left_pinky;
 
+    private static JoystickButton right_thumb;
+    private static JoystickButton right_index;
+    private static JoystickButton right_middle;
+    private static JoystickButton right_ring;
+    private static JoystickButton right_pinky;
+
     private final static int BUTTON_1 = 1;
     private final static int BUTTON_2 = 2;
     private final static int BUTTON_3 = 3;
     private final static int BUTTON_4 = 4;
     private final static int BUTTON_5 = 5;
+
     private final static int BUTTON_6 = 6;
     private final static int BUTTON_7 = 7;
     private final static int BUTTON_8 = 8;
@@ -30,6 +37,11 @@ public class BBoard {
         left_middle = new JoystickButton(joystick, BUTTON_3);
         left_ring = new JoystickButton(joystick, BUTTON_4);
         left_pinky = new JoystickButton(joystick, BUTTON_5);
+        right_thumb = new JoystickButton(joystick, BUTTON_6);
+        right_index = new JoystickButton(joystick, BUTTON_7);
+        right_middle = new JoystickButton(joystick, BUTTON_8);
+        right_ring = new JoystickButton(joystick, BUTTON_9);
+        right_pinky = new JoystickButton(joystick, BUTTON_10);
     }
 
     public boolean left_thumb() {
