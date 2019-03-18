@@ -309,7 +309,7 @@ public class JStick {
     }
 
     public boolean button_11() {
-        return eleven_leftBottomLeft.get()
+        return eleven_leftBottomLeft.get();
     }
     public void button_11_runOnPress(Command command) {
         eleven_leftBottomLeft.whenPressed(command);

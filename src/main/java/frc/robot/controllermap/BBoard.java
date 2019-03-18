@@ -161,7 +161,7 @@ public class BBoard {
     }
 
     public boolean right_index() {
-        return right_index.get()
+        return right_index.get();
     }
     public void right_index_runOnPress(Command command) {
         right_index.whenPressed(command);
