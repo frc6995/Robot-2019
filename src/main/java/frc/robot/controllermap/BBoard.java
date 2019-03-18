@@ -45,12 +45,7 @@ public class BBoard {
     }
 
     public boolean left_thumb() {
-        if(left_thumb.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return left_thumb.get();
     }
     public void left_thumb_runOnPress(Command command) {
         left_thumb.whenPressed(command);
@@ -69,12 +64,7 @@ public class BBoard {
     }
 
     public boolean left_index() {
-        if(left_index.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return left_index.get();
     }
     public void left_index_runOnPress(Command command) {
         left_index.whenPressed(command);
@@ -93,12 +83,7 @@ public class BBoard {
     }
 
     public boolean left_middle() {
-        if(left_middle.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return left_middle.get();
     }
     public void left_middle_runOnPress(Command command) {
         left_middle.whenPressed(command);
@@ -117,12 +102,7 @@ public class BBoard {
     }
 
     public boolean left_ring() {
-        if(left_ring.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return left_ring.get();
     }
     public void left_ring_runOnPress(Command command) {
         left_ring.whenPressed(command);
@@ -141,12 +121,7 @@ public class BBoard {
     }
 
     public boolean left_pinky() {
-        if(left_pinky.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return left_pinky.get();
     }
     public void left_pinky_runOnPress(Command command) {
         left_pinky.whenPressed(command);
@@ -167,12 +142,7 @@ public class BBoard {
     
 
     public boolean right_thumb() {
-        if(right_thumb.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return right_thumb.get();
     }
     public void right_thumb_runOnPress(Command command) {
         right_thumb.whenPressed(command);
@@ -191,12 +161,7 @@ public class BBoard {
     }
 
     public boolean right_index() {
-        if(right_index.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return right_index.get()
     }
     public void right_index_runOnPress(Command command) {
         right_index.whenPressed(command);
@@ -215,12 +180,7 @@ public class BBoard {
     }
 
     public boolean right_middle() {
-        if(right_middle.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return right_middle.get();
     }
     public void right_middle_runOnPress(Command command) {
         right_middle.whenPressed(command);
@@ -239,12 +199,7 @@ public class BBoard {
     }
 
     public boolean right_ring() {
-        if(right_ring.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return right_ring.get();
     }
     public void right_ring_runOnPress(Command command) {
         right_ring.whenPressed(command);
@@ -263,12 +218,7 @@ public class BBoard {
     }
 
     public boolean right_pinky() {
-        if(right_pinky.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return right_pinky.get();
     }
     public void right_pinky_runOnPress(Command command) {
         right_pinky.whenPressed(command);
