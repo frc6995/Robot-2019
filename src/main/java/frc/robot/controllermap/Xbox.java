@@ -291,7 +291,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean x() {
-        return box.getXButton();
+        return xbox.getXButton();
     }
 
     /**
