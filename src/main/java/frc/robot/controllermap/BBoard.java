@@ -163,4 +163,127 @@ public class BBoard {
     public void left_pinky_runWhileHeld(Command command) {
         left_pinky.whileHeld(command);
     }
+
+    
+
+    public boolean right_thumb() {
+        if(right_thumb.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public void right_thumb_runOnPress(Command command) {
+        right_thumb.whenPressed(command);
+    }
+    public void right_thumb_runOnRelease(Command command) {
+        right_thumb.whenReleased(command);
+    }
+    public void right_thumb_toggleOnPress(Command command) {
+        right_thumb.toggleWhenPressed(command);
+    }
+    public void right_thumb_cancelOnPress(Command command) {
+        right_thumb.cancelWhenPressed(command);
+    }
+    public void right_thumb_runWhileHeld(Command command) {
+        right_thumb.whileHeld(command);
+    }
+
+    public boolean right_index() {
+        if(right_index.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public void right_index_runOnPress(Command command) {
+        right_index.whenPressed(command);
+    }
+    public void right_index_runOnRelease(Command command) {
+        right_index.whenReleased(command);
+    }
+    public void right_index_toggleOnPress(Command command) {
+        right_index.toggleWhenPressed(command);
+    }
+    public void right_index_cancelOnPress(Command command) {
+        right_index.cancelWhenPressed(command);
+    }
+    public void right_index_runWhileHeld(Command command) {
+        right_index.whileHeld(command);
+    }
+
+    public boolean right_middle() {
+        if(right_middle.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public void right_middle_runOnPress(Command command) {
+        right_middle.whenPressed(command);
+    }
+    public void right_middle_runOnRelease(Command command) {
+        right_middle.whenReleased(command);
+    }
+    public void right_middle_toggleOnPress(Command command) {
+        right_middle.toggleWhenPressed(command);
+    }
+    public void right_middle_cancelOnPress(Command command) {
+        right_middle.cancelWhenPressed(command);
+    }
+    public void right_middle_runWhileHeld(Command command) {
+        right_middle.whileHeld(command);
+    }
+
+    public boolean right_ring() {
+        if(right_ring.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public void right_ring_runOnPress(Command command) {
+        right_ring.whenPressed(command);
+    }
+    public void right_ring_runOnRelease(Command command) {
+        right_ring.whenReleased(command);
+    }
+    public void right_ring_toggleOnPress(Command command) {
+        right_ring.toggleWhenPressed(command);
+    }
+    public void right_ring_cancelOnPress(Command command) {
+        right_ring.cancelWhenPressed(command);
+    }
+    public void right_ring_runWhileHeld(Command command) {
+        right_ring.whileHeld(command);
+    }
+
+    public boolean right_pinky() {
+        if(right_pinky.get()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public void right_pinky_runOnPress(Command command) {
+        right_pinky.whenPressed(command);
+    }
+    public void right_pinky_runOnRelease(Command command) {
+        right_pinky.whenReleased(command);
+    }
+    public void right_pinky_toggleOnPress(Command command) {
+        right_pinky.toggleWhenPressed(command);
+    }
+    public void right_pinky_cancelOnPress(Command command) {
+        right_pinky.cancelWhenPressed(command);
+    }
+    public void right_pinky_runWhileHeld(Command command) {
+        right_pinky.whileHeld(command);
+    }
 }
+
