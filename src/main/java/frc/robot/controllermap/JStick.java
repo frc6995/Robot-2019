@@ -119,12 +119,7 @@ public class JStick {
     }
 
     public boolean button_1() {
-        if(one_trigger.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return one_trigger.get();
     }
     public void button_1_runOnPress(Command command) {
         one_trigger.whenPressed(command);
@@ -143,12 +138,7 @@ public class JStick {
     }
 
     public boolean button_2() {
-        if(two_thumb.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return two_thumb.get();
     }
     public void button_2_runOnPress(Command command) {
         two_thumb.whenPressed(command);
@@ -167,12 +157,7 @@ public class JStick {
     }
 
     public boolean button_3() {
-        if(three_topBottomLeft.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return three_topBottomLeft.get();
     }
     public void button_3_runOnPress(Command command) {
         three_topBottomLeft.whenPressed(command);
@@ -191,12 +176,7 @@ public class JStick {
     }
 
     public boolean button_4() {
-        if(four_topBottomRight.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return four_topBottomRight.get();
     }
     public void button_4_runOnPress(Command command) {
         four_topBottomRight.whenPressed(command);
@@ -215,12 +195,7 @@ public class JStick {
     }
 
     public boolean button_5() {
-        if(five_topTopLeft.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return five_topTopLeft.get();
     }
     public void button_5_runOnPress(Command command) {
         five_topTopLeft.whenPressed(command);
@@ -239,12 +214,7 @@ public class JStick {
     }
 
     public boolean button_6() {
-        if(six_topTopRight.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return six_topTopRight.get();
     }
     public void button_6_runOnPress(Command command) {
         six_topTopRight.whenPressed(command);
@@ -301,12 +271,7 @@ public class JStick {
     }
 
     public boolean button_9() {
-        if(nine_leftMiddleLeft.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return nine_leftMiddleLeft.get();
     }
     public void button_9_runOnPress(Command command) {
         nine_leftMiddleLeft.whenPressed(command);
@@ -325,12 +290,7 @@ public class JStick {
     }
 
     public boolean button_10() {
-        if(ten_leftMiddleRight.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return ten_leftMiddleRight.get();
     }
     public void button_10_runOnPress(Command command) {
         ten_leftMiddleRight.whenPressed(command);
@@ -349,12 +309,7 @@ public class JStick {
     }
 
     public boolean button_11() {
-        if(eleven_leftBottomLeft.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return eleven_leftBottomLeft.get()
     }
     public void button_11_runOnPress(Command command) {
         eleven_leftBottomLeft.whenPressed(command);
@@ -373,12 +328,7 @@ public class JStick {
     }
 
     public boolean button_12() {
-        if(twelve_leftBottomRIght.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return twelve_leftBottomRIght.get();
     }
     public void button_12_runOnPress(Command command) {
         twelve_leftBottomRIght.whenPressed(command);
@@ -397,12 +347,7 @@ public class JStick {
     }
 
     public boolean hat_up() {
-        if(hat_up.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hat_up.get();
     }
     public void hat_up_runOnPress(Command command) {
         hat_up.whenPressed(command);
@@ -421,12 +366,7 @@ public class JStick {
     }
 
     public boolean hat_down() {
-        if(hat_down.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hat_down.get();
     }
     public void hat_down_runOnPress(Command command) {
         hat_down.whenPressed(command);
@@ -445,12 +385,7 @@ public class JStick {
     }
 
     public boolean hat_left() {
-        if(hat_left.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hat_left.get();
     }
     public void hat_left_runOnPress(Command command) {
         hat_left.whenPressed(command);
@@ -469,12 +404,7 @@ public class JStick {
     }
 
     public boolean hat_right() {
-        if(hat_right.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hat_right.get();
     }
     public void hat_right_runOnPress(Command command) {
         hat_right.whenPressed(command);
@@ -493,12 +423,7 @@ public class JStick {
     }
 
     public boolean hat_up_left() {
-        if(hat_up_left.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hat_up_left.get();
     }
     public void hat_up_left_runOnPress(Command command) {
         hat_up_left.whenPressed(command);
@@ -517,12 +442,7 @@ public class JStick {
     }
 
     public boolean hat_up_right() {
-        if(hat_up_right.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hat_up_right.get();
     }
     public void hat_up_right_runOnPress(Command command) {
         hat_up_right.whenPressed(command);
@@ -541,12 +461,7 @@ public class JStick {
     }
 
     public boolean hat_down_left() {
-        if(hat_down_left.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hat_down_left.get();
     }
     public void hat_down_left_runOnPress(Command command) {
         hat_down_left.whenPressed(command);
@@ -565,12 +480,7 @@ public class JStick {
     }
 
     public boolean hat_down_right() {
-        if(hat_down_right.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hat_down_right.get();
     }
     public void hat_down_right_runOnPress(Command command) {
         hat_down_right.whenPressed(command);
@@ -589,12 +499,7 @@ public class JStick {
     }
 
     public boolean hat_center() {
-        if(hat_center.get()) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return hat_center.get();
     }
     public void hat_center_runOnPress(Command command) {
         hat_center.whenPressed(command);
