@@ -4,6 +4,10 @@ import frc.robot.controllermap.BBoard;
 import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
+import frc.robot.commands.CargoIntakeCG;
+import frc.robot.commands.LadderLevelCargoScoreCG;
+import frc.robot.commands.HatchIntakeCG;
+import frc.robot.commands.LadderLevelHatchScoreCG;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.limelight.*;
 import frc.robot.commands.cargo.CargoIntakeC;
@@ -37,9 +41,17 @@ public class OI {
         //command group for aligning at the higher level for the rocket cargo.
         //xbox.b_toggleOnPress(new VisionAlignRocketCargoCG());
 
-        //Button Board Assignments
-        //
+        //Button Board Assignments (ASSIGN COMMANDS TO BUTTONS)
+        // new CargoIntakeCG()
+        // new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE)
+        // new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO)
+        // new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE)
 
+        // new HatchIntakeCG()
+        // new LadderLevelCHatchScoreCG(LadderLevel.LEVEL_ONE)
+        // new LadderLevelCHatchScoreCG(LadderLevel.LEVEL_TWO)
+        // new LadderLevelCHatchScoreCG(LadderLevel.LEVEL_THREE)
+        
 
         //Joystick Assignments
         stick.button_1_runOnPress(new HatchMechCG());
