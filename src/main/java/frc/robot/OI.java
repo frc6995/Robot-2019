@@ -5,12 +5,8 @@ import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.climb_test.ClimbBothToggleNC;
-import frc.robot.commands.climb_backup.*;
-import frc.robot.commands.Cargo.CargoIntakeC;
-import frc.robot.commands.Cargo.CargoIntakeCG;
-import frc.robot.commands.climb.*;
 import frc.robot.commands.limelight.*;
+import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
 
@@ -42,17 +38,14 @@ public class OI {
         //xbox.b_toggleOnPress(new VisionAlignRocketCargoCG());
 
         //Button Board Assignments
-        buttonBoard.thumb_runOnPress(new HatchIntakeC());
-        buttonBoard.index_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_ONE));
-        buttonBoard.middle_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_TWO));
-        buttonBoard.ring_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_THREE));
-        //buttonBoard.pinky_runWhileHeld(new ClimbPlatformBetterCG(buttonBoard.thumb()));
+        //
+
 
         //Joystick Assignments
         stick.button_1_runOnPress(new HatchMechCG());
         //stick.button_3_runOnPress(new ClimbRetractStageC(2));
         //stick.button_5_runOnPress(new ClimbRetractStageC(1));
-        stick.button_3_toggleOnPress(new CargoIntakeCG());
+        stick.button_3_toggleOnPress(new CargoIntakeC());
         //stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
         //stick.button_7() - Holds Ladder position when manually operated
         //stick.button_8() - Moves Ladmder up

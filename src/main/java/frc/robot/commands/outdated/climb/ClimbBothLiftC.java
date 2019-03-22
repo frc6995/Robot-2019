@@ -1,13 +1,15 @@
-package frc.robot.commands.climb_backup;
+package frc.robot.commands.outdated.climb;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-//This lifts the back of the robot using solenoids
-
-public class ClimbRearLiftC extends Command {
-  public ClimbRearLiftC() {
+public class ClimbBothLiftC extends Command {
+  private boolean enabled;
+  
+  public ClimbBothLiftC(boolean enabled) {
+    requires(Robot.m_ClimbFrontS);
     requires(Robot.m_ClimbRearS);
+    this.enabled = enabled;
   }
 
   @Override
@@ -16,7 +18,10 @@ public class ClimbRearLiftC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ClimbRearS.deployRear();
+    if (this.enabled) {
+      Robot.m_ClimbFrontS.deployFront();
+      Robot.m_ClimbRearS.deployRear();
+    }
   }
 
   @Override

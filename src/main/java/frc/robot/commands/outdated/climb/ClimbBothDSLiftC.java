@@ -1,4 +1,4 @@
-package frc.robot.commands.climb;
+package frc.robot.commands.outdated.climb;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
