@@ -9,6 +9,8 @@ public class RunWheelsForTimeC extends Command {
   public RunWheelsForTimeC(double power, double timeout) {
     requires(Robot.m_WheelHatchMechS);
     this.power = power;
+
+    //Sets the timeout
     this.setTimeout(timeout);
   }
   
@@ -23,11 +25,13 @@ public class RunWheelsForTimeC extends Command {
 
   @Override
   protected boolean isFinished() {
+    //End if the command is timed out
     return isTimedOut();
   }
 
   @Override
   protected void end() {
+    //Stops the motors
     Robot.m_WheelHatchMechS.setPower(0);
   }
 
