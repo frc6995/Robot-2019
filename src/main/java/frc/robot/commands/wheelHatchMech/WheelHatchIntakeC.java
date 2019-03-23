@@ -3,11 +3,11 @@ package frc.robot.commands.wheelHatchMech;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class WheelHatchIntake extends Command {
+public class WheelHatchIntakeC extends Command {
   private double intakePower = -0.5;
 
-  public WheelHatchIntake() {
-    requires(Robot.m_WheelHatchMech);
+  public WheelHatchIntakeC() {
+    requires(Robot.m_WheelHatchMechS);
   }
   
   @Override
@@ -17,18 +17,18 @@ public class WheelHatchIntake extends Command {
   @Override
   protected void execute() {
     //Run wheels in
-    Robot.m_WheelHatchMech.setPower(intakePower);
+    Robot.m_WheelHatchMechS.setPower(intakePower);
   }
 
   @Override
   protected boolean isFinished() {
     //Finish when the hatch mech is pressed
-    return Robot.m_WheelHatchMech.hasHatch();
+    return Robot.m_WheelHatchMechS.hasHatch();
   }
 
   @Override
   protected void end() {
-    Robot.m_WheelHatchMech.setPower(0);
+    Robot.m_WheelHatchMechS.setPower(0);
   }
 
   @Override

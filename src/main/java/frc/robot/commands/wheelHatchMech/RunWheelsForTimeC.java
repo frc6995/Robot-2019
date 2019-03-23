@@ -7,7 +7,7 @@ public class RunWheelsForTimeC extends Command {
   private double power;
 
   public RunWheelsForTimeC(double power, double timeout) {
-    requires(Robot.m_WheelHatchMech);
+    requires(Robot.m_WheelHatchMechS);
     this.power = power;
     this.setTimeout(timeout);
   }
@@ -18,7 +18,7 @@ public class RunWheelsForTimeC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_WheelHatchMech.setPower(power);
+    Robot.m_WheelHatchMechS.setPower(power);
   }
 
   @Override
@@ -28,7 +28,7 @@ public class RunWheelsForTimeC extends Command {
 
   @Override
   protected void end() {
-    Robot.m_WheelHatchMech.setPower(0);
+    Robot.m_WheelHatchMechS.setPower(0);
   }
 
   @Override

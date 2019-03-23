@@ -3,11 +3,11 @@ package frc.robot.commands.wheelHatchMech;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class RunWheelsAtPower extends Command {
+public class RunWheelsAtPowerC extends Command {
   public double power;
 
-  public RunWheelsAtPower(double power) {
-    requires(Robot.m_WheelHatchMech);
+  public RunWheelsAtPowerC(double power) {
+    requires(Robot.m_WheelHatchMechS);
     this.power = power;
   }
 
@@ -17,7 +17,7 @@ public class RunWheelsAtPower extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_WheelHatchMech.setPower(power);
+    Robot.m_WheelHatchMechS.setPower(power);
   }
 
   @Override
@@ -27,7 +27,7 @@ public class RunWheelsAtPower extends Command {
 
   @Override
   protected void end() {
-    Robot.m_WheelHatchMech.setPower(0);
+    Robot.m_WheelHatchMechS.setPower(0);
   }
 
   @Override

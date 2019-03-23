@@ -35,7 +35,7 @@ public class Robot extends TimedRobot {
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
   public static HatchMechS m_hatchMechS;
-  public static WheelHatchMech m_WheelHatchMech;
+  public static WheelHatchMechS m_WheelHatchMechS;
   public static ClimbFrontS m_ClimbFrontS;
   public static ClimbRearS m_ClimbRearS;
   public static ClimbCrawlerS m_ClimbCrawlerS;
@@ -66,7 +66,7 @@ public class Robot extends TimedRobot {
     m_ClimbRearS = new ClimbRearS();
     m_ClimbCrawlerS = new ClimbCrawlerS();
     m_CargoShooterS = new CargoShooterS();
-    m_WheelHatchMech = new WheelHatchMech();
+    m_WheelHatchMechS = new WheelHatchMechS();
 
     m_oi = new OI();
 
