@@ -183,11 +183,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean a() {
-        if (xbox.getAButton()) {
-            return true;
-        } else {
-            return false;
-        }
+        return xbox.getAButton();
     }
 
     /**
@@ -241,11 +237,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean b() {
-        if (xbox.getBButton()) {
-            return true;
-        } else {
-            return false;
-        }
+        return xbox.getBButton();
     }
 
     /**
@@ -299,11 +291,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean x() {
-        if (xbox.getXButton()) {
-            return true;
-        } else {
-            return false;
-        }
+        return xbox.getXButton();
     }
 
     /**
@@ -357,11 +345,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean y() {
-        if (xbox.getYButton()) {
-            return true;
-        } else {
-            return false;
-        }
+        return xbox.getYButton();
     }
 
     /**
@@ -415,11 +399,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean back() {
-        if (xbox.getBackButton()) {
-            return true;
-        } else {
-            return false;
-        }
+        return xbox.getBackButton();
     }
 
     /**
@@ -473,11 +453,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean start() {
-        if (xbox.getStartButton()) {
-            return true;
-        } else {
-            return false;
-        }
+        return xbox.getStartButton();
     }
 
     /**
@@ -531,11 +507,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean left_stick() {
-        if (xbox.getStickButton(Hand.kLeft)) {
-            return true;
-        } else {
-            return false;
-        }
+        return xbox.getStickButton(Hand.kLeft);
     }
 
     /**
@@ -589,11 +561,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean right_stick() {
-        if (xbox.getStickButton(Hand.kRight)) {
-            return true;
-        } else {
-            return false;
-        }
+        return xbox.getStickButton(Hand.kRight);
     }
 
     /**
@@ -648,6 +616,11 @@ public class Xbox {
      */
     public boolean left_bumper() {
         return xbox.getBumper(Hand.kLeft);
+    }
+
+    public boolean left_bumper_pressed(){
+        return xbox.getBumperPressed(Hand.kLeft);
+    }
 
     /**
      * Runs a command when the Xbox Left Bumper button is pressed.
@@ -757,11 +730,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean dpad_up() {
-        if (dpad_up.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return dpad_up.get();
     }
 
     /**
@@ -815,11 +784,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean dpad_down() {
-        if (dpad_down.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return dpad_down.get();
     }
 
     /**
@@ -873,11 +838,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean dpad_left() {
-        if (dpad_left.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return dpad_left.get();
     }
 
     /**
@@ -931,11 +892,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean dpad_right() {
-        if (dpad_right.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return dpad_right.get();
     }
 
     /**
@@ -989,11 +946,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean dpad_up_right() {
-        if (dpad_up_right.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return dpad_up_right.get();
     }
 
     /**
@@ -1047,11 +1000,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean dpad_up_left() {
-        if (dpad_up_left.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return dpad_up_left.get();
     }
 
     /**
@@ -1105,11 +1054,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean dpad_down_right() {
-        if (dpad_down_right.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return dpad_down_right.get();
     }
 
     /**
@@ -1163,11 +1108,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean dpad_down_left() {
-        if (dpad_down_left.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return dpad_down_left.get();
     }
 
     /**
@@ -1221,11 +1162,7 @@ public class Xbox {
      * @return boolean
      */
     public boolean dpad_center() {
-        if (dpad_center.get()) {
-            return true;
-        } else {
-            return false;
-        }
+        return dpad_center.get();
     }
 
     /**
