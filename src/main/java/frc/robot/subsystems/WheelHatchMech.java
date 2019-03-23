@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
-
 public class WheelHatchMech extends Subsystem {
   public WPI_TalonSRX hatchMechMotor;
   public static DigitalInput hatchMechLimit;
@@ -14,20 +13,26 @@ public class WheelHatchMech extends Subsystem {
   public WheelHatchMech(){
     hatchMechMotor = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_HATCHWHEELS);
     hatchMechLimit = new DigitalInput(RobotMap.DIO_LIMIT_HATCH);
+
+    //Set current limit
     hatchMechMotor.configContinuousCurrentLimit(20);
     hatchMechMotor.enableCurrentLimit(true);
+
+    //May need to change depending on how the motors go
+    //Negative is "pull" hatch in, Positive is "push" hatch out
+    hatchMechMotor.setInverted(false);
   }
 
   @Override
   public void initDefaultCommand() {
-    
+
   }
 
-  public void setSpeed(double speed){
-    hatchMechMotor.set(speed);
+  public void setPower(double power){
+    hatchMechMotor.set(power);
   }
 
-  public boolean getHatchLimit(){
+  public boolean hasHatch(){
     return hatchMechLimit.get();
   }
 }

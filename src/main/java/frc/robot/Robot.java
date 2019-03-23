@@ -12,8 +12,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.DrivebaseS;
-import frc.robot.commands.Cargo.CargoShooterC;
+import frc.robot.commands.cargo.CargoShooterC;
 import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
@@ -36,11 +35,12 @@ public class Robot extends TimedRobot {
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
   public static HatchMechS m_hatchMechS;
+  public static WheelHatchMech m_WheelHatchMech;
   public static ClimbFrontS m_ClimbFrontS;
   public static ClimbRearS m_ClimbRearS;
   public static ClimbCrawlerS m_ClimbCrawlerS;
   public static CargoShooterS m_CargoShooterS;
-
+  
   public static OI m_oi;
   public Command m_ladderHomeC;
   public Command m_ladderManualMoveC;
@@ -56,7 +56,6 @@ public class Robot extends TimedRobot {
 
   //public UsbCamera usbCam = CameraServer.getInstance().startAutomaticCapture();
 
-
   @Override
   public void robotInit() {
     // Instantiate Subsystems Here
@@ -67,6 +66,7 @@ public class Robot extends TimedRobot {
     m_ClimbRearS = new ClimbRearS();
     m_ClimbCrawlerS = new ClimbCrawlerS();
     m_CargoShooterS = new CargoShooterS();
+    m_WheelHatchMech = new WheelHatchMech();
 
     m_oi = new OI();
 
