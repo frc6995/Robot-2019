@@ -3,19 +3,22 @@ package frc.robot;
 public class RobotMap {
   //CAN bus
     //Talons
+      //Drive
   public final static int CAN_ID_TALON_DRIVEBASE_LEFT = 10;
   public final static int CAN_ID_TALON_DRIVEBASE_RIGHT = 11;
-
+      //Ladder
   public final static int CAN_ID_TALON_LADDER_A = 13;
   public final static int CAN_ID_TALON_LADDER_B = 12;
+      //Cargo
+  public static final int CAN_ID_TALON_CARGO = 30;
+      //HatchMech
+  public static final int CAN_ID_TALON_HATCHWHEELS = 40;
 
     //VictorSPXs
   public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_1 = 20;
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_1 = 22;
   public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_2 = 21;
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
-
-  public static final int CAN_ID_TALON_CARGO = 30;
   
   //Pneumatics Control Module
   public final static int PCM_ID = 1;
@@ -46,6 +49,7 @@ public class RobotMap {
   public static final int DIO_LIMIT_CLIMBER_FRONT = 2;
   public static final int DIO_LIMIT_CLIMBER_REAR = 3;
   public static final int DIO_LIMIT_CARGO = 4;
+  public static final int DIO_LIMIT_HATCH = 5;
 
   //Ladder Encoder Constants   
   public static final int LADDER_LEVEL_ONE = 0; //The home location
