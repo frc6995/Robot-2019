@@ -64,5 +64,7 @@ public class RobotMap {
   // Climb Constants
   //Motor Speed: Positive if climbing forward - Negative if climbing backwards
   public static final double CLIMB_MOTORS_SPEED = 0.4;  //PostChange: 0.2 was very slow; try 0.4
+
+    public static final int PCM_ID_SOLENOID_HATCHDRAWER = 6;
 }
 

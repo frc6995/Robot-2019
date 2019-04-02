@@ -1,14 +1,8 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package frc.robot.commands.wheelHatchMech;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
+import frc.robot.commands.hatch.HatchDrawerDeployC;
 import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.commands.limelight.DriveForTimeC;
@@ -24,7 +18,8 @@ public class WheelHatchIntakeCG extends CommandGroup {
 
     //Move up to the set ladder level turn on the wheels and drive backwards
     addParallel(new WheelHatchInC(), 3.0);
-    addSequential(new WaitCommand(0.5));
+    addSequential(new WaitCommand(0.3));
+    addSequential(new HatchDrawerDeployC());
     addSequential(new DriveForTimeC(1,-0.2));
    
     //Return to level 1
