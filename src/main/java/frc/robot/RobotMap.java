@@ -12,7 +12,7 @@ public class RobotMap {
       //Cargo
   public static final int CAN_ID_TALON_CARGO = 30;
       //HatchMech
-  public static final int CAN_ID_TALON_HATCHWHEELS = 40;
+  public static final int PWM_ID_TALON_HATCHWHEELS = 2;
 
     //VictorSPXs
   public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_1 = 20;
