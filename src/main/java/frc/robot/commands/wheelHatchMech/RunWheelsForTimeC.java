@@ -20,7 +20,7 @@ public class RunWheelsForTimeC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_WheelHatchMechS.setPower(power);
+    Robot.m_WheelHatchMechS.setPower(this.power);
   }
 
   @Override
