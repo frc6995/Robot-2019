@@ -44,9 +44,9 @@ public class ScoreHatchOrCargoC extends InstantCommand {
     m_ladderLevelHatchScoreCG.cancel();
     m_ladderLevelHatchScoreCG.close();
 
-    if(Robot.m_oi.buttonBoard.pinky() && !m_ladderLevelHatchScoreCG.isRunning()){
+    if(Robot.m_oi.buttonBoard.left_pinky() && !m_ladderLevelHatchScoreCG.isRunning()){
       m_ladderLevelCargoScoreCG.start();
-    }else if (!Robot.m_oi.buttonBoard.pinky() && !m_ladderLevelCargoScoreCG.isRunning()) {
+    }else if (!Robot.m_oi.buttonBoard.left_pinky() && !m_ladderLevelCargoScoreCG.isRunning()) {
       m_ladderLevelHatchScoreCG.start();
     }
     

@@ -21,12 +21,12 @@ public class OI {
 
     public OI() {
         //FOR TESTING PURPOSES
-        
+
         //SmartDashboard Commands for Emergency Use
         SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
 
-        //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes 
+        //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 
         //Xbox Assignments
         //xbox.left_trigger()  -- DriveArcadeXboxC used for Driving Backwards
@@ -51,7 +51,7 @@ public class OI {
         // new LadderLevelCHatchScoreCG(LadderLevel.LEVEL_ONE)
         // new LadderLevelCHatchScoreCG(LadderLevel.LEVEL_TWO)
         // new LadderLevelCHatchScoreCG(LadderLevel.LEVEL_THREE)
-        
+
 
         //Joystick Assignments
         stick.button_1_runOnPress(new HatchMechCG());
