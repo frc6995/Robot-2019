@@ -10,7 +10,7 @@ public class WheelHatchMechS extends Subsystem {
   public static DigitalInput hatchMechLimit;
 
   public WheelHatchMechS(){
-    hatchMechMotor = new Spark(RobotMap.PWM_ID_TALON_HATCHWHEELS);
+    hatchMechMotor = new Spark(RobotMap.PWM_ID_SPARK_HATCHWHEELS);
     //hatchMechLimit = new DigitalInput(RobotMap.DIO_LIMIT_HATCH);
 
     //May need to change depending on how the motors go
