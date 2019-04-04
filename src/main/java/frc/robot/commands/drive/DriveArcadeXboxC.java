@@ -25,7 +25,7 @@ public class DriveArcadeXboxC extends Command {
     moveSpeed = -Robot.m_oi.xbox.left_trigger() + Robot.m_oi.xbox.right_trigger();
     rotSpeed = Robot.m_oi.xbox.left_stick_x();
 
-    if(Robot.m_oi.xbox.left_trigger()) {
+    if(Robot.m_oi.xbox.left_bumper_pressed()) {
       switch(numberPressed) {
         case 0:  throttle = 0.95; numberPressed = 1; break;
         case 1:  throttle = 0.90; numberPressed = 2; break;

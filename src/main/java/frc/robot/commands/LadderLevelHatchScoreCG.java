@@ -3,7 +3,7 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 import frc.robot.Robot;
-import frc.robot.commands.hatch.HatchMechCG;
+//import frc.robot.commands.hatch.HatchMechCG; //not used
 import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.subsystems.LadderS.LadderLevel;
 
