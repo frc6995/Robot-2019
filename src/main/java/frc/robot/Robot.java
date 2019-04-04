@@ -1,13 +1,9 @@
 package frc.robot;
 
 import edu.wpi.cscore.HttpCamera;
-import edu.wpi.cscore.UsbCamera;
 import edu.wpi.cscore.VideoSource;
 import edu.wpi.cscore.HttpCamera.HttpCameraKind;
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -18,10 +14,8 @@ import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
-import frc.robot.commands.ladder.LadderManualMoveC;
 import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
-import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.commands.limelight.setCameraMode;
 import frc.robot.subsystems.*;
 
