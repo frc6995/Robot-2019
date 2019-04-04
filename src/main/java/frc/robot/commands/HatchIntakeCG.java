@@ -5,19 +5,19 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.hatch;
+package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.ladder.*;
 import frc.robot.subsystems.LadderS.LadderLevel;
-import frc.robot.commands.limelight.DriveForTimeC;
+import frc.robot.commands.drive.DriveForTimeC;
 
-public class HatchIntakeC extends CommandGroup {
+public class HatchIntakeCG extends CommandGroup {
   /**
    * To remove hatch from intake without dropping it, we need to lift up
    * and back away.
    */
-  public HatchIntakeC() {
+  public HatchIntakeCG() {
 
     //set ladder level first.
     addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
