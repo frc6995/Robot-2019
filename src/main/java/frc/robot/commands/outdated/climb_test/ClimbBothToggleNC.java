@@ -1,4 +1,4 @@
-package frc.robot.commands.climb_test;
+package frc.robot.commands.outdated.climb_test;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Command;

@@ -4,8 +4,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class DriveArcadeXboxC extends Command {
-  private double forwardSpeed = 0;
-  private double backwardSpeed = 0; 
   private double moveSpeed = 0;
   private double rotSpeed = 0;
   private double throttle = 1;
@@ -21,10 +19,10 @@ public class DriveArcadeXboxC extends Command {
 
   @Override
   protected void execute() {
-    forwardSpeed = -Robot.m_oi.xbox.left_trigger();
-    backwardSpeed = -Robot.m_oi.xbox.right_trigger();
+    //forwardSpeed = -Robot.m_oi.xbox.left_trigger();
+    //backwardSpeed = -Robot.m_oi.xbox.right_trigger();
     
-    moveSpeed = forwardSpeed - backwardSpeed;
+    moveSpeed = -Robot.m_oi.xbox.left_trigger() + Robot.m_oi.xbox.right_trigger();
     rotSpeed = Robot.m_oi.xbox.left_stick_x();
 
     if(Robot.m_oi.xbox.left_bumper_pressed()) {
@@ -52,9 +50,11 @@ public class DriveArcadeXboxC extends Command {
 
   @Override
   protected void end() {
+    Robot.m_drivebaseS.arcadeDrive(0, 0, 0);
   }
 
   @Override
   protected void interrupted() {
+    end();
   }
 }

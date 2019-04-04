@@ -1,15 +1,11 @@
-package frc.robot.commands.climb;
+package frc.robot.commands.outdated.climb_backup;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimbBothLiftC extends Command {
-  private boolean enabled;
-  
-  public ClimbBothLiftC(boolean enabled) {
+public class ClimbFrontRetractC extends Command {
+  public ClimbFrontRetractC() {
     requires(Robot.m_ClimbFrontS);
-    requires(Robot.m_ClimbRearS);
-    this.enabled = enabled;
   }
 
   @Override
@@ -18,10 +14,8 @@ public class ClimbBothLiftC extends Command {
 
   @Override
   protected void execute() {
-    if (this.enabled) {
-      Robot.m_ClimbFrontS.deployFront();
-      Robot.m_ClimbRearS.deployRear();
-    }
+    System.out.println("ClimbFrontRetractC");
+    Robot.m_ClimbFrontS.retractFront();
   }
 
   @Override

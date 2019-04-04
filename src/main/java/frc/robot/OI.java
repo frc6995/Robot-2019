@@ -4,13 +4,13 @@ import frc.robot.controllermap.BBoard;
 import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
+import frc.robot.commands.CargoIntakeCG;
+import frc.robot.commands.LadderLevelCargoScoreCG;
+import frc.robot.commands.HatchIntakeCG;
+import frc.robot.commands.LadderLevelHatchScoreCG;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.commands.climb_test.ClimbBothToggleNC;
-import frc.robot.commands.climb_backup.*;
-import frc.robot.commands.Cargo.CargoIntakeC;
-import frc.robot.commands.Cargo.CargoIntakeCG;
-import frc.robot.commands.climb.*;
 import frc.robot.commands.limelight.*;
+import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
 
@@ -21,7 +21,7 @@ public class OI {
 
     public OI() {
         //FOR TESTING PURPOSES
-        
+
         //SmartDashboard Commands for Emergency Use
         SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
@@ -41,18 +41,23 @@ public class OI {
         //command group for aligning at the higher level for the rocket cargo.
         //xbox.b_toggleOnPress(new VisionAlignRocketCargoCG());
 
-        //Button Board Assignments
-        buttonBoard.right_ring_runOnPress(new HatchIntakeC());
-        buttonBoard.left_index_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_ONE));
-        buttonBoard.left_middle_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_TWO));
-        buttonBoard.left_ring_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_THREE));
-        //buttonBoard.pinky_runWhileHeld(new ClimbPlatformBetterCG(buttonBoard.thumb()));
+        //Button Board Assignments (ASSIGN COMMANDS TO BUTTONS)
+        // new CargoIntakeCG()
+        // new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE)
+        // new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO)
+        // new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE)
+
+        // new HatchIntakeCG()
+        // new LadderLevelCHatchScoreCG(LadderLevel.LEVEL_ONE)
+        // new LadderLevelCHatchScoreCG(LadderLevel.LEVEL_TWO)
+        // new LadderLevelCHatchScoreCG(LadderLevel.LEVEL_THREE)
+
 
         //Joystick Assignments
         stick.button_1_runOnPress(new HatchMechCG());
         //stick.button_3_runOnPress(new ClimbRetractStageC(2));
         //stick.button_5_runOnPress(new ClimbRetractStageC(1));
-        stick.button_3_toggleOnPress(new CargoIntakeCG());
+        stick.button_3_toggleOnPress(new CargoIntakeC());
         //stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
         //stick.button_7() - Holds Ladder position when manually operated
         //stick.button_8() - Moves Ladmder up
