@@ -42,7 +42,7 @@ public class OI {
         //xbox.b_toggleOnPress(new VisionAlignRocketCargoCG());
 
         //Button Board Assignments
-        buttonBoard.left_thumb_runOnPress(new HatchIntakeC());
+        buttonBoard.right_ring_runOnPress(new HatchIntakeC());
         buttonBoard.left_index_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_ONE));
         buttonBoard.left_middle_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_TWO));
         buttonBoard.left_ring_toggleOnPress(new ScoreHatchOrCargoC(LadderLevel.LEVEL_THREE));
