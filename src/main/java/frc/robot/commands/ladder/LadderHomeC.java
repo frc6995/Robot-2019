@@ -11,7 +11,8 @@ public class LadderHomeC extends Command {
   private int i;
   private int j;
   private boolean encodersReset;
-  private double originalEncoderCount;
+  //private double originalEncoderCount;
+  //originalEncoderCount is not used
 
   public LadderHomeC() {
     requires(Robot.m_ladderS);
@@ -24,7 +25,7 @@ public class LadderHomeC extends Command {
     finished = false;
     i = 0;
     j = 0;
-    originalEncoderCount = Robot.m_ladderS.getLadderEncoderCount();
+    //originalEncoderCount = Robot.m_ladderS.getLadderEncoderCount();
   }
 
   @Override

@@ -6,81 +6,140 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class BBoard {
     private static Joystick joystick;
-    private static JoystickButton left_thumb;
-    private static JoystickButton left_index;
+    private static JoystickButton right_ring;
+    private static JoystickButton right_middle;
+    private static JoystickButton right_bottom;
+    private static JoystickButton left_bottom;
+    private static JoystickButton left_top;
+
     private static JoystickButton left_middle;
     private static JoystickButton left_ring;
-    private static JoystickButton left_pinky;
-
-    private static JoystickButton right_thumb;
     private static JoystickButton right_index;
-    private static JoystickButton right_middle;
-    private static JoystickButton right_ring;
-    private static JoystickButton right_pinky;
+    private static JoystickButton left_index;
+    private static JoystickButton right_top;
 
     private final static int BUTTON_1 = 1;
     private final static int BUTTON_2 = 2;
     private final static int BUTTON_3 = 3;
     private final static int BUTTON_4 = 4;
-    private final static int BUTTON_5 = 5;
+    private final static int BUTTON_11 = 11;
 
-    private final static int BUTTON_6 = 6;
-    private final static int BUTTON_7 = 7;
+    private final static int BUTTON_12 = 12;
+    private final static int BUTTON_13 = 13;
     private final static int BUTTON_8 = 8;
     private final static int BUTTON_9 = 9;
     private final static int BUTTON_10 = 10;
 
     public BBoard(int port) {
         joystick = new Joystick(port);
-        left_thumb = new JoystickButton(joystick, BUTTON_1);
-        left_index = new JoystickButton(joystick, BUTTON_2);
-        left_middle = new JoystickButton(joystick, BUTTON_3);
-        left_ring = new JoystickButton(joystick, BUTTON_4);
-        left_pinky = new JoystickButton(joystick, BUTTON_5);
-        right_thumb = new JoystickButton(joystick, BUTTON_6);
-        right_index = new JoystickButton(joystick, BUTTON_7);
-        right_middle = new JoystickButton(joystick, BUTTON_8);
-        right_ring = new JoystickButton(joystick, BUTTON_9);
-        right_pinky = new JoystickButton(joystick, BUTTON_10);
+        right_ring = new JoystickButton(joystick, BUTTON_1);//check
+        right_middle = new JoystickButton(joystick, BUTTON_2);//check
+        right_bottom = new JoystickButton(joystick, BUTTON_3);//check
+        left_bottom = new JoystickButton(joystick, BUTTON_4);//check
+        left_top = new JoystickButton(joystick, BUTTON_11);//check
+        left_middle = new JoystickButton(joystick, BUTTON_12);//check
+        left_ring = new JoystickButton(joystick, BUTTON_13);
+        right_index = new JoystickButton(joystick, BUTTON_8);
+        left_index = new JoystickButton(joystick, BUTTON_9);
+        right_top = new JoystickButton(joystick, BUTTON_10);
     }
 
-    public boolean left_thumb() {
-        return left_thumb.get();
+    public boolean right_ring() {
+        return right_ring.get();
     }
-    public void left_thumb_runOnPress(Command command) {
-        left_thumb.whenPressed(command);
+    public void right_ring_runOnPress(Command command) {
+        right_ring.whenPressed(command);
     }
-    public void left_thumb_runOnRelease(Command command) {
-        left_thumb.whenReleased(command);
+    public void right_ring_runOnRelease(Command command) {
+        right_ring.whenReleased(command);
     }
-    public void left_thumb_toggleOnPress(Command command) {
-        left_thumb.toggleWhenPressed(command);
+    public void right_ring_toggleOnPress(Command command) {
+        right_ring.toggleWhenPressed(command);
     }
-    public void left_thumb_cancelOnPress(Command command) {
-        left_thumb.cancelWhenPressed(command);
+    public void right_ring_cancelOnPress(Command command) {
+        right_ring.cancelWhenPressed(command);
     }
-    public void left_thumb_runWhileHeld(Command command) {
-        left_thumb.whileHeld(command);
+    public void right_ring_runWhileHeld(Command command) {
+        right_ring.whileHeld(command);
     }
 
-    public boolean left_index() {
-        return left_index.get();
+    public boolean right_middle() {
+        return right_middle.get();
     }
-    public void left_index_runOnPress(Command command) {
-        left_index.whenPressed(command);
+    public void right_middle_runOnPress(Command command) {
+        right_middle.whenPressed(command);
     }
-    public void left_index_runOnRelease(Command command) {
-        left_index.whenReleased(command);
+    public void right_middle_runOnRelease(Command command) {
+        right_middle.whenReleased(command);
     }
-    public void left_index_toggleOnPress(Command command) {
-        left_index.toggleWhenPressed(command);
+    public void right_middle_toggleOnPress(Command command) {
+        right_middle.toggleWhenPressed(command);
     }
-    public void left_index_cancelOnPress(Command command) {
-        left_index.cancelWhenPressed(command);
+    public void right_middle_cancelOnPress(Command command) {
+        right_middle.cancelWhenPressed(command);
     }
-    public void left_index_runWhileHeld(Command command) {
-        left_index.whileHeld(command);
+    public void right_middle_runWhileHeld(Command command) {
+        right_middle.whileHeld(command);
     }
+
+    public boolean right_bottom() {
+        return right_bottom.get();
+    }
+    public void right_bottom_runOnPress(Command command) {
+        right_bottom.whenPressed(command);
+    }
+    public void right_bottom_runOnRelease(Command command) {
+        right_bottom.whenReleased(command);
+    }
+    public void right_bottom_toggleOnPress(Command command) {
+        right_bottom.toggleWhenPressed(command);
+    }
+    public void right_bottom_cancelOnPress(Command command) {
+        right_bottom.cancelWhenPressed(command);
+    }
+    public void right_bottom_runWhileHeld(Command command) {
+        right_bottom.whileHeld(command);
+    }
+
+    public boolean left_bottom() {
+        return left_bottom.get();
+    }
+    public void left_bottom_runOnPress(Command command) {
+        left_bottom.whenPressed(command);
+    }
+    public void left_bottom_runOnRelease(Command command) {
+        left_bottom.whenReleased(command);
+    }
+    public void left_bottom_toggleOnPress(Command command) {
+        left_bottom.toggleWhenPressed(command);
+    }
+    public void left_bottom_cancelOnPress(Command command) {
+        left_bottom.cancelWhenPressed(command);
+    }
+    public void left_bottom_runWhileHeld(Command command) {
+        left_bottom.whileHeld(command);
+    }
+
+    public boolean left_top() {
+        return left_top.get();
+    }
+    public void left_top_runOnPress(Command command) {
+        left_top.whenPressed(command);
+    }
+    public void left_top_runOnRelease(Command command) {
+        left_top.whenReleased(command);
+    }
+    public void left_top_toggleOnPress(Command command) {
+        left_top.toggleWhenPressed(command);
+    }
+    public void left_top_cancelOnPress(Command command) {
+        left_top.cancelWhenPressed(command);
+    }
+    public void left_top_runWhileHeld(Command command) {
+        left_top.whileHeld(command);
+    }
+
+    
 
     public boolean left_middle() {
         return left_middle.get();
@@ -120,46 +179,6 @@ public class BBoard {
         left_ring.whileHeld(command);
     }
 
-    public boolean left_pinky() {
-        return left_pinky.get();
-    }
-    public void left_pinky_runOnPress(Command command) {
-        left_pinky.whenPressed(command);
-    }
-    public void left_pinky_runOnRelease(Command command) {
-        left_pinky.whenReleased(command);
-    }
-    public void left_pinky_toggleOnPress(Command command) {
-        left_pinky.toggleWhenPressed(command);
-    }
-    public void left_pinky_cancelOnPress(Command command) {
-        left_pinky.cancelWhenPressed(command);
-    }
-    public void left_pinky_runWhileHeld(Command command) {
-        left_pinky.whileHeld(command);
-    }
-
-    
-
-    public boolean right_thumb() {
-        return right_thumb.get();
-    }
-    public void right_thumb_runOnPress(Command command) {
-        right_thumb.whenPressed(command);
-    }
-    public void right_thumb_runOnRelease(Command command) {
-        right_thumb.whenReleased(command);
-    }
-    public void right_thumb_toggleOnPress(Command command) {
-        right_thumb.toggleWhenPressed(command);
-    }
-    public void right_thumb_cancelOnPress(Command command) {
-        right_thumb.cancelWhenPressed(command);
-    }
-    public void right_thumb_runWhileHeld(Command command) {
-        right_thumb.whileHeld(command);
-    }
-
     public boolean right_index() {
         return right_index.get();
     }
@@ -179,61 +198,42 @@ public class BBoard {
         right_index.whileHeld(command);
     }
 
-    public boolean right_middle() {
-        return right_middle.get();
+    public boolean left_index() {
+        return left_index.get();
     }
-    public void right_middle_runOnPress(Command command) {
-        right_middle.whenPressed(command);
+    public void left_index_runOnPress(Command command) {
+        left_index.whenPressed(command);
     }
-    public void right_middle_runOnRelease(Command command) {
-        right_middle.whenReleased(command);
+    public void left_index_runOnRelease(Command command) {
+        left_index.whenReleased(command);
     }
-    public void right_middle_toggleOnPress(Command command) {
-        right_middle.toggleWhenPressed(command);
+    public void left_index_toggleOnPress(Command command) {
+        left_index.toggleWhenPressed(command);
     }
-    public void right_middle_cancelOnPress(Command command) {
-        right_middle.cancelWhenPressed(command);
+    public void left_index_cancelOnPress(Command command) {
+        left_index.cancelWhenPressed(command);
     }
-    public void right_middle_runWhileHeld(Command command) {
-        right_middle.whileHeld(command);
-    }
-
-    public boolean right_ring() {
-        return right_ring.get();
-    }
-    public void right_ring_runOnPress(Command command) {
-        right_ring.whenPressed(command);
-    }
-    public void right_ring_runOnRelease(Command command) {
-        right_ring.whenReleased(command);
-    }
-    public void right_ring_toggleOnPress(Command command) {
-        right_ring.toggleWhenPressed(command);
-    }
-    public void right_ring_cancelOnPress(Command command) {
-        right_ring.cancelWhenPressed(command);
-    }
-    public void right_ring_runWhileHeld(Command command) {
-        right_ring.whileHeld(command);
+    public void left_index_runWhileHeld(Command command) {
+        left_index.whileHeld(command);
     }
 
-    public boolean right_pinky() {
-        return right_pinky.get();
+    public boolean right_top() {
+        return right_top.get();
     }
-    public void right_pinky_runOnPress(Command command) {
-        right_pinky.whenPressed(command);
+    public void right_top_runOnPress(Command command) {
+        right_top.whenPressed(command);
     }
-    public void right_pinky_runOnRelease(Command command) {
-        right_pinky.whenReleased(command);
+    public void right_top_runOnRelease(Command command) {
+        right_top.whenReleased(command);
     }
-    public void right_pinky_toggleOnPress(Command command) {
-        right_pinky.toggleWhenPressed(command);
+    public void right_top_toggleOnPress(Command command) {
+        right_top.toggleWhenPressed(command);
     }
-    public void right_pinky_cancelOnPress(Command command) {
-        right_pinky.cancelWhenPressed(command);
+    public void right_top_cancelOnPress(Command command) {
+        right_top.cancelWhenPressed(command);
     }
-    public void right_pinky_runWhileHeld(Command command) {
-        right_pinky.whileHeld(command);
+    public void right_top_runWhileHeld(Command command) {
+        right_top.whileHeld(command);
     }
 }
 
