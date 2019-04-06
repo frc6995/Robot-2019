@@ -1,33 +1,20 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2018 FIRST. All Rights Reserved.                             */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
-package frc.robot.commands;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.commands.ladder.*;
-import frc.robot.subsystems.LadderS.LadderLevel;
-import frc.robot.commands.drive.DriveForTimeC;
+import edu.wpi.first.wpilibj.command.WaitCommand;
+import frc.robot.commands.DriveForTimeC;
+import frc.robot.commands.hatch.HatchDrawerDeployC;
+import frc.robot.commands.hatch.HatchDrawerRetractC;
+import frc.robot.commands.hatch.HatchWheelInC;
 
 public class HatchIntakeCG extends CommandGroup {
-  /**
-   * To remove hatch from intake without dropping it, we need to lift up
-   * and back away.
-   */
   public HatchIntakeCG() {
+    //Run the wheels in for 3 seconds
+    addParallel(new HatchWheelInC(), 3.0);
+    //Push the hatch mech out
+    addSequential(new HatchDrawerDeployC());
 
-    //set ladder level first.
-    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_VISION));
-
-    //Move up to the set ladder level and drive backwards
-    addParallel(new LadderMoveUpPIDC());
-    addSequential(new DriveForTimeC(1,-0.2));
-   
-    //Return to level 1
-    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_ONE));
-    addSequential(new LadderMoveDownPIDC());
+    addSequential(new WaitCommand(2.5));
+    addSequential(new HatchDrawerRetractC());
+    //Drive the robot backwards for 1 second
+    //addSequential(new DriveForTimeC(1,-0.2));
   }
 }
