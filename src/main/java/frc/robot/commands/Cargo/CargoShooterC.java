@@ -16,7 +16,7 @@ public class CargoShooterC extends Command {
   @Override
   protected void execute() {
     System.out.println("Cargo Shoot running");
-    Robot.m_CargoShooterS.setSpeed(-1);
+    Robot.m_CargoShooterS.setSpeed(1);
   }
 
   @Override

@@ -1,6 +1,6 @@
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
-import frc.robot.commands.DriveForTimeC;
+import frc.robot.commands.drive.DriveForTimeC;
 import frc.robot.commands.hatch.HatchDrawerDeployC;
 import frc.robot.commands.hatch.HatchDrawerRetractC;
 import frc.robot.commands.hatch.HatchWheelInC;
