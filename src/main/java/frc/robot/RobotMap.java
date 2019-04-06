@@ -22,6 +22,7 @@ public class RobotMap {
   public final static int PCM_ID_SOLENOID_HATCHMECH = 1;
   public final static int PCM_ID_SOLENOID_CLIMBER_FRONT = 2;
   public final static int PCM_ID_SOLENOID_CLIMBER_REAR = 3;
+  public final static int PCM_ID_SOLENOID_HATCHDRAWER = 4;
   public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT_FORWARD = 2;
   public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT_REVERSE = 3;
   public final static int PCM_ID_DSOLENOID_CLIMBER_REAR_FORWARD = 4;
@@ -30,6 +31,7 @@ public class RobotMap {
   // PWM 
   public static final int PWM_ID_SPARK_CLIMB_MOVEMENT = 0;
   public static final int PWM_ID_SPARK_CARGO_SHOOTER = 1;
+  public static final int PWM_ID_SPARK_HATCHWHEELS = 4;
 
   //OI - XBox
   public final static int OI_XBOX = 0;
