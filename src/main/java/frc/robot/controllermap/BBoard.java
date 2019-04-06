@@ -81,6 +81,44 @@ public class BBoard {
         right_index.whileHeld(command);
     }
 
+    public boolean right_middle() {
+        return right_middle.get();
+    }
+    public void right_middle_runOnPress(Command command) {
+        right_middle.whenPressed(command);
+    }
+    public void right_middle_runOnRelease(Command command) {
+        right_middle.whenReleased(command);
+    }
+    public void right_middle_toggleOnPress(Command command) {
+        right_middle.toggleWhenPressed(command);
+    }
+    public void right_middle_cancelOnPress(Command command) {
+        right_middle.cancelWhenPressed(command);
+    }
+    public void right_middle_runWhileHeld(Command command) {
+        right_middle.whileHeld(command);
+    }
+
+    public boolean right_ring() {
+        return right_ring.get();
+    }
+    public void right_ring_runOnPress(Command command) {
+        right_ring.whenPressed(command);
+    }
+    public void right_ring_runOnRelease(Command command) {
+        right_ring.whenReleased(command);
+    }
+    public void right_ring_toggleOnPress(Command command) {
+        right_ring.toggleWhenPressed(command);
+    }
+    public void right_ring_cancelOnPress(Command command) {
+        right_ring.cancelWhenPressed(command);
+    }
+    public void right_ring_runWhileHeld(Command command) {
+        right_ring.whileHeld(command);
+    }
+
     public boolean right_bottom() {
         return right_bottom.get();
     }
