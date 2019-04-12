@@ -34,7 +34,7 @@ public class VisionAlignTargetC extends Command {
   double distance_adjust = 0.0;
   double pipeline = 0.0;
   int sumInRange = 0;
-
+  
   public VisionAlignTargetC() {
     requires(Robot.m_drivebaseS);
     pipelineEntry.setDouble(1);

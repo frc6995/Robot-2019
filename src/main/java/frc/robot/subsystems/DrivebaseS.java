@@ -83,7 +83,7 @@ public class DrivebaseS extends Subsystem {
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
     //Rotation throttle disabled per driver request
     //Keep in mind for other usage of arcadeDrive
-    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * 0.65);
+    differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * 0.78);
     SmartDashboard.putNumber("Throttle", throttle);
   }
 
