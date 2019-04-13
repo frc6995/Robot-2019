@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.cargo.CargoShooterC;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
@@ -21,7 +22,6 @@ import frc.robot.subsystems.ClimbFrontS;
 import frc.robot.subsystems.ClimbRearS;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.subsystems.HatchMechDrawerS;
-import frc.robot.subsystems.HatchMechS;
 import frc.robot.subsystems.HatchMechWheelsS;
 import frc.robot.subsystems.LadderS;
 
@@ -35,7 +35,6 @@ import frc.robot.subsystems.LadderS;
 public class Robot extends TimedRobot {
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
-  public static HatchMechS m_hatchMechS;
   public static ClimbFrontS m_ClimbFrontS;
   public static ClimbRearS m_ClimbRearS;
   public static ClimbCrawlerS m_ClimbCrawlerS;
@@ -51,7 +50,7 @@ public class Robot extends TimedRobot {
   public static Command m_ladderMoveUpPIDC;
   public static Command m_ladderMoveDownPIDC;
   public static Command m_ladderHoldPIDC;
-  public static Command m_hatchMechCG;
+  public static Command m_hatchScoreCG;
   public static Command m_cargoShooterC;
 
   public Command m_setCameraModeC;
@@ -64,7 +63,6 @@ public class Robot extends TimedRobot {
     // Instantiate Subsystems Here
     m_drivebaseS = new DrivebaseS();
     m_ladderS = new LadderS();
-    m_hatchMechS = new HatchMechS();
     m_ClimbFrontS = new ClimbFrontS();
     m_ClimbRearS = new ClimbRearS();
     m_ClimbCrawlerS = new ClimbCrawlerS();
@@ -81,7 +79,7 @@ public class Robot extends TimedRobot {
     m_ladderMoveUpPIDC = new LadderMoveUpPIDC();
     m_ladderMoveDownPIDC = new LadderMoveDownPIDC();
     m_ladderHoldPIDC = new LadderHoldPIDC();
-    //m_hatchMechCG = new HatchMechCG();
+    m_hatchScoreCG = new HatchScoreCG();
     m_cargoShooterC = new CargoShooterC();
 
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
@@ -101,7 +99,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData(Scheduler.getInstance());
     SmartDashboard.putData(m_drivebaseS);
     SmartDashboard.putData(m_ladderS);
-    SmartDashboard.putData(m_hatchMechS);
     SmartDashboard.putData(m_CargoShooterS);
     SmartDashboard.putData(m_setCameraModeC);
     SmartDashboard.putData("Run CargoShooterC", new CargoShooterC());

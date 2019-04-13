@@ -31,6 +31,7 @@ public class HatchMechWheelsS extends Subsystem {
   }
 
   public boolean getHatchLimit() {
+    //true = has hatch
     //also inversed so it can be wired the same as the cargo limit
     return !hatchMechLimit.get();
   }

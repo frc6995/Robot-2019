@@ -1,9 +1,9 @@
 package frc.robot.commands.hatch;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 
-public class HatchDrawerDeployC extends Command {
+public class HatchDrawerDeployC extends InstantCommand {
   public HatchDrawerDeployC() {
     requires(Robot.m_hatchMechDrawerS);
   }

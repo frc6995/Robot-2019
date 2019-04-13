@@ -23,9 +23,14 @@ public class HatchMechDrawerS extends Subsystem {
     drawerMech.set(true);
   }
 
-  public boolean get_Value() {
+  public void toggle() {
+    set_value(!get_value());
+  }
+
+  public boolean get_value() {
     return drawerMech.get();
   }
+
   public void set_value(boolean val) {
     drawerMech.set(val);
   }

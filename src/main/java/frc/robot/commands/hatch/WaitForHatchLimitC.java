@@ -3,35 +3,29 @@ package frc.robot.commands.hatch;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class HatchWheelInC extends Command {
-  private double intakePower = 0.7;
-
-  public HatchWheelInC() {
-    requires(Robot.m_hatchMechWheelsS);
+public class WaitForHatchLimitC extends Command {
+  public WaitForHatchLimitC() {
+    this.setTimeout(4.0); //Sets a 4 second timeout
   }
-  
+
   @Override
   protected void initialize() {
   }
 
   @Override
   protected void execute() {
-    //Run wheels in
-    Robot.m_hatchMechWheelsS.setPower(intakePower);
   }
 
   @Override
   protected boolean isFinished() {
-    return Robot.m_hatchMechWheelsS.getHatchLimit();
+    return isTimedOut() || Robot.m_hatchMechWheelsS.getHatchLimit();
   }
 
   @Override
   protected void end() {
-    Robot.m_hatchMechWheelsS.setPower(0);
   }
 
   @Override
   protected void interrupted() {
-    end();
   }
 }

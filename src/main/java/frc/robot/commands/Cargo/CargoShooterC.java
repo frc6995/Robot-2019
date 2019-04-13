@@ -22,8 +22,6 @@ public class CargoShooterC extends Command {
   @Override
   protected boolean isFinished() {
     return isTimedOut();
-    //Use command time out value to stop command
-    //return false;
   }
 
   @Override

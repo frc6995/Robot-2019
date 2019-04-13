@@ -1,9 +1,9 @@
 package frc.robot.commands.hatch;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 
-public class HatchDrawerRetractC extends Command {
+public class HatchDrawerRetractC extends InstantCommand {
   public HatchDrawerRetractC() {
     requires(Robot.m_hatchMechDrawerS);
   }
@@ -28,5 +28,6 @@ public class HatchDrawerRetractC extends Command {
 
   @Override
   protected void interrupted() {
+    end();
   }
 }
