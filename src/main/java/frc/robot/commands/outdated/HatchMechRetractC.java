@@ -1,4 +1,4 @@
-package frc.robot.commands.hatch;
+package frc.robot.commands.outdated;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;

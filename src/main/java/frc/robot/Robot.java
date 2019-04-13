@@ -1,23 +1,29 @@
 package frc.robot;
 
 import edu.wpi.cscore.HttpCamera;
-import edu.wpi.cscore.VideoSource;
 import edu.wpi.cscore.HttpCamera.HttpCameraKind;
+import edu.wpi.cscore.VideoSource;
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.DrivebaseS;
 import frc.robot.commands.cargo.CargoShooterC;
-import frc.robot.commands.hatch.HatchMechCG;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
 import frc.robot.commands.limelight.setCameraMode;
-import frc.robot.subsystems.*;
+import frc.robot.subsystems.CargoShooterS;
+import frc.robot.subsystems.ClimbCrawlerS;
+import frc.robot.subsystems.ClimbFrontS;
+import frc.robot.subsystems.ClimbRearS;
+import frc.robot.subsystems.DrivebaseS;
+import frc.robot.subsystems.HatchMechDrawerS;
+import frc.robot.subsystems.HatchMechS;
+import frc.robot.subsystems.HatchMechWheelsS;
+import frc.robot.subsystems.LadderS;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -75,7 +81,7 @@ public class Robot extends TimedRobot {
     m_ladderMoveUpPIDC = new LadderMoveUpPIDC();
     m_ladderMoveDownPIDC = new LadderMoveDownPIDC();
     m_ladderHoldPIDC = new LadderHoldPIDC();
-    m_hatchMechCG = new HatchMechCG();
+    //m_hatchMechCG = new HatchMechCG();
     m_cargoShooterC = new CargoShooterC();
 
     m_ladderDisplayStatusC = new LadderDisplayStatusC();

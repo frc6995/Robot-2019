@@ -22,7 +22,7 @@ public class HatchWheelInC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return false;
+    return Robot.m_hatchMechWheelsS.getHatchLimit();
   }
 
   @Override

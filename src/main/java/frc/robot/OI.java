@@ -49,10 +49,10 @@ public class OI {
 
 
         //Joystick Assignments
-        stick.button_1_runOnPress(new HatchMechCG());
+        /////stick.button_1_runOnPress(new HatchMechCG());
         //stick.button_3_runOnPress(new ClimbRetractStageC(2));
         //stick.button_5_runOnPress(new ClimbRetractStageC(1));
-        stick.button_3_toggleOnPress(new CargoIntakeC());
+        ////stick.button_3_toggleOnPress(new CargoIntakeC());
         //stick.button_6_runWhileHeld(new ClimbMotorsDriveC());
         //stick.button_7() - Holds Ladder position when manually operated
         //stick.button_8() - Moves Ladmder up
