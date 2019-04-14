@@ -29,8 +29,8 @@ public class OI {
         //xbox.left_bumper()   -- DriveArcadeXboxC used for decrementing throttle
         //xbox.right_bumper()  -- DriveArcadeXboxC used for setting throttle to max
         //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
-        xbox.x_runWhileHeld(new VisionAlignAndDriveCG(false));
-        xbox.a_runWhileHeld(new VisionAlignAndDriveCG(true));
+        xbox.x_runWhileHeld(new VisionAlignAndDriveCG(false)); //Hatch + CargoShip
+        xbox.a_runWhileHeld(new VisionAlignAndDriveCG(true)); //Rocket cargo
         //Command group for aligning and starting the cargo intake.
         //xbox.y_toggleOnPress(new CargoIntakeCG());
         //command group for aligning at the higher level for the rocket cargo.
