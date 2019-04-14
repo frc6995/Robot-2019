@@ -21,7 +21,6 @@ public class LadderS extends Subsystem {
   private WPI_TalonSRX ladderTalonB = null;
 
   private DigitalInput ladderBottomLimitSwitch;
-  private DigitalInput ladderTopLimitSwitch;
 
   private LadderLevel currentLadderLevel = LadderLevel.LEVEL_ONE;
   private LadderLevel nextLadderLevel = LadderLevel.LEVEL_ONE;
@@ -35,7 +34,8 @@ public class LadderS extends Subsystem {
   // PID "constants"
   private boolean ladderPIDActive = true;
   // Proportional constant
-  private double ladderKp = 0.45;  //May need to decrease if ladder is lighter
+  private double ladderKp = 0.45; //Up
+  private double ladderDownKp = 0.2;  //Down
   // Integral constant
   private double ladderKi = 0.002;
   // Derivative constant
@@ -86,7 +86,7 @@ public class LadderS extends Subsystem {
 
     // Makes it so we don't start pushing the ladder at full power immediately,
     // takes 0.5 seconds to ramp to full
-    ladderTalonA.configClosedloopRamp(0.25);
+    ladderTalonA.configClosedloopRamp(0.5);
 
     // Sets the max power that the PID can apply
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, 0.4);
@@ -94,6 +94,7 @@ public class LadderS extends Subsystem {
     // Selects the PID profile slot
     ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
 
+    //Limit switch
     ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
 
     // Overides any other commands and makes sure the ladder is not moving
@@ -105,8 +106,17 @@ public class LadderS extends Subsystem {
     ladderTalonA.set(ControlMode.PercentOutput, power);
   }
 
+  //Sets the max power the PID can apply
   public void setMaxPIDPower(double power){
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, power);
+  }
+
+  //For using a less agressive Kp on the way down
+  public void useUpKp(){
+    ladderTalonA.config_kP(LADDER_PID_SLOT, ladderKp);
+  }
+  public void useDownKp(){
+    ladderTalonA.config_kP(LADDER_PID_SLOT, ladderDownKp);
   }
 
   public double getLadderEncoderCount() {
@@ -130,6 +140,8 @@ public class LadderS extends Subsystem {
   }
 
   public void runPID() {
+    ladderPIDActive = true;
+
     // Tuning/testing outputs
     //SmartDashboard.putNumber("Encoder pos", ladderTalonA.getSensorCollection().getQuadraturePosition());
     //SmartDashboard.putNumber("Error", getError());
@@ -177,7 +189,7 @@ public class LadderS extends Subsystem {
   }
 
   public boolean isAtSetPoint() {
-    // If we have been within our range for at least 50 cycles (1 second), return true
+    //If we have been within our set point range for the given time, return true
     if (countWithinSetPoint > 15) {
       currentLadderLevel = nextLadderLevel;
       countWithinSetPoint = 0;
@@ -232,10 +244,6 @@ public class LadderS extends Subsystem {
   public boolean lowerLimitSwitchPressed() {
     // Returns true if the sensor is pressed, false if it is not
     return ladderBottomLimitSwitch.get();
-  }
-
-  public boolean upperLimitSwitchPressed() {
-    return ladderTopLimitSwitch.get();
   }
 
   public void resetEncoder() {

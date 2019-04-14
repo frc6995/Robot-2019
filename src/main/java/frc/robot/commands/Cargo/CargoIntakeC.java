@@ -4,17 +4,20 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class CargoIntakeC extends Command {
+  private double intakeSpeed = -0.5;
+
   public CargoIntakeC() {
     requires(Robot.m_CargoShooterS);
   }
 
   @Override
   protected void initialize() {
+    this.setTimeout(10);
   }
 
   @Override
   protected void execute() {
-    Robot.m_CargoShooterS.setSpeed(-0.5);
+    Robot.m_CargoShooterS.setSpeed(intakeSpeed);
   }
 
   @Override

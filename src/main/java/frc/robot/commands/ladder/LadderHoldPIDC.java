@@ -11,8 +11,8 @@ public class LadderHoldPIDC extends Command {
   public LadderHoldPIDC() {
     requires(Robot.m_ladderS);
     
-    this.setInterruptible(false);
-    //Robot.m_ladderS.setMaxPIDPower(0.5); //Why initialized to .5 then set to .7 in execute?
+    this.setInterruptible(true);
+    setTimeout(10.0);
   }
 
   @Override
@@ -21,19 +21,18 @@ public class LadderHoldPIDC extends Command {
 
   @Override
   protected void execute() {
+    Robot.m_ladderS.useUpKp();
     Robot.m_ladderS.setMaxPIDPower(0.7);
     Robot.m_ladderS.runPID();
-    //Robot.m_ladderS.setLadderPower(0.15);  Can this be removed?
   }
 
   @Override
   protected boolean isFinished() {
-    return false;
+    return isTimedOut();
   }
 
   @Override
   protected void end() {
-    //Might need to add some sort of "handoff" code to the RunLadderPID command - Can this comment be removed?
     Robot.m_ladderS.disablePID();
   }
 

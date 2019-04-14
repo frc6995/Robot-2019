@@ -9,8 +9,7 @@ import frc.robot.subsystems.LadderS.LadderLevel;
 
 public class LadderLevelCargoScoreCG extends CommandGroup {
   /**
-   * Move to the desired ladder level and deploy Hatch Cover or launch Cargo
-   * If thumb pressed, then shoot cargo, else deploy hatch
+   * Move to the desired ladder level and score cargo
    */
   public LadderLevelCargoScoreCG(LadderLevel level) {
     //  --LIFT--

@@ -8,9 +8,8 @@ public class HatchRunWheelsForTimeC extends Command {
 
   public HatchRunWheelsForTimeC(double power, double timeout) {
     requires(Robot.m_hatchMechWheelsS);
-    this.power = power;
 
-    //Sets the timeout
+    this.power = power;
     this.setTimeout(timeout);
   }
   
@@ -32,7 +31,7 @@ public class HatchRunWheelsForTimeC extends Command {
   @Override
   protected void end() {
     //Stops the motors
-    Robot.m_hatchMechWheelsS.setPower(0);
+    Robot.m_hatchMechWheelsS.setPower(0.0);
   }
 
   @Override

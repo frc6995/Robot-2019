@@ -7,7 +7,7 @@ import frc.robot.commands.hatch.HatchRunWheelsForTimeC;
 
 public class HatchIntakeCG extends CommandGroup {
   public HatchIntakeCG() {
-    //Run the wheels in for 3 seconds
+    //Run the wheels in
     addParallel(new HatchRunWheelsForTimeC(-0.9, 2));
 
     //Push the hatch mech out
