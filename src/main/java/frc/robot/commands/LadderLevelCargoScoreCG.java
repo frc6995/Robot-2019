@@ -22,7 +22,7 @@ public class LadderLevelCargoScoreCG extends CommandGroup {
 
     //  --SCORE--
     //Score cargo
-    addSequential(Robot.m_cargoShooterC);
+    addSequential(Robot.m_cargoScoreC);
     //Wait for ball to eject
     addSequential(new WaitCommand(1));
 

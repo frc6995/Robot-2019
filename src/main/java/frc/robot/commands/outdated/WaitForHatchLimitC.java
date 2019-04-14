@@ -4,8 +4,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class WaitForHatchLimitC extends Command {
-  public WaitForHatchLimitC() {
+  private boolean value;
+
+  public WaitForHatchLimitC(boolean value) {
     this.setTimeout(4.0); //Sets a 4 second timeout
+    this.value = value;
   }
 
   @Override
@@ -18,7 +21,7 @@ public class WaitForHatchLimitC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return isTimedOut() || Robot.m_hatchMechWheelsS.getHatchLimit();
+    return isTimedOut() || (Robot.m_hatchMechWheelsS.getHatchLimit() == value);
   }
 
   @Override

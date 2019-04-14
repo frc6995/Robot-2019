@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class CargoIntakeC extends Command {
-
   public CargoIntakeC() {
     requires(Robot.m_CargoShooterS);
   }

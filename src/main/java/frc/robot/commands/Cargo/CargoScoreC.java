@@ -3,8 +3,8 @@ package frc.robot.commands.cargo;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class CargoShooterC extends Command {
-  public CargoShooterC() {
+public class CargoScoreC extends Command {
+  public CargoScoreC() {
     requires(Robot.m_CargoShooterS);
   }
 
