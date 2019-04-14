@@ -23,8 +23,8 @@ public class ScoreHatchOrCargoC extends InstantCommand {
     m_ladderLevelCargoScoreCG = new LadderLevelCargoScoreCG(ladderLevel);
     m_ladderLevelHatchScoreCG = new LadderLevelHatchScoreCG(ladderLevel);
 
-    SmartDashboard.putData("Cargo ", m_ladderLevelCargoScoreCG);
-    SmartDashboard.putData("", m_ladderLevelCargoScoreCG);
+    //SmartDashboard.putData("Cargo ", m_ladderLevelCargoScoreCG);
+    //SmartDashboard.putData("", m_ladderLevelCargoScoreCG);
   }
 
   // Called just before this Command runs the first time

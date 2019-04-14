@@ -33,7 +33,7 @@ public class ClimbFrontS extends Subsystem {
 
   public boolean cSwitchFront() {
     // returns the value of the front limit switch as a boolean. Used by the CG in the ClimbFrontLimitRetractC
-    SmartDashboard.putBoolean("Limit Front", climberFrontSwitch.get());
+    //SmartDashboard.putBoolean("Limit Front", climberFrontSwitch.get());
     return !climberFrontSwitch.get();
   }
   

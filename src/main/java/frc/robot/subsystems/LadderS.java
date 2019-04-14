@@ -131,16 +131,16 @@ public class LadderS extends Subsystem {
 
   public void runPID() {
     // Tuning/testing outputs
-    SmartDashboard.putNumber("Encoder pos", ladderTalonA.getSensorCollection().getQuadraturePosition());
-    SmartDashboard.putNumber("Error", getError());
-    SmartDashboard.putBoolean("IsAtSetPoint", isAtSetPoint());
-    SmartDashboard.putNumber("Power", ladderTalonA.getMotorOutputPercent());
-    SmartDashboard.putNumber("Talon Set point", ladderTalonA.getClosedLoopTarget());
-    SmartDashboard.putNumber("Code Set point", getLadderSetPointEncoderCount());
-    SmartDashboard.putString("Next ladder level", LadderLevelToString(nextLadderLevel));
-    SmartDashboard.putNumber("Integral sum", ladderTalonA.getIntegralAccumulator());
-    SmartDashboard.putNumber("Derivative", ladderTalonA.getErrorDerivative());
-    SmartDashboard.putString("Ladder level",LadderLevelToString(getNextLadderLevel()));
+    //SmartDashboard.putNumber("Encoder pos", ladderTalonA.getSensorCollection().getQuadraturePosition());
+    //SmartDashboard.putNumber("Error", getError());
+    //SmartDashboard.putBoolean("IsAtSetPoint", isAtSetPoint());
+    //SmartDashboard.putNumber("Power", ladderTalonA.getMotorOutputPercent());
+    //SmartDashboard.putNumber("Talon Set point", ladderTalonA.getClosedLoopTarget());
+    //SmartDashboard.putNumber("Code Set point", getLadderSetPointEncoderCount());
+    //SmartDashboard.putString("Next ladder level", LadderLevelToString(nextLadderLevel));
+    //SmartDashboard.putNumber("Integral sum", ladderTalonA.getIntegralAccumulator());
+    //SmartDashboard.putNumber("Derivative", ladderTalonA.getErrorDerivative());
+    //SmartDashboard.putString("Ladder level",LadderLevelToString(getNextLadderLevel()));
 
     ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
 
@@ -196,7 +196,7 @@ public class LadderS extends Subsystem {
   }
 
   public int getLadderSetPointEncoderCount(){
-    SmartDashboard.putBoolean("Below Cushion", (getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION));
+    //SmartDashboard.putBoolean("Below Cushion", (getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION));
     if(getNextLadderLevel() == LadderLevel.LEVEL_ONE){
       if (getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION) {
         return RobotMap.LADDER_LEVEL_ONE;

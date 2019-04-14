@@ -57,12 +57,7 @@ public class VisionAlignTargetC extends Command {
     tx = txEntry.getDouble(0.0);
     ty = tyEntry.getDouble(0.0);
     ta = taEntry.getDouble(0.0);
-
-    SmartDashboard.putNumber("VisionTx", tx);
-    SmartDashboard.putNumber("VisionTy", ty);
-    SmartDashboard.putNumber("VisionTa", ta);
-    SmartDashboard.putNumber("Vision Heading error", heading_error);
-
+    
     //Pull control constants from smartdashboard.
     KpAim = SmartDashboard.getNumber("Vision kpAim", KpAim); 
     KpDistance = SmartDashboard.getNumber("Vision kpDistance", KpDistance);
@@ -99,7 +94,7 @@ public class VisionAlignTargetC extends Command {
     tx = txEntry.getDouble(0.0);
     ty = tyEntry.getDouble(0.0);
 
-    SmartDashboard.putNumber("sumInRange", sumInRange);
+    //SmartDashboard.putNumber("sumInRange", sumInRange);
     if (Math.abs(tx) <= 1 && Math.abs(ty) <= 1) {
       sumInRange+=1;
     }
