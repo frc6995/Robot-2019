@@ -13,9 +13,6 @@ import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
 import frc.robot.commands.limelight.setCameraMode;
 import frc.robot.subsystems.CargoShooterS;
-import frc.robot.subsystems.ClimbCrawlerS;
-import frc.robot.subsystems.ClimbFrontS;
-import frc.robot.subsystems.ClimbRearS;
 import frc.robot.subsystems.DrivebaseS;
 import frc.robot.subsystems.HatchMechDrawerS;
 import frc.robot.subsystems.HatchMechWheelsS;
@@ -31,9 +28,6 @@ import frc.robot.subsystems.LadderS;
 public class Robot extends TimedRobot {
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
-  public static ClimbFrontS m_ClimbFrontS;
-  public static ClimbRearS m_ClimbRearS;
-  public static ClimbCrawlerS m_ClimbCrawlerS;
   public static CargoShooterS m_CargoShooterS;
   public static HatchMechDrawerS m_hatchMechDrawerS;
   public static HatchMechWheelsS m_hatchMechWheelsS;
@@ -57,9 +51,6 @@ public class Robot extends TimedRobot {
     // Instantiate Subsystems Here
     m_drivebaseS = new DrivebaseS();
     m_ladderS = new LadderS();
-    m_ClimbFrontS = new ClimbFrontS();
-    m_ClimbRearS = new ClimbRearS();
-    m_ClimbCrawlerS = new ClimbCrawlerS();
     m_CargoShooterS = new CargoShooterS();
     m_hatchMechDrawerS = new HatchMechDrawerS();
     m_hatchMechWheelsS = new HatchMechWheelsS();

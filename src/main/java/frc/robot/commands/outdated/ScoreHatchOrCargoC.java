@@ -2,7 +2,6 @@ package frc.robot.commands.outdated;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.InstantCommand;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.commands.LadderLevelCargoScoreCG;
 import frc.robot.commands.LadderLevelHatchScoreCG;

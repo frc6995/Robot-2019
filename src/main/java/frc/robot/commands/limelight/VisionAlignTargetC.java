@@ -88,7 +88,7 @@ public class VisionAlignTargetC extends Command {
     SmartDashboard.putNumber("Vision Dist Adj", distance_adjust);
     Robot.m_drivebaseS.visionDrive(distance_adjust, steering_adjust);
   }
-
+  
   @Override
   protected boolean isFinished() {
     tx = txEntry.getDouble(0.0);
