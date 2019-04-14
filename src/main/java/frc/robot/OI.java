@@ -5,7 +5,7 @@ import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.limelight.*;
-import frc.robot.commands.cargo.CargoIntakeC;
+import frc.robot.commands.cargo.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
 

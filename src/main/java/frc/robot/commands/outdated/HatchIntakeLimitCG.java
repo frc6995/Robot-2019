@@ -1,11 +1,10 @@
-package frc.robot.commands;
+package frc.robot.commands.outdated;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
 import frc.robot.commands.hatch.HatchDrawerDeployC;
 import frc.robot.commands.hatch.HatchDrawerRetractC;
 import frc.robot.commands.hatch.HatchRunWheelsAtPowerC;
-import frc.robot.commands.hatch.WaitForHatchLimitC;
 
 public class HatchIntakeLimitCG extends CommandGroup {
   /**
