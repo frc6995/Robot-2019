@@ -13,7 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class LadderS extends Subsystem {
   //Enumerate various ladder levels.
   public enum LadderLevel {
-    LEVEL_ONE, LEVEL_VISION, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_ROCKET_CARGO_VISION,
+    LEVEL_ONE, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_ROCKET_CARGO_VISION,
     LEVEL_BOTTOM;
   }
   // TalonA is left and has the encoder plugged into it, TalonB is right
@@ -204,19 +204,16 @@ public class LadderS extends Subsystem {
       else
         return RobotMap.LADDER_LEVEL_CUSHION; 
     }
-    else if (getNextLadderLevel() == LadderLevel.LEVEL_VISION) {
-      return RobotMap.LADDER_LEVEL_VISION;
-    }
     else if (getNextLadderLevel() == LadderLevel.LEVEL_TWO) {
       return RobotMap.LADDER_LEVEL_TWO;
     }
     else if (getNextLadderLevel() == LadderLevel.LEVEL_THREE) {
       return RobotMap.LADDER_LEVEL_THREE;
-    }else if(getNextLadderLevel() == LadderLevel.LEVEL_CARGO_INTAKE){
+    }
+    else if(getNextLadderLevel() == LadderLevel.LEVEL_CARGO_INTAKE){
       return RobotMap.LADDER_LEVEL_CARGO_INTAKE;
-    }else if(getNextLadderLevel() == LadderLevel.LEVEL_ROCKET_CARGO_VISION){
-      return RobotMap.LADDER_LEVEL_ROCKET_CARGO_VISION;
-    } else if(getNextLadderLevel() == LadderLevel.LEVEL_BOTTOM) {
+    }
+    else if(getNextLadderLevel() == LadderLevel.LEVEL_BOTTOM) {
       return 0;
     } 
     else {
@@ -250,8 +247,6 @@ public class LadderS extends Subsystem {
     switch(level) {
       case LEVEL_ONE:
         return "1";
-      case LEVEL_VISION:
-        return "Vision";
       case LEVEL_CUSHION:
         return "Cushion";
       case LEVEL_TWO:
