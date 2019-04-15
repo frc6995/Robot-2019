@@ -4,15 +4,14 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
+import frc.robot.RobotMap;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
 /**
  * IMPORTANT!!! MAKE SURE "IGNORE NETWORK TABLES" IS SET TO FALSE.
- * To set to false, Open Shuffleboard, Click on File, Preferences, Camera Server ??? 
- * Need to confirm instructions
- * Can we set this in the code?- SRigg - I couldn't find out how.
+ * To verify, connect to the limelight through the web interface and look for a button in the top middle
  */
 public class VisionAlignTargetC extends Command {
   //Network tables
@@ -34,10 +33,6 @@ public class VisionAlignTargetC extends Command {
   double xRange = 4; //degrees
   double yRange = 5; //degrees
   double waitInRange = 10; //cycles
-
-  static final int DRIVER_CAM_PIPELINE = 0;  //No vision
-  static final int LOWER_TARGET_PIPELINE = 1;  //For hatch intake, rocket hatch and cargo ship
-  static final int UPPER_TARGET_PIPELINE = 2;  //For rocket cargo
 
   //Variables that are set within the command
   double tx= 0.0;
@@ -93,11 +88,12 @@ public class VisionAlignTargetC extends Command {
       firstLoop = false;
     }
 
-    //Sets the pipeline depending on if we have cargo or not
+    //Sets the pipeline depending if we are aligning with Cargo on Rocket ship (target is higher) 
+    //or with Cargo Ship, Hatch on Rocket, or Hatch/Cargo at intake.
     if(rocketCargo){
-      pipelineEntry.setDouble(UPPER_TARGET_PIPELINE); //Rocket cargo
+      pipelineEntry.setDouble(RobotMap.UPPER_TARGET_PIPELINE); //Rocket cargo
     }else{
-      pipelineEntry.setDouble(LOWER_TARGET_PIPELINE); //Everything else
+      pipelineEntry.setDouble(RobotMap.LOWER_TARGET_PIPELINE); //Everything else
     }
 
     //Force the limelight LED on
@@ -122,11 +118,11 @@ public class VisionAlignTargetC extends Command {
     double heading_error = -tx; 
     double distance_error = -ty;
 
-    //basic proportional control
+    //Basic proportional control
     steering_adjust = heading_error * KpAim; 
     distance_adjust = KpDistance * distance_error;
 
-    //"Hopefully" will ramp up our PID to full over the period of ramp time
+    //Ramps our PID to full over the period of ramp time
     double clampValue = clamp(rampTimer.get()/rampTime, 1) * max_power;
 
     //Enforces the max power
@@ -162,7 +158,7 @@ public class VisionAlignTargetC extends Command {
     //Resets things
     rampTimer.stop();
     firstLoop = true;
-    pipelineEntry.setDouble(0);
+    pipelineEntry.setDouble(RobotMap.DRIVER_CAM_PIPELINE);
     ledMode.setDouble(0);
     Robot.m_oi.xbox.setRumble(0);
   } 
@@ -172,7 +168,7 @@ public class VisionAlignTargetC extends Command {
     end();
   }
 
-  //Clambs a value between -mag and +mag
+  //Clamps a value between -mag and +mag
   private static double clamp(double val, double mag) {
     return Math.max(-mag, Math.min(mag, val));
   }

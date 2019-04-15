@@ -60,5 +60,10 @@ public class RobotMap {
   // Climb Constants
   //Motor Speed: Positive if climbing forward - Negative if climbing backwards
   public static final double CLIMB_MOTORS_SPEED = 0.4;  //PostChange: 0.2 was very slow; try 0.4
+
+  //Limelight pipeline constants
+  public static final int DRIVER_CAM_PIPELINE = 0;  //No vision
+  public static final int LOWER_TARGET_PIPELINE = 1;  //For hatch intake, rocket hatch and cargo ship
+  public static final int UPPER_TARGET_PIPELINE = 2;  //For rocket cargo
 }
 
