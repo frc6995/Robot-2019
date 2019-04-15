@@ -62,8 +62,8 @@ public class RobotMap {
   public static final double CLIMB_MOTORS_SPEED = 0.4;  //PostChange: 0.2 was very slow; try 0.4
 
   //Limelight pipeline constants
-  public static final int DRIVER_CAM_PIPELINE = 0;  //No vision
-  public static final int LOWER_TARGET_PIPELINE = 1;  //For hatch intake, rocket hatch and cargo ship
-  public static final int UPPER_TARGET_PIPELINE = 2;  //For rocket cargo
+  public static final int PIPELINE_DRIVER_CAM = 0;  //No vision
+  public static final int PIPELINE_LOWER_TARGET = 1;  //For hatch intake, rocket hatch and cargo ship
+  public static final int PIPELINE_UPPER_TARGET = 2;  //For rocket cargo
 }
 

@@ -91,9 +91,9 @@ public class VisionAlignTargetC extends Command {
     //Sets the pipeline depending if we are aligning with Cargo on Rocket ship (target is higher) 
     //or with Cargo Ship, Hatch on Rocket, or Hatch/Cargo at intake.
     if(rocketCargo){
-      pipelineEntry.setDouble(RobotMap.UPPER_TARGET_PIPELINE); //Rocket cargo
+      pipelineEntry.setDouble(RobotMap.PIPELINE_UPPER_TARGET); //Rocket cargo
     }else{
-      pipelineEntry.setDouble(RobotMap.LOWER_TARGET_PIPELINE); //Everything else
+      pipelineEntry.setDouble(RobotMap.PIPELINE_LOWER_TARGET); //Everything else
     }
 
     //Force the limelight LED on
@@ -158,7 +158,7 @@ public class VisionAlignTargetC extends Command {
     //Resets things
     rampTimer.stop();
     firstLoop = true;
-    pipelineEntry.setDouble(RobotMap.DRIVER_CAM_PIPELINE);
+    pipelineEntry.setDouble(RobotMap.PIPELINE_DRIVER_CAM);
     ledMode.setDouble(0);
     Robot.m_oi.xbox.setRumble(0);
   } 
