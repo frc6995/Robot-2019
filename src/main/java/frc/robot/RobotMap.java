@@ -58,7 +58,7 @@ public class RobotMap {
 
   //TODO - set these values
   public static final int LADDER_LEVEL_CARGO_INTAKE = 1980;
-  public static final int LADDER_LEVEL_ROCKET_CARGO_VISION = 1900;
+  //public static final int LADDER_LEVEL_ROCKET_CARGO_VISION = 1900;
 
   // Climb Constants
   //Motor Speed: Positive if climbing forward - Negative if climbing backwards
