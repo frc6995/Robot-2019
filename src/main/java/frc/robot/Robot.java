@@ -32,8 +32,6 @@ public class Robot extends TimedRobot {
   public static HatchMechDrawerS m_hatchMechDrawerS;
   public static HatchMechWheelsS m_hatchMechWheelsS;
 
-  public static OI m_oi;
-
   //Ladder commands
   public static Command m_ladderHomeC;
   public static Command m_ladderDisplayStatusC;
@@ -48,6 +46,8 @@ public class Robot extends TimedRobot {
   public static Command m_cargoIntakeC;
   //Limelight
   public static Command m_visionSetDriverCamC;
+
+  public static OI m_oi;
 
 
   @Override
