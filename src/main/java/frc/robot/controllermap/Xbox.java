@@ -2,6 +2,7 @@ package frc.robot.controllermap;
 
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.POVButton;
 import edu.wpi.first.wpilibj.command.Command;
@@ -115,6 +116,10 @@ public class Xbox {
         dpad_down_left = new POVButton(xbox, DPAD_DOWN_LEFT);
         dpad_down_right = new POVButton(xbox, DPAD_DOWN_RIGHT);
         dpad_center = new POVButton(xbox, DPAD_CENTER);
+    }
+
+    public void setRumble(double strength) {
+        xbox.setRumble(RumbleType.kRightRumble, strength);
     }
 
     /**

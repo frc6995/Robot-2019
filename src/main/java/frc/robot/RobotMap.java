@@ -1,5 +1,5 @@
 package frc.robot;
- 
+
 public class RobotMap {
   //CAN bus
     //Talons
@@ -16,7 +16,7 @@ public class RobotMap {
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_1 = 22;
   public final static int CAN_ID_VSPX_DRIVEBASE_LEFT_2 = 21;
   public final static int CAN_ID_VSPX_DRIVEBASE_RIGHT_2 = 23;
-  
+
   //Pneumatics Control Module
   public final static int PCM_ID = 1;
   //public final static int PCM_ID_SOLENOID_HATCHMECH = 1;
@@ -28,14 +28,14 @@ public class RobotMap {
   //public final static int PCM_ID_DSOLENOID_CLIMBER_REAR_FORWARD = 4;
   //public final static int PCM_ID_DSOLENOID_CLIMBER_REAR_REVERSE = 5;
 
-  // PWM 
+  // PWM
   //public static final int PWM_ID_SPARK_CLIMB_MOVEMENT = 0;
   public static final int PWM_ID_SPARK_CARGO_SHOOTER = 1;
   public static final int PWM_ID_SPARK_HATCHWHEELS = 2;
 
   //OI - XBox
   public final static int OI_XBOX = 0;
-  public static final int XBOX_DRIVE_LEFT_RIGHT = 1; 
+  public static final int XBOX_DRIVE_LEFT_RIGHT = 1;
   public static final int XBOX_DRIVE_FORWARD_SPEED = 2;
   public static final int XBOX_DRIVE_BACKWARD_SPEED = 3;
 
@@ -50,13 +50,22 @@ public class RobotMap {
   public static final int DIO_LIMIT_CARGO = 4;
   public static final int DIO_LIMIT_HATCH = 5;
 
-  //Ladder Encoder Constants   
+  //Ladder Encoder Constants
   public static final int LADDER_LEVEL_ONE = 0; //The home location
   public static final int LADDER_LEVEL_CUSHION = 3000;
   public static final int LADDER_LEVEL_TWO = 3625; //change as needed
   public static final int LADDER_LEVEL_THREE = 7160; //change as needed
-  
+
   //TODO - set these values
   public static final int LADDER_LEVEL_CARGO_INTAKE = 1980;
-}
+  public static final int LADDER_LEVEL_ROCKET_CARGO_VISION = 1900;
 
+  // Climb Constants
+  //Motor Speed: Positive if climbing forward - Negative if climbing backwards
+  public static final double CLIMB_MOTORS_SPEED = 0.4;  //PostChange: 0.2 was very slow; try 0.4
+
+  //Limelight pipeline constants
+  public static final int PIPELINE_DRIVER_CAM = 0;  //No vision
+  public static final int PIPELINE_LOWER_TARGET = 1;  //For hatch intake, rocket hatch and cargo ship
+  public static final int PIPELINE_UPPER_TARGET = 2;  //For rocket cargo
+}

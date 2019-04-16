@@ -14,12 +14,8 @@ import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
-import frc.robot.commands.limelight.setCameraMode;
-import frc.robot.subsystems.CargoShooterS;
-import frc.robot.subsystems.DrivebaseS;
-import frc.robot.subsystems.HatchMechDrawerS;
-import frc.robot.subsystems.HatchMechWheelsS;
-import frc.robot.subsystems.LadderS;
+import frc.robot.commands.limelight.VisionSetDriverCamC;
+import frc.robot.subsystems.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -62,7 +58,7 @@ public class Robot extends TimedRobot {
     m_CargoShooterS = new CargoShooterS();
     m_hatchMechDrawerS = new HatchMechDrawerS();
     m_hatchMechWheelsS = new HatchMechWheelsS();
-    
+
     m_oi = new OI();
 
     //Ladder commands
@@ -79,6 +75,7 @@ public class Robot extends TimedRobot {
     m_cargoScoreC = new CargoScoreC();
     //Limelight commands
     m_setCameraModeC = new setCameraMode();
+    m_visionSetDriverCamC= new VisionSetDriverCamC();
   }
 
   public void robotPeriodic() {
@@ -99,9 +96,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    //Force the correct camera mode
-    m_setCameraModeC.start();
-    //Home the ladder
+    m_visionSetDriverCamC.start();
     m_ladderHomeC.start();
   }
 
@@ -122,7 +117,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
   }
-  
+
   @Override
   public void testPeriodic() {
   }

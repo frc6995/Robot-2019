@@ -35,7 +35,10 @@ public class OI {
         //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
         xbox.x_runWhileHeld(new VisionAlignAndDriveCG(false)); //Hatch + CargoShip
         xbox.a_runWhileHeld(new VisionAlignAndDriveCG(true)); //Rocket cargo
-        
+        //Command group for aligning and starting the cargo intake.
+        //xbox.y_toggleOnPress(new CargoIntakeCG());
+        //command group for aligning at the higher level for the rocket cargo.
+        //xbox.b_toggleOnPress(new VisionAlignRocketCargoCG());
 
         //Button Board Assignments (ASSIGN COMMANDS TO BUTTONS)
         buttonBoard.right_top_runOnPress(new HatchDrawerToggleC());
@@ -49,7 +52,7 @@ public class OI {
         buttonBoard.left_middle_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.left_ring_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
         buttonBoard.left_bottom_runOnPress(new HatchIntakeCG());
-        
+
         //SmartDashboard
         SmartDashboard.putData("Hatch Intake", new HatchRunWheelsForTimeC(0.5,1));
         SmartDashboard.putData("Hatch Output", new HatchRunWheelsForTimeC(-0.5,1));
