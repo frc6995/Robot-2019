@@ -5,15 +5,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HatchScoreCG;
-import frc.robot.commands.cargo.CargoIntakeC;
-import frc.robot.commands.cargo.CargoScoreC;
-import frc.robot.commands.hatch.HatchDrawerDeployC;
-import frc.robot.commands.hatch.HatchDrawerRetractC;
-import frc.robot.commands.ladder.LadderDisplayStatusC;
-import frc.robot.commands.ladder.LadderHoldPIDC;
-import frc.robot.commands.ladder.LadderHomeC;
-import frc.robot.commands.ladder.LadderMoveDownPIDC;
-import frc.robot.commands.ladder.LadderMoveUpPIDC;
+import frc.robot.commands.cargo.*;
+import frc.robot.commands.hatch.*;
+import frc.robot.commands.ladder.*;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
 import frc.robot.subsystems.*;
 
@@ -44,6 +38,7 @@ public class Robot extends TimedRobot {
   public static Command m_hatchScoreCG;
   public static Command m_cargoScoreC;
   public static Command m_cargoIntakeC;
+  public static Command m_hatchDrawerToggleC;
   //Limelight
   public static Command m_visionSetDriverCamC;
 
@@ -71,6 +66,7 @@ public class Robot extends TimedRobot {
     m_cargoIntakeC = new CargoIntakeC();
     m_hatchScoreCG = new HatchScoreCG();
     m_cargoScoreC = new CargoScoreC();
+    m_hatchDrawerToggleC = new HatchDrawerToggleC();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
 

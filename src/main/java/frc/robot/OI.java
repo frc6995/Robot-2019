@@ -12,6 +12,7 @@ import frc.robot.commands.LadderLevelHatchScoreCG;
 import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
+import frc.robot.Robot;
 
 public class OI {
     public final Xbox xbox = new Xbox(RobotMap.OI_XBOX);
@@ -37,7 +38,7 @@ public class OI {
         xbox.a_runWhileHeld(new VisionAlignAndDriveCG(true)); //Rocket cargo
 
         //Button Board Assignments (ASSIGN COMMANDS TO BUTTONS)
-        buttonBoard.right_top_runOnPress(new HatchDrawerToggleC());
+        buttonBoard.right_top_runOnPress(Robot.m_hatchDrawerToggleC);
         buttonBoard.right_index_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE));
         buttonBoard.right_middle_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.right_ring_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
