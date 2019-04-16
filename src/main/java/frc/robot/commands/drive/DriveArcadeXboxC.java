@@ -1,5 +1,6 @@
 package frc.robot.commands.drive;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -39,7 +40,7 @@ public class DriveArcadeXboxC extends Command {
       throttle = 1;
       numberPressed = 0;
     }
-
+    SmartDashboard.putNumber("Drive Throttle", throttle);
     Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throttle);
   }
 
