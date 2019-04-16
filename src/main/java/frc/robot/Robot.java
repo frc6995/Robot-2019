@@ -47,7 +47,7 @@ public class Robot extends TimedRobot {
   public static Command m_cargoScoreC;
   public static Command m_cargoIntakeC;
   //Limelight
-  public static Command m_setCameraModeC;
+  public static Command m_visionSetDriverCamC;
 
 
   @Override
@@ -74,7 +74,6 @@ public class Robot extends TimedRobot {
     m_hatchScoreCG = new HatchScoreCG();
     m_cargoScoreC = new CargoScoreC();
     //Limelight commands
-    m_setCameraModeC = new setCameraMode();
     m_visionSetDriverCamC= new VisionSetDriverCamC();
   }
 
@@ -108,7 +107,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopInit() {
     //Force the correct camera mode
-    m_setCameraModeC.start();
+    m_visionSetDriverCamC.start();
     //Home the ladder
     m_ladderHomeC.start();
   }

@@ -107,7 +107,7 @@ public class VisionAlignTargetC extends Command {
     SmartDashboard.putNumber("Vision Distance error", heading_error);
     SmartDashboard.putNumber("RampTimer", rampTimer.get());
 
-    //Pull control constants from smartdashboard.
+    //Pull control constants from smartdashboard. COMMENT WHEN WE ARE DONE TESTING
     KpAim = SmartDashboard.getNumber("kpAim", KpAim);
     KpDistance = SmartDashboard.getNumber("kpDistance", KpDistance);
     max_power = SmartDashboard.getNumber("max_power", max_power);
