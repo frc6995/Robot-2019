@@ -16,7 +16,7 @@ import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
-import frc.robot.commands.limelight.setCameraMode;
+import frc.robot.commands.limelight.VisionSetDriverCamC;
 import frc.robot.subsystems.*;
 
 /**
@@ -46,7 +46,7 @@ public class Robot extends TimedRobot {
   public static Command m_hatchMechCG;
   public static Command m_cargoShooterC;
 
-  public Command m_setCameraModeC;
+  public Command m_visionSetDriverCamC;
 
   //public UsbCamera usbCam = CameraServer.getInstance().startAutomaticCapture();
 
@@ -75,7 +75,7 @@ public class Robot extends TimedRobot {
     m_cargoShooterC = new CargoShooterC();
 
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
-    m_setCameraModeC = new setCameraMode();
+    m_visionSetDriverCamC= new VisionSetDriverCamC();
 
     //Limelight setup to use camera
     CameraServer cs = CameraServer.getInstance();
@@ -93,7 +93,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putData(m_ladderS);
     SmartDashboard.putData(m_hatchMechS);
     SmartDashboard.putData(m_CargoShooterS);
-    SmartDashboard.putData(m_setCameraModeC);
+    SmartDashboard.putData(m_visionSetDriverCamC);
     SmartDashboard.putData("Run CargoShooterC", new CargoShooterC());
   }
 
@@ -114,7 +114,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    m_setCameraModeC.start();
+    m_visionSetDriverCamC.start();
     m_ladderHomeC.start();
   }
 
