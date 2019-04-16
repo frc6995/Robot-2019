@@ -1,7 +1,6 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.command.WaitCommand;
 import frc.robot.Robot;
 //import frc.robot.commands.cargo.CargoShooterC; //is this planned to be used?
 import frc.robot.commands.ladder.LadderSetLevelC;

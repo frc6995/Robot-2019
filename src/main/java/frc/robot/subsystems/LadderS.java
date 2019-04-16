@@ -13,8 +13,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class LadderS extends Subsystem {
   //Enumerate various ladder levels.
   public enum LadderLevel {
-    LEVEL_ONE, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_ROCKET_CARGO_VISION,
-    LEVEL_BOTTOM;
+    LEVEL_ONE, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_BOTTOM;
   }
   // TalonA is left and has the encoder plugged into it, TalonB is right
   private WPI_TalonSRX ladderTalonA = null;
@@ -263,8 +262,6 @@ public class LadderS extends Subsystem {
         return "3";
       case LEVEL_CARGO_INTAKE:
         return "4";
-      case LEVEL_ROCKET_CARGO_VISION:
-        return "5";
       case LEVEL_BOTTOM:
         return "6";
       default:
