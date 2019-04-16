@@ -59,8 +59,6 @@ public class Robot extends TimedRobot {
     m_hatchMechDrawerS = new HatchMechDrawerS();
     m_hatchMechWheelsS = new HatchMechWheelsS();
 
-    m_oi = new OI();
-
     //Ladder commands
     m_ladderHomeC = new LadderHomeC();
     m_ladderMoveUpPIDC = new LadderMoveUpPIDC();
@@ -75,6 +73,8 @@ public class Robot extends TimedRobot {
     m_cargoScoreC = new CargoScoreC();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
+
+    m_oi = new OI();
   }
 
   public void robotPeriodic() {
