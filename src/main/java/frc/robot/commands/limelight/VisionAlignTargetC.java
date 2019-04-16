@@ -72,6 +72,7 @@ public class VisionAlignTargetC extends Command {
   protected void initialize() {
     //To interrupt this command, use the toggle feature
     this.setInterruptible(false); //Prevents drivebase from overriding this command.
+    firstLoop = true;
   }
 
   @Override
