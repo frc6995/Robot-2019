@@ -107,3 +107,20 @@ Install the FRC Update Suite from National Instruments which will allow you to c
 	You will need a utility to program the FRC radio on the robot. This is only needed when we first install a new 
 	radio or when we come home from competition. Everyone should have this utility available on their computer for 
 	support purposes. https://wpilib.screenstepslive.com/s/4485/m/13503/l/144986-programming-your-radio-for-home-use
+	
+	
+## 6. Checking for Updates throughout the Season
+	Be sure to check for updates on software/firmware throughout the season.
+	
+	1. WPILib Library updates - Within Visual Studio Code open the WPILib Command Palette (the W at the top right) then 
+	choose WPILib: Check for WPILib Updates.
+	
+	2. FRC Update Suite - Be sure you have the most recent version of the FRC Update Suite.
+	https://wpilib.screenstepslive.com/s/currentCS/m/java/l/1027504-installing-the-frc-update-suite-all-languages
+	
+	3. CTRE Phoenix Library - Download and install the latest version of the CTRE Phoenix Framework Installer (link below). 
+	Be sure to install the Phoenix Tuner along with roboRIO-FRC-C++/Java (Phoenix Library).
+	http://www.ctr-electronics.com/hro.html#product_tabs_technical_resources
+	
+	4. Limelight - Download the latest firmware for the Limelight (link below).
+	https://limelightvision.io/pages/downloads
