@@ -30,7 +30,6 @@ public class LadderMoveUpPIDC extends Command {
     //This command should not be interrupted. We could always use a 
     //toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptable.
     this.setInterruptible(false);
-    setTimeout(10.0);
   }
 
   @Override
@@ -46,7 +45,7 @@ public class LadderMoveUpPIDC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return Robot.m_ladderS.isAtSetPoint() || isTimedOut();
+    return Robot.m_ladderS.isAtSetPoint();
   }
 
   @Override

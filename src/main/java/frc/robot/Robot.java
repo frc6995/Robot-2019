@@ -95,7 +95,9 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    //Force the correct camera mode
     m_visionSetDriverCamC.start();
+    //Home the ladder
     m_ladderHomeC.start();
   }
 
@@ -108,8 +110,6 @@ public class Robot extends TimedRobot {
   public void teleopInit() {
     //Force the correct camera mode
     m_visionSetDriverCamC.start();
-    //Home the ladder
-    m_ladderHomeC.start();
   }
 
   @Override

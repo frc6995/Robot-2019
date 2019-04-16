@@ -12,7 +12,6 @@ public class LadderHoldPIDC extends Command {
     requires(Robot.m_ladderS);
     
     this.setInterruptible(true);
-    setTimeout(10.0);
   }
 
   @Override
@@ -28,7 +27,7 @@ public class LadderHoldPIDC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return isTimedOut();
+    return false;
   }
 
   @Override

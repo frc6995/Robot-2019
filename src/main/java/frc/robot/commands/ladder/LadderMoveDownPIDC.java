@@ -11,7 +11,6 @@ public class LadderMoveDownPIDC extends Command {
     requires(Robot.m_ladderS);
     this.setInterruptible(false);
     this.bufferLevel = RobotMap.LADDER_LEVEL_CUSHION;
-    setTimeout(5.0);
   }
 
   @Override
@@ -38,7 +37,7 @@ public class LadderMoveDownPIDC extends Command {
 
   @Override
   protected boolean isFinished() {
-    return (Robot.m_ladderS.getLadderEncoderCount() < bufferLevel) || isTimedOut(); //Perhaps let it run past the buffer level a bit
+    return (Robot.m_ladderS.getLadderEncoderCount() < bufferLevel); //Perhaps let it run past the buffer level a bit
   }
 
   @Override

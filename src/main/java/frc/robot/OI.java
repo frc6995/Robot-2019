@@ -48,9 +48,5 @@ public class OI {
         buttonBoard.left_middle_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.left_ring_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
         buttonBoard.left_bottom_runOnPress(new HatchIntakeCG());
-
-        //SmartDashboard
-        SmartDashboard.putData("Hatch Intake", new HatchRunWheelsForTimeC(0.5,1));
-        SmartDashboard.putData("Hatch Output", new HatchRunWheelsForTimeC(-0.5,1));
     }
 }
