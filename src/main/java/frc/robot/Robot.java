@@ -8,6 +8,7 @@ import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.cargo.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
+import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
 import frc.robot.subsystems.*;
 
@@ -39,6 +40,7 @@ public class Robot extends TimedRobot {
   public static Command m_cargoScoreC;
   public static Command m_cargoIntakeC;
   public static Command m_hatchDrawerToggleC;
+  public static Command m_hatchIntakeCG;
   //Limelight
   public static Command m_visionSetDriverCamC;
 
@@ -67,6 +69,7 @@ public class Robot extends TimedRobot {
     m_hatchScoreCG = new HatchScoreCG();
     m_cargoScoreC = new CargoScoreC();
     m_hatchDrawerToggleC = new HatchDrawerToggleC();
+    m_hatchIntakeCG = new HatchIntakeCG();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
 

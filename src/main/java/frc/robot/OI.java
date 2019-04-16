@@ -42,12 +42,12 @@ public class OI {
         buttonBoard.right_index_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE));
         buttonBoard.right_middle_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.right_ring_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
-        buttonBoard.right_bottom_runOnPress(new CargoIntakeC());
+        buttonBoard.right_bottom_runOnPress(Robot.m_cargoIntakeC);
 
         buttonBoard.left_top_runOnPress(new HatchRunWheelsForTimeC(1,2)); //Intake
         buttonBoard.left_index_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_ONE));
         buttonBoard.left_middle_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.left_ring_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
-        buttonBoard.left_bottom_runOnPress(new HatchIntakeCG());
+        buttonBoard.left_bottom_runOnPress(Robot.m_hatchIntakeCG);
     }
 }
