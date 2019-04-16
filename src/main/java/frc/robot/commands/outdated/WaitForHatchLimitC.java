@@ -1,11 +1,14 @@
-package frc.robot.commands.outdated.climb_backup;
+package frc.robot.commands.outdated;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class ClimbFrontRetractC extends Command {
-  public ClimbFrontRetractC() {
-    requires(Robot.m_ClimbFrontS);
+public class WaitForHatchLimitC extends Command {
+  private boolean value;
+
+  public WaitForHatchLimitC(boolean value) {
+    this.setTimeout(4.0); //Sets a 4 second timeout
+    this.value = value;
   }
 
   @Override
@@ -14,13 +17,11 @@ public class ClimbFrontRetractC extends Command {
 
   @Override
   protected void execute() {
-    System.out.println("ClimbFrontRetractC");
-    Robot.m_ClimbFrontS.retractFront();
   }
 
   @Override
   protected boolean isFinished() {
-    return true;
+    return isTimedOut() || (Robot.m_hatchMechWheelsS.getHatchLimit() == value);
   }
 
   @Override

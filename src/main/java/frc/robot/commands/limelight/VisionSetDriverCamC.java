@@ -25,7 +25,6 @@ public class VisionSetDriverCamC extends Command {
     //Force the pipeline to be the driver cam and the leds to be off
     pipelineEntry.setDouble(RobotMap.PIPELINE_DRIVER_CAM);
     ledMode.setDouble(0);
-
   }
 
   @Override

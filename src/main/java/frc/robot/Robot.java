@@ -1,16 +1,14 @@
 package frc.robot;
 
-import edu.wpi.cscore.HttpCamera;
-import edu.wpi.cscore.VideoSource;
-import edu.wpi.cscore.HttpCamera.HttpCameraKind;
-import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.subsystems.DrivebaseS;
-import frc.robot.commands.cargo.CargoShooterC;
-import frc.robot.commands.hatch.HatchMechCG;
+import frc.robot.commands.HatchScoreCG;
+import frc.robot.commands.cargo.CargoIntakeC;
+import frc.robot.commands.cargo.CargoScoreC;
+import frc.robot.commands.hatch.HatchDrawerDeployC;
+import frc.robot.commands.hatch.HatchDrawerRetractC;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
@@ -27,84 +25,67 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
+  //Subsystems
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
-  public static HatchMechS m_hatchMechS;
-  public static ClimbFrontS m_ClimbFrontS;
-  public static ClimbRearS m_ClimbRearS;
-  public static ClimbCrawlerS m_ClimbCrawlerS;
   public static CargoShooterS m_CargoShooterS;
+  public static HatchMechDrawerS m_hatchMechDrawerS;
+  public static HatchMechWheelsS m_hatchMechWheelsS;
 
   public static OI m_oi;
-  public Command m_ladderHomeC;
-  public Command m_ladderManualMoveC;
-  public Command m_ladderDisplayStatusC;
 
+  //Ladder commands
+  public static Command m_ladderHomeC;
+  public static Command m_ladderDisplayStatusC;
   public static Command m_ladderMoveUpPIDC;
   public static Command m_ladderMoveDownPIDC;
   public static Command m_ladderHoldPIDC;
-  public static Command m_hatchMechCG;
-  public static Command m_cargoShooterC;
-
-  public Command m_visionSetDriverCamC;
-
-  //public UsbCamera usbCam = CameraServer.getInstance().startAutomaticCapture();
+  //Hatch/Cargo commands
+  public static Command m_hatchDrawerDeployC;
+  public static Command m_hatchDrawerRetractC;
+  public static Command m_hatchScoreCG;
+  public static Command m_cargoScoreC;
+  public static Command m_cargoIntakeC;
+  //Limelight
+  public static Command m_visionSetDriverCamC;
 
 
   @Override
   public void robotInit() {
-    // Instantiate Subsystems Here
+    // Subsystems
     m_drivebaseS = new DrivebaseS();
     m_ladderS = new LadderS();
-    m_hatchMechS = new HatchMechS();
-    m_ClimbFrontS = new ClimbFrontS();
-    m_ClimbRearS = new ClimbRearS();
-    m_ClimbCrawlerS = new ClimbCrawlerS();
     m_CargoShooterS = new CargoShooterS();
+    m_hatchMechDrawerS = new HatchMechDrawerS();
+    m_hatchMechWheelsS = new HatchMechWheelsS();
 
     m_oi = new OI();
 
+    //Ladder commands
     m_ladderHomeC = new LadderHomeC();
-  
-    //m_ladderManualMoveC = new LadderManualMoveC();
-    //m_ladderSetLevelC = new LadderSetLevelC(nextLevel);
     m_ladderMoveUpPIDC = new LadderMoveUpPIDC();
     m_ladderMoveDownPIDC = new LadderMoveDownPIDC();
     m_ladderHoldPIDC = new LadderHoldPIDC();
-    m_hatchMechCG = new HatchMechCG();
-    m_cargoShooterC = new CargoShooterC();
-
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
+    //Cargo/Hatch commands
+    m_hatchDrawerDeployC = new HatchDrawerDeployC();
+    m_hatchDrawerRetractC = new HatchDrawerRetractC();
+    m_cargoIntakeC = new CargoIntakeC();
+    m_hatchScoreCG = new HatchScoreCG();
+    m_cargoScoreC = new CargoScoreC();
+    //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
-
-    //Limelight setup to use camera
-    CameraServer cs = CameraServer.getInstance();
-
-    //usbCam.setResolution(320, 240);
-    //cs.startAutomaticCapture(usbCam);
-
-    HttpCamera limelight = new HttpCamera("limelightStream", "http://10.69.95.11:5800", HttpCameraKind.kMJPGStreamer);
-    limelight.setConnectionStrategy(VideoSource.ConnectionStrategy.kKeepOpen);
-    cs.startAutomaticCapture(limelight);
-
-    //Helpful for debugging; shows all running commands and what command is using subsystem
-    SmartDashboard.putData(Scheduler.getInstance());
-    SmartDashboard.putData(m_drivebaseS);
-    SmartDashboard.putData(m_ladderS);
-    SmartDashboard.putData(m_hatchMechS);
-    SmartDashboard.putData(m_CargoShooterS);
-    SmartDashboard.putData(m_visionSetDriverCamC);
-    SmartDashboard.putData("Run CargoShooterC", new CargoShooterC());
   }
 
   public void robotPeriodic() {
+    //Driver feedback
     m_ladderDisplayStatusC.start();
-    m_ladderManualMoveC.start();
+    SmartDashboard.putBoolean("Has Cargo", Robot.m_CargoShooterS.getCargoLimit());
+    SmartDashboard.putBoolean("Has Hatch", Robot.m_hatchMechWheelsS.getHatchLimit());
   }
 
   @Override
   public void disabledInit() {
-    SmartDashboard.putBoolean("Cargo Limit Switch", Robot.m_CargoShooterS.getCargoLimit());
   }
 
   @Override
@@ -114,28 +95,28 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    //Force the correct camera mode
     m_visionSetDriverCamC.start();
+    //Home the ladder
     m_ladderHomeC.start();
   }
 
   @Override
   public void autonomousPeriodic() {
-    SmartDashboard.putBoolean("Cargo Limit Switch", Robot.m_CargoShooterS.getCargoLimit());
     Scheduler.getInstance().run();
   }
 
   @Override
   public void teleopInit() {
-    //m_setCameraModeC.start();
-    m_ladderHomeC.start();
+    //Force the correct camera mode
+    m_visionSetDriverCamC.start();
   }
 
   @Override
   public void teleopPeriodic() {
-    SmartDashboard.putBoolean("Cargo Limit Switch", Robot.m_CargoShooterS.getCargoLimit());
     Scheduler.getInstance().run();
   }
-  
+
   @Override
   public void testPeriodic() {
   }

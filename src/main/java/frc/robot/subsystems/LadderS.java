@@ -13,15 +13,13 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class LadderS extends Subsystem {
   //Enumerate various ladder levels.
   public enum LadderLevel {
-    LEVEL_ONE, LEVEL_VISION, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_ROCKET_CARGO_VISION,
-    LEVEL_BOTTOM;
+    LEVEL_ONE, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_BOTTOM;
   }
   // TalonA is left and has the encoder plugged into it, TalonB is right
   private WPI_TalonSRX ladderTalonA = null;
   private WPI_TalonSRX ladderTalonB = null;
 
   private DigitalInput ladderBottomLimitSwitch;
-  private DigitalInput ladderTopLimitSwitch;
 
   private LadderLevel currentLadderLevel = LadderLevel.LEVEL_ONE;
   private LadderLevel nextLadderLevel = LadderLevel.LEVEL_ONE;
@@ -35,7 +33,8 @@ public class LadderS extends Subsystem {
   // PID "constants"
   private boolean ladderPIDActive = true;
   // Proportional constant
-  private double ladderKp = 0.45;  //May need to decrease if ladder is lighter
+  private double ladderKp = 0.45; //Up
+  private double ladderDownKp = 0.2;  //Down
   // Integral constant
   private double ladderKi = 0.002;
   // Derivative constant
@@ -86,7 +85,7 @@ public class LadderS extends Subsystem {
 
     // Makes it so we don't start pushing the ladder at full power immediately,
     // takes 0.5 seconds to ramp to full
-    ladderTalonA.configClosedloopRamp(0.25);
+    ladderTalonA.configClosedloopRamp(0.5);
 
     // Sets the max power that the PID can apply
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, 0.4);
@@ -94,6 +93,7 @@ public class LadderS extends Subsystem {
     // Selects the PID profile slot
     ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
 
+    //Limit switch
     ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
 
     // Overides any other commands and makes sure the ladder is not moving
@@ -105,8 +105,17 @@ public class LadderS extends Subsystem {
     ladderTalonA.set(ControlMode.PercentOutput, power);
   }
 
+  //Sets the max power the PID can apply
   public void setMaxPIDPower(double power){
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, power);
+  }
+
+  //For using a less agressive Kp on the way down
+  public void useUpKp(){
+    ladderTalonA.config_kP(LADDER_PID_SLOT, ladderKp);
+  }
+  public void useDownKp(){
+    ladderTalonA.config_kP(LADDER_PID_SLOT, ladderDownKp);
   }
 
   public double getLadderEncoderCount() {
@@ -130,17 +139,19 @@ public class LadderS extends Subsystem {
   }
 
   public void runPID() {
+    ladderPIDActive = true;
+
     // Tuning/testing outputs
-    SmartDashboard.putNumber("Encoder pos", ladderTalonA.getSensorCollection().getQuadraturePosition());
-    SmartDashboard.putNumber("Error", getError());
-    SmartDashboard.putBoolean("IsAtSetPoint", isAtSetPoint());
-    SmartDashboard.putNumber("Power", ladderTalonA.getMotorOutputPercent());
-    SmartDashboard.putNumber("Talon Set point", ladderTalonA.getClosedLoopTarget());
-    SmartDashboard.putNumber("Code Set point", getLadderSetPointEncoderCount());
-    SmartDashboard.putString("Next ladder level", LadderLevelToString(nextLadderLevel));
-    SmartDashboard.putNumber("Integral sum", ladderTalonA.getIntegralAccumulator());
-    SmartDashboard.putNumber("Derivative", ladderTalonA.getErrorDerivative());
-    SmartDashboard.putString("Ladder level",LadderLevelToString(getNextLadderLevel()));
+    //SmartDashboard.putNumber("Encoder pos", ladderTalonA.getSensorCollection().getQuadraturePosition());
+    //SmartDashboard.putNumber("Error", getError());
+    //SmartDashboard.putBoolean("IsAtSetPoint", isAtSetPoint());
+    //SmartDashboard.putNumber("Power", ladderTalonA.getMotorOutputPercent());
+    //SmartDashboard.putNumber("Talon Set point", ladderTalonA.getClosedLoopTarget());
+    //SmartDashboard.putNumber("Code Set point", getLadderSetPointEncoderCount());
+    //SmartDashboard.putString("Next ladder level", LadderLevelToString(nextLadderLevel));
+    //SmartDashboard.putNumber("Integral sum", ladderTalonA.getIntegralAccumulator());
+    //SmartDashboard.putNumber("Derivative", ladderTalonA.getErrorDerivative());
+    //SmartDashboard.putString("Ladder level",LadderLevelToString(getNextLadderLevel()));
 
     ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
 
@@ -177,7 +188,7 @@ public class LadderS extends Subsystem {
   }
 
   public boolean isAtSetPoint() {
-    // If we have been within our range for at least 50 cycles (1 second), return true
+    //If we have been within our set point range for the given time, return true
     if (countWithinSetPoint > 15) {
       currentLadderLevel = nextLadderLevel;
       countWithinSetPoint = 0;
@@ -196,7 +207,7 @@ public class LadderS extends Subsystem {
   }
 
   public int getLadderSetPointEncoderCount(){
-    SmartDashboard.putBoolean("Below Cushion", (getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION));
+    //SmartDashboard.putBoolean("Below Cushion", (getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION));
     if(getNextLadderLevel() == LadderLevel.LEVEL_ONE){
       if (getLadderEncoderCount() < RobotMap.LADDER_LEVEL_CUSHION) {
         return RobotMap.LADDER_LEVEL_ONE;
@@ -204,19 +215,16 @@ public class LadderS extends Subsystem {
       else
         return RobotMap.LADDER_LEVEL_CUSHION; 
     }
-    else if (getNextLadderLevel() == LadderLevel.LEVEL_VISION) {
-      return RobotMap.LADDER_LEVEL_VISION;
-    }
     else if (getNextLadderLevel() == LadderLevel.LEVEL_TWO) {
       return RobotMap.LADDER_LEVEL_TWO;
     }
     else if (getNextLadderLevel() == LadderLevel.LEVEL_THREE) {
       return RobotMap.LADDER_LEVEL_THREE;
-    }else if(getNextLadderLevel() == LadderLevel.LEVEL_CARGO_INTAKE){
+    }
+    else if(getNextLadderLevel() == LadderLevel.LEVEL_CARGO_INTAKE){
       return RobotMap.LADDER_LEVEL_CARGO_INTAKE;
-    }else if(getNextLadderLevel() == LadderLevel.LEVEL_ROCKET_CARGO_VISION){
-      return RobotMap.LADDER_LEVEL_ROCKET_CARGO_VISION;
-    } else if(getNextLadderLevel() == LadderLevel.LEVEL_BOTTOM) {
+    }
+    else if(getNextLadderLevel() == LadderLevel.LEVEL_BOTTOM) {
       return 0;
     } 
     else {
@@ -237,10 +245,6 @@ public class LadderS extends Subsystem {
     return ladderBottomLimitSwitch.get();
   }
 
-  public boolean upperLimitSwitchPressed() {
-    return ladderTopLimitSwitch.get();
-  }
-
   public void resetEncoder() {
     ladderTalonA.getSensorCollection().setQuadraturePosition(3, 500);
     ladderTalonA.setSelectedSensorPosition(0);
@@ -250,8 +254,6 @@ public class LadderS extends Subsystem {
     switch(level) {
       case LEVEL_ONE:
         return "1";
-      case LEVEL_VISION:
-        return "Vision";
       case LEVEL_CUSHION:
         return "Cushion";
       case LEVEL_TWO:
@@ -260,8 +262,6 @@ public class LadderS extends Subsystem {
         return "3";
       case LEVEL_CARGO_INTAKE:
         return "4";
-      case LEVEL_ROCKET_CARGO_VISION:
-        return "5";
       case LEVEL_BOTTOM:
         return "6";
       default:

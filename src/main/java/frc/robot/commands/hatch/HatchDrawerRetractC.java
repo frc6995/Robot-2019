@@ -1,11 +1,11 @@
 package frc.robot.commands.hatch;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.InstantCommand;
 import frc.robot.Robot;
 
-public class HatchMechRetractC extends Command {
-  public HatchMechRetractC() {
-    requires(Robot.m_hatchMechS);
+public class HatchDrawerRetractC extends InstantCommand {
+  public HatchDrawerRetractC() {
+    requires(Robot.m_hatchMechDrawerS);
   }
 
   @Override
@@ -14,10 +14,9 @@ public class HatchMechRetractC extends Command {
 
   @Override
   protected void execute() {
-    //System.out.println("Hatch Retract running");
-    Robot.m_hatchMechS.retract();
+    Robot.m_hatchMechDrawerS.retract();
   }
-
+  
   @Override
   protected boolean isFinished() {
     return true;
@@ -29,5 +28,6 @@ public class HatchMechRetractC extends Command {
 
   @Override
   protected void interrupted() {
+    end();
   }
 }

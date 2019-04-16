@@ -30,8 +30,6 @@ public class DrivebaseS extends Subsystem {
   }
 
   public DrivebaseS() {
-
-    SmartDashboard.putNumber("Amp Limit", drivebaseAmpLimit);
     drivebaseAmpLimit = (int) SmartDashboard.getNumber("Amp Limit", 20);
 
     driveLeftFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT);

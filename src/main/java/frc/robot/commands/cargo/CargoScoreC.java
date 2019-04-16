@@ -3,8 +3,10 @@ package frc.robot.commands.cargo;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class CargoShooterC extends Command {
-  public CargoShooterC() {
+public class CargoScoreC extends Command {
+  private double shootSpeed = 1.0;
+
+  public CargoScoreC() {
     requires(Robot.m_CargoShooterS);
   }
 
@@ -15,20 +17,17 @@ public class CargoShooterC extends Command {
 
   @Override
   protected void execute() {
-    System.out.println("Cargo Shoot running");
-    Robot.m_CargoShooterS.setSpeed(-1);
+    Robot.m_CargoShooterS.setSpeed(shootSpeed);
   }
 
   @Override
   protected boolean isFinished() {
     return isTimedOut();
-    //Use command time out value to stop command
-    //return false;
   }
 
   @Override
   protected void end() {
-    Robot.m_CargoShooterS.setSpeed(0);
+    Robot.m_CargoShooterS.setSpeed(0.0);
   }
 
   @Override

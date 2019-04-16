@@ -72,6 +72,7 @@ public class VisionAlignTargetC extends Command {
   protected void initialize() {
     //To interrupt this command, use the toggle feature
     this.setInterruptible(false); //Prevents drivebase from overriding this command.
+    firstLoop = true;
   }
 
   @Override
@@ -88,7 +89,7 @@ public class VisionAlignTargetC extends Command {
       firstLoop = false;
     }
 
-    //Sets the pipeline depending if we are aligning with Cargo on Rocket ship (target is higher) 
+    //Sets the pipeline depending if we are aligning with Cargo on Rocket ship (target is higher)
     //or with Cargo Ship, Hatch on Rocket, or Hatch/Cargo at intake.
     if(rocketCargo){
       pipelineEntry.setDouble(RobotMap.PIPELINE_UPPER_TARGET); //Rocket cargo
@@ -107,19 +108,19 @@ public class VisionAlignTargetC extends Command {
     SmartDashboard.putNumber("Vision Distance error", heading_error);
     SmartDashboard.putNumber("RampTimer", rampTimer.get());
 
-    //Pull control constants from smartdashboard.
-    KpAim = SmartDashboard.getNumber("kpAim", KpAim); 
+    //Pull control constants from smartdashboard. COMMENT WHEN WE ARE DONE TESTING
+    KpAim = SmartDashboard.getNumber("kpAim", KpAim);
     KpDistance = SmartDashboard.getNumber("kpDistance", KpDistance);
     max_power = SmartDashboard.getNumber("max_power", max_power);
     xRange = SmartDashboard.getNumber("xRange", xRange);
     yRange = SmartDashboard.getNumber("yRange", yRange);
     waitInRange = SmartDashboard.getNumber("waitInRange", waitInRange);
 
-    double heading_error = -tx; 
+    double heading_error = -tx;
     double distance_error = -ty;
 
     //Basic proportional control
-    steering_adjust = heading_error * KpAim; 
+    steering_adjust = heading_error * KpAim;
     distance_adjust = KpDistance * distance_error;
 
     //Ramps our PID to full over the period of ramp time
@@ -142,8 +143,8 @@ public class VisionAlignTargetC extends Command {
       sumInRange+=1;
     } else {
       sumInRange = 0;
-    } 
-    
+    }
+
     //If we are aligned, end the command
     if (sumInRange>waitInRange){
       sumInRange = 0;
@@ -161,7 +162,7 @@ public class VisionAlignTargetC extends Command {
     pipelineEntry.setDouble(RobotMap.PIPELINE_DRIVER_CAM);
     ledMode.setDouble(0);
     Robot.m_oi.xbox.setRumble(0);
-  } 
+  }
 
   @Override
   protected void interrupted() {
