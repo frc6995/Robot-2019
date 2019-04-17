@@ -34,6 +34,7 @@ public class OI {
         //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
         xbox.x_runWhileHeld(new VisionAlignAndDriveCG(false)); //Hatch + CargoShip
         xbox.a_runWhileHeld(new VisionAlignAndDriveCG(true)); //Rocket cargo
+        xbox.b_runWhileHeld(new LadderManualMoveC());
 
         //Button Board Assignments (ASSIGN COMMANDS TO BUTTONS)
         buttonBoard.right_top_runOnPress(Robot.m_hatchDrawerToggleC);
