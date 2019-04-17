@@ -27,4 +27,14 @@ public class LadderLevelCargoScoreCG extends CommandGroup {
     addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CUSHION));
     addSequential(Robot.m_ladderMoveDownPIDC);
   }
+
+  @Override
+  protected void end() {
+    System.out.println("LadderLevelCargoScoreCG Ended");
+  }
+
+  @Override
+  protected void interrupted() {
+    System.out.println("LadderLevelCargoScoreCG Interrupted");
+  }
 }

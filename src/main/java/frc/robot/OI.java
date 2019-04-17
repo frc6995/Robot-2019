@@ -6,12 +6,11 @@ import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.limelight.*;
-import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.LadderLevelCargoScoreCG;
 import frc.robot.commands.LadderLevelHatchScoreCG;
-import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
+import frc.robot.Robot;
 
 public class OI {
     public final Xbox xbox = new Xbox(RobotMap.OI_XBOX);
@@ -37,16 +36,16 @@ public class OI {
         xbox.a_runWhileHeld(new VisionAlignAndDriveCG(true)); //Rocket cargo
 
         //Button Board Assignments (ASSIGN COMMANDS TO BUTTONS)
-        buttonBoard.right_top_runOnPress(new HatchDrawerToggleC());
-        buttonBoard.right_index_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.right_middle_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
-        buttonBoard.right_ring_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
-        buttonBoard.right_bottom_runOnPress(new CargoIntakeC());
+        buttonBoard.right_top_runOnPress(Robot.m_hatchDrawerToggleC);
+        buttonBoard.right_index_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE));
+        buttonBoard.right_middle_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
+        buttonBoard.right_ring_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
+        buttonBoard.right_bottom_runOnPress(Robot.m_cargoIntakeC);
 
         buttonBoard.left_top_runOnPress(new HatchRunWheelsForTimeC(1,2)); //Intake
-        buttonBoard.left_index_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.left_middle_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
-        buttonBoard.left_ring_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
-        buttonBoard.left_bottom_runOnPress(new HatchIntakeCG());
+        buttonBoard.left_index_toggleOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_ONE));
+        buttonBoard.left_middle_toggleOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
+        buttonBoard.left_ring_toggleOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
+        buttonBoard.left_bottom_runOnPress(Robot.m_hatchIntakeCG);
     }
 }

@@ -10,6 +10,8 @@ public class LadderHomeC extends Command {
   public boolean finished;
   private int i;
   private int j;
+  private int timeup;
+  private int timedown;
   private boolean encodersReset;
   //private double originalEncoderCount;
   //originalEncoderCount is not used
@@ -23,6 +25,8 @@ public class LadderHomeC extends Command {
   protected void initialize() {
     encodersReset = false;
     finished = false;
+    timeup = 1; //In seconds
+    timedown = 4; //in seconds
     i = 0;
     j = 0;
     //originalEncoderCount = Robot.m_ladderS.getLadderEncoderCount();
@@ -32,9 +36,9 @@ public class LadderHomeC extends Command {
   protected void execute() {
     //Move ladder slightly up.
     SmartDashboard.putBoolean("Enc reset", encodersReset);
-    if (i < 50) {
+    if (i < timeup * 50) {
       i += 1;
-      Robot.m_ladderS.setLadderPower(0.2);
+      Robot.m_ladderS.setLadderPower(0.3);
       //if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount() && 
       //    Robot.m_ladderS.getLadderEncoderCount() != 0) {
       //  SmartDashboard.putString("Oops","Encoder values have not changed!!!");
@@ -43,11 +47,11 @@ public class LadderHomeC extends Command {
     } 
     else {
       j += 1;
-      if (Robot.m_ladderS.lowerLimitSwitchPressed() == false && j < 100) {
+      if (!Robot.m_ladderS.lowerLimitSwitchPressed() && j < (timedown * 50)) {
         Robot.m_ladderS.setLadderPower(-0.05);
         System.out.print("Bringing ladder down");
       } 
-      else if (j >= 100) {
+      else if (!Robot.m_ladderS.lowerLimitSwitchPressed() && j >= (timedown * 50)) {
         SmartDashboard.putString("Manually reset encoders", "Manually reset encoders");
         finished = true;
         }
