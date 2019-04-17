@@ -2,6 +2,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HatchScoreCG;
@@ -36,11 +37,11 @@ public class Robot extends TimedRobot {
   //Hatch/Cargo commands
   public static Command m_hatchDrawerDeployC;
   public static Command m_hatchDrawerRetractC;
-  public static Command m_hatchScoreCG;
   public static Command m_cargoScoreC;
   public static Command m_cargoIntakeC;
   public static Command m_hatchDrawerToggleC;
-  public static Command m_hatchIntakeCG;
+  public static CommandGroup m_hatchIntakeCG;
+  public static CommandGroup m_hatchScoreCG;
   //Limelight
   public static Command m_visionSetDriverCamC;
 
@@ -66,10 +67,10 @@ public class Robot extends TimedRobot {
     m_hatchDrawerDeployC = new HatchDrawerDeployC();
     m_hatchDrawerRetractC = new HatchDrawerRetractC();
     m_cargoIntakeC = new CargoIntakeC();
-    m_hatchScoreCG = new HatchScoreCG();
     m_cargoScoreC = new CargoScoreC();
     m_hatchDrawerToggleC = new HatchDrawerToggleC();
     m_hatchIntakeCG = new HatchIntakeCG();
+    m_hatchScoreCG = new HatchScoreCG();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
 

@@ -22,7 +22,7 @@ public class RobotMap {
   //public final static int PCM_ID_SOLENOID_HATCHMECH = 1;
   //public final static int PCM_ID_SOLENOID_CLIMBER_FRONT = 2;
   //public final static int PCM_ID_SOLENOID_CLIMBER_REAR = 3;
-  public final static int PCM_ID_SOLENOID_HATCHDRAWER = 0;
+  public final static int PCM_ID_SOLENOID_HATCHDRAWER = 1;
   //public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT_FORWARD = 2;
   //public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT_REVERSE = 3;
   //public final static int PCM_ID_DSOLENOID_CLIMBER_REAR_FORWARD = 4;

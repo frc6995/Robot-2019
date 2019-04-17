@@ -2,7 +2,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
-import frc.robot.Robot;
+import frc.robot.commands.hatch.HatchDrawerDeployC;
+import frc.robot.commands.hatch.HatchDrawerRetractC;
 import frc.robot.commands.hatch.HatchRunWheelsForTimeC;
 
 public class HatchScoreCG extends CommandGroup {
@@ -12,7 +13,7 @@ public class HatchScoreCG extends CommandGroup {
     addParallel(new HatchRunWheelsForTimeC(0.9,0.4));
 
     //Push the hatchMech out
-    addSequential(Robot.m_hatchDrawerDeployC);
+    addSequential(new HatchDrawerDeployC());
     
     //Wait for the hatchMech to push out
     addSequential(new WaitCommand(0.6));
@@ -28,6 +29,6 @@ public class HatchScoreCG extends CommandGroup {
 
     //  --RETRACT--
     //Pull the hatchMech in
-    addSequential(Robot.m_hatchDrawerRetractC);
+    addSequential(new HatchDrawerRetractC());
   }
 }
