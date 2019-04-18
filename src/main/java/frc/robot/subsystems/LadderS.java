@@ -70,16 +70,16 @@ public class LadderS extends Subsystem {
     ladderTalonA.configPeakCurrentDuration(0);
     ladderTalonA.enableCurrentLimit(true);
 
+    ladderTalonA.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+
+    ladderTalonA.configSelectedFeedbackCoefficient(1.0);
+
     // Sensor reverse
     ladderTalonA.setSensorPhase(false);
 
+    ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
+
     ladderTalonA.configAllowableClosedloopError(LADDER_PID_SLOT, 0);
-
-    // Selects the Quad encoder as the feedback sensor
-    ladderTalonA.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
-
-    // Makes sure we are not multiplying the encoder counts by anything
-    ladderTalonA.configSelectedFeedbackCoefficient(1.0);
 
     // Doesn't apply to voltage control
     ladderTalonA.configForwardSoftLimitThreshold(8000);  //Stops the ladder at the top
@@ -100,9 +100,6 @@ public class LadderS extends Subsystem {
 
     // Sets the max power that the PID can apply
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, 0.4);
-
-    // Selects the PID profile slot
-    ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
 
     //Limit switch
     ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
