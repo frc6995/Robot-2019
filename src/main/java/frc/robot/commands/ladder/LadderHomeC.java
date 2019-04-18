@@ -62,6 +62,9 @@ public class LadderHomeC extends Command {
         finished = true;
       }   
     }
+    System.out.println("i: " + i + ", j: " + j);
+    System.out.println("finished: " + finished);
+    System.out.println("encoderReset: " + encodersReset);
   }
 
   @Override
@@ -71,12 +74,9 @@ public class LadderHomeC extends Command {
 
   @Override
   protected void end() {
+    System.out.println(" -- RESETTING ENCODERS -- ");
     Robot.m_ladderS.resetEncoder();
     Robot.m_ladderS.setCurrentLadderLevel(LadderLevel.LEVEL_ONE);
-    encodersReset = false;
-    finished = false;
-    i = 0;
-    j = 0;
   }
 
   @Override
