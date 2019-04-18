@@ -72,7 +72,7 @@ public class LadderS extends Subsystem {
 
     // Doesn't apply to voltage control
     ladderTalonA.configForwardSoftLimitThreshold(8000);  //Stops the ladder at the top
-    ladderTalonA.configForwardSoftLimitEnable(true);
+    ladderTalonA.configForwardSoftLimitEnable(false);
 
     // Configs P, I, D and F using the constants
     ladderTalonA.config_kP(LADDER_PID_SLOT, ladderKp);
