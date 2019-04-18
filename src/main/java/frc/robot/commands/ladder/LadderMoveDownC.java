@@ -15,7 +15,7 @@ public class LadderMoveDownC extends Command {
     requires(Robot.m_ladderS);
     setInterruptible(false);
     bufferLevel = RobotMap.LADDER_LEVEL_CUSHION;
-    this.setTimeout(5);
+    this.setTimeout(10);
   }
 
   @Override
@@ -35,7 +35,7 @@ public class LadderMoveDownC extends Command {
   @Override
   protected boolean isFinished() {
     // When the ladder is at the bottom, or we time out
-    return (Robot.m_ladderS.getLadderEncoderCount() < 100) || isTimedOut();
+    return (Robot.m_ladderS.getLadderEncoderCount() < 1000) || isTimedOut();
   }
 
   @Override
