@@ -34,9 +34,8 @@ public class OI {
 
         SmartDashboard.putData("Ladder move up", new LadderMoveUpPIDC());
         SmartDashboard.putData("Ladder Hold PID", new LadderHoldPIDC());
-        SmartDashboard.putData("Ladder move down PID", new LadderMoveDownPIDC());
+        SmartDashboard.putData("Ladder move down", new LadderMoveDownC());
         SmartDashboard.putData("Ladder set level 2", new LadderSetLevelC(LadderLevel.LEVEL_TWO));
-
 
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 
