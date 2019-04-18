@@ -17,7 +17,7 @@ public class LadderS extends Subsystem {
   }
   // TalonA is left and has the encoder plugged into it, TalonB is right
   public WPI_TalonSRX ladderTalonA = null;
-  private WPI_TalonSRX ladderTalonB = null;
+  public WPI_TalonSRX ladderTalonB = null;
 
   private DigitalInput ladderBottomLimitSwitch;
 
@@ -33,14 +33,14 @@ public class LadderS extends Subsystem {
   // PID "constants"
   private boolean ladderPIDActive = true;
   // Proportional constant
-  private double ladderKp = 0.3; //Up
-  private double ladderDownKp = 0.2;  //Down
+  private double ladderKp = 0.65; //Up
+  private double ladderDownKp = 0.05;  //Down
   // Integral constant
-  private double ladderKi = 0.002;
+  private double ladderKi = 0.0008;
   // Derivative constant
   private double ladderKd = 10.0;
   // Feedforward = power needed to hold the ladder in a constant spot
-  private double ladderKf = 0.2;
+  private double ladderKf = 0;
 
   private int currentLimit = 20;
 
@@ -68,7 +68,7 @@ public class LadderS extends Subsystem {
 
     ladderTalonA.configContinuousCurrentLimit(currentLimit);
     ladderTalonA.configPeakCurrentDuration(0);
-    ladderTalonA.enableCurrentLimit(true);
+    ladderTalonA.enableCurrentLimit(false);
 
     ladderTalonA.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
 
@@ -96,7 +96,7 @@ public class LadderS extends Subsystem {
 
     // Makes it so we don't start pushing the ladder at full power immediately,
     // takes 0.5 seconds to ramp to full
-    ladderTalonA.configClosedloopRamp(1);
+    ladderTalonA.configClosedloopRamp(0.7);
 
     // Sets the max power that the PID can apply
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, 0.4);

@@ -9,13 +9,13 @@ public class LadderMoveDownC extends Command {
 
   // Adjust as needed
   private double movePower = -0.1;
-  private double slowPower = 0.1;
-  private int stopLevel = 300;
+  private double slowPower = 0.15;
+  private int stopLevel = 100;
 
   public LadderMoveDownC() {
     requires(Robot.m_ladderS);
     setInterruptible(true);
-    bufferLevel = RobotMap.LADDER_LEVEL_CUSHION;
+    bufferLevel = 1500;
     this.setTimeout(10);
   }
 

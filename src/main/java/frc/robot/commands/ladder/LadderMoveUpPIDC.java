@@ -50,7 +50,7 @@ public class LadderMoveUpPIDC extends Command {
 
   @Override
   protected void end() {
-    Robot.m_ladderS.disablePID();
+    //Robot.m_ladderS.disablePID();
   }
 
   @Override

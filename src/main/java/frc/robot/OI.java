@@ -55,7 +55,7 @@ public class OI {
         buttonBoard.right_index_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE));
         buttonBoard.right_middle_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.right_ring_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
-        buttonBoard.right_bottom_runOnPress(new CargoIntakeCG());
+        buttonBoard.right_bottom_toggleOnPress(new CargoIntakeCG());
 
         buttonBoard.left_top_runOnPress(new HatchRunWheelsForTimeC(1,2)); //Intake
         buttonBoard.left_index_toggleOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_ONE));

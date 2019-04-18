@@ -25,7 +25,7 @@ public class LadderHomeC extends Command {
   protected void initialize() {
     encodersReset = false;
     finished = false;
-    timeup = 0.5; //In seconds
+    timeup = 0.25; //In seconds
     timedown = 4; //in seconds
     i = 0;
     j = 0;
