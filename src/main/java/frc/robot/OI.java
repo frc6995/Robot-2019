@@ -1,7 +1,6 @@
 package frc.robot;
 
 import frc.robot.controllermap.BBoard;
-import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
