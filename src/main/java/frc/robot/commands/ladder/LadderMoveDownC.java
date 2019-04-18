@@ -9,7 +9,7 @@ public class LadderMoveDownC extends Command {
 
   public LadderMoveDownC() {
     requires(Robot.m_ladderS);
-    setInterruptible(true);
+    setInterruptible(false);
     bufferLevel = RobotMap.LADDER_LEVEL_CUSHION;
     this.setTimeout(5);
   }
@@ -37,9 +37,11 @@ public class LadderMoveDownC extends Command {
 
   @Override
   protected void end() {
+    Robot.m_ladderS.setLadderPower(0);
   }
 
   @Override
   protected void interrupted() {
+    end();
   }
 }

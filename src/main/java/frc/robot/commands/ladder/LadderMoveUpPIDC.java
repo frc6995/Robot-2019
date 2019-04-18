@@ -42,7 +42,6 @@ public class LadderMoveUpPIDC extends Command {
     Robot.m_ladderS.useUpKp();
     Robot.m_ladderS.setMaxPIDPower(0.7);
     Robot.m_ladderS.runPID();
-    SmartDashboard.putNumber("PID output", Robot.m_ladderS.ladderTalonA.getMotorOutputPercent());
   }
 
   @Override

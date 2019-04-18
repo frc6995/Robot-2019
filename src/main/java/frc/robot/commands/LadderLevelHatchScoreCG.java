@@ -2,7 +2,8 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.ladder.LadderHoldPIDC;
-import frc.robot.commands.ladder.LadderMoveDownPIDC;
+import frc.robot.commands.ladder.LadderMoveDownC;
+//import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
 import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.subsystems.LadderS.LadderLevel;
@@ -26,6 +27,6 @@ public class LadderLevelHatchScoreCG extends CommandGroup {
     // --LOWER--
     //Return to level 0
     addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CUSHION));
-    addSequential(new LadderMoveDownPIDC());
+    addSequential(new LadderMoveDownC());
   }
 }
