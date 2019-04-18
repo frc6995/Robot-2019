@@ -51,7 +51,7 @@ public class OI {
         xbox.b_runWhileHeld(new LadderManualMoveC());
 
         //Button Board Assignments (ASSIGN COMMANDS TO BUTTONS)
-        buttonBoard.right_top_runOnPress(Robot.m_hatchDrawerToggleC);
+        buttonBoard.right_top_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_CARGO_SHIP));
         buttonBoard.right_index_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE));
         buttonBoard.right_middle_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
         buttonBoard.right_ring_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
