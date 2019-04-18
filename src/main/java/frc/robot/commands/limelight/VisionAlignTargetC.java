@@ -56,6 +56,7 @@ public class VisionAlignTargetC extends Command {
 
   public VisionAlignTargetC(boolean rocketCargo) {
     requires(Robot.m_drivebaseS);
+    requires(Robot.m_limelight);
     pipelineEntry.setDouble(RobotMap.PIPELINE_DRIVER_CAM); //Normal camera
     ledMode.setDouble(0); //Leds off
 

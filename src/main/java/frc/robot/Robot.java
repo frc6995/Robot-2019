@@ -27,6 +27,7 @@ public class Robot extends TimedRobot {
   public static CargoShooterS m_CargoShooterS;
   public static HatchMechDrawerS m_hatchMechDrawerS;
   public static HatchMechWheelsS m_hatchMechWheelsS;
+  public static LimeLight m_limelight;
 
   //Ladder commands
   public static Command m_ladderHomeC;
@@ -56,6 +57,7 @@ public class Robot extends TimedRobot {
     m_CargoShooterS = new CargoShooterS();
     m_hatchMechDrawerS = new HatchMechDrawerS();
     m_hatchMechWheelsS = new HatchMechWheelsS();
+    m_limelight = new LimeLight();
 
     //Ladder commands
     m_ladderHomeC = new LadderHomeC();

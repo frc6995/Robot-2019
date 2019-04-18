@@ -26,7 +26,7 @@ public class LadderMoveUpPIDC extends Command {
   
   public LadderMoveUpPIDC() {
     requires(Robot.m_ladderS);
-
+    requires(Robot.m_limelight);
     //This command should not be interrupted. We could always use a 
     //toggleWhenPressed(LadderRunPIDC) to be able to cancel it without it being interruptable.
     this.setInterruptible(true);
