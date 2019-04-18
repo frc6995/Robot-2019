@@ -14,7 +14,7 @@ public class LadderMoveDownC extends Command {
 
   public LadderMoveDownC() {
     requires(Robot.m_ladderS);
-    setInterruptible(false);
+    setInterruptible(true);
     bufferLevel = RobotMap.LADDER_LEVEL_CUSHION;
     this.setTimeout(10);
   }

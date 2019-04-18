@@ -9,7 +9,7 @@ public class LadderMoveDownPIDC extends Command {
 
   public LadderMoveDownPIDC() {
     requires(Robot.m_ladderS);
-    this.setInterruptible(false);
+    this.setInterruptible(true);
     this.bufferLevel = RobotMap.LADDER_LEVEL_CUSHION;
   }
 
