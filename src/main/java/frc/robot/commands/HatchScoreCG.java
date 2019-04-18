@@ -10,7 +10,7 @@ public class HatchScoreCG extends CommandGroup {
   public HatchScoreCG(){
     //  --EXTEND--
     //Start wheels running in so we can "intake" hatch off the velcro
-    addParallel(new HatchRunWheelsForTimeC(0.9,0.4));
+    addParallel(new HatchRunWheelsForTimeC(-0.9,0.4));
 
     //Push the hatchMech out
     addSequential(new HatchDrawerDeployC());
@@ -21,7 +21,7 @@ public class HatchScoreCG extends CommandGroup {
 
     //  --EJECT--
     //Run wheels backwards to eject hatch
-    addParallel(new HatchRunWheelsForTimeC(-1,1.5));
+    addParallel(new HatchRunWheelsForTimeC(1,1.5));
     
     //Wait for the hatch to be pushed off
     addSequential(new WaitCommand(0.5));

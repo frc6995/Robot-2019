@@ -6,15 +6,19 @@ import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.limelight.*;
+import frc.robot.commands.HatchIntakeCG;
+import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.LadderLevelCargoScoreCG;
 import frc.robot.commands.LadderLevelHatchScoreCG;
+import frc.robot.commands.cargo.CargoIntakeC;
+import frc.robot.commands.cargo.CargoScoreC;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
 import frc.robot.Robot;
 
 public class OI {
     public final Xbox xbox = new Xbox(RobotMap.OI_XBOX);
-    public final JStick stick = new JStick(RobotMap.OI_JOYSTICK);
+    //public final JStick stick = new JStick(RobotMap.OI_JOYSTICK);
     public final BBoard buttonBoard = new BBoard(RobotMap.OI_BUTTONBOARD);
 
     public OI() {
@@ -23,6 +27,11 @@ public class OI {
         //SmartDashboard Commands for Emergency Use
         SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
+
+        SmartDashboard.putData("Hatch Intake", new HatchIntakeCG());
+        SmartDashboard.putData("Hatch Score", new HatchScoreCG());
+        SmartDashboard.putData("Cargo Intake", new CargoIntakeC());
+        SmartDashboard.putData("Cargo Score", new CargoScoreC());
 
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 
