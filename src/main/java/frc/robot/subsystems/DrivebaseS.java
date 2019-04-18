@@ -22,7 +22,7 @@ public class DrivebaseS extends Subsystem {
   
   private DifferentialDrive differentialDrive = null;
   
-  private int drivebaseAmpLimit = 40;
+  private int drivebaseAmpLimit = 20;
 
   @Override
   protected void initDefaultCommand() {

@@ -40,7 +40,9 @@ public class LadderS extends Subsystem {
   // Derivative constant
   private double ladderKd = 10.0;
   // Feedforward = power needed to hold the ladder in a constant spot
-  private double ladderKf = 0;
+  private double ladderKf = 0.2;
+
+  private int currentLimit = 20;
 
   // The talon PID slot we are using, this should not change
   public static final int LADDER_PID_SLOT = 0;
@@ -53,16 +55,25 @@ public class LadderS extends Subsystem {
     ladderTalonA = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_A);
     ladderTalonB = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_B);
 
+    ladderTalonA.configFactoryDefault();
+    ladderTalonB.configFactoryDefault();
+
+    ladderTalonB.follow(ladderTalonA);
+
+    ladderTalonA.setInverted(false);
+    ladderTalonB.setInverted(false);
+
     ladderTalonA.setNeutralMode(NeutralMode.Brake);
     ladderTalonB.setNeutralMode(NeutralMode.Brake);
+
+    ladderTalonA.configContinuousCurrentLimit(currentLimit);
+    ladderTalonA.configPeakCurrentDuration(0);
+    ladderTalonA.enableCurrentLimit(true);
 
     // Sensor reverse
     ladderTalonA.setSensorPhase(false);
 
     ladderTalonA.configAllowableClosedloopError(LADDER_PID_SLOT, 0);
-    
-    // B follows A
-    ladderTalonB.follow(ladderTalonA);
 
     // Selects the Quad encoder as the feedback sensor
     ladderTalonA.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
@@ -85,7 +96,7 @@ public class LadderS extends Subsystem {
 
     // Makes it so we don't start pushing the ladder at full power immediately,
     // takes 0.5 seconds to ramp to full
-    ladderTalonA.configClosedloopRamp(0.5);
+    ladderTalonA.configClosedloopRamp(1);
 
     // Sets the max power that the PID can apply
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, 0.4);
