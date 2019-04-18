@@ -69,11 +69,11 @@ public class DrivebaseS extends Subsystem {
 
     driveLeftFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveLeftFront.configPeakCurrentDuration(0);
-    driveLeftFront.enableCurrentLimit(true);
+    driveLeftFront.enableCurrentLimit(false);
 
     driveRightFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveRightFront.configPeakCurrentDuration(0);
-    driveRightFront.enableCurrentLimit(true);
+    driveRightFront.enableCurrentLimit(false);
 
     differentialDrive.setRightSideInverted(false);
   }
