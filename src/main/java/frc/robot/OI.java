@@ -32,6 +32,10 @@ public class OI {
         SmartDashboard.putData("Cargo Intake", new CargoIntakeC());
         SmartDashboard.putData("Cargo Score", new CargoScoreC());
 
+        SmartDashboard.putData("Ladder move up", new LadderMoveUpPIDC());
+        SmartDashboard.putData("Ladder set level 2", new LadderSetLevelC(LadderLevel.LEVEL_TWO));
+
+
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 
         //Xbox Assignments

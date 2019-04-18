@@ -1,6 +1,7 @@
 package frc.robot.commands.ladder;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
@@ -39,8 +40,9 @@ public class LadderMoveUpPIDC extends Command {
   @Override
   protected void execute() {
     Robot.m_ladderS.useUpKp();
-    Robot.m_ladderS.setMaxPIDPower(0.95);
+    Robot.m_ladderS.setMaxPIDPower(0.7);
     Robot.m_ladderS.runPID();
+    SmartDashboard.putNumber("PID output", Robot.m_ladderS.ladderTalonA.getMotorOutputPercent());
   }
 
   @Override

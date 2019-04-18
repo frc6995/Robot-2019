@@ -16,7 +16,7 @@ public class LadderS extends Subsystem {
     LEVEL_ONE, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_BOTTOM;
   }
   // TalonA is left and has the encoder plugged into it, TalonB is right
-  private WPI_TalonSRX ladderTalonA = null;
+  public WPI_TalonSRX ladderTalonA = null;
   private WPI_TalonSRX ladderTalonB = null;
 
   private DigitalInput ladderBottomLimitSwitch;

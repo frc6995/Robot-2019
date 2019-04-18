@@ -91,6 +91,7 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
   }
 
   @Override
