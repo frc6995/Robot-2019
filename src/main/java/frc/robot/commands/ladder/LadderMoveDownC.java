@@ -8,8 +8,9 @@ public class LadderMoveDownC extends Command {
   private int bufferLevel;
 
   // Adjust as needed
-  private double movePower = 0.0;
-  private double slowPower = 0.2;
+  private double movePower = -0.1;
+  private double slowPower = 0.1;
+  private int stopLevel = 300;
 
   public LadderMoveDownC() {
     requires(Robot.m_ladderS);
@@ -35,7 +36,7 @@ public class LadderMoveDownC extends Command {
   @Override
   protected boolean isFinished() {
     // When the ladder is at the bottom, or we time out
-    return (Robot.m_ladderS.getLadderEncoderCount() < 1000) || isTimedOut();
+    return (Robot.m_ladderS.getLadderEncoderCount() < stopLevel) || isTimedOut();
   }
 
   @Override

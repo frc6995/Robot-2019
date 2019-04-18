@@ -19,7 +19,7 @@ public class CargoShooterS extends Subsystem {
 
     //this may become a spark, in which case all this goes
     cargoShooterMotor.configContinuousCurrentLimit(40);
-    cargoShooterMotor.configPeakCurrentLimit(100);
+    cargoShooterMotor.configPeakCurrentLimit(80);
     cargoShooterMotor.enableCurrentLimit(true);
   }
 

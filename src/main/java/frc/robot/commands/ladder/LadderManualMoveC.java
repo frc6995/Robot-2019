@@ -15,7 +15,7 @@ public class LadderManualMoveC extends Command {
 
   @Override
   protected void execute() {
-      Robot.m_ladderS.setLadderPower(Robot.m_oi.xbox.left_stick_y());
+      Robot.m_ladderS.setLadderPower(-Robot.m_oi.xbox.left_stick_y());
   }
   @Override
   protected boolean isFinished() {

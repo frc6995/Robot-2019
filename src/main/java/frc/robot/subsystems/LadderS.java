@@ -133,6 +133,7 @@ public class LadderS extends Subsystem {
 
   public void disablePID() {
     ladderPIDActive = false;
+    countWithinSetPoint = 0;
     // Running a "set power" command will stop any active position control
     setLadderPower(0);
     ladderTalonA.neutralOutput();
