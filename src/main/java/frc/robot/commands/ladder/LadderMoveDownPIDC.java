@@ -24,26 +24,25 @@ public class LadderMoveDownPIDC extends Command {
 
   @Override
   protected void execute() {
-    Robot.m_ladderS.useDownKp(); //Should hopefully slow things down
-
-    if(Robot.m_ladderS.getLadderEncoderCount() < RobotMap.LADDER_LEVEL_TWO) {
-      Robot.m_ladderS.setMaxPIDPower(0.15);
+    //Robot.m_ladderS.useDownKp(); //Should hopefully slow things down
+    
+    if(Robot.m_ladderS.getLadderEncoderCount() < bufferLevel) {
+      Robot.m_ladderS.setLadderPower(0.2);
     } else {
-      Robot.m_ladderS.setMaxPIDPower(0.3);
+      Robot.m_ladderS.setLadderPower(0);
     }
 
-    Robot.m_ladderS.runPID();
+    //Robot.m_ladderS.runPID();
   }
 
   @Override
   protected boolean isFinished() {
-    return (Robot.m_ladderS.getLadderEncoderCount() < bufferLevel); //Perhaps let it run past the buffer level a bit
+    return (Robot.m_ladderS.getLadderEncoderCount() < bufferLevel-500); //Perhaps let it run past the buffer level a bit
   }
 
   @Override
   protected void end() {
     Robot.m_ladderS.disablePID();
-    
   }
   
 
