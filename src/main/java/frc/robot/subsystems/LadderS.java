@@ -33,7 +33,7 @@ public class LadderS extends Subsystem {
   // PID "constants"
   private boolean ladderPIDActive = true;
   // Proportional constant
-  private double ladderKp = 0.7; //Up
+  private double ladderKp = 0.8; //Up
   private double ladderDownKp = 0.05;  //Down
   // Integral constant
   private double ladderKi = 0.0008;
