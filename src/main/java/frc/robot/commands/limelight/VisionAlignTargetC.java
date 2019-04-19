@@ -25,7 +25,7 @@ public class VisionAlignTargetC extends Command {
   //CONSTANTS
   //Change these if the align method is going too fast or too slow (or is oscilating)
   double KpAim = -0.005f;
-  double KpDistance = -0.04f;
+  double KpDistance = -0.03f;
   double max_power = 0.4; //clamp
   double rampTime = 0.25; //seconds
 

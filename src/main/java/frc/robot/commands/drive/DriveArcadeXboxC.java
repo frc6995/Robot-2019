@@ -23,6 +23,9 @@ public class DriveArcadeXboxC extends Command {
     //forwardSpeed = -Robot.m_oi.xbox.left_trigger();
     //backwardSpeed = -Robot.m_oi.xbox.right_trigger();
     
+    //Robot.m_drivebaseS.rotThrot = Robot.m_drivebaseS.driveChooser.getSelected().rotThrotConst;
+    //SmartDashboard.putNumber("ConstThrot", Robot.m_drivebaseS.rotThrot);
+    
     moveSpeed = -Robot.m_oi.xbox.left_trigger() + Robot.m_oi.xbox.right_trigger();
     rotSpeed = Robot.m_oi.xbox.left_stick_x();
 

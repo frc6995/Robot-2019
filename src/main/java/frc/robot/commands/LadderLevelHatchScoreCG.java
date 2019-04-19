@@ -28,4 +28,14 @@ public class LadderLevelHatchScoreCG extends CommandGroup {
     //Return to level 0
     addSequential(new LadderMoveDownC());
   }
+
+  @Override
+  protected void end() {
+    System.out.println("LadderLevelCargoScoreCG Ended");
+  }
+
+  @Override
+  protected void interrupted() {
+    System.out.println("LadderLevelCargoScoreCG Interrupted");
+  }
 }
