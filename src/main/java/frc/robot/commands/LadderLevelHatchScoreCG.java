@@ -26,7 +26,6 @@ public class LadderLevelHatchScoreCG extends CommandGroup {
     
     // --LOWER--
     //Return to level 0
-    addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CUSHION));
     addSequential(new LadderMoveDownC());
   }
 }

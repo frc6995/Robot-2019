@@ -26,8 +26,8 @@ public class VisionAlignTargetC extends Command {
   //Change these if the align method is going too fast or too slow (or is oscilating)
   double KpAim = -0.005f;
   double KpDistance = -0.04f;
-  double max_power = 0.35; //clamp
-  double rampTime = 0.75; //seconds
+  double max_power = 0.4; //clamp
+  double rampTime = 0.25; //seconds
 
   //Change these if the align method is stopping too soon or not soon enough
   double xRange = 4; //degrees
@@ -74,7 +74,7 @@ public class VisionAlignTargetC extends Command {
   @Override
   protected void initialize() {
     //To interrupt this command, use the toggle feature
-    this.setInterruptible(false); //Prevents drivebase from overriding this command.
+    this.setInterruptible(true); //Prevents drivebase from overriding this command.
     firstLoop = true;
   }
 

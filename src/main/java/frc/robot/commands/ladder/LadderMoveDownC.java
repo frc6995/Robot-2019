@@ -7,15 +7,15 @@ public class LadderMoveDownC extends Command {
   private int bufferLevel;
 
   // Adjust as needed
-  private double movePower = -0.1;
-  private double slowPower = 0.15;
-  private int stopLevel = 100;
+  private double movePower = -0.12;
+  private double slowPower = 0.16;
+  private int stopLevel = 200;
 
   public LadderMoveDownC() {
     requires(Robot.m_ladderS);
     setInterruptible(true);
-    bufferLevel = 1500;
-    this.setTimeout(10);
+    bufferLevel = 1700;
+    this.setTimeout(3);
   }
 
   @Override

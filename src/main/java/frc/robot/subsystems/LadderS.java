@@ -25,7 +25,7 @@ public class LadderS extends Subsystem {
   private LadderLevel nextLadderLevel = LadderLevel.LEVEL_ONE;
 
   // Range in encoder counts where we consider ourselves "at" the set point
-  private int setPointRange = 200;
+  private int setPointRange = 250;
 
   // Counts how many loops we have been within the ladder set point
   private int countWithinSetPoint = 0;
@@ -33,10 +33,10 @@ public class LadderS extends Subsystem {
   // PID "constants"
   private boolean ladderPIDActive = true;
   // Proportional constant
-  private double ladderKp = 0.8; //Up
+  private double ladderKp = 0.75; //Up
   private double ladderDownKp = 0.05;  //Down
   // Integral constant
-  private double ladderKi = 0.0008;
+  private double ladderKi = 0.0009;
   // Derivative constant
   private double ladderKd = 10.0;
   // Feedforward = power needed to hold the ladder in a constant spot
