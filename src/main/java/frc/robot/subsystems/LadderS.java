@@ -268,4 +268,41 @@ public class LadderS extends Subsystem {
         return "Unknown. Illegal LadderLevel type.";
     }
   }
+
+  public void lowPowerModeOn(boolean drastic) {
+    ladderTalonA.configContinuousCurrentLimit(40);
+    ladderTalonB.configContinuousCurrentLimit(40);
+    ladderTalonA.enableCurrentLimit(true);
+    ladderTalonB.enableCurrentLimit(true);
+    if (drastic) {
+      ladderTalonA.configVoltageCompSaturation(6);
+      ladderTalonB.configVoltageCompSaturation(6);
+    }
+  }
+
+  public void lowPowerModeOn(boolean drastic, boolean insane) {
+    ladderTalonA.configContinuousCurrentLimit(40);
+    ladderTalonB.configContinuousCurrentLimit(40);
+    ladderTalonA.enableCurrentLimit(true);
+    ladderTalonB.enableCurrentLimit(true);
+    if (drastic) {
+      ladderTalonA.configVoltageCompSaturation(6);
+      ladderTalonB.configVoltageCompSaturation(6);
+    }
+    if (insane) {
+      //ladderTalonA.configVoltageCompSaturation(5);
+      //ladderTalonB.configVoltageCompSaturation(5);
+      ladderTalonA.disable();
+      ladderTalonB.disable();
+    }
+  }
+
+  public void lowPowerModeOff() {
+    ladderTalonA.enableCurrentLimit(false);
+    ladderTalonB.enableCurrentLimit(false);
+    ladderTalonA.configVoltageCompSaturation(12);
+    ladderTalonB.configVoltageCompSaturation(12);
+    ladderTalonA.set(ControlMode.PercentOutput, 0);
+    ladderTalonB.set(ControlMode.PercentOutput, 0);
+  }
 }

@@ -35,4 +35,14 @@ public class HatchMechWheelsS extends Subsystem {
     //also inversed so it can be wired the same as the cargo limit
     return !hatchMechLimit.get();
   }
+
+  public void lowPowerModeOn(boolean drastic, boolean insane) {
+    if (insane) {
+      hatchMechMotor.disable();
+    }
+  }
+
+  public void lowPowerModeOff() {
+    hatchMechMotor.set(0);
+  }
 }

@@ -90,4 +90,23 @@ public class DrivebaseS extends Subsystem {
     driveLeftFront.set(moveSpeed + rotateSpeed);
     driveRightFront.set(moveSpeed - rotateSpeed);
   }
+
+  public void lowPowerModeOn(boolean drastic) {
+    driveLeftFront.configPeakCurrentLimit(30);
+    driveLeftFront.configContinuousCurrentLimit(20);
+    driveRightFront.configPeakCurrentLimit(30);
+    driveRightFront.configContinuousCurrentLimit(20);
+
+    if (drastic) {
+      driveLeftFront.configVoltageCompSaturation(10);
+      driveRightFront.configVoltageCompSaturation(10);
+    }
+  }
+
+  public void lowPowerModeOff() {
+    driveLeftFront.configContinuousCurrentLimit(drivebaseAmpLimit);
+    driveRightFront.configContinuousCurrentLimit(drivebaseAmpLimit);
+    driveLeftFront.configVoltageCompSaturation(12);
+    driveRightFront.configVoltageCompSaturation(12);
+  }
 }

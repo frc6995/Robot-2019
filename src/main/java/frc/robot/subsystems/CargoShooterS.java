@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -34,5 +35,40 @@ public class CargoShooterS extends Subsystem {
   public boolean getCargoLimit() {
     //inverses the output of the limit swich, when it is pressed send false and when not pressed send true.
     return !cargoLimit.get();
+  }
+
+  public void lowPowerModeOn(boolean drastic) {
+    
+    cargoShooterMotor.configContinuousCurrentLimit(15);
+    cargoShooterMotor.configPeakCurrentLimit(25);
+    if (drastic) {
+      cargoShooterMotor.configVoltageCompSaturation(6);
+    }
+  }
+
+  /**
+   * begins current limiting with continuous at 15 and peak at 25.
+   * if drastic, cut the voltage down to only 6 volts.
+   * if insane, cut voltage to 2 volts, and disable motor.
+   * @param drastic
+   * @param insane
+   */
+  public void lowPowerModeOn(boolean drastic, boolean insane) {
+    cargoShooterMotor.configContinuousCurrentLimit(15);
+    cargoShooterMotor.configPeakCurrentLimit(25);
+    if (drastic) {
+      cargoShooterMotor.configVoltageCompSaturation(6);
+    }
+    if (insane) {
+      cargoShooterMotor.configVoltageCompSaturation(2);
+      cargoShooterMotor.disable();
+    }
+  }
+
+  public void lowPowerModeOff() {
+    cargoShooterMotor.configContinuousCurrentLimit(20);
+    cargoShooterMotor.configPeakCurrentLimit(40);
+    cargoShooterMotor.configVoltageCompSaturation(12);
+    cargoShooterMotor.set(ControlMode.PercentOutput, 0);
   }
 }
