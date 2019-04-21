@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,6 +32,8 @@ public class Robot extends TimedRobot {
   public static CargoShooterS m_CargoShooterS;
   public static HatchMechDrawerS m_hatchMechDrawerS;
   public static HatchMechWheelsS m_hatchMechWheelsS;
+
+  public static Compressor m_compressor;
 
   public static OI m_oi;
 
@@ -75,6 +78,8 @@ public class Robot extends TimedRobot {
     m_cargoScoreC = new CargoScoreC();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
+
+    m_compressor = new Compressor(RobotMap.PCM_ID);
   }
 
   public void robotPeriodic() {
@@ -99,6 +104,7 @@ public class Robot extends TimedRobot {
     m_visionSetDriverCamC.start();
     //Home the ladder
     m_ladderHomeC.start();
+    m_compressor.start();
   }
 
   @Override
