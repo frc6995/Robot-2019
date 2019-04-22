@@ -36,12 +36,21 @@ public class HatchMechWheelsS extends Subsystem {
     return !hatchMechLimit.get();
   }
 
+  /**
+   * This does nothing because it is a spark unless insane,
+   * in which case it disables.
+   * @param drastic
+   * @param insane
+   */
   public void lowPowerModeOn(boolean drastic, boolean insane) {
     if (insane) {
       hatchMechMotor.disable();
     }
   }
 
+  /**
+   * Make sure it is enabled, as that is all a spark can do to conserve power.s
+   */
   public void lowPowerModeOff() {
     hatchMechMotor.set(0);
   }

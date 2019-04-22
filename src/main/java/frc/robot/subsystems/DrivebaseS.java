@@ -91,6 +91,12 @@ public class DrivebaseS extends Subsystem {
     driveRightFront.set(moveSpeed - rotateSpeed);
   }
 
+  /**
+   * conserserve power by current limiting to cont: 20V &
+   * peak: 30V. If drastic, give only 10 volts.
+   * 
+   * @param drastic
+   */
   public void lowPowerModeOn(boolean drastic) {
     driveLeftFront.configPeakCurrentLimit(30);
     driveLeftFront.configContinuousCurrentLimit(20);
@@ -103,6 +109,10 @@ public class DrivebaseS extends Subsystem {
     }
   }
 
+  /**
+   * Reset drivebase to power settings created when initialized.
+   * (Continuous current: 20V or SD value)(Voltage: 12V)
+   */
   public void lowPowerModeOff() {
     driveLeftFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveRightFront.configContinuousCurrentLimit(drivebaseAmpLimit);

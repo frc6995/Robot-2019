@@ -37,8 +37,12 @@ public class CargoShooterS extends Subsystem {
     return !cargoLimit.get();
   }
 
+  /**
+   * begins current limiting with continuous at 15 and peak at 25.
+   * if drastic, cut the voltage down to only 6 volts.
+   * @param drastic
+   */
   public void lowPowerModeOn(boolean drastic) {
-    
     cargoShooterMotor.configContinuousCurrentLimit(15);
     cargoShooterMotor.configPeakCurrentLimit(25);
     if (drastic) {
@@ -65,6 +69,13 @@ public class CargoShooterS extends Subsystem {
     }
   }
 
+  /**
+   * Reset the cargo Shooter to the same voltage settings as initialization.
+   * 
+   * (Continuous current: 20A)
+   * (Peak current: 40A)
+   * (Voltage: 12V)
+   */
   public void lowPowerModeOff() {
     cargoShooterMotor.configContinuousCurrentLimit(20);
     cargoShooterMotor.configPeakCurrentLimit(40);

@@ -9,6 +9,10 @@ import frc.robot.commands.limelight.*;
 import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.LadderLevelCargoScoreCG;
 import frc.robot.commands.LadderLevelHatchScoreCG;
+import frc.robot.commands.LowPowerModeC;
+import frc.robot.commands.LowPowerModeDrasticC;
+import frc.robot.commands.LowPowerModeDrivebaseC;
+import frc.robot.commands.LowPowerModeOffC;
 import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
@@ -24,6 +28,11 @@ public class OI {
         //SmartDashboard Commands for Emergency Use
         SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
+
+        SmartDashboard.putData("Basic LowPowerModeC", new LowPowerModeC());
+        SmartDashboard.putData("Drastic LowPowerModeC", new LowPowerModeDrasticC());
+        SmartDashboard.putData("Drivebase LowPowerModeC", new LowPowerModeDrivebaseC());
+        SmartDashboard.putData("Off LowPowerModeC", new LowPowerModeOffC());
 
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 

@@ -269,6 +269,11 @@ public class LadderS extends Subsystem {
     }
   }
 
+  /**
+   * Conserve power by current limiting to 40A. If drastic,
+   * only give 6 volts.
+   * @param drastic
+   */
   public void lowPowerModeOn(boolean drastic) {
     ladderTalonA.configContinuousCurrentLimit(40);
     ladderTalonB.configContinuousCurrentLimit(40);
@@ -280,6 +285,12 @@ public class LadderS extends Subsystem {
     }
   }
 
+  /**
+   * Conserve power by current limiting to 40A. If drastic,
+   * only give 6 volts. If insane, disable both motors.
+   * @param drastic
+   * @param insane
+   */
   public void lowPowerModeOn(boolean drastic, boolean insane) {
     ladderTalonA.configContinuousCurrentLimit(40);
     ladderTalonB.configContinuousCurrentLimit(40);
@@ -297,6 +308,11 @@ public class LadderS extends Subsystem {
     }
   }
 
+  /**
+   * Reset to how the power consuption standards set in initialization.
+   * (Continuous current: N/A)(Peak Current: N/A) (Voltage: 12V)
+   * Nota Bene: Switches to percent output.
+   */
   public void lowPowerModeOff() {
     ladderTalonA.enableCurrentLimit(false);
     ladderTalonB.enableCurrentLimit(false);
