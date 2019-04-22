@@ -282,6 +282,8 @@ public class LadderS extends Subsystem {
     if (drastic) {
       ladderTalonA.configVoltageCompSaturation(6);
       ladderTalonB.configVoltageCompSaturation(6);
+      ladderTalonA.enableVoltageCompensation(true);
+      ladderTalonB.enableVoltageCompensation(true);
     }
   }
 
@@ -299,6 +301,8 @@ public class LadderS extends Subsystem {
     if (drastic) {
       ladderTalonA.configVoltageCompSaturation(6);
       ladderTalonB.configVoltageCompSaturation(6);
+      ladderTalonA.enableVoltageCompensation(true);
+      ladderTalonB.enableVoltageCompensation(true);
     }
     if (insane) {
       //ladderTalonA.configVoltageCompSaturation(5);
@@ -316,8 +320,10 @@ public class LadderS extends Subsystem {
   public void lowPowerModeOff() {
     ladderTalonA.enableCurrentLimit(false);
     ladderTalonB.enableCurrentLimit(false);
-    ladderTalonA.configVoltageCompSaturation(12);
-    ladderTalonB.configVoltageCompSaturation(12);
+    //ladderTalonA.configVoltageCompSaturation(12);
+    //ladderTalonB.configVoltageCompSaturation(12);
+    ladderTalonA.enableVoltageCompensation(false);
+    ladderTalonA.enableVoltageCompensation(false);
     ladderTalonA.set(ControlMode.PercentOutput, 0);
     ladderTalonB.set(ControlMode.PercentOutput, 0);
   }

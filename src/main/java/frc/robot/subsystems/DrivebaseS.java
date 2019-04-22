@@ -106,6 +106,8 @@ public class DrivebaseS extends Subsystem {
     if (drastic) {
       driveLeftFront.configVoltageCompSaturation(10);
       driveRightFront.configVoltageCompSaturation(10);
+      driveLeftFront.enableVoltageCompensation(true);
+      driveRightFront.enableVoltageCompensation(true);
     }
   }
 
@@ -116,7 +118,8 @@ public class DrivebaseS extends Subsystem {
   public void lowPowerModeOff() {
     driveLeftFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveRightFront.configContinuousCurrentLimit(drivebaseAmpLimit);
-    driveLeftFront.configVoltageCompSaturation(12);
-    driveRightFront.configVoltageCompSaturation(12);
+    //driveLeftFront.configVoltageCompSaturation(12);
+    //driveRightFront.configVoltageCompSaturation(12);
+    driveLeftFront.enableVoltageCompensation(false);
   }
 }

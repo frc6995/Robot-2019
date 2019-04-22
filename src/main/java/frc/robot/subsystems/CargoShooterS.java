@@ -47,6 +47,7 @@ public class CargoShooterS extends Subsystem {
     cargoShooterMotor.configPeakCurrentLimit(25);
     if (drastic) {
       cargoShooterMotor.configVoltageCompSaturation(6);
+      cargoShooterMotor.enableVoltageCompensation(true);
     }
   }
 
@@ -62,9 +63,11 @@ public class CargoShooterS extends Subsystem {
     cargoShooterMotor.configPeakCurrentLimit(25);
     if (drastic) {
       cargoShooterMotor.configVoltageCompSaturation(6);
+      cargoShooterMotor.enableVoltageCompensation(true);
     }
     if (insane) {
       cargoShooterMotor.configVoltageCompSaturation(2);
+      cargoShooterMotor.enableVoltageCompensation(true);
       cargoShooterMotor.disable();
     }
   }
@@ -79,7 +82,8 @@ public class CargoShooterS extends Subsystem {
   public void lowPowerModeOff() {
     cargoShooterMotor.configContinuousCurrentLimit(20);
     cargoShooterMotor.configPeakCurrentLimit(40);
-    cargoShooterMotor.configVoltageCompSaturation(12);
+    //cargoShooterMotor.configVoltageCompSaturation(12);
+    cargoShooterMotor.enableVoltageCompensation(false); //what happens to the drivebase if we limit it to 12v initially?
     cargoShooterMotor.set(ControlMode.PercentOutput, 0);
   }
 }
