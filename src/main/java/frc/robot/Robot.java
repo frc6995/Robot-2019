@@ -1,6 +1,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -16,7 +17,11 @@ import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
-import frc.robot.subsystems.*;
+import frc.robot.subsystems.CargoShooterS;
+import frc.robot.subsystems.DrivebaseS;
+import frc.robot.subsystems.HatchMechDrawerS;
+import frc.robot.subsystems.HatchMechWheelsS;
+import frc.robot.subsystems.LadderS;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -34,6 +39,7 @@ public class Robot extends TimedRobot {
   public static HatchMechWheelsS m_hatchMechWheelsS;
 
   public static Compressor m_compressor;
+  public static PowerDistributionPanel m_PDP;
 
   public static OI m_oi;
 
@@ -80,6 +86,9 @@ public class Robot extends TimedRobot {
     m_visionSetDriverCamC= new VisionSetDriverCamC();
 
     m_compressor = new Compressor(RobotMap.PCM_ID);
+    m_PDP = new PowerDistributionPanel(0); //use the real can id. should now be able to pull out like limelight.
+    //voltage and fms are both drag widgets also. the dial will be a change to in shuffleboard. it is now sent in
+    //drivebase. I think diff drive will also be a drag out thing
   }
 
   public void robotPeriodic() {
@@ -87,6 +96,7 @@ public class Robot extends TimedRobot {
     m_ladderDisplayStatusC.start();
     SmartDashboard.putBoolean("Has Cargo", Robot.m_CargoShooterS.getCargoLimit());
     SmartDashboard.putBoolean("Has Hatch", Robot.m_hatchMechWheelsS.getHatchLimit());
+    
   }
 
   @Override

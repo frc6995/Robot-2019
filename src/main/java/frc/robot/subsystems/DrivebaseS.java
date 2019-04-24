@@ -83,12 +83,14 @@ public class DrivebaseS extends Subsystem {
     //Keep in mind for other usage of arcadeDrive
     differentialDrive.arcadeDrive(moveSpeed * throttle, rotateSpeed * 0.78);
     SmartDashboard.putNumber("Throttle", throttle);
+    SmartDashboard.putNumber("Drivebase Speed", moveSpeed*throttle*10);
   }
 
   //visionDrive added for VisionAlign. It has no motor deadzones.
   public void visionDrive(double moveSpeed, double rotateSpeed) {
     driveLeftFront.set(moveSpeed + rotateSpeed);
     driveRightFront.set(moveSpeed - rotateSpeed);
+    SmartDashboard.putNumber("Drivebase Speed", moveSpeed);
   }
 
   /**
