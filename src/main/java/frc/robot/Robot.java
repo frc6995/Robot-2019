@@ -86,7 +86,9 @@ public class Robot extends TimedRobot {
     m_visionSetDriverCamC= new VisionSetDriverCamC();
 
     m_compressor = new Compressor(RobotMap.PCM_ID);
-    m_PDP = new PowerDistributionPanel(0); //use the real can id. should now be able to pull out like limelight.
+    m_PDP = new PowerDistributionPanel(0); //use the real can id. 
+    SmartDashboard.putData(m_compressor);
+    SmartDashboard.putData(m_PDP);        //should now be able to pull out like limelight.
     //voltage and fms are both drag widgets also. the dial will be a change to in shuffleboard. it is now sent in
     //drivebase. I think diff drive will also be a drag out thing
   }
@@ -96,6 +98,7 @@ public class Robot extends TimedRobot {
     m_ladderDisplayStatusC.start();
     SmartDashboard.putBoolean("Has Cargo", Robot.m_CargoShooterS.getCargoLimit());
     SmartDashboard.putBoolean("Has Hatch", Robot.m_hatchMechWheelsS.getHatchLimit());
+    SmartDashboard.putNumber("PDP Input Voltage", Robot.m_PDP.getVoltage()); // Note: this is input voltage
     
   }
 
