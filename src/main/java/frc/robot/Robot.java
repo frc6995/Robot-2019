@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.autonomous.AutonomousSequences;
 import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.cargo.CargoScoreC;
@@ -49,6 +50,8 @@ public class Robot extends TimedRobot {
   //Limelight
   public static Command m_visionSetDriverCamC;
 
+  public static AutonomousSequences m_autonomousSequences;
+
 
   @Override
   public void robotInit() {
@@ -75,6 +78,8 @@ public class Robot extends TimedRobot {
     m_cargoScoreC = new CargoScoreC();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
+    
+    m_autonomousSequences = new AutonomousSequences();
   }
 
   public void robotPeriodic() {
