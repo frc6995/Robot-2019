@@ -21,7 +21,7 @@ public class AutonomousSequences
 	public static double linearVelocity;
 	public static double visionVelocityConstant = 2500;
 
-	public void autoInitFWD() 
+	public static void autoInitFWD() 
 	{
 		Robot.m_drivebaseS.selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
 		driveSignal = new DriveSignal();
