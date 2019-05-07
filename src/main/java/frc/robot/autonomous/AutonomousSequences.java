@@ -3,7 +3,6 @@ package frc.robot.autonomous;
 import edu.wpi.first.wpilibj.Timer;
 import frc.robot.autonomous.Constants;
 import frc.robot.Robot;
-import frc.robot.autonomous.*;
 import jaci.pathfinder.Trajectory;
 
 public class AutonomousSequences 
@@ -22,7 +21,7 @@ public class AutonomousSequences
 	public static double linearVelocity;
 	public static double visionVelocityConstant = 2500;
 
-	public static void autoInitFWD(String trajectoryName) 
+	public void autoInitFWD() 
 	{
 		Robot.m_drivebaseS.selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
 		driveSignal = new DriveSignal();
@@ -36,7 +35,7 @@ public class AutonomousSequences
 		autoStep = 0;
 	}
 
-	public static void autoInitFWD2(String trajectoryName) 
+	public static void autoInitFWD2() 
 	{
 		Robot.m_drivebaseS.selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
 		driveSignal = new DriveSignal();
@@ -71,7 +70,7 @@ public class AutonomousSequences
 	public static void runPath()
 	{
 		ramsetePeriodic();
-		Drivetrain.setAutoVelocity(leftSpeed, rightSpeed);
+		Robot.m_drivebaseS.setAutoVelocity(leftSpeed, rightSpeed);
 	}
 }
 	/*
