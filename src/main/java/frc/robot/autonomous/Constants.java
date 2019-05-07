@@ -11,4 +11,12 @@ public class Constants {
 
 	public static final double kFieldWidth = 8.2296;
 	public static final double expirationTimeSRX = 2; // seconds	
+
+	public static final int velocitySlotIdx = 1;
+
+	// Left and Right Drivetrain Velocity PIDF Values (in that order)
+	public static final double[] leftVelocityPIDF = {  .341* 1.05, 0, 3.4, .281417 }; // .281417
+	public static final double[] rightVelocityPIDF = { .341, 0, 3.4, .281417 };
+
+	public static final double velocityConstant = 3600; //3600enc /100ms
 }

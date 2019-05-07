@@ -1,7 +1,6 @@
 package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj.Timer;
-import frc.robot.autonomous.Constants;;
 import frc.robot.Robot;
 import frc.robot.autonomous.*;
 import jaci.pathfinder.Trajectory;
@@ -24,7 +23,7 @@ public class AutonomousSequences
 
 	public static void autoInitFWD(String trajectoryName) 
 	{
-		Robot.m_drivebaseS.selectPIDF(Robot.autonomous.Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
+		Robot.m_drivebaseS.selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
 		driveSignal = new DriveSignal();
 		trajectory = TrajectoryUtil.getTrajectoryFromName(trajectoryName);
 		ramseteFollower = new RamseteFollower(trajectory, MotionProfileDirection.FORWARD);
