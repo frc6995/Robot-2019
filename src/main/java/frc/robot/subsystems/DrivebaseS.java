@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -10,8 +11,12 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.commands.drive.DriveArcadeXboxC;
+import com.kauailabs.navx.frc.AHRS;
+import edu.wpi.first.wpilibj.SPI;
 
 public class DrivebaseS extends Subsystem {
+
+  public AHRS navX;
 
   private WPI_TalonSRX driveLeftFront = null;
   private WPI_VictorSPX driveLeftMiddle = null;
@@ -23,6 +28,7 @@ public class DrivebaseS extends Subsystem {
   private DifferentialDrive differentialDrive = null;
   
   private int drivebaseAmpLimit = 20;
+  
 
   @Override
   protected void initDefaultCommand() {
@@ -30,6 +36,9 @@ public class DrivebaseS extends Subsystem {
   }
 
   public DrivebaseS() {
+
+    navX = new AHRS(SPI.Port.kMXP);
+
     drivebaseAmpLimit = (int) SmartDashboard.getNumber("Amp Limit", 20);
 
     driveLeftFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT);
@@ -76,6 +85,44 @@ public class DrivebaseS extends Subsystem {
     driveRightFront.configPeakCurrentDuration(0);
 
     differentialDrive.setRightSideInverted(false);
+
+    //encoders
+    driveRightFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    driveLeftFront.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+    driveLeftFront.configSelectedFeedbackCoefficient(1.0);
+    driveRightFront.configSelectedFeedbackCoefficient(1.0);
+
+
+  }
+
+  public void resetNavXYaw() {
+     navX.reset();
+  }
+
+  public double getNavXYaw() {
+    return (navX.getAngle());
+  }
+
+  public void setNavXYaw(double setYaw){
+    resetNavXYaw();
+    navX.setAngleAdjustment(setYaw);
+  }
+    
+  public double getDrivebaseLeftEncoderCount() {
+    // Positive is up, negative is down
+    return (driveLeftFront.getSensorCollection().getQuadraturePosition());
+  }
+
+  public double getDrivebaseRightEncoderCount() {
+    // Positive is up, negative is down
+    return (driveRightFront.getSensorCollection().getQuadraturePosition());
+  }
+  public void resetDrivebaseEncoders() {
+    //resets both encoders
+    driveLeftFront.getSensorCollection().setQuadraturePosition(3, 500);
+    driveLeftFront.setSelectedSensorPosition(0);
+    driveRightFront.getSensorCollection().setQuadraturePosition(3, 500);
+    driveRightFront.setSelectedSensorPosition(0);
   }
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
