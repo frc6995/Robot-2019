@@ -1,18 +1,17 @@
 package frc.robot.autonomous;
 
-import javax.swing.text.Segment;
-
 import frc.robot.Robot;
+import frc.robot.autonomous.Constants;
 import jaci.pathfinder.Trajectory;
+import jaci.pathfinder.Trajectory.Segment;
 
 
 /**
- * Ramsete implementation 
- * 
- * @param <DriveSignal>
- * @param <MotionProfileDirection>
+ * Ramsete implementation by Brian for Team 321 based on Aaron's implementation
+ * with help from Prateek and all on the FIRST programming discord server
+ * yeeted by Kunal for Team 3647 (with permission of course)
  */
-public class RamseteFollower<DriveSignal, MotionProfileDirection> 
+public class RamseteFollower 
 {
 
     // Should be greater than zero and this increases correction
@@ -23,7 +22,7 @@ public class RamseteFollower<DriveSignal, MotionProfileDirection>
 
     // Holds what segment we are on
     private int segmentIndex;
-    private jaci.pathfinder.Trajectory.Segment current;
+    private Segment current;
 
     // The trajectory to follow
     private Trajectory trajectory;
@@ -50,7 +49,7 @@ public class RamseteFollower<DriveSignal, MotionProfileDirection>
     public RamseteFollower(Trajectory trajectory, MotionProfileDirection direction) 
     {
         //ternary operator, if direction is forward return trajectory, else return the reversed path
-        this.trajectory = direction == MotionProfileDirection.Forward ? trajectory : TrajectoryUtil.reversePath(trajectory);
+        this.trajectory = direction == MotionProfileDirection.FORWARD ? trajectory : TrajectoryUtil.reversePath(trajectory);
         // this.trajectory = TrajectoryUtil.correctPath(trajectory);
 
         segmentIndex = 0;
@@ -74,7 +73,7 @@ public class RamseteFollower<DriveSignal, MotionProfileDirection>
             return new Velocity(0, 0);
         }
 
-        current = Trajectory.get(segmentIndex);
+        current = trajectory.get(segmentIndex);
 
         desiredAngularVelocity = calculateDesiredAngular();
 
@@ -171,7 +170,7 @@ public class RamseteFollower<DriveSignal, MotionProfileDirection>
         return radians;
     }
 
-    public jaci.pathfinder.Trajectory.Segment currentSegment() 
+    public Segment currentSegment() 
     {
         return current;
     }
@@ -209,7 +208,7 @@ public class RamseteFollower<DriveSignal, MotionProfileDirection>
     public void printCurrentEncoders()
     {
         System.out.println("Odometry encoder: " + odometry.getCurrentEncoderPosition());
-        System.out.println("Actual encoder left: " + Robot.m_drivebaseS.getDrivebaseLeftEncoderCount());
+        System.out.println("Actual encoder left: " + Robot.m_drivebaseS.getDrivebaseRightEncoderCount());
         System.out.println("Actual encoder right: " + Robot.m_drivebaseS.getDrivebaseRightEncoderCount());
     }
 }

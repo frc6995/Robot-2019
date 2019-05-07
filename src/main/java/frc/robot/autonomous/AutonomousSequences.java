@@ -40,7 +40,7 @@ public class AutonomousSequences
 	{
 		Drivetrain.selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
 		driveSignal = new DriveSignal();
-		trajectory = TrajectoryUtil.getTrajectoryFromName(trajectoryName);
+		trajectory = TrajectoryUtil.getTrajectoryFromName();
 		ramseteFollower = new RamseteFollower(trajectory, MotionProfileDirection.FORWARD);
 	}
 
@@ -48,7 +48,7 @@ public class AutonomousSequences
 	{
 		Drivetrain.selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
 		driveSignal = new DriveSignal();
-		trajectory = TrajectoryUtil.getTrajectoryFromName(trajectoryName);
+		trajectory = TrajectoryUtil.getTrajectoryFromName();
 		ramseteFollower = new RamseteFollower(trajectory, MotionProfileDirection.BACKWARD);
 	}
 
@@ -76,35 +76,13 @@ public class AutonomousSequences
 		linearVelocity = Units.metersToEncoderTicks(ramseteFollower.linearVelocity / 10);
 	}
 
-	public static void runVision()
-	{
-		ramsetePeriodic();
-		if(!ramseteFollower.pathFractionSegment(.5) && !ramseteFollower.isFinished())
-		{
-			Drivetrain.setAutoVelocity(leftSpeed, rightSpeed);
-		}
-		else if(ramseteFollower.pathFractionSegment(.5))
-		{
-			limelightClimber.center();
-			Drivetrain.setAutoVelocity(leftSpeed + (visionVelocityConstant)*limelightClimber.leftSpeed, rightSpeed + (visionVelocityConstant)*limelightClimber.rightSpeed);
-		}
-		else if(ramseteFollower.isFinished() && limelightClimber.y > Constants.limelightYOffset)
-		{
-			limelightClimber.center();
-			Drivetrain.setAutoVelocity((visionVelocityConstant)*limelightClimber.leftSpeed, (visionVelocityConstant)*limelightClimber.rightSpeed);
-		}
-		else
-		{
-			HatchGrabber.releaseHatch();
-			Drivetrain.setAutoVelocity(-500, -500);
-		}
-	}
-
 	public static void runPath()
 	{
 		ramsetePeriodic();
 		Drivetrain.setAutoVelocity(leftSpeed, rightSpeed);
 	}
+}
+	/*
 
 	public static void frontRocketAuto(String LeftOrRight)
 	{
@@ -245,3 +223,4 @@ public class AutonomousSequences
 
 
 }
+*/
