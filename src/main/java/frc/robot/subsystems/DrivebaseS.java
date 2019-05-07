@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
@@ -18,12 +19,12 @@ public class DrivebaseS extends Subsystem {
 
   public AHRS navX;
 
-  private WPI_TalonSRX driveLeftFront = null;
-  private WPI_VictorSPX driveLeftMiddle = null;
-  private WPI_VictorSPX driveLeftBack = null;
-  private WPI_TalonSRX driveRightFront = null;
-  private WPI_VictorSPX driveRightMiddle = null;
-  private WPI_VictorSPX driveRightBack = null;
+  private static WPI_TalonSRX driveLeftFront = null;
+  private static WPI_VictorSPX driveLeftMiddle = null;
+  private static WPI_VictorSPX driveLeftBack = null;
+  private static WPI_TalonSRX driveRightFront = null;
+  private static WPI_VictorSPX driveRightMiddle = null;
+  private static WPI_VictorSPX driveRightBack = null;
   
   private DifferentialDrive differentialDrive = null;
   
@@ -92,7 +93,31 @@ public class DrivebaseS extends Subsystem {
     driveLeftFront.configSelectedFeedbackCoefficient(1.0);
     driveRightFront.configSelectedFeedbackCoefficient(1.0);
 
+    int DBPIDSlot = 0;
+    double DBkP = 0.45;
+    double DBkI = 0.002;
+    double DBkD = 10.0;
+    double DBkF = 0;
+    driveRightFront.config_kP(DBPIDSlot, DBkP);
+    driveLeftFront.config_kP(DBPIDSlot, DBkP);
+    driveRightFront.config_kI(DBPIDSlot, DBkI);
+    driveLeftFront.config_kI(DBPIDSlot, DBkI);
+    driveRightFront.config_kD(DBPIDSlot, DBkD);
+    driveLeftFront.config_kD(DBPIDSlot, DBkD);
+    driveRightFront.config_kF(DBPIDSlot, DBkF);
+    driveLeftFront.config_kF(DBPIDSlot, DBkF);
 
+    driveRightFront.config_IntegralZone(DBPIDSlot, 1800);
+    driveLeftFront.config_IntegralZone(DBPIDSlot, 1800); //instead of 1500
+
+    driveRightFront.configClosedLoopPeakOutput(DBPIDSlot, 0.6); //instead of 0.4
+    driveLeftFront.configClosedLoopPeakOutput(DBPIDSlot, 0.6);
+
+    driveRightFront.selectProfileSlot(DBPIDSlot, 0);
+    driveLeftFront.selectProfileSlot(DBPIDSlot, 0);
+
+    driveRightFront.set(ControlMode.PercentOutput, 0); //set to percent for now, until auto init.
+    driveLeftFront.set(ControlMode.PercentOutput, 0);
   }
 
   public void resetNavXYaw() {
@@ -124,6 +149,18 @@ public class DrivebaseS extends Subsystem {
     driveRightFront.getSensorCollection().setQuadraturePosition(3, 500);
     driveRightFront.setSelectedSensorPosition(0);
   }
+
+
+  public void setCMtoPercent() {
+    driveRightFront.set(ControlMode.PercentOutput, 0); //set to percent for now, until auto init.
+    driveLeftFront.set(ControlMode.PercentOutput, 0);
+  }
+
+
+  public static void setAutoVelocity(double leftDriveSignal, double rightDriveSignal) {
+		driveRightFront.set(ControlMode.Velocity, rightDriveSignal);
+		driveLeftFront.set(ControlMode.Velocity, leftDriveSignal);
+	}
 
   public void arcadeDrive(double moveSpeed, double rotateSpeed, double throttle) {
     //Rotation throttle disabled per driver request

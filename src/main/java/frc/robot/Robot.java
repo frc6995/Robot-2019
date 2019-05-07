@@ -115,6 +115,7 @@ public class Robot extends TimedRobot {
   public void teleopInit() {
     //Force the correct camera mode
     m_visionSetDriverCamC.start();
+    m_drivebaseS.setCMtoPercent();
   }
 
   @Override
