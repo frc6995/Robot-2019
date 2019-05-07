@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.autonomous.AutoCG;
 import frc.robot.autonomous.AutonomousSequences;
 import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.cargo.CargoIntakeC;
@@ -49,6 +50,8 @@ public class Robot extends TimedRobot {
   public static Command m_cargoIntakeC;
   //Limelight
   public static Command m_visionSetDriverCamC;
+  //auto command
+  public static Command m_AutoCG;
 
   public static AutonomousSequences m_autonomousSequences;
 
@@ -78,7 +81,8 @@ public class Robot extends TimedRobot {
     m_cargoScoreC = new CargoScoreC();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
-    
+    //auto command
+    m_AutoCG = new AutoCG();   
     m_autonomousSequences = new AutonomousSequences();
   }
 
@@ -104,6 +108,8 @@ public class Robot extends TimedRobot {
     m_visionSetDriverCamC.start();
     //Home the ladder
     m_ladderHomeC.start();
+    //auto CG
+    m_AutoCG.start();
   }
 
   @Override
