@@ -38,18 +38,10 @@ public class AutonomousSequences
 
 	public static void autoInitFWD2(String trajectoryName) 
 	{
-		Drivetrain.selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
+		Robot.m_drivebaseS.selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
 		driveSignal = new DriveSignal();
 		trajectory = TrajectoryUtil.getTrajectoryFromName();
 		ramseteFollower = new RamseteFollower(trajectory, MotionProfileDirection.FORWARD);
-	}
-
-	public static void autoInitBWD(String trajectoryName) 
-	{
-		Drivetrain.selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
-		driveSignal = new DriveSignal();
-		trajectory = TrajectoryUtil.getTrajectoryFromName();
-		ramseteFollower = new RamseteFollower(trajectory, MotionProfileDirection.BACKWARD);
 	}
 
 	public static void testing()
