@@ -137,4 +137,7 @@ public class DrivebaseS extends Subsystem {
     driveLeftFront.set(moveSpeed + rotateSpeed);
     driveRightFront.set(moveSpeed - rotateSpeed);
   }
+
+public void selectPIDF(int velocityslotidx, double[] rightvelocitypidf, double[] leftvelocitypidf) {
+}
 }
