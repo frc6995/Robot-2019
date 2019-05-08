@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.autonomous.AutonomousSequences;
+import frc.robot.autonomous.AutoCG;
 import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.cargo.CargoScoreC;
@@ -16,7 +16,11 @@ import frc.robot.commands.ladder.LadderHomeC;
 import frc.robot.commands.ladder.LadderMoveDownPIDC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
-import frc.robot.subsystems.*;
+import frc.robot.subsystems.CargoShooterS;
+import frc.robot.subsystems.DrivebaseS;
+import frc.robot.subsystems.HatchMechDrawerS;
+import frc.robot.subsystems.HatchMechWheelsS;
+import frc.robot.subsystems.LadderS;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -50,7 +54,7 @@ public class Robot extends TimedRobot {
   //Limelight
   public static Command m_visionSetDriverCamC;
 
-  public static AutonomousSequences m_autonomousSequences;
+  public static Command m_autoCG;
 
 
   @Override
@@ -79,7 +83,7 @@ public class Robot extends TimedRobot {
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
     
-    m_autonomousSequences = new AutonomousSequences();
+    m_autoCG = new AutoCG();
   }
 
   public void robotPeriodic() {
@@ -104,6 +108,7 @@ public class Robot extends TimedRobot {
     m_visionSetDriverCamC.start();
     //Home the ladder
     m_ladderHomeC.start();
+    m_autoCG.start();
   }
 
   @Override

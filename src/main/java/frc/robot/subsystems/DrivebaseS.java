@@ -11,6 +11,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
+import frc.robot.autonomous.Constants;
 import frc.robot.commands.drive.DriveArcadeXboxC;
 import com.kauailabs.navx.frc.AHRS;
 import edu.wpi.first.wpilibj.SPI;
@@ -175,6 +176,20 @@ public class DrivebaseS extends Subsystem {
     driveRightFront.set(moveSpeed - rotateSpeed);
   }
 
-public void selectPIDF(int velocityslotidx, double[] rightvelocitypidf, double[] leftvelocitypidf) {
-}
+  public void selectPIDF(int slot, double[] right, double[] left) {
+    //PID SLOT
+    driveRightFront.selectProfileSlot(slot, 0);
+    driveLeftFront.selectProfileSlot(slot, 0);
+
+    //PID
+    driveRightFront.config_kP(slot, right[0], Constants.kTimeoutMs);		
+    driveRightFront.config_kI(slot, right[1], Constants.kTimeoutMs);	
+    driveRightFront.config_kD(slot, right[2], Constants.kTimeoutMs);
+    driveRightFront.config_kF(slot, right[3], Constants.kTimeoutMs);
+
+    driveLeftFront.config_kP(slot, left[0], Constants.kTimeoutMs);		
+    driveLeftFront.config_kI(slot, left[1], Constants.kTimeoutMs);	
+    driveLeftFront.config_kD(slot, left[2], Constants.kTimeoutMs);
+    driveLeftFront.config_kF(slot, left[3], Constants.kTimeoutMs);
+  }
 }
