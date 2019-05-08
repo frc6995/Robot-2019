@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
   public static Command m_cargoIntakeC;
   //Limelight
   public static Command m_visionSetDriverCamC;
-
+  //auto command
   public static Command m_autoCG;
 
 

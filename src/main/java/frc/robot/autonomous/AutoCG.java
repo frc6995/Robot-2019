@@ -8,8 +8,6 @@
 package frc.robot.autonomous;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.robot.Robot;
-import frc.robot.autonomous.AutonomousSequences;
 import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.limelight.VisionAlignTargetC;
 
