@@ -88,6 +88,7 @@ public class Robot extends TimedRobot {
     m_compressor = new Compressor(RobotMap.PCM_ID);
     m_PDP = new PowerDistributionPanel(0); //use the real can id. 
     SmartDashboard.putData(m_compressor);
+    SmartDashboard.putData(m_drivebaseS.differentialDrive);
     SmartDashboard.putData(m_PDP);        //should now be able to pull out like limelight.
     //voltage and fms are both drag widgets also. the dial will be a change to in shuffleboard. it is now sent in
     //drivebase. I think diff drive will also be a drag out thing
