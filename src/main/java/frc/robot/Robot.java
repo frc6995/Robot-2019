@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.HatchScoreCG;
+import frc.robot.commands.LowPowerModeOffC;
 import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.cargo.CargoScoreC;
 import frc.robot.commands.hatch.HatchDrawerDeployC;
@@ -133,8 +134,10 @@ public class Robot extends TimedRobot {
     //Force the correct camera mode
     m_visionSetDriverCamC.start();
     //Home the ladder
-    m_ladderHomeC.start();
+    //m_ladderHomeC.start();
     m_compressor.start();
+    //Command var = new LowPowerModeOffC();
+    //var.start();
   }
 
   @Override
