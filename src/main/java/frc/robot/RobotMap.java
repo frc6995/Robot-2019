@@ -22,7 +22,7 @@ public class RobotMap {
   //public final static int PCM_ID_SOLENOID_HATCHMECH = 1;
   //public final static int PCM_ID_SOLENOID_CLIMBER_FRONT = 2;
   //public final static int PCM_ID_SOLENOID_CLIMBER_REAR = 3;
-  public final static int PCM_ID_SOLENOID_HATCHDRAWER = 0;
+  public final static int PCM_ID_SOLENOID_HATCHDRAWER = 1;
   //public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT_FORWARD = 2;
   //public final static int PCM_ID_DSOLENOID_CLIMBER_FRONT_REVERSE = 3;
   //public final static int PCM_ID_DSOLENOID_CLIMBER_REAR_FORWARD = 4;
@@ -52,13 +52,14 @@ public class RobotMap {
 
   //Ladder Encoder Constants
   public static final int LADDER_LEVEL_ONE = 0; //The home location
-  public static final int LADDER_LEVEL_CUSHION = 3000;
+  public static final int LADDER_LEVEL_CUSHION = 2000;
   public static final int LADDER_LEVEL_TWO = 3625; //change as needed
   public static final int LADDER_LEVEL_THREE = 7160; //change as needed
+  public static final int LEVEL_CARGO_SHIP = 2500;
 
   //TODO - set these values
   public static final int LADDER_LEVEL_CARGO_INTAKE = 1980;
-  public static final int LADDER_LEVEL_ROCKET_CARGO_VISION = 1900;
+  //public static final int LADDER_LEVEL_ROCKET_CARGO_VISION = 1900;
 
   // Climb Constants
   //Motor Speed: Positive if climbing forward - Negative if climbing backwards

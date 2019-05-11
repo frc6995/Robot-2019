@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class CargoIntakeC extends Command {
-  private double intakeSpeed = -0.5;
+  private double intakeSpeed = -0.7;
 
   public CargoIntakeC() {
     requires(Robot.m_CargoShooterS);

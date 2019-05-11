@@ -4,14 +4,16 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.HatchScoreCG;
-import frc.robot.commands.LowPowerModeDrivebaseC;
 import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.cargo.CargoScoreC;
 import frc.robot.commands.hatch.HatchDrawerDeployC;
 import frc.robot.commands.hatch.HatchDrawerRetractC;
+import frc.robot.commands.hatch.HatchDrawerToggleC;
 import frc.robot.commands.ladder.LadderDisplayStatusC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderHomeC;
@@ -23,6 +25,7 @@ import frc.robot.subsystems.DrivebaseS;
 import frc.robot.subsystems.HatchMechDrawerS;
 import frc.robot.subsystems.HatchMechWheelsS;
 import frc.robot.subsystems.LadderS;
+import frc.robot.subsystems.LimeLight;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -32,7 +35,7 @@ import frc.robot.subsystems.LadderS;
  * project.
  */
 public class Robot extends TimedRobot {
-  //Subsystems
+  // Subsystems
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
   public static CargoShooterS m_CargoShooterS;
@@ -42,7 +45,7 @@ public class Robot extends TimedRobot {
   public static Compressor m_compressor;
   public static PowerDistributionPanel m_PDP;
 
-  public static OI m_oi;
+  public static LimeLight m_limelight;
 
   //Ladder commands
   public static Command m_ladderHomeC;
@@ -53,14 +56,17 @@ public class Robot extends TimedRobot {
   //Hatch/Cargo commands
   public static Command m_hatchDrawerDeployC;
   public static Command m_hatchDrawerRetractC;
-  public static Command m_hatchScoreCG;
   public static Command m_cargoScoreC;
   public static Command m_cargoIntakeC;
+  public static Command m_hatchDrawerToggleC;
+  public static CommandGroup m_hatchIntakeCG;
+  public static CommandGroup m_hatchScoreCG;
   //Limelight
   public static Command m_visionSetDriverCamC;
 
   public static Command m_lowPowerDBC;
 
+  public static OI m_oi;
 
 
   @Override
@@ -71,8 +77,7 @@ public class Robot extends TimedRobot {
     m_CargoShooterS = new CargoShooterS();
     m_hatchMechDrawerS = new HatchMechDrawerS();
     m_hatchMechWheelsS = new HatchMechWheelsS();
-
-    m_oi = new OI();
+    m_limelight = new LimeLight();
 
     //Ladder commands
     m_ladderHomeC = new LadderHomeC();
@@ -84,8 +89,10 @@ public class Robot extends TimedRobot {
     m_hatchDrawerDeployC = new HatchDrawerDeployC();
     m_hatchDrawerRetractC = new HatchDrawerRetractC();
     m_cargoIntakeC = new CargoIntakeC();
-    m_hatchScoreCG = new HatchScoreCG();
     m_cargoScoreC = new CargoScoreC();
+    m_hatchDrawerToggleC = new HatchDrawerToggleC();
+    m_hatchIntakeCG = new HatchIntakeCG();
+    m_hatchScoreCG = new HatchScoreCG();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
 
@@ -97,6 +104,7 @@ public class Robot extends TimedRobot {
     //SmartDashboard.putData("LP DB", new LowPowerModeDrivebaseC());        //should now be able to pull out like limelight.
     //voltage and fms are both drag widgets also. the dial will be a change to in shuffleboard. it is now sent in
     //drivebase. I think diff drive will also be a drag out thing
+    m_oi = new OI();
   }
 
   public void robotPeriodic() {
@@ -115,6 +123,9 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
+    SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
   }
 
   @Override
@@ -128,21 +139,27 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
+    SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
     Scheduler.getInstance().run();
   }
 
   @Override
   public void teleopInit() {
+    //m_ladderHomeC.start();
     //Force the correct camera mode
     m_visionSetDriverCamC.start();
   }
 
   @Override
   public void teleopPeriodic() {
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
   }
 
   @Override
   public void testPeriodic() {
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
   }
 }

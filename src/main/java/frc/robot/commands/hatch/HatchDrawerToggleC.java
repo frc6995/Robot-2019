@@ -10,7 +10,6 @@ public class HatchDrawerToggleC extends InstantCommand {
 
   @Override
   protected void initialize() {
-    requires(Robot.m_hatchMechDrawerS);
   }
 
   @Override

@@ -1,12 +1,13 @@
 package frc.robot;
 
 import frc.robot.controllermap.BBoard;
-import frc.robot.controllermap.JStick;
 import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.limelight.*;
+import frc.robot.commands.CargoIntakeCG;
 import frc.robot.commands.HatchIntakeCG;
+import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.LadderLevelCargoScoreCG;
 import frc.robot.commands.LadderLevelHatchScoreCG;
 import frc.robot.commands.LowPowerModeC;
@@ -14,12 +15,15 @@ import frc.robot.commands.LowPowerModeDrasticC;
 import frc.robot.commands.LowPowerModeDrivebaseC;
 import frc.robot.commands.LowPowerModeOffC;
 import frc.robot.commands.cargo.CargoIntakeC;
+import frc.robot.commands.cargo.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
+import frc.robot.Robot;
+
 
 public class OI {
     public final Xbox xbox = new Xbox(RobotMap.OI_XBOX);
-    public final JStick stick = new JStick(RobotMap.OI_JOYSTICK);
+    //public final JStick stick = new JStick(RobotMap.OI_JOYSTICK);
     public final BBoard buttonBoard = new BBoard(RobotMap.OI_BUTTONBOARD);
 
     public OI() {
@@ -33,6 +37,15 @@ public class OI {
         SmartDashboard.putData("Drastic LowPowerModeC", new LowPowerModeDrasticC());
         SmartDashboard.putData("Drivebase LowPowerModeC", new LowPowerModeDrivebaseC());
         SmartDashboard.putData("Off LowPowerModeC", new LowPowerModeOffC());
+        SmartDashboard.putData("Hatch Intake", new HatchIntakeCG());
+        SmartDashboard.putData("Hatch Score", new HatchScoreCG());
+        SmartDashboard.putData("Cargo Intake", new CargoIntakeC());
+        SmartDashboard.putData("Cargo Score", new CargoScoreC());
+
+        SmartDashboard.putData("Ladder move up", new LadderMoveUpPIDC());
+        SmartDashboard.putData("Ladder Hold PID", new LadderHoldPIDC());
+        SmartDashboard.putData("Ladder move down", new LadderMoveDownC());
+        SmartDashboard.putData("Ladder set level 2", new LadderSetLevelC(LadderLevel.LEVEL_TWO));
 
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 
@@ -42,20 +55,21 @@ public class OI {
         //xbox.left_bumper()   -- DriveArcadeXboxC used for decrementing throttle
         //xbox.right_bumper()  -- DriveArcadeXboxC used for setting throttle to max
         //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
-        xbox.x_runWhileHeld(new VisionAlignAndDriveCG(false)); //Hatch + CargoShip
-        xbox.a_runWhileHeld(new VisionAlignAndDriveCG(true)); //Rocket cargo
+        xbox.x_toggleOnPress(new VisionAlignAndDriveCG(false)); //Hatch + CargoShip
+        xbox.a_toggleOnPress(new VisionAlignAndDriveCG(true)); //Rocket cargo
+        xbox.b_runWhileHeld(new LadderManualMoveC());
 
         //Button Board Assignments (ASSIGN COMMANDS TO BUTTONS)
-        buttonBoard.right_top_runOnPress(new HatchDrawerToggleC());
-        buttonBoard.right_index_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.right_middle_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
-        buttonBoard.right_ring_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
-        buttonBoard.right_bottom_runOnPress(new CargoIntakeC());
+        buttonBoard.right_top_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_CARGO_SHIP));
+        buttonBoard.right_index_toggleOnPress(Robot.m_cargoScoreC);
+        buttonBoard.right_middle_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
+        buttonBoard.right_ring_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
+        buttonBoard.right_bottom_toggleOnPress(new CargoIntakeCG());
 
         buttonBoard.left_top_runOnPress(new HatchRunWheelsForTimeC(1,2)); //Intake
-        buttonBoard.left_index_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_ONE));
-        buttonBoard.left_middle_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
-        buttonBoard.left_ring_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
-        buttonBoard.left_bottom_runOnPress(new HatchIntakeCG());
+        buttonBoard.left_index_toggleOnPress(Robot.m_hatchScoreCG);
+        buttonBoard.left_middle_toggleOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
+        buttonBoard.left_ring_toggleOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
+        buttonBoard.left_bottom_runOnPress(Robot.m_hatchIntakeCG);
     }
 }
