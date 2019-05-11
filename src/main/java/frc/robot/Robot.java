@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HatchScoreCG;
+import frc.robot.commands.LowPowerModeDrivebaseC;
 import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.cargo.CargoScoreC;
 import frc.robot.commands.hatch.HatchDrawerDeployC;
@@ -58,6 +59,9 @@ public class Robot extends TimedRobot {
   //Limelight
   public static Command m_visionSetDriverCamC;
 
+  public static Command m_lowPowerDBC;
+
+
 
   @Override
   public void robotInit() {
@@ -87,9 +91,10 @@ public class Robot extends TimedRobot {
 
     m_compressor = new Compressor(RobotMap.PCM_ID);
     m_PDP = new PowerDistributionPanel(0); //use the real can id. 
-    SmartDashboard.putData(m_compressor);
-    SmartDashboard.putData(m_drivebaseS.differentialDrive);
-    SmartDashboard.putData(m_PDP);        //should now be able to pull out like limelight.
+    SmartDashboard.putData("Compressor", m_compressor);
+    SmartDashboard.putData("Diff Drive",m_drivebaseS.differentialDrive);
+    SmartDashboard.putData("PDP", m_PDP);
+    //SmartDashboard.putData("LP DB", new LowPowerModeDrivebaseC());        //should now be able to pull out like limelight.
     //voltage and fms are both drag widgets also. the dial will be a change to in shuffleboard. it is now sent in
     //drivebase. I think diff drive will also be a drag out thing
   }
