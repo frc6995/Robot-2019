@@ -20,7 +20,7 @@ public class LowPowerModeDrivebaseC extends InstantCommand {
   // Called once when the command executes
   @Override
   protected void initialize() {
-    Robot.m_ladderS.lowPowerModeOn(true, true);
+    Robot.m_ladderS.lowPowerModeOn(true);
     Robot.m_compressor.stop();
     Robot.m_CargoShooterS.lowPowerModeOn(true, true);
     Robot.m_hatchMechWheelsS.lowPowerModeOn(true, true);
