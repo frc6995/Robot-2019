@@ -8,7 +8,7 @@ public class LadderMoveDownC extends Command {
 
   // Adjust as needed
   private double movePower = -0.12;
-  private double slowPower = 0.16;
+  private double slowPower = 0.3;
   private int stopLevel = 200;
 
   public LadderMoveDownC() {
