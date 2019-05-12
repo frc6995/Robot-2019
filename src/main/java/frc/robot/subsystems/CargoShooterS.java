@@ -47,15 +47,15 @@ public class CargoShooterS extends Subsystem {
     cargoShooterMotor.configContinuousCurrentLimit(15);
     cargoShooterMotor.configPeakCurrentLimit(25);
     if (drastic) {
-      cargoShooterMotor.configVoltageCompSaturation(6);
-      cargoShooterMotor.enableVoltageCompensation(true);
+      //cargoShooterMotor.configVoltageCompSaturation(6);
+      //cargoShooterMotor.enableVoltageCompensation(true);
     }
   }
 
   /**
    * begins current limiting with continuous at 15 and peak at 25.
-   * if drastic, cut the voltage down to only 6 volts.
-   * if insane, cut voltage to 2 volts, and disable motor.
+   * if drastic, pass
+   * if insane, disable motor.
    * @param drastic
    * @param insane
    */
@@ -63,12 +63,12 @@ public class CargoShooterS extends Subsystem {
     cargoShooterMotor.configContinuousCurrentLimit(15);
     cargoShooterMotor.configPeakCurrentLimit(25);
     if (drastic) {
-      cargoShooterMotor.configVoltageCompSaturation(6);
-      cargoShooterMotor.enableVoltageCompensation(true);
+      //cargoShooterMotor.configVoltageCompSaturation(6);
+      //cargoShooterMotor.enableVoltageCompensation(true);
     }
     if (insane) {
-      cargoShooterMotor.configVoltageCompSaturation(2);
-      cargoShooterMotor.enableVoltageCompensation(true);
+      //cargoShooterMotor.configVoltageCompSaturation(2);
+      //cargoShooterMotor.enableVoltageCompensation(true);
       cargoShooterMotor.disable();
     }
   }
@@ -81,10 +81,10 @@ public class CargoShooterS extends Subsystem {
    * (Voltage: 12V)
    */
   public void lowPowerModeOff() {
-    cargoShooterMotor.configContinuousCurrentLimit(20);
-    cargoShooterMotor.configPeakCurrentLimit(40);
+    cargoShooterMotor.configContinuousCurrentLimit(40);
+    cargoShooterMotor.configPeakCurrentLimit(60);
     //cargoShooterMotor.configVoltageCompSaturation(12);
-    cargoShooterMotor.enableVoltageCompensation(false); //what happens to the drivebase if we limit it to 12v initially?
+    //cargoShooterMotor.enableVoltageCompensation(false); //what happens to the drivebase if we limit it to 12v initially?
     cargoShooterMotor.set(ControlMode.PercentOutput, 0);
   }
 }

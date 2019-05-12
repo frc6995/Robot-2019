@@ -291,7 +291,7 @@ public class LadderS extends Subsystem {
 
   /**
    * Conserve power by current limiting to 40A. If drastic,
-   * only give 6 volts.
+   * limit to 20A cont, 30A peak, 6V.
    * @param drastic
    */
   public void lowPowerModeOn(boolean drastic) {
@@ -300,6 +300,12 @@ public class LadderS extends Subsystem {
     ladderTalonA.enableCurrentLimit(true);
     ladderTalonB.enableCurrentLimit(true);
     if (drastic) {
+      ladderTalonA.configContinuousCurrentLimit(20);
+      ladderTalonB.configContinuousCurrentLimit(20);
+      ladderTalonA.configPeakCurrentLimit(30);
+      ladderTalonB.configPeakCurrentLimit(30);
+      ladderTalonA.enableCurrentLimit(true);
+      ladderTalonB.enableCurrentLimit(true);
       ladderTalonA.configVoltageCompSaturation(6);
       ladderTalonB.configVoltageCompSaturation(6);
       ladderTalonA.enableVoltageCompensation(true);
@@ -309,7 +315,7 @@ public class LadderS extends Subsystem {
 
   /**
    * Conserve power by current limiting to 40A. If drastic,
-   * only give 6 volts. If insane, disable both motors.
+   * limit to 20A cont, 30A peak, 6V. If insane, disable both motors.
    * @param drastic
    * @param insane
    */
@@ -319,6 +325,12 @@ public class LadderS extends Subsystem {
     ladderTalonA.enableCurrentLimit(true);
     ladderTalonB.enableCurrentLimit(true);
     if (drastic) {
+      ladderTalonA.configContinuousCurrentLimit(20);
+      ladderTalonB.configContinuousCurrentLimit(20);
+      ladderTalonA.configPeakCurrentLimit(30);
+      ladderTalonB.configPeakCurrentLimit(30);
+      ladderTalonA.enableCurrentLimit(true);
+      ladderTalonB.enableCurrentLimit(true);
       ladderTalonA.configVoltageCompSaturation(6);
       ladderTalonB.configVoltageCompSaturation(6);
       ladderTalonA.enableVoltageCompensation(true);
@@ -334,7 +346,7 @@ public class LadderS extends Subsystem {
 
   /**
    * Reset to how the power consuption standards set in initialization.
-   * (Continuous current: N/A)(Peak Current: N/A) (Voltage: 12V)
+   * (Continuous current: N/A)(Peak Current: N/A) (Voltage: control disabled)
    * Nota Bene: Switches to percent output.
    */
   public void lowPowerModeOff() {
@@ -343,8 +355,8 @@ public class LadderS extends Subsystem {
     //ladderTalonA.configVoltageCompSaturation(12);
     //ladderTalonB.configVoltageCompSaturation(12);
     ladderTalonA.enableVoltageCompensation(false);
-    ladderTalonA.enableVoltageCompensation(false);
-    ladderTalonA.set(ControlMode.PercentOutput, 0);
-    ladderTalonB.set(ControlMode.PercentOutput, 0);
+    ladderTalonB.enableVoltageCompensation(false);
+    setLadderPower(0);
+    ladderTalonA.neutralOutput();
   }
 }
