@@ -5,7 +5,7 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-package frc.robot.commands.pixyCam;
+package frc.robot.commands.pixycam;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -53,7 +53,7 @@ public class PixyAlign extends Command {
   @Override
   protected void execute() {
     Robot.m_oi.xbox.setRumble(0.2);
-    
+
     Robot.m_pixyCamS.read();
     double offset = Robot.m_pixyCamS.getLastOffset();
     double offsetY = Robot.m_pixyCamS.getLastOffsetY();
@@ -100,7 +100,6 @@ public class PixyAlign extends Command {
     rampTimer.stop();
     firstLoop = true;
     Robot.m_oi.xbox.setRumble(0);
-  }
   }
 
   // Called when another command which requires one or more of the same
