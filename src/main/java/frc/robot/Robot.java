@@ -31,6 +31,7 @@ public class Robot extends TimedRobot {
   public static CargoShooterS m_CargoShooterS;
   public static HatchMechDrawerS m_hatchMechDrawerS;
   public static HatchMechWheelsS m_hatchMechWheelsS;
+  public static PixyCamS m_pixyCamS;
 
   public static OI m_oi;
 
@@ -58,6 +59,7 @@ public class Robot extends TimedRobot {
     m_CargoShooterS = new CargoShooterS();
     m_hatchMechDrawerS = new HatchMechDrawerS();
     m_hatchMechWheelsS = new HatchMechWheelsS();
+    m_pixyCamS = new PixyCamS();
 
     m_oi = new OI();
 
