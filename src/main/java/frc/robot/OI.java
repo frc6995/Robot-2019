@@ -6,6 +6,7 @@ import frc.robot.controllermap.Xbox;
 import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.limelight.*;
+import frc.robot.commands.pixycam.PixyAlignAndDriveCG;
 import frc.robot.commands.pixycam.PixyAlignC;
 import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.LadderLevelCargoScoreCG;
@@ -26,6 +27,7 @@ public class OI {
         SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
         SmartDashboard.putData("Pixy Align", new PixyAlignC());
+        SmartDashboard.putData("Pixy Align and Drive", new PixyAlignAndDriveCG());
 
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 
