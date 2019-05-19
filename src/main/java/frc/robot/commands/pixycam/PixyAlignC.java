@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class PixyAlign extends Command {
+public class PixyAlignC extends Command {
 
   double KpAim = -0.01f;
   double KpDistance = -0.04f;
@@ -37,7 +37,7 @@ public class PixyAlign extends Command {
 
   Timer rampTimer = new Timer();
 
-  public PixyAlign() {
+  public PixyAlignC() {
     requires(Robot.m_pixyCamS);
     requires(Robot.m_drivebaseS);
   }
