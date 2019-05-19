@@ -7,21 +7,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 //Thanks team 558
 
 public class PixyCamS extends Subsystem {
-	
+
 	private static final int[] distances = { 0, 113, 81, 62, 49, 41, 35, 30,
 			28, 25, 22, 21 };
 	public static final double PIXY_FOV = 75; //Changes with lens change
-  public static final double IMAGE_WIDTH = 320.0;
-  public static final double IMAGE_WIDTHY = 200.0;
+	public static final double IMAGE_WIDTH = 320.0;
+	public static final double IMAGE_WIDTHY = 200.0;
 	public static final double GEAR_WIDTH_FT = 1.166;
 	public static final int BLOCK_SIZE = 14;
 	private static final double DEGREES_PER_PIXEL = PIXY_FOV / IMAGE_WIDTH;
 	public static int PIXY_ADDRESS = 0x54;
 	private I2C port;
-  private boolean inRange;
-  private boolean inRangeY;
-  private double offset;
-  private double offsetY;
+	private boolean inRange;
+	private boolean inRangeY;
+	private double offset;
+	private double offsetY;
 
 
 	private ArrayList<PixyBlock> pixyBlocks = new ArrayList<>();
@@ -35,7 +35,7 @@ public class PixyCamS extends Subsystem {
 	}
 
 	public void initDefaultCommand(){
-		
+
 	}
 
 	public void setLastOffset(double offset){
@@ -43,28 +43,28 @@ public class PixyCamS extends Subsystem {
 			this.offset = offset;
 			setInRange(true);
 		}
-  }
-  
-  public void setLastOffsetY(double offsetY){
-    if (offsetY > 1){
-			this.offsetY = offsetY;
-			setInRangeY(true);
-		}
 	}
+  
+  	public void setLastOffsetY(double offsetY){
+		if (offsetY > 1){
+				this.offsetY = offsetY;
+				setInRangeY(true);
+			}
+		}
 
 	public double getLastOffset(){
 		return offset;
-  }
+  	}
   
-  public double getLastOffsetY(){
+  	public double getLastOffsetY(){
 		return offsetY;
 	}
 
 	public void setInRange(boolean inRange){
 		this.inRange = inRange;
-  }
+  	}
   
-  public void setInRangeY(boolean inRangeY){
+  	public void setInRangeY(boolean inRangeY){
 		this.inRangeY = inRangeY;
 	}
 
