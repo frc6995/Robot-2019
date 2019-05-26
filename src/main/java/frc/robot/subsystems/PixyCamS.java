@@ -124,6 +124,7 @@ public class PixyCamS extends Subsystem {
 				}
 		
 				PixyBlock block = bytesToBlock(temp);
+				System.out.println("received new block");
 				
 				//Added so blocks are only added if their signature is 1 to remove noise from signal
 				if (block.signature == 1){
@@ -137,6 +138,7 @@ public class PixyCamS extends Subsystem {
 
 		if (pixyBlocks != null && pixyBlocks.size() > 0){
 			if (pixyBlocks.size() >= 2){
+				System.out.println("Found 2 blocks");
 				PixyBlock leftBlock;
 				PixyBlock rightBlock;
 				if (pixyBlocks.get(0).centerX > pixyBlocks.get(1).centerX){
@@ -156,11 +158,13 @@ public class PixyCamS extends Subsystem {
 			else{
 				
 				setLastOffset(160); //Keeps robot going straight if only one signal is picked up
+				System.out.println("Not enough blocks");
 				
 					}
 		} else{
 			setLastOffset(160); //Keeps robot going straight if nothing is picked up
 			setInRange(false);
+			System.out.println("Less than one block");
 		}
 		return pixyBlocks;
 	}
