@@ -44,7 +44,7 @@ public class LadderS extends Subsystem {
   // Integral constant
   private double ladderKi = 0.0009;
   // Derivative constant
-  private double ladderKd = 10.0;
+  private double ladderKd = 0.0;
   // Feedforward = power needed to hold the ladder in a constant spot
   private double ladderKf = 0;
 

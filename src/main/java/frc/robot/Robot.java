@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -48,6 +49,8 @@ public class Robot extends TimedRobot {
 
   public static OI m_oi;
 
+  public PowerDistributionPanel m_PDP;
+
 
   @Override
   public void robotInit() {
@@ -77,6 +80,8 @@ public class Robot extends TimedRobot {
     m_visionSetDriverCamC= new VisionSetDriverCamC();
 
     m_oi = new OI();
+    m_PDP = new PowerDistributionPanel();
+    SmartDashboard.putData("PDP", m_PDP);
   }
 
   public void robotPeriodic() {
