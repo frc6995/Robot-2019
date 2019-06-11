@@ -11,7 +11,7 @@ assignees: EliSauder, sammcdo
 --Describe the Issue topic here
 
 **Scope**
---What resources will this issue involve. Eg: 
+--What resources will this issue involve. Eg:
 - Drivebase
 - Pneumatic systems
 - Team Lead 
