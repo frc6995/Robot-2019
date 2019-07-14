@@ -89,6 +89,7 @@ public class Robot extends TimedRobot {
     m_ladderDisplayStatusC.start();
     SmartDashboard.putBoolean("Has Cargo", Robot.m_CargoShooterS.getCargoLimit());
     SmartDashboard.putBoolean("Has Hatch", Robot.m_hatchMechWheelsS.getHatchLimit());
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
   }
 
   @Override
@@ -115,6 +116,7 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
     SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
     SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
+    SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
     Scheduler.getInstance().run();
   }
 
@@ -130,10 +132,12 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
+    SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
   }
 
   @Override
   public void testPeriodic() {
     SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
+    SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
   }
 }

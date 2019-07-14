@@ -37,6 +37,11 @@ public class OI {
         SmartDashboard.putData("Ladder Hold PID", new LadderHoldPIDC());
         SmartDashboard.putData("Ladder move down", new LadderMoveDownC());
         SmartDashboard.putData("Ladder set level 2", new LadderSetLevelC(LadderLevel.LEVEL_TWO));
+        SmartDashboard.putData("Ladder set level 3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
+        SmartDashboard.putData("Level 2 Cargo", new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
+        SmartDashboard.putData("Level 2 Hatch", new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
+        SmartDashboard.putData("Level 3 Hatch", new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
+        SmartDashboard.putData("Ladder Cargo Intake", new CargoIntakeCG());
 
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 
@@ -47,6 +52,7 @@ public class OI {
         //xbox.right_bumper()  -- DriveArcadeXboxC used for setting throttle to max
         //xbox.left_stick_x()  -- DriveArcadeXboxC used for turning drivebase
         xbox.x_toggleOnPress(new VisionAlignAndDriveCG(false)); //Hatch + CargoShip
+        xbox.y_runOnPressed(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
         xbox.a_toggleOnPress(new VisionAlignAndDriveCG(true)); //Rocket cargo
         xbox.b_runWhileHeld(new LadderManualMoveC());
 
