@@ -26,6 +26,7 @@ import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.commands.limelight.VisionAlignAndDriveCG;
 import frc.robot.commands.limelight.VisionAlignTargetC;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
+import frc.robot.subsystems.LadderS.LadderLevel;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -65,6 +66,9 @@ public Telemetry() {
   SmartDashboard.putData("LadderMoveDownPIDC", new LadderMoveDownPIDC());
   SmartDashboard.putData("LadderMoveUpPIDC", new LadderMoveUpPIDC());
   SmartDashboard.putData("LadderResetEncoderC", new LadderResetEncoderC());
+  SmartDashboard.putData("Ladder set level 1", new LadderSetLevelC(LadderLevel.LEVEL_ONE));
+  SmartDashboard.putData("Ladder set level 2", new LadderSetLevelC(LadderLevel.LEVEL_TWO));
+  SmartDashboard.putData("Ladder set level 3", new LadderSetLevelC(LadderLevel.LEVEL_THREE));
  //TODO -  SmartDashboard.putData("LadderSetLevelC", new LadderSetLevelC(fix me please or else ;{  ));
   //limelight
   //TODO - SmartDashboard.putData("VisionAlignAndDriveCG", new VisionAlignAndDriveCG(rocketCargo));
@@ -74,8 +78,21 @@ public Telemetry() {
   SmartDashboard.putData("CargoIntakeCG", new CargoIntakeCG());
   SmartDashboard.putData("HatchIntakeCG", new HatchIntakeCG());
   SmartDashboard.putData("HatchScoreCG", new HatchScoreCG());
+  SmartDashboard.putData("Level 2 Cargo", new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
+  SmartDashboard.putData("Level 3 Cargo", new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
+  SmartDashboard.putData("Level 2 Hatch", new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
+  SmartDashboard.putData("Level 3 Hatch", new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
   //TODO -SmartDashboard.putData("LadderLevelCargoScoreCG", new LadderLevelCargoScoreCG(level));
   //todo - this - SmartDashboard.putData("LadderLevelHatchScoreCG", new LadderLevelHatchScoreCG(level));
 }
+
+public void update() {
+  SmartDashboard.putString("Ladder status", Robot.m_ladderS.ladderStatus);
+}
+
+  @Override
+  protected void initDefaultCommand() {
+
+  }
 
   }

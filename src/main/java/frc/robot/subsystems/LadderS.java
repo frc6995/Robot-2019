@@ -53,6 +53,8 @@ public class LadderS extends Subsystem {
   // The talon PID slot we are using, this should not change
   public static final int LADDER_PID_SLOT = 0;
 
+  public String ladderStatus = "null";
+
   @Override
   public void initDefaultCommand() {
   }
@@ -179,7 +181,6 @@ public class LadderS extends Subsystem {
   }
 
   public void displayStatus() {
-    String ladderStatus = "null";
 
     if (isAtSetPoint() && ladderPIDActive) {
       // Example: "Holding at level 3."
