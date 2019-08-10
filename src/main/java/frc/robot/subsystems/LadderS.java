@@ -10,14 +10,14 @@ import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
-public class LadderS extends Subsystem {
+public static class LadderS extends Subsystem {
   //Enumerate various ladder levels.
   public enum LadderLevel {
     LEVEL_ONE, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_BOTTOM;
   }
   // TalonA is left and has the encoder plugged into it, TalonB is right
-  private WPI_TalonSRX ladderTalonA = null;
-  private WPI_TalonSRX ladderTalonB = null;
+  private static WPI_TalonSRX ladderTalonA = null;
+  private static WPI_TalonSRX ladderTalonB = null;
 
   private DigitalInput ladderBottomLimitSwitch;
 
