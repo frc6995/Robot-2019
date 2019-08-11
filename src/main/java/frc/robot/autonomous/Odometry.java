@@ -1,7 +1,8 @@
-package frc.team3647autonomous;
+package frc.robot.autonomous;
 
 import frc.robot.Robot;
-import frc.team3647subsystems.Drivetrain;
+
+import frc.robot.subsystems.DrivebaseS;
 import frc.team3647utility.Units;
 import jaci.pathfinder.Trajectory;
 
@@ -38,7 +39,7 @@ public class Odometry
         lastPosition = 0;
         // odoThread = new Notifier(() ->                                     //create a notifier event
         // {
-        //     currentEncoderPosition = (Drivetrain.leftSRX.getSelectedSensorPosition(0) + Drivetrain.rightSRX.getSelectedSensorPosition(0)) / 2.0;
+        //     currentEncoderPosition = (DrivebaseS.leftSRX.getSelectedSensorPosition(0) + DrivebaseS.rightSRX.getSelectedSensorPosition(0)) / 2.0;
         //     deltaPosition = Units.ticksToMeters(currentEncoderPosition - lastPosition); // delta position calculated by
         //     // difference in encoder ticks
         //     theta = Math.toRadians(Robot.gyro.getYaw()); // Gyro angle in Radians
@@ -52,10 +53,10 @@ public class Odometry
 
     public void runOdometry()
     {
-        currentEncoderPosition = (Drivetrain.leftEncoder + Drivetrain.rightEncoder) / 2.0;
+        currentEncoderPosition = (frc.robot.subsystems.DrivebaseS.leftEncoder + DrivebaseS.rightEncoder) / 2.0;
         deltaPosition = Units.ticksToMeters(currentEncoderPosition - lastPosition); // delta position calculated by
         // difference in encoder ticks
-        theta = Math.toRadians(Robot.gyro.getYaw());// Gyro angle in Radians
+        theta = Math.toRadians(DrivebaseS.navX.getYaw());// Gyro angle in Radians
         x += Math.cos(theta) * deltaPosition; // Getting x position from cosine of the change in position
         y += Math.sin(theta) * deltaPosition; //Getting y position from sine of the change in position
         

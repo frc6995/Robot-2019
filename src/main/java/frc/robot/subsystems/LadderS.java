@@ -284,7 +284,7 @@ public class LadderS extends Subsystem {
         return "6";
       case LEVEL_CARGO_SHIP:
         return "Cargo Ship";
-      default:
+      default:      
         return "Unknown. Illegal LadderLevel type.";
     }
   }

@@ -209,6 +209,6 @@ public class RamseteFollower
     {
         System.out.println("Odometry encoder: " + odometry.getCurrentEncoderPosition());
         System.out.println("Actual encoder left: " + DrivebaseS.driveLeftFront.getSelectedSensorPosition(0));
-        System.out.println("Actual encoder right: " + Drivetrain.rightSRX.getSelectedSensorPosition(0));
+        System.out.println("Actual encoder right: " + DrivebaseS.driveRightFront.getSelectedSensorPosition(0));
     }
 }

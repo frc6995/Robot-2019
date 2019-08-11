@@ -47,7 +47,8 @@ public class DrivebaseS extends Subsystem {
 	public static DifferentialDrive differentialDrive = new DifferentialDrive(driveLeftFront, driveRightFront);
 	
 	public static boolean initialized = false;
-  	private static int drivebaseAmpLimit = 20;
+	  private static int drivebaseAmpLimit = 20;
+	public static AHRS navX;
   //public class driverConstants {
 //
   //  public String driverName;
@@ -551,4 +552,4 @@ public class DrivebaseS extends Subsystem {
 	// 	// -- -- -- End of methods to test max velocity and acceleration -- -- -- //
 
 }
-}
+

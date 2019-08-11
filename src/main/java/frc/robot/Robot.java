@@ -51,6 +51,8 @@ public class Robot extends TimedRobot {
 
   public PowerDistributionPanel m_PDP;
 
+  public static boolean runAuto = true;
+
 
   @Override
   public void robotInit() {
@@ -110,6 +112,10 @@ public class Robot extends TimedRobot {
     m_visionSetDriverCamC.start();
     //Home the ladder
     m_ladderHomeC.start();
+    if (runAuto) {
+
+    }
+    
   }
 
   @Override
