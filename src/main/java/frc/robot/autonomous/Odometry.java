@@ -3,7 +3,7 @@ package frc.robot.autonomous;
 import frc.robot.Robot;
 
 import frc.robot.subsystems.DrivebaseS;
-import frc.team3647utility.Units;
+import frc.robot.Units;
 import jaci.pathfinder.Trajectory;
 
 public class Odometry 
@@ -142,7 +142,7 @@ public class Odometry
     {
         setX(trajectory.get(0).x);
         setY(trajectory.get(0).y);
-        Robot.gyro.setYaw(Math.toDegrees(trajectory.get(0).heading));
+        DrivebaseS.navX.setAngleAdjustment(Math.toDegrees(trajectory.get(0).heading));
         setTheta(trajectory.get(0).heading);
     }
 

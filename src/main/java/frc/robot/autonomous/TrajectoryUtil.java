@@ -8,6 +8,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.io.IOException;
 
 import frc.robot.Constants;
 import frc.robot.Robot;
@@ -41,7 +42,11 @@ public class TrajectoryUtil
         File trajectoryFile = new File("/home/lvuser/paths/" + trajectoryName + ".pf1.csv");
 
         Trajectory trajectory; // = trajectoryFile.exists() ? Pathfinder.readFromFile(trajectoryFile) : null;
-        trajectory = Pathfinder.readFromCSV(trajectoryFile);
+        try{
+            trajectory = Pathfinder.readFromCSV(trajectoryFile);
+        } catch (IOException e) {
+            trajectory = null;
+        } 
         if(trajectory == null)
         {
             System.out.println("FILE DOES NOT EXIST");
@@ -60,7 +65,11 @@ public class TrajectoryUtil
         File trajectoryFile = new File("/home/lvuser/paths/" + trajectoryName + ".pf1.csv");
 
         Trajectory trajectory; // = trajectoryFile.exists() ? Pathfinder.readFromFile(trajectoryFile) : null;
-        trajectory = Pathfinder.readFromCSV(trajectoryFile);
+        try{
+            trajectory = Pathfinder.readFromCSV(trajectoryFile);
+        } catch (IOException e) {
+            trajectory = null;
+        } 
         if(trajectory == null)
         {
             System.out.println("FILE DOES NOT EXIST");
@@ -81,7 +90,12 @@ public class TrajectoryUtil
         File trajectoryFile = new File("/home/lvuser/paths/" + trajectoryName + ".csv");
 
         Trajectory trajectory; // = trajectoryFile.exists() ? Pathfinder.readFromFile(trajectoryFile) : null;
-        trajectory = Pathfinder.readFromCSV(trajectoryFile);
+        try{
+            trajectory = Pathfinder.readFromCSV(trajectoryFile);
+        } catch (IOException e) {
+            trajectory = null;
+        } 
+        
         if(trajectory == null)
         {
             System.out.println("FILE DOES NOT EXIST");
