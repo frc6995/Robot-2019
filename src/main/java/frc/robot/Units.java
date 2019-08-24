@@ -1,12 +1,12 @@
 package frc.robot;
 
-import frc.robot.Constants;
+import frc.robot.RobotMap;
 
 public interface Units
 {
     public static double ticksToMeters(double ticks)
     {
-        return (ticks / Constants.kEncoderTicks) * (Constants.kWheelDiameter * Math.PI);
+        return (ticks / RobotMap.ENCODER_TICKS) * (RobotMap.WHEEL_DIAMETER * Math.PI);
     }
 
     public static double inchesToMeters(double in)
@@ -21,12 +21,12 @@ public interface Units
 
     public static double metersToEncoderTicks(double meters)
     {
-        return (meters * Constants.kEncoderTicks) / (Math.PI * Constants.kWheelDiameter );
+        return (meters * RobotMap.ENCODER_TICKS) / (Math.PI * RobotMap.WHEEL_DIAMETER );
     }
 
     public static double feetToEncoderTicks(double feet)
     {
-        return (feet * Constants.kEncoderTicks) / (Math.PI * .5);
+        return (feet * RobotMap.ENCODER_TICKS) / (Math.PI * .5);
     }
 
     public static double feetToMeters(double ft)

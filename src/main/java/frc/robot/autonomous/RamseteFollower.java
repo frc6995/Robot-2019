@@ -1,6 +1,7 @@
 package frc.robot.autonomous;
 
-import frc.robot.Constants;
+
+import frc.robot.RobotMap;
 import frc.robot.subsystems.DrivebaseS;
 import jaci.pathfinder.Trajectory;
 import jaci.pathfinder.Trajectory.Segment;
@@ -15,10 +16,10 @@ public class RamseteFollower
 {
 
     // Should be greater than zero and this increases correction
-    private double kBeta = Constants.kBeta; //1.5;
+    private double kBeta = RobotMap.BETA; //1.5;
 
     // Should be between zero and one and this increases dampening
-    private double kZeta = Constants.kZeta; //0.7;
+    private double kZeta = RobotMap.ZETA; //0.7;
 
     // Holds what segment we are on
     private int segmentIndex;
@@ -88,8 +89,8 @@ public class RamseteFollower
     {
         velocity = getVelocity();
 
-        left = (-(velocity.getAngular() * Constants.kWheelBase) + (2 * velocity.getLinear())) / 2;
-        right = ((velocity.getAngular() * Constants.kWheelBase) + (2 * velocity.getLinear())) / 2;
+        left = (-(velocity.getAngular() * RobotMap.WHEEL_BASE) + (2 * velocity.getLinear())) / 2;
+        right = ((velocity.getAngular() * RobotMap.WHEEL_BASE) + (2 * velocity.getLinear())) / 2;
 
         driveSignal.setLeft(left);
         driveSignal.setRight(right);

@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.io.IOException;
 
-import frc.robot.Constants;
+import frc.robot.RobotMap;
 import frc.robot.Robot;
 
 public class TrajectoryUtil 
@@ -33,7 +33,7 @@ public class TrajectoryUtil
         ArrayList<Segment> segments = new ArrayList<>(Arrays.asList(originalTrajectory.segments));
 
         return new Trajectory(segments.stream()
-                .map(segment -> new Segment(segment.dt, segment.x, Constants.kFieldWidth - segment.y, segment.position, segment.velocity, segment.acceleration, segment.jerk, -segment.heading))
+                .map(segment -> new Segment(segment.dt, segment.x, RobotMap.FIELD_WIDTH - segment.y, segment.position, segment.velocity, segment.acceleration, segment.jerk, -segment.heading))
                 .toArray(Segment[]::new));
     }
 

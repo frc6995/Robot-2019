@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import com.ctre.phoenix.motorcontrol.can.VictorSPX;
 
-import frc.robot.Constants;
+
 import frc.robot.Robot;
 import com.kauailabs.navx.frc.AHRS;
 
@@ -145,15 +145,15 @@ public class DrivebaseS extends Subsystem {
 		driveLeftFront.selectProfileSlot(slot, 0);
 
 		//PID
-		driveRightFront.config_kP(slot, right[0], Constants.kTimeoutMs);		
-		driveRightFront.config_kI(slot, right[1], Constants.kTimeoutMs);	
-		driveRightFront.config_kD(slot, right[2], Constants.kTimeoutMs);
-		driveRightFront.config_kF(slot, right[3], Constants.kTimeoutMs);
+		driveRightFront.config_kP(slot, right[0], RobotMap.TIMEOUT_MS);		
+		driveRightFront.config_kI(slot, right[1], RobotMap.TIMEOUT_MS);	
+		driveRightFront.config_kD(slot, right[2], RobotMap.TIMEOUT_MS);
+		driveRightFront.config_kF(slot, right[3], RobotMap.TIMEOUT_MS);
 
-		driveLeftFront.config_kP(slot, left[0], Constants.kTimeoutMs);		
-		driveLeftFront.config_kI(slot, left[1], Constants.kTimeoutMs);	
-		driveLeftFront.config_kD(slot, left[2], Constants.kTimeoutMs);
-		driveLeftFront.config_kF(slot, left[3], Constants.kTimeoutMs);
+		driveLeftFront.config_kP(slot, left[0], RobotMap.TIMEOUT_MS);		
+		driveLeftFront.config_kI(slot, left[1], RobotMap.TIMEOUT_MS);	
+		driveLeftFront.config_kD(slot, left[2], RobotMap.TIMEOUT_MS);
+		driveLeftFront.config_kF(slot, left[3], RobotMap.TIMEOUT_MS);
 	}
 
 	/**
@@ -208,7 +208,7 @@ public class DrivebaseS extends Subsystem {
 	
 	public static void velocityDrive(double xValue, double yValue, AHRS gyro)
 	{
-		selectPIDF(Constants.velocitySlotIdx, Constants.rightVelocityPIDF, Constants.leftVelocityPIDF);
+		selectPIDF(RobotMap.VELOCITY_SLOT_IDX, RobotMap.RIGHT_VELOCITY_PIDF, RobotMap.LEFT_VELOCITY_PIDF);
 		double threshold = 0.09;
 		if(yValue != 0 && Math.abs(xValue) < threshold)
         {
@@ -246,8 +246,8 @@ public class DrivebaseS extends Subsystem {
 	//USED BY AUTO FOR SOME REASON
   public static void setVelocity(double lSpeed, double rSpeed)
 	{
-		double targetVelocityRight = rSpeed * Constants.velocityConstant;
-		double targetVelocityLeft = lSpeed * Constants.velocityConstant;
+		double targetVelocityRight = rSpeed * RobotMap.VELOCITY_CONSTANT;
+		double targetVelocityLeft = lSpeed * RobotMap.VELOCITY_CONSTANT;
 		
 		driveRightFront.set(ControlMode.Velocity, targetVelocityRight);
 		driveLeftFront.set(ControlMode.Velocity, targetVelocityLeft);
