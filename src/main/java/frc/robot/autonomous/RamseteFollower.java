@@ -1,6 +1,6 @@
 package frc.robot.autonomous;
 
-
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.subsystems.DrivebaseS;
 import jaci.pathfinder.Trajectory;
@@ -209,7 +209,7 @@ public class RamseteFollower
     public void printCurrentEncoders()
     {
         System.out.println("Odometry encoder: " + odometry.getCurrentEncoderPosition());
-        System.out.println("Actual encoder left: " + DrivebaseS.driveLeftFront.getSelectedSensorPosition(0));
-        System.out.println("Actual encoder right: " + DrivebaseS.driveRightFront.getSelectedSensorPosition(0));
+        System.out.println("Actual encoder left: " + Robot.m_drivebaseS.driveLeftFront.getSelectedSensorPosition(0));
+        System.out.println("Actual encoder right: " + Robot.m_drivebaseS.driveRightFront.getSelectedSensorPosition(0));
     }
 }

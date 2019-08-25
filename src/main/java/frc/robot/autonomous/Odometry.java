@@ -39,7 +39,7 @@ public class Odometry
         lastPosition = 0;
         // odoThread = new Notifier(() ->                                     //create a notifier event
         // {
-        //     currentEncoderPosition = (DrivebaseS.leftSRX.getSelectedSensorPosition(0) + DrivebaseS.rightSRX.getSelectedSensorPosition(0)) / 2.0;
+        //     currentEncoderPosition = (Robot.m_drivebaseS.leftSRX.getSelectedSensorPosition(0) + Robot.m_drivebaseS.rightSRX.getSelectedSensorPosition(0)) / 2.0;
         //     deltaPosition = Units.ticksToMeters(currentEncoderPosition - lastPosition); // delta position calculated by
         //     // difference in encoder ticks
         //     theta = Math.toRadians(Robot.gyro.getYaw()); // Gyro angle in Radians
@@ -53,10 +53,10 @@ public class Odometry
 
     public void runOdometry()
     {
-        currentEncoderPosition = (frc.robot.subsystems.DrivebaseS.leftEncoder + DrivebaseS.rightEncoder) / 2.0;
+        currentEncoderPosition = (Robot.m_drivebaseS.leftEncoder + Robot.m_drivebaseS.rightEncoder) / 2.0;
         deltaPosition = Units.ticksToMeters(currentEncoderPosition - lastPosition); // delta position calculated by
         // difference in encoder ticks
-        theta = Math.toRadians(DrivebaseS.navX.getYaw());// Gyro angle in Radians
+        theta = Math.toRadians(Robot.m_drivebaseS.navX.getYaw());// Gyro angle in Radians
         x += Math.cos(theta) * deltaPosition; // Getting x position from cosine of the change in position
         y += Math.sin(theta) * deltaPosition; //Getting y position from sine of the change in position
         
@@ -142,7 +142,7 @@ public class Odometry
     {
         setX(trajectory.get(0).x);
         setY(trajectory.get(0).y);
-        DrivebaseS.navX.setAngleAdjustment(Math.toDegrees(trajectory.get(0).heading));
+        Robot.m_drivebaseS.navX.setAngleAdjustment(Math.toDegrees(trajectory.get(0).heading));
         setTheta(trajectory.get(0).heading);
     }
 

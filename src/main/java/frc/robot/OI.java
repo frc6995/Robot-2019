@@ -43,7 +43,7 @@ public class OI {
         SmartDashboard.putData("Level 3 Hatch", new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
         SmartDashboard.putData("Ladder Cargo Intake", new CargoIntakeCG());
 
-        //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
+         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 
         //Xbox Assignments
         //xbox.left_trigger()  -- DriveArcadeXboxC used for Driving Backwards
