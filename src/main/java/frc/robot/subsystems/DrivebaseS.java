@@ -9,6 +9,8 @@ import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.sun.nio.sctp.SendFailedNotification;
+import com.kauailabs.navx.frc.*;
+import edu.wpi.first.wpilibj.SerialPort;
 
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -18,13 +20,13 @@ import frc.robot.commands.drive.DriveArcadeXboxC;
 
 public class DrivebaseS extends Subsystem {
 
-  private WPI_TalonSRX driveLeftFront = null;
+  public WPI_TalonSRX driveLeftFront = null;
   private WPI_VictorSPX driveLeftMiddle = null;
   private WPI_VictorSPX driveLeftBack = null;
-  private WPI_TalonSRX driveRightFront = null;
+  public WPI_TalonSRX driveRightFront = null;
   private WPI_VictorSPX driveRightMiddle = null;
   private WPI_VictorSPX driveRightBack = null;
-  
+  public AHRS navX = null;  
   private DifferentialDrive differentialDrive = null;
   
   private int drivebaseAmpLimit = 20;
@@ -55,7 +57,7 @@ public class DrivebaseS extends Subsystem {
     //driveChooser = new SendableChooser<driverConstants>();
     //driveChooser.addOption("Tom", driverArray[0]);
     //driveChooser.addOption("Elijah", driverArray[1]);
-
+    navX = new AHRS(SerialPort.Port.kMXP);
     driveLeftFront = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_DRIVEBASE_LEFT);
     driveLeftMiddle = new WPI_VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_1);
     driveLeftBack = new WPI_VictorSPX(RobotMap.CAN_ID_VSPX_DRIVEBASE_LEFT_2);
@@ -121,5 +123,18 @@ public class DrivebaseS extends Subsystem {
   public void visionDrive(double moveSpeed, double rotateSpeed) {
     driveLeftFront.set(moveSpeed + rotateSpeed);
     driveRightFront.set(moveSpeed - rotateSpeed);
+  }
+  //Tank drive method for autonomous
+  public void autoDrive(double leftSpeed, double rightSpeed) {
+    driveLeftFront.set(leftSpeed);
+    driveRightFront.set(rightSpeed);
+  }
+
+  public int getLeftEncoder() {
+    return driveLeftFront.getSelectedSensorPosition();
+  }
+
+  public int getRightEncoder() {
+    return driveRightFront.getSelectedSensorPosition();
   }
 }
