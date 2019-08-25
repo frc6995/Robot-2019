@@ -69,4 +69,28 @@ public class RobotMap {
   public static final int PIPELINE_DRIVER_CAM = 0;  //No vision
   public static final int PIPELINE_LOWER_TARGET = 1;  //For hatch intake, rocket hatch and cargo ship
   public static final int PIPELINE_UPPER_TARGET = 2;  //For rocket cargo
+    //Autonomous constants
+  
+	public static final double ENCODER_TICKS = 256;
+	public static final double WHEEL_DIAMETER = .153; // meters
+	public static final double WHEEL_BASE = .7112;
+	public static final double MAX_VELOCITY = 4.22;
+
+	public static final double BETA = 1.6; // b > 0 Correction
+	public static final double ZETA = 0.17; // 0 < z < 1 Dampening //.17 hou apr 18th
+
+	public static final double FIELD_WIDTH = 8.2296;
+  public static final double EXPIRATION_TIME_SRX = 2; // seconds
+  
+  //Timeout Constant, used in Auto
+  public static final int TIMEOUT_MS = 10;
+
+  //Drivetrain PID constants
+  public static final int VELOCITY_CONSTANT = 3600; //ticks / 100msec
+
+  public static final int DRIVE_SLOT_IDX = 0;
+	public static final int VELOCITY_SLOT_IDX = 1;
+  //Right
+  public static final double[] LEFT_VELOCITY_PIDF = {  .341 * 1.05, 0, 3.4, .281417 }; // .281417
+	public static final double[] RIGHT_VELOCITY_PIDF = { .341, 0, 3.4, .281417 }; //TODO tune this
 }
