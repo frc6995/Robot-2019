@@ -73,7 +73,7 @@ public class RobotMap {
   
 	public static final int ENCODER_TICKS = 256;
 	public static final double WHEEL_DIAMETER = .153; // meters
-	public static final double WHEEL_BASE = .7112;
+	public static final double WHEEL_BASE = .6995;
 	public static final double MAX_VELOCITY = 4.22; //m/s
 
 	public static final double BETA = 1.6; // b > 0 Correction
