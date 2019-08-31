@@ -91,6 +91,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Has Cargo", Robot.m_CargoShooterS.getCargoLimit());
     SmartDashboard.putBoolean("Has Hatch", Robot.m_hatchMechWheelsS.getHatchLimit());
     SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
+    SmartDashboard.putNumber("YAW", m_drivebaseS.navX.getAngle());
   }
 
   @Override
