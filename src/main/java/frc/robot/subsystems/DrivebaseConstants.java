@@ -15,6 +15,7 @@ import frc.robot.RobotMap;
  */
 public class DrivebaseConstants {
 
+    public DrivebaseConstants drivebaseConstants = null;
     public float maxVelocity = 0.0f;
     public float maxAcceleration = 0.0f;
     public float maxJerk = 0.0f;
@@ -32,6 +33,9 @@ public class DrivebaseConstants {
 
     void Awake() {
         startTime = System.currentTimeMillis();
+        if(drivebaseConstants == null) {
+            drivebaseConstants = this;
+        }
     }
 
     private float calculateDistance() {
@@ -56,7 +60,7 @@ public class DrivebaseConstants {
         return jerk;
     }
 
-    void update() {
+   public void update() {
         prevDistance = calculateDistance();
         prevVelocity = getVelocity();
         prevAcceleration = getAcceleration();        

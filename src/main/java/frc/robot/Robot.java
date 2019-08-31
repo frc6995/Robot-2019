@@ -48,6 +48,8 @@ public class Robot extends TimedRobot {
   //Limelight
   public static Command m_visionSetDriverCamC;
 
+  public static DrivebaseConstants m_drivebaseConstants;
+
   public static OI m_oi;
 
   public PowerDistributionPanel m_PDP;
@@ -127,6 +129,7 @@ public class Robot extends TimedRobot {
     //m_ladderHomeC.start();
     //Force the correct camera mode
     m_visionSetDriverCamC.start();
+    m_drivebaseConstants.drivebaseConstants.update();
   }
 
   @Override
