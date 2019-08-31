@@ -136,7 +136,6 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     SmartDashboard.putNumber("Drivebase Encoder A", m_drivebaseS.getLeftEncoder());
     SmartDashboard.putNumber("Drivebase Encoder B", m_drivebaseS.getRightEncoder());
-    SmartDashboard.putNumber("Jerk", (m_drivebaseS.getLeftEncoder()+m_drivebaseS.getRightEncoder())/2);
     SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
