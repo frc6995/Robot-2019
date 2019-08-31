@@ -14,6 +14,7 @@ import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
 import frc.robot.subsystems.*;
 
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the TimedRobot
@@ -90,6 +91,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putBoolean("Has Cargo", Robot.m_CargoShooterS.getCargoLimit());
     SmartDashboard.putBoolean("Has Hatch", Robot.m_hatchMechWheelsS.getHatchLimit());
     SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
+    SmartDashboard.putNumber("YAW", m_drivebaseS.navX.getAngle());
   }
 
   @Override
@@ -129,6 +131,9 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
+    SmartDashboard.putNumber("Drivebase Encoder A", m_drivebaseS.getLeftEncoder());
+    SmartDashboard.putNumber("Drivebase Encoder B", m_drivebaseS.getRightEncoder());
+    SmartDashboard.putNumber("Jerk", (m_drivebaseS.getLeftEncoder()+m_drivebaseS.getRightEncoder())/2);
     SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
