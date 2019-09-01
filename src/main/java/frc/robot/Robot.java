@@ -10,6 +10,7 @@ import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.cargo.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
+import frc.robot.commands.BasicStraightAutoCG;
 import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
 import frc.robot.subsystems.*;
@@ -45,6 +46,7 @@ public class Robot extends TimedRobot {
   public static Command m_hatchDrawerToggleC;
   public static CommandGroup m_hatchIntakeCG;
   public static CommandGroup m_hatchScoreCG;
+  public static CommandGroup m_basicAutoCG;
   //Limelight
   public static Command m_visionSetDriverCamC;
 
@@ -79,6 +81,8 @@ public class Robot extends TimedRobot {
     m_hatchScoreCG = new HatchScoreCG();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
+    m_basicAutoCG = new BasicStraightAutoCG();
+    
 
     m_oi = new OI();
     m_PDP = new PowerDistributionPanel();
@@ -108,10 +112,15 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
+    
     //Force the correct camera mode
     m_visionSetDriverCamC.start();
     //Home the ladder
     m_ladderHomeC.start();
+    if (m_basicAutoCG != null){
+      m_basicAutoCG.start();
+    }
+    
   }
 
   @Override

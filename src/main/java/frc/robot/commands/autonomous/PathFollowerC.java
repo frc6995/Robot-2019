@@ -29,8 +29,8 @@ public class PathFollowerC extends Command {
     modifier = new TankModifier(trajectory).modify(RobotMap.WHEEL_BASE);
 
         // Do something with the new Trajectories...
-    EncoderFollower left = new EncoderFollower(modifier.getLeftTrajectory());
-    EncoderFollower right = new EncoderFollower(modifier.getRightTrajectory());
+    left = new EncoderFollower(modifier.getLeftTrajectory());
+    right = new EncoderFollower(modifier.getRightTrajectory());
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -90,7 +90,7 @@ public class PathFollowerC extends Command {
 
   public static Trajectory getTrajectoryFromNameJaci(String trajectoryName)
   {
-      File trajectoryFile = new File("/home/lvuser/paths/" + trajectoryName + ".csv");
+      File trajectoryFile = new File(trajectoryName + ".csv");
 
       Trajectory trajectory; // = trajectoryFile.exists() ? Pathfinder.readFromFile(trajectoryFile) : null;
       try{
