@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -28,7 +29,7 @@ public class DrivebaseConstants {
     private long startTime;
 
     public DrivebaseConstants() {
-        
+        Awake();
     }
 
     void Awake() {
@@ -74,8 +75,8 @@ public class DrivebaseConstants {
         if (getJerk() > maxJerk) {            
             maxJerk = getJerk();        
         }
-        System.out.print("max velocity: " + maxVelocity + " m/sec");
-        System.out.print("max acceleration: " + maxAcceleration + " m/sec2");
-        System.out.print("max jerk: " + maxJerk + " m/sec3");
+        SmartDashboard.putNumber("max velocity: ", maxVelocity);
+        SmartDashboard.putNumber("max acceleration: ", maxAcceleration);
+        SmartDashboard.putNumber("max jerk: ", maxJerk);
     }
 }

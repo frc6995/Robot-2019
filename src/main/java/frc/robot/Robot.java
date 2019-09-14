@@ -30,6 +30,7 @@ public class Robot extends TimedRobot {
   public static HatchMechDrawerS m_hatchMechDrawerS;
   public static HatchMechWheelsS m_hatchMechWheelsS;
   public static LimeLight m_limelight;
+  
 
   //Ladder commands
   public static Command m_ladderHomeC;
@@ -64,6 +65,7 @@ public class Robot extends TimedRobot {
     m_hatchMechDrawerS = new HatchMechDrawerS();
     m_hatchMechWheelsS = new HatchMechWheelsS();
     m_limelight = new LimeLight();
+    m_drivebaseConstants = new DrivebaseConstants();
 
     //Ladder commands
     m_ladderHomeC = new LadderHomeC();
@@ -132,7 +134,7 @@ public class Robot extends TimedRobot {
     m_drivebaseConstants.drivebaseConstants.update();
   }
 
-  @Override
+  @Override 
   public void teleopPeriodic() {
     SmartDashboard.putNumber("Drivebase Encoder A", m_drivebaseS.getLeftEncoder());
     SmartDashboard.putNumber("Drivebase Encoder B", m_drivebaseS.getRightEncoder());
@@ -140,6 +142,7 @@ public class Robot extends TimedRobot {
     Scheduler.getInstance().run();
     SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
     SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
+    m_drivebaseConstants.drivebaseConstants.update();
   }
 
   @Override
