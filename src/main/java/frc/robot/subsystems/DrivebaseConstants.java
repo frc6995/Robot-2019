@@ -30,6 +30,10 @@ public class DrivebaseConstants {
 
     public DrivebaseConstants() {
         Awake();
+        
+        prevDistance = calculateDistance();
+        prevVelocity = getVelocity();
+        prevAcceleration = getAcceleration();   
     }
 
     void Awake() {
@@ -61,10 +65,7 @@ public class DrivebaseConstants {
         return jerk;
     }
 
-   public void update() {
-        prevDistance = calculateDistance();
-        prevVelocity = getVelocity();
-        prevAcceleration = getAcceleration();        
+   public void update() {     
 
         if (getVelocity() > maxVelocity) {
             maxVelocity = getVelocity();
@@ -78,5 +79,9 @@ public class DrivebaseConstants {
         SmartDashboard.putNumber("max velocity: ", maxVelocity);
         SmartDashboard.putNumber("max acceleration: ", maxAcceleration);
         SmartDashboard.putNumber("max jerk: ", maxJerk);
+       
+        prevDistance = calculateDistance();
+        prevVelocity = getVelocity();
+        prevAcceleration = getAcceleration();   
     }
 }
