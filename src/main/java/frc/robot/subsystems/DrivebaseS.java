@@ -101,7 +101,7 @@ public class DrivebaseS extends Subsystem {
     driveRightFront.configPeakCurrentDuration(0);
     driveRightFront.enableCurrentLimit(false);
 
-    differentialDrive.setRightSideInverted(false);
+    differentialDrive.setRightSideInverted(true);
 
     //rotThrotConst[0] = 7.8;
     //rotThrotConst[1] = 6.8;
