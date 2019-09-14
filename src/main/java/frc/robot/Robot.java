@@ -5,8 +5,10 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HatchScoreCG;
+import frc.robot.commands.autonomous.TimedDrive;
 import frc.robot.commands.cargo.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
@@ -24,6 +26,7 @@ import frc.robot.subsystems.*;
  * project.
  */
 public class Robot extends TimedRobot {
+  public static SendableChooser<Command> autoChooser;
   //Subsystems
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
@@ -58,6 +61,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
     // Subsystems
+    autoChooser = new SendableChooser<>();
     m_drivebaseS = new DrivebaseS();
     m_ladderS = new LadderS();
     m_CargoShooterS = new CargoShooterS();
@@ -86,7 +90,11 @@ public class Robot extends TimedRobot {
 
     m_oi = new OI();
     m_PDP = new PowerDistributionPanel();
-    SmartDashboard.putData("PDP", m_PDP);
+    //SmartDashboard.putData("PDP", m_PDP);
+
+    autoChooser.addDefault("10SecStraight", new TimedDrive(10));
+    autoChooser.addObject("fourMetersStraight", new BasicStraightAutoCG());
+    SmartDashboard.putData("Auto Mode", autoChooser);
   }
 
   public void robotPeriodic() {
@@ -112,14 +120,12 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousInit() {
-    
+    autoChooser.getSelected().start();
     //Force the correct camera mode
     m_visionSetDriverCamC.start();
     //Home the ladder
     m_ladderHomeC.start();
-    if (m_basicAutoCG != null){
-      m_basicAutoCG.start();
-    }
+    
     
   }
 
