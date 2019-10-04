@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class CargoScoreC extends Command {
-  private double shootSpeed = 1.0;
+  private double shootSpeed = 1;
 
   public CargoScoreC() {
     requires(Robot.m_CargoShooterS);

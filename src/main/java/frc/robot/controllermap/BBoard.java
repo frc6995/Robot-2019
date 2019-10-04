@@ -19,12 +19,12 @@ public class BBoard {
     private static JoystickButton left_bottom;
 
     private final static int BUTTON_1 = 1;
-    private final static int BUTTON_2 = 2;
-    private final static int BUTTON_3 = 3;
-    private final static int BUTTON_4 = 4;
+    private final static int BUTTON_2 = 3;
+    private final static int BUTTON_3 = 4;
+    private final static int BUTTON_4 = 10;
     private final static int BUTTON_8 = 8;
-    private final static int BUTTON_9 = 9;
-    private final static int BUTTON_10 = 10;
+    private final static int BUTTON_9 = 2;
+    private final static int BUTTON_10 = 9;
     private final static int BUTTON_11 = 11;
     private final static int BUTTON_12 = 12;
     private final static int BUTTON_13 = 13;

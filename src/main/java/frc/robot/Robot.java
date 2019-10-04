@@ -1,19 +1,16 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HatchScoreCG;
-import frc.robot.commands.cargo.CargoIntakeC;
-import frc.robot.commands.cargo.CargoScoreC;
-import frc.robot.commands.hatch.HatchDrawerDeployC;
-import frc.robot.commands.hatch.HatchDrawerRetractC;
-import frc.robot.commands.ladder.LadderDisplayStatusC;
-import frc.robot.commands.ladder.LadderHoldPIDC;
-import frc.robot.commands.ladder.LadderHomeC;
-import frc.robot.commands.ladder.LadderMoveDownPIDC;
-import frc.robot.commands.ladder.LadderMoveUpPIDC;
+import frc.robot.commands.cargo.*;
+import frc.robot.commands.hatch.*;
+import frc.robot.commands.ladder.*;
+import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
 import frc.robot.subsystems.*;
 
@@ -31,9 +28,7 @@ public class Robot extends TimedRobot {
   public static CargoShooterS m_CargoShooterS;
   public static HatchMechDrawerS m_hatchMechDrawerS;
   public static HatchMechWheelsS m_hatchMechWheelsS;
-  public static PixyCamS m_pixyCamS;
-
-  public static OI m_oi;
+  public static LimeLight m_limelight;
 
   //Ladder commands
   public static Command m_ladderHomeC;
@@ -44,11 +39,17 @@ public class Robot extends TimedRobot {
   //Hatch/Cargo commands
   public static Command m_hatchDrawerDeployC;
   public static Command m_hatchDrawerRetractC;
-  public static Command m_hatchScoreCG;
   public static Command m_cargoScoreC;
   public static Command m_cargoIntakeC;
+  public static Command m_hatchDrawerToggleC;
+  public static CommandGroup m_hatchIntakeCG;
+  public static CommandGroup m_hatchScoreCG;
   //Limelight
   public static Command m_visionSetDriverCamC;
+
+  public static OI m_oi;
+
+  public PowerDistributionPanel m_PDP;
 
 
   @Override
@@ -59,9 +60,7 @@ public class Robot extends TimedRobot {
     m_CargoShooterS = new CargoShooterS();
     m_hatchMechDrawerS = new HatchMechDrawerS();
     m_hatchMechWheelsS = new HatchMechWheelsS();
-    m_pixyCamS = new PixyCamS();
-
-    m_oi = new OI();
+    m_limelight = new LimeLight();
 
     //Ladder commands
     m_ladderHomeC = new LadderHomeC();
@@ -73,10 +72,16 @@ public class Robot extends TimedRobot {
     m_hatchDrawerDeployC = new HatchDrawerDeployC();
     m_hatchDrawerRetractC = new HatchDrawerRetractC();
     m_cargoIntakeC = new CargoIntakeC();
-    m_hatchScoreCG = new HatchScoreCG();
     m_cargoScoreC = new CargoScoreC();
+    m_hatchDrawerToggleC = new HatchDrawerToggleC();
+    m_hatchIntakeCG = new HatchIntakeCG();
+    m_hatchScoreCG = new HatchScoreCG();
     //Limelight commands
     m_visionSetDriverCamC= new VisionSetDriverCamC();
+
+    m_oi = new OI();
+    m_PDP = new PowerDistributionPanel();
+    SmartDashboard.putData("PDP", m_PDP);
   }
 
   public void robotPeriodic() {
@@ -84,6 +89,7 @@ public class Robot extends TimedRobot {
     m_ladderDisplayStatusC.start();
     SmartDashboard.putBoolean("Has Cargo", Robot.m_CargoShooterS.getCargoLimit());
     SmartDashboard.putBoolean("Has Hatch", Robot.m_hatchMechWheelsS.getHatchLimit());
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
   }
 
   @Override
@@ -93,6 +99,9 @@ public class Robot extends TimedRobot {
   @Override
   public void disabledPeriodic() {
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
+    SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
   }
 
   @Override
@@ -105,21 +114,30 @@ public class Robot extends TimedRobot {
 
   @Override
   public void autonomousPeriodic() {
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
+    SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
+    SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
     Scheduler.getInstance().run();
   }
 
   @Override
   public void teleopInit() {
+    //m_ladderHomeC.start();
     //Force the correct camera mode
     m_visionSetDriverCamC.start();
   }
 
   @Override
   public void teleopPeriodic() {
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
     Scheduler.getInstance().run();
+    SmartDashboard.putNumber("Current Encoder Error", m_ladderS.getError());
+    SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
   }
 
   @Override
   public void testPeriodic() {
+    SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
+    SmartDashboard.putBoolean("Ladder limit", m_ladderS.lowerLimitSwitchPressed());
   }
 }

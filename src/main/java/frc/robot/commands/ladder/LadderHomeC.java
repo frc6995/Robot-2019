@@ -10,6 +10,8 @@ public class LadderHomeC extends Command {
   public boolean finished;
   private int i;
   private int j;
+  private double timeup;
+  private double timedown;
   private boolean encodersReset;
   //private double originalEncoderCount;
   //originalEncoderCount is not used
@@ -23,6 +25,8 @@ public class LadderHomeC extends Command {
   protected void initialize() {
     encodersReset = false;
     finished = false;
+    timeup = 0.25; //In seconds
+    timedown = 4; //in seconds
     i = 0;
     j = 0;
     //originalEncoderCount = Robot.m_ladderS.getLadderEncoderCount();
@@ -32,9 +36,9 @@ public class LadderHomeC extends Command {
   protected void execute() {
     //Move ladder slightly up.
     SmartDashboard.putBoolean("Enc reset", encodersReset);
-    if (i < 50) {
+    if (i < timeup * 50) {
       i += 1;
-      Robot.m_ladderS.setLadderPower(0.2);
+      Robot.m_ladderS.setLadderPower(0.3);
       //if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount() && 
       //    Robot.m_ladderS.getLadderEncoderCount() != 0) {
       //  SmartDashboard.putString("Oops","Encoder values have not changed!!!");
@@ -43,11 +47,11 @@ public class LadderHomeC extends Command {
     } 
     else {
       j += 1;
-      if (Robot.m_ladderS.lowerLimitSwitchPressed() == false && j < 100) {
-        Robot.m_ladderS.setLadderPower(-0.05);
+      if (!Robot.m_ladderS.lowerLimitSwitchPressed() && j < (timedown * 50)) {
+        Robot.m_ladderS.setLadderPower(0);
         System.out.print("Bringing ladder down");
       } 
-      else if (j >= 100) {
+      else if (!Robot.m_ladderS.lowerLimitSwitchPressed() && j >= (timedown * 50)) {
         SmartDashboard.putString("Manually reset encoders", "Manually reset encoders");
         finished = true;
         }
@@ -58,6 +62,9 @@ public class LadderHomeC extends Command {
         finished = true;
       }   
     }
+    System.out.println("i: " + i + ", j: " + j);
+    System.out.println("finished: " + finished);
+    System.out.println("encoderReset: " + encodersReset);
   }
 
   @Override
@@ -67,12 +74,9 @@ public class LadderHomeC extends Command {
 
   @Override
   protected void end() {
+    System.out.println(" -- RESETTING ENCODERS -- ");
     Robot.m_ladderS.resetEncoder();
     Robot.m_ladderS.setCurrentLadderLevel(LadderLevel.LEVEL_ONE);
-    encodersReset = false;
-    finished = false;
-    i = 0;
-    j = 0;
   }
 
   @Override

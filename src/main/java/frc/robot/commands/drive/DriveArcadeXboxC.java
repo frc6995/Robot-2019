@@ -1,5 +1,6 @@
 package frc.robot.commands.drive;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
@@ -22,6 +23,9 @@ public class DriveArcadeXboxC extends Command {
     //forwardSpeed = -Robot.m_oi.xbox.left_trigger();
     //backwardSpeed = -Robot.m_oi.xbox.right_trigger();
     
+    //Robot.m_drivebaseS.rotThrot = Robot.m_drivebaseS.driveChooser.getSelected().rotThrotConst;
+    //SmartDashboard.putNumber("ConstThrot", Robot.m_drivebaseS.rotThrot);
+    
     moveSpeed = -Robot.m_oi.xbox.left_trigger() + Robot.m_oi.xbox.right_trigger();
     rotSpeed = Robot.m_oi.xbox.left_stick_x();
 
@@ -39,7 +43,7 @@ public class DriveArcadeXboxC extends Command {
       throttle = 1;
       numberPressed = 0;
     }
-
+    SmartDashboard.putNumber("Drive Throttle", throttle);
     Robot.m_drivebaseS.arcadeDrive(moveSpeed, rotSpeed, throttle);
   }
 

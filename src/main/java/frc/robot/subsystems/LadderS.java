@@ -13,11 +13,11 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 public class LadderS extends Subsystem {
   //Enumerate various ladder levels.
   public enum LadderLevel {
-    LEVEL_ONE, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_BOTTOM;
+    LEVEL_ONE, LEVEL_CUSHION, LEVEL_TWO, LEVEL_THREE, LEVEL_CARGO_INTAKE, LEVEL_BOTTOM, LEVEL_CARGO_SHIP;
   }
   // TalonA is left and has the encoder plugged into it, TalonB is right
-  private WPI_TalonSRX ladderTalonA = null;
-  private WPI_TalonSRX ladderTalonB = null;
+  public WPI_TalonSRX ladderTalonA = null;
+  public WPI_TalonSRX ladderTalonB = null;
 
   private DigitalInput ladderBottomLimitSwitch;
 
@@ -25,7 +25,7 @@ public class LadderS extends Subsystem {
   private LadderLevel nextLadderLevel = LadderLevel.LEVEL_ONE;
 
   // Range in encoder counts where we consider ourselves "at" the set point
-  private int setPointRange = 200;
+  private int setPointRange = 250;
 
   // Counts how many loops we have been within the ladder set point
   private int countWithinSetPoint = 0;
@@ -41,14 +41,22 @@ public class LadderS extends Subsystem {
   //My personal guess is that Kd esp. will need to be higher. Also Tu is miliseconds(?).
 
   // Proportional constant
-  private double ladderKp = 0.45; //Up
-  private double ladderDownKp = 0.2;  //Down
+  //  Without feedforward
+    private double ladderKp = 0.35; //Up  was 0.65
+
+  //with feedforward
+  //private double ladderKp = 0.01;
+
+
+  private double ladderDownKp = 0.000;  //Down was 0.05
   // Integral constant
-  private double ladderKi = 0.002;
+  private double ladderKi = 0.0007; //was 0.0009
   // Derivative constant
-  private double ladderKd = 10.0;
+  private double ladderKd = 0.0; //was 0.0
   // Feedforward = power needed to hold the ladder in a constant spot
   private double ladderKf = 0;
+
+  private int currentLimit = 20;
 
   // The talon PID slot we are using, this should not change
   public static final int LADDER_PID_SLOT = 0;
@@ -61,26 +69,35 @@ public class LadderS extends Subsystem {
     ladderTalonA = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_A);
     ladderTalonB = new WPI_TalonSRX(RobotMap.CAN_ID_TALON_LADDER_B);
 
+    ladderTalonA.configFactoryDefault();
+    ladderTalonB.configFactoryDefault();
+
+    ladderTalonB.follow(ladderTalonA);
+
+    ladderTalonA.setInverted(false);
+    ladderTalonB.setInverted(false);
+
     ladderTalonA.setNeutralMode(NeutralMode.Brake);
     ladderTalonB.setNeutralMode(NeutralMode.Brake);
+
+    ladderTalonA.configContinuousCurrentLimit(currentLimit);
+    ladderTalonA.configPeakCurrentDuration(0);
+    ladderTalonA.enableCurrentLimit(false);
+
+    ladderTalonA.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
+
+    ladderTalonA.configSelectedFeedbackCoefficient(1.0);
 
     // Sensor reverse
     ladderTalonA.setSensorPhase(false);
 
+    ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
+
     ladderTalonA.configAllowableClosedloopError(LADDER_PID_SLOT, 0);
-    
-    // B follows A
-    ladderTalonB.follow(ladderTalonA);
-
-    // Selects the Quad encoder as the feedback sensor
-    ladderTalonA.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder);
-
-    // Makes sure we are not multiplying the encoder counts by anything
-    ladderTalonA.configSelectedFeedbackCoefficient(1.0);
 
     // Doesn't apply to voltage control
     ladderTalonA.configForwardSoftLimitThreshold(8000);  //Stops the ladder at the top
-    ladderTalonA.configForwardSoftLimitEnable(true);
+    ladderTalonA.configForwardSoftLimitEnable(false);
 
     // Configs P, I, D and F using the constants
     ladderTalonA.config_kP(LADDER_PID_SLOT, ladderKp);
@@ -93,13 +110,10 @@ public class LadderS extends Subsystem {
 
     // Makes it so we don't start pushing the ladder at full power immediately,
     // takes 0.5 seconds to ramp to full
-    ladderTalonA.configClosedloopRamp(0.5);
+    ladderTalonA.configClosedloopRamp(0.7);
 
     // Sets the max power that the PID can apply
     ladderTalonA.configClosedLoopPeakOutput(LADDER_PID_SLOT, 0.4);
-
-    // Selects the PID profile slot
-    ladderTalonA.selectProfileSlot(LADDER_PID_SLOT, 0);
 
     //Limit switch
     ladderBottomLimitSwitch = new DigitalInput(RobotMap.DIO_LIMIT_LADDER_BOTTOM);
@@ -141,6 +155,7 @@ public class LadderS extends Subsystem {
 
   public void disablePID() {
     ladderPIDActive = false;
+    countWithinSetPoint = 0;
     // Running a "set power" command will stop any active position control
     setLadderPower(0);
     ladderTalonA.neutralOutput();
@@ -223,6 +238,9 @@ public class LadderS extends Subsystem {
       else
         return RobotMap.LADDER_LEVEL_CUSHION; 
     }
+    else if (getNextLadderLevel() == LadderLevel.LEVEL_CARGO_SHIP) {
+      return RobotMap.LEVEL_CARGO_SHIP;
+    }
     else if (getNextLadderLevel() == LadderLevel.LEVEL_TWO) {
       return RobotMap.LADDER_LEVEL_TWO;
     }
@@ -272,6 +290,8 @@ public class LadderS extends Subsystem {
         return "4";
       case LEVEL_BOTTOM:
         return "6";
+      case LEVEL_CARGO_SHIP:
+        return "Cargo Ship";
       default:
         return "Unknown. Illegal LadderLevel type.";
     }

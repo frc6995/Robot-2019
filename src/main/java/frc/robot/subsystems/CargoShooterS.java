@@ -18,8 +18,9 @@ public class CargoShooterS extends Subsystem {
     cargoLimit = new DigitalInput(RobotMap.DIO_LIMIT_CARGO);
 
     //this may become a spark, in which case all this goes
-    cargoShooterMotor.configContinuousCurrentLimit(20);
-    cargoShooterMotor.configPeakCurrentLimit(40);
+    cargoShooterMotor.configContinuousCurrentLimit(40);
+    cargoShooterMotor.configPeakCurrentLimit(60);
+    cargoShooterMotor.configPeakCurrentDuration(100);
     cargoShooterMotor.enableCurrentLimit(true);
   }
 
