@@ -13,13 +13,17 @@ import frc.robot.Robot;
 /**
  * Add your docs here.
  */
-public class TimedDrive extends TimedCommand {
+public class TimedDriveC extends TimedCommand {
   /**
    * Add your docs here.
    */
-  public TimedDrive(double timeout) {
+  public double leftSpeed = 0;
+  public double rightSpeed = 0;
+  public TimedDriveC(double timeout, double left, double right) {
     super(timeout);
     requires(Robot.m_drivebaseS);
+    leftSpeed = left;
+    rightSpeed = right;
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
   }
@@ -32,7 +36,7 @@ public class TimedDrive extends TimedCommand {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_drivebaseS.autoDrive(0.5, 0.5);
+    Robot.m_drivebaseS.autoDrive(leftSpeed, rightSpeed);
   }
 
   // Called once after timeout
