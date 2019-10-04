@@ -32,6 +32,14 @@ public class LadderS extends Subsystem {
 
   // PID "constants"
   private boolean ladderPIDActive = true;
+
+  //Brief description of one method of tuning besides guessing:
+  //Find a Kp (Ku) that gives repeating measureable period of oscillation (Highest point back to high, Tu).
+  //Calculate the other values using these formulas:
+  //PID	P=.6*Ku     I=1.2*Ku/Tu     D=3*Ku*Tu/40
+  //However, it will then need to be perfected by hand.
+  //My personal guess is that Kd esp. will need to be higher. Also Tu is miliseconds(?).
+
   // Proportional constant
   private double ladderKp = 0.45; //Up
   private double ladderDownKp = 0.2;  //Down
