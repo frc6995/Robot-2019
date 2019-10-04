@@ -8,10 +8,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HatchScoreCG;
-import frc.robot.commands.autonomous.TimedDrive;
+import frc.robot.commands.autonomous.TimedDriveC;
 import frc.robot.commands.cargo.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
+import frc.robot.commands.BasicRightTurnAutoCG;
 import frc.robot.commands.BasicStraightAutoCG;
 import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
@@ -92,8 +93,9 @@ public class Robot extends TimedRobot {
     m_PDP = new PowerDistributionPanel();
     //SmartDashboard.putData("PDP", m_PDP);
 
-    autoChooser.addDefault("10SecStraight", new TimedDrive(10));
+    autoChooser.addDefault("10SecStraight", new TimedDriveC(10, 0.25, 0.25));
     autoChooser.addObject("fourMetersStraight", new BasicStraightAutoCG());
+    //autoChooser.addObject("Right Turn", new BasicRightTurnAutoCG());
     SmartDashboard.putData("Auto Mode", autoChooser);
   }
 
