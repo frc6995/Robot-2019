@@ -90,7 +90,7 @@ public class PathFollowerC extends Command {
 
   public static Trajectory getTrajectoryFromNameJaci(String trajectoryName)
   {
-      File trajectoryFile = new File(trajectoryName + ".csv");
+      File trajectoryFile = new File(trajectoryName + "pf1.csv");
 
       Trajectory trajectory; // = trajectoryFile.exists() ? Pathfinder.readFromFile(trajectoryFile) : null;
       try{

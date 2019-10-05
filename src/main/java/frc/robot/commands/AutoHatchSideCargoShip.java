@@ -22,7 +22,11 @@ public class AutoHatchSideCargoShip extends CommandGroup {
     // Add Commands here:
     addSequential(new TimedDriveC(2, 1, 1));
     addSequential(new WallSquareC());
-    addSequential(new PathFollowerC("")); //TODO add actual path
+    if (isLeft) {
+      addSequential(new PathFollowerC("leftHab2toLeftCargoClose")); //TODO add actual path
+    } else {
+      addSequential(new PathFollowerC("rightHab2toRightCargoClose"));
+    } 
     addSequential(new VisionAlignAndDriveCG(false));
     addSequential(new DistanceStraightDriveC(1024, 102)); //Roughly 1 second
     addSequential(new HatchScoreCG());
