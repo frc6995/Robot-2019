@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 import java.lang.reflect.Array;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.InvertType;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -96,10 +97,17 @@ public class DrivebaseS extends Subsystem {
     driveLeftFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveLeftFront.configPeakCurrentDuration(0);
     driveLeftFront.enableCurrentLimit(false);
+    driveLeftFront.config_kP(0, RobotMap.DRIVE_LEFT_PID[0]);
+    driveLeftFront.config_kI(0, RobotMap.DRIVE_LEFT_PID[1]);
+    driveLeftFront.config_kD(0, RobotMap.DRIVE_LEFT_PID[2]);
+    
 
     driveRightFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveRightFront.configPeakCurrentDuration(0);
     driveRightFront.enableCurrentLimit(false);
+    driveRightFront.config_kP(0, RobotMap.DRIVE_RIGHT_PID[0]);
+    driveRightFront.config_kI(0, RobotMap.DRIVE_RIGHT_PID[1]);
+    driveRightFront.config_kD(0, RobotMap.DRIVE_RIGHT_PID[2]);
 
     differentialDrive.setRightSideInverted(true);
 
@@ -130,6 +138,13 @@ public class DrivebaseS extends Subsystem {
     driveLeftFront.set(leftSpeed);
     driveRightFront.set(rightSpeed);
   }
+  /**
+   * IMPORTANT! These speeds are in encoder ticks/100ms
+   */
+  public void pidDrive(double leftSpeed, double rightSpeed) {
+    driveLeftFront.set(ControlMode.Velocity, leftSpeed);
+    driveRightFront.set(ControlMode.Velocity, rightSpeed);
+  }
 
   public int getLeftEncoder() {
     return driveLeftFront.getSelectedSensorPosition();
@@ -137,5 +152,10 @@ public class DrivebaseS extends Subsystem {
 
   public int getRightEncoder() {
     return driveRightFront.getSelectedSensorPosition();
+  }
+  
+  public void resetEncoders() {
+    driveLeftFront.setSelectedSensorPosition(0);
+    driveRightFront.setSelectedSensorPosition(0);
   }
 }

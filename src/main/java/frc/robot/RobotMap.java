@@ -81,4 +81,7 @@ public class RobotMap {
 
 	public static final double FIELD_WIDTH = 8.2296;
   public static final double EXPIRATION_TIME_SRX = 2; // seconds
+  public static final double[] DRIVE_LEFT_PID = {1.0, 0.0, 0.0};
+  public static final double[] DRIVE_RIGHT_PID = {1.0, 0.0, 0.0};
+  public static final double[] DRIVE_TURN_PID = {1.0, 0.0, 0.0};
 }
