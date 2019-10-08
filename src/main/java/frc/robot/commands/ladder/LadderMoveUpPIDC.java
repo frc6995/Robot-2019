@@ -1,6 +1,9 @@
 package frc.robot.commands.ladder;
 
+import java.util.Date;
+
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 
 /**
@@ -23,6 +26,12 @@ import frc.robot.Robot;
  **/
 
 public class LadderMoveUpPIDC extends Command {
+
+  double previous_count = 0;
+  double count = 0;
+  String dir = "up";
+  Date time1 = null;
+  Date time2 = null;
   
   public LadderMoveUpPIDC() {
     requires(Robot.m_ladderS);
@@ -41,6 +50,22 @@ public class LadderMoveUpPIDC extends Command {
     Robot.m_ladderS.useUpKp();
     Robot.m_ladderS.setMaxPIDPower(0.9);
     Robot.m_ladderS.runPID();
+    previous_count = count;
+    count = Robot.m_ladderS.getLadderEncoderCount();
+    if (dir=="up") {
+      if (count > previous_count) {}
+      if (count < previous_count) {
+        if(time1==null){time1 = new Date();}
+        dir = "down";
+      }
+    }
+    if (dir=="down") {
+      if (count > previous_count) {
+        if(time2==null){time2 = new Date();}
+        dir = "up";
+      }
+      if (count < previous_count) {}
+    }
   }
 
   @Override
@@ -50,6 +75,8 @@ public class LadderMoveUpPIDC extends Command {
 
   @Override
   protected void end() {
+    SmartDashboard.putString("1st PID Loop time", time1.toString());
+    SmartDashboard.putString("2nd PID Loop time", time2.toString());
     //Robot.m_ladderS.disablePID();
   }
 
