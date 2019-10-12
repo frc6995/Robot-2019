@@ -10,13 +10,21 @@ package frc.robot.commands.autonomous;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class WallSquareC extends Command {
-
-  int timeout = 50; //cycles to back up
-  public WallSquareC() {
-    requires(Robot.m_drivebaseS);
+public class DistanceDriveC extends Command {
+  int leftSpeed = 0;
+  int rightSpeed = 0;
+  double targetAngle;
+  int distance;
+  public DistanceDriveC(int distanceCounts, int speed) {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
+    requires(Robot.m_drivebaseS);
+    distance = distanceCounts;
+    leftSpeed = speed;
+    rightSpeed = speed;
+    Robot.m_drivebaseS.resetEncoders();
+    Robot.m_drivebaseS.navX.reset();
+
   }
 
   // Called just before this Command runs the first time
@@ -24,30 +32,28 @@ public class WallSquareC extends Command {
   protected void initialize() {
   }
 
-  // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_drivebaseS.autoDrive (-0.25, -0.25);
-    timeout--;
+    Robot.m_drivebaseS.pidDrive(leftSpeed, rightSpeed);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return timeout <= 0;
+    return Math.abs(Robot.m_drivebaseS.getLeftEncoder() + Robot.m_drivebaseS.getRightEncoder())/2 >= distance;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_drivebaseS.autoDrive(0,0);
-    Robot.m_drivebaseS.resetEncoders();
+    Robot.m_drivebaseS.pidDrive(0,0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    
     end();
   }
 }

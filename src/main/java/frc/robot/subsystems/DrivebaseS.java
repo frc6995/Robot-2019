@@ -97,17 +97,17 @@ public class DrivebaseS extends Subsystem {
     driveLeftFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveLeftFront.configPeakCurrentDuration(0);
     driveLeftFront.enableCurrentLimit(false);
-    driveLeftFront.config_kP(0, RobotMap.DRIVE_LEFT_PID[0]);
-    driveLeftFront.config_kI(0, RobotMap.DRIVE_LEFT_PID[1]);
-    driveLeftFront.config_kD(0, RobotMap.DRIVE_LEFT_PID[2]);
+    driveLeftFront.config_kP(0, RobotMap.DRIVE_LEFT_VELOCITY_PID[0]);
+    driveLeftFront.config_kI(0, RobotMap.DRIVE_LEFT_VELOCITY_PID[1]);
+    driveLeftFront.config_kD(0, RobotMap.DRIVE_LEFT_VELOCITY_PID[2]);
     
 
     driveRightFront.configContinuousCurrentLimit(drivebaseAmpLimit);
     driveRightFront.configPeakCurrentDuration(0);
     driveRightFront.enableCurrentLimit(false);
-    driveRightFront.config_kP(0, RobotMap.DRIVE_RIGHT_PID[0]);
-    driveRightFront.config_kI(0, RobotMap.DRIVE_RIGHT_PID[1]);
-    driveRightFront.config_kD(0, RobotMap.DRIVE_RIGHT_PID[2]);
+    driveRightFront.config_kP(0, RobotMap.DRIVE_RIGHT_VELOCITY_PID[0]);
+    driveRightFront.config_kI(0, RobotMap.DRIVE_RIGHT_VELOCITY_PID[1]);
+    driveRightFront.config_kD(0, RobotMap.DRIVE_RIGHT_VELOCITY_PID[2]);
 
     differentialDrive.setRightSideInverted(true);
 

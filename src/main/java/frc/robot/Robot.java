@@ -9,15 +9,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.autonomous.TimedDriveC;
+import frc.robot.commands.autonomous.WallSquareC;
 import frc.robot.commands.cargo.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
+import frc.robot.commands.AutoHatchSideCargoShipCG;
 import frc.robot.commands.BasicRightTurnAutoCG;
-import frc.robot.commands.BasicStraightAutoCG;
+
 import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.limelight.VisionSetDriverCamC;
 import frc.robot.subsystems.*;
-
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -28,7 +29,7 @@ import frc.robot.subsystems.*;
  */
 public class Robot extends TimedRobot {
   public static SendableChooser<Command> autoChooser;
-  //Subsystems
+  // Subsystems
   public static DrivebaseS m_drivebaseS;
   public static LadderS m_ladderS;
   public static CargoShooterS m_CargoShooterS;
@@ -36,13 +37,13 @@ public class Robot extends TimedRobot {
   public static HatchMechWheelsS m_hatchMechWheelsS;
   public static LimeLight m_limelight;
 
-  //Ladder commands
+  // Ladder commands
   public static Command m_ladderHomeC;
   public static Command m_ladderDisplayStatusC;
   public static Command m_ladderMoveUpPIDC;
   public static Command m_ladderMoveDownPIDC;
   public static Command m_ladderHoldPIDC;
-  //Hatch/Cargo commands
+  // Hatch/Cargo commands
   public static Command m_hatchDrawerDeployC;
   public static Command m_hatchDrawerRetractC;
   public static Command m_cargoScoreC;
@@ -51,13 +52,13 @@ public class Robot extends TimedRobot {
   public static CommandGroup m_hatchIntakeCG;
   public static CommandGroup m_hatchScoreCG;
   public static CommandGroup m_basicAutoCG;
-  //Limelight
+  public static Command m_wallSquareC;
+  // Limelight
   public static Command m_visionSetDriverCamC;
 
   public static OI m_oi;
 
   public PowerDistributionPanel m_PDP;
-
 
   @Override
   public void robotInit() {
@@ -70,13 +71,13 @@ public class Robot extends TimedRobot {
     m_hatchMechWheelsS = new HatchMechWheelsS();
     m_limelight = new LimeLight();
 
-    //Ladder commands
+    // Ladder commands
     m_ladderHomeC = new LadderHomeC();
     m_ladderMoveUpPIDC = new LadderMoveUpPIDC();
     m_ladderMoveDownPIDC = new LadderMoveDownPIDC();
     m_ladderHoldPIDC = new LadderHoldPIDC();
     m_ladderDisplayStatusC = new LadderDisplayStatusC();
-    //Cargo/Hatch commands
+    // Cargo/Hatch commands
     m_hatchDrawerDeployC = new HatchDrawerDeployC();
     m_hatchDrawerRetractC = new HatchDrawerRetractC();
     m_cargoIntakeC = new CargoIntakeC();
@@ -84,17 +85,17 @@ public class Robot extends TimedRobot {
     m_hatchDrawerToggleC = new HatchDrawerToggleC();
     m_hatchIntakeCG = new HatchIntakeCG();
     m_hatchScoreCG = new HatchScoreCG();
-    //Limelight commands
-    m_visionSetDriverCamC= new VisionSetDriverCamC();
-    m_basicAutoCG = new BasicStraightAutoCG();
-    
+    // Limelight commands
+    m_visionSetDriverCamC = new VisionSetDriverCamC();
+ 
+    m_wallSquareC = new WallSquareC();
 
     m_oi = new OI();
     m_PDP = new PowerDistributionPanel();
-    //SmartDashboard.putData("PDP", m_PDP);
+    // SmartDashboard.putData("PDP", m_PDP);
 
     autoChooser.addDefault("10SecStraight", new TimedDriveC(10, 0.25, 0.25));
-    autoChooser.addObject("fourMetersStraight", new BasicStraightAutoCG());
+    //autoChooser.addObject("leftCS", new AutoHatchSideCargoShipCG(true));
     //autoChooser.addObject("Right Turn", new BasicRightTurnAutoCG());
     SmartDashboard.putData("Auto Mode", autoChooser);
   }
@@ -102,6 +103,8 @@ public class Robot extends TimedRobot {
   public void robotPeriodic() {
     //Driver feedback
     m_ladderDisplayStatusC.start();
+    SmartDashboard.putNumber("Drivebase Encoder A", m_drivebaseS.getLeftEncoder());
+    SmartDashboard.putNumber("Drivebase Encoder B", m_drivebaseS.getRightEncoder());
     SmartDashboard.putBoolean("Has Cargo", Robot.m_CargoShooterS.getCargoLimit());
     SmartDashboard.putBoolean("Has Hatch", Robot.m_hatchMechWheelsS.getHatchLimit());
     SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
@@ -148,8 +151,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopPeriodic() {
-    SmartDashboard.putNumber("Drivebase Encoder A", m_drivebaseS.getLeftEncoder());
-    SmartDashboard.putNumber("Drivebase Encoder B", m_drivebaseS.getRightEncoder());
+    
     SmartDashboard.putNumber("Jerk", (m_drivebaseS.getLeftEncoder()+m_drivebaseS.getRightEncoder())/2);
     SmartDashboard.putNumber("Current Encoder Count", m_ladderS.getLadderEncoderCount());
     Scheduler.getInstance().run();

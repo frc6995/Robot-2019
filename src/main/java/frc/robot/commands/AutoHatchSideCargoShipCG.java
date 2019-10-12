@@ -8,15 +8,30 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import frc.robot.commands.autonomous.DistanceStraightDriveC;
 import frc.robot.commands.autonomous.PathFollowerC;
+import frc.robot.commands.autonomous.TimedDriveC;
+import frc.robot.commands.autonomous.WallSquareC;
+import frc.robot.commands.limelight.VisionAlignAndDriveCG;
 
-public class BasicStraightAutoCG extends CommandGroup {
+public class AutoHatchSideCargoShipCG extends CommandGroup {
   /**
    * Add your docs here.
    */
-  public BasicStraightAutoCG() {
-    addSequential(new PathFollowerC("/home/lvuser/paths/output/fourMeterStraight.pf1"));
+  public AutoHatchSideCargoShipCG(boolean isLeft) {
     // Add Commands here:
+    addSequential(new TimedDriveC(2, 1, 1));
+    addSequential(new WallSquareC());
+    if (isLeft) {
+      addSequential(new PathFollowerC("leftHab2toLeftCargoClose")); //TODO add actual path
+    } else {
+      addSequential(new PathFollowerC("rightHab2toRightCargoClose"));
+    } 
+    addSequential(new VisionAlignAndDriveCG(false));
+    addSequential(new DistanceStraightDriveC(1024, 102)); //Roughly 1 second
+    addSequential(new HatchScoreCG());
+    addSequential(new DistanceStraightDriveC(-1024, 102)); //Roughly 1 second
+
     // e.g. addSequential(new Command1());
     // addSequential(new Command2());
     // these will run in order.

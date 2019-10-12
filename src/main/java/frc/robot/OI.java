@@ -10,6 +10,10 @@ import frc.robot.commands.HatchIntakeCG;
 import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.LadderLevelCargoScoreCG;
 import frc.robot.commands.LadderLevelHatchScoreCG;
+import frc.robot.commands.autonomous.DistanceDriveC;
+import frc.robot.commands.autonomous.DistanceStraightDriveC;
+import frc.robot.commands.autonomous.TimedDriveC;
+import frc.robot.commands.autonomous.WallSquareC;
 import frc.robot.commands.cargo.*;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
@@ -25,7 +29,7 @@ public class OI {
         //FOR TESTING PURPOSES
 
         //SmartDashboard Commands for Emergency Use
-        SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
+        /*SmartDashboard.putData("Reset Ladder Encoder", new LadderResetEncoderC());
         SmartDashboard.putData("LadderHomeC", new LadderHomeC());
 
         SmartDashboard.putData("Hatch Intake", new HatchIntakeCG());
@@ -41,7 +45,12 @@ public class OI {
         SmartDashboard.putData("Level 2 Cargo", new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
         SmartDashboard.putData("Level 2 Hatch", new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
         SmartDashboard.putData("Level 3 Hatch", new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
-        SmartDashboard.putData("Ladder Cargo Intake", new CargoIntakeCG());
+        SmartDashboard.putData("Ladder Cargo Intake", new CargoIntakeCG());*/
+        SmartDashboard.putData("Wall Square", new WallSquareC());
+        SmartDashboard.putData("DriveDistanceAutoTest", new DistanceDriveC(6510, 480));
+        SmartDashboard.putData("DriveeStraightAutoTest", new DistanceStraightDriveC(6510, 480));
+        SmartDashboard.putData("TimedDrive10secs", new TimedDriveC(10, 480, 480));
+    
 
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 

@@ -8,6 +8,7 @@
 package frc.robot.commands.autonomous;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -46,8 +47,8 @@ public class PathFollowerC extends Command {
     // The fourth argument is the velocity ratio. This is 1 over the maximum velocity you provided in the 
     //      trajectory configuration (it translates m/s to a -1 to 1 scale that your motors can read)
     // The fifth argument is your acceleration gain. Tweak this if you want to get to a higher or lower speed quicker
-    left.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.MAX_VELOCITY, 0);
-    right.configurePIDVA(1.0, 0.0, 0.0, 1 / RobotMap.MAX_VELOCITY, 0);
+    left.configurePIDVA(RobotMap.DRIVE_LEFT_VELOCITY_PID[0], RobotMap.DRIVE_LEFT_VELOCITY_PID[1], RobotMap.DRIVE_LEFT_VELOCITY_PID[2], 1 / RobotMap.MAX_VELOCITY, 0);
+    right.configurePIDVA(RobotMap.DRIVE_RIGHT_VELOCITY_PID[0], RobotMap.DRIVE_RIGHT_VELOCITY_PID[1],RobotMap.DRIVE_RIGHT_VELOCITY_PID[2], 1 / RobotMap.MAX_VELOCITY, 0);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -74,40 +75,41 @@ public class PathFollowerC extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return false;
+    return left.isFinished() && right.isFinished();
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_drivebaseS.autoDrive(0, 0);
   }
+  public static Trajectory getTrajectoryFromNameJaci(String trajectoryName)
+  {
+    Trajectory trajectory;
+    try{
+      File trajectoryFile = new File("home\\lvuser\\deploy\\paths\\output\\" + trajectoryName + "pf1.csv"); // = trajectoryFile.exists() ? Pathfinder.readFromFile(trajectoryFile) : null;
+      trajectory = Pathfinder.readFromCSV(trajectoryFile);
+    } catch (IOException e) {
+      trajectory = null;
+      System.out.println("Cannot find file: home\\lvuser\\deploy\\paths\\output\\" + trajectoryName + "pf1.csv");
+    }
+    
+    if(trajectory == null)
+    {
+        System.out.println("FILE DOES NOT EXIST");
+        // trajectoryFile = new File("C:\\Users\\brian\\OneDrive\\Projects\\FRC_2018_Offseason\\PathPlanner\\Trajectories\\" + trajectoryName + "\\" + trajectoryName + "_source_detailed.traj");
+        // trajectory = trajectoryFile.exists() ? Pathfinder.readFromFile(trajectoryFile): null;
+    }
+    else
+        System.out.println("CSV READ SUCCESSFUL");
 
+    return trajectory;
+  }
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    end();
   }
 
-  public static Trajectory getTrajectoryFromNameJaci(String trajectoryName)
-  {
-      File trajectoryFile = new File(trajectoryName + "pf1.csv");
-
-      Trajectory trajectory; // = trajectoryFile.exists() ? Pathfinder.readFromFile(trajectoryFile) : null;
-      try{
-          trajectory = Pathfinder.readFromCSV(trajectoryFile);
-      } catch (IOException e) {
-          trajectory = null;
-      } 
-      
-      if(trajectory == null)
-      {
-          System.out.println("FILE DOES NOT EXIST");
-          // trajectoryFile = new File("C:\\Users\\brian\\OneDrive\\Projects\\FRC_2018_Offseason\\PathPlanner\\Trajectories\\" + trajectoryName + "\\" + trajectoryName + "_source_detailed.traj");
-          // trajectory = trajectoryFile.exists() ? Pathfinder.readFromFile(trajectoryFile): null;
-      }
-      else
-          System.out.println("CSV READ SUCCESSFUL");
-
-      return trajectory;
-  }
 }

@@ -9,6 +9,7 @@ package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -26,36 +27,39 @@ public class DistanceStraightDriveC extends PIDCommand {
     leftSpeed = speed;
     rightSpeed = speed;
     Robot.m_drivebaseS.resetEncoders();
+    Robot.m_drivebaseS.navX.reset();
  }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    targetAngle = Robot.m_drivebaseS.navX.getYaw();
+    
+    setSetpoint(0.0);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    setSetpoint(targetAngle);
+    
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    return (Robot.m_drivebaseS.getLeftEncoder() + Robot.m_drivebaseS.getRightEncoder())/2 >= distance;
+    return Math.abs(Robot.m_drivebaseS.getLeftEncoder() + Robot.m_drivebaseS.getRightEncoder())/2 >= distance;
   }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    
+    Robot.m_drivebaseS.pidDrive(0,0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    
     end();
   }
 
@@ -66,6 +70,9 @@ public class DistanceStraightDriveC extends PIDCommand {
 
   @Override
   protected void usePIDOutput(double output) {
-    Robot.m_drivebaseS.pidDrive(leftSpeed + output, rightSpeed - output);
+    Robot.m_drivebaseS.pidDrive(leftSpeed - output, rightSpeed + output);
+    //Robot.m_drivebaseS.pidDrive(leftSpeed, rightSpeed);
+    SmartDashboard.putNumber("Yaw PID Output", output);
+    SmartDashboard.putNumber("Drivebase Yaw Error", Robot.m_drivebaseS.navX.getYaw());
   }
 }
