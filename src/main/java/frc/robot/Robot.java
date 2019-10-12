@@ -11,6 +11,7 @@ import frc.robot.commands.HatchScoreCG;
 import frc.robot.commands.autonomous.TimedDriveC;
 import frc.robot.commands.autonomous.WallSquareC;
 import frc.robot.commands.cargo.*;
+import frc.robot.commands.drive.DriveArcadeXboxC;
 import frc.robot.commands.hatch.*;
 import frc.robot.commands.ladder.*;
 import frc.robot.commands.AutoHatchSideCargoShipCG;
@@ -94,7 +95,7 @@ public class Robot extends TimedRobot {
     m_PDP = new PowerDistributionPanel();
     // SmartDashboard.putData("PDP", m_PDP);
 
-    autoChooser.addDefault("10SecStraight", new TimedDriveC(10, 0.25, 0.25));
+    autoChooser.addDefault("Driver Control", new DriveArcadeXboxC());
     //autoChooser.addObject("leftCS", new AutoHatchSideCargoShipCG(true));
     //autoChooser.addObject("Right Turn", new BasicRightTurnAutoCG());
     SmartDashboard.putData("Auto Mode", autoChooser);
