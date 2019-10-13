@@ -38,7 +38,7 @@ public class LadderHomeC extends Command {
     SmartDashboard.putBoolean("Enc reset", encodersReset);
     if (i < timeup * 50) {
       i += 1;
-      Robot.m_ladderS.setLadderPower(0.3);
+      Robot.m_ladderS.setLadderPower(0.25);
       //if (originalEncoderCount == Robot.m_ladderS.getLadderEncoderCount() && 
       //    Robot.m_ladderS.getLadderEncoderCount() != 0) {
       //  SmartDashboard.putString("Oops","Encoder values have not changed!!!");

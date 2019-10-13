@@ -42,6 +42,7 @@ public class OI {
         SmartDashboard.putData("Level 2 Hatch", new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
         SmartDashboard.putData("Level 3 Hatch", new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
         SmartDashboard.putData("Ladder Cargo Intake", new CargoIntakeCG());
+        SmartDashboard.putData("Ladder Test PIDC", new LadderTESTPIDC());
 
         //BUTTON ASSIGNMENTS - Place a comment for buttons used in other classes
 

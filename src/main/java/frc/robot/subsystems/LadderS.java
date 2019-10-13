@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.DemandType;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -44,19 +45,19 @@ public class LadderS extends Subsystem {
 
   // Proportional constant
   //  Without feedforward
-    private double ladderKp = 0.35; //Up  was 0.65
+    private double ladderKp = 0.3;//26; //0.45 //Up  was 0.65
 
   //with feedforward
-  //private double ladderKp = 0.01;
+  //private double ladderKp = 0.01
 
 
   private double ladderDownKp = 0.000;  //Down was 0.05
   // Integral constant
-  private double ladderKi = 0.0007; //was 0.0009
+  private double ladderKi = 0.000;//.0008;//.00078; //.0007; //was 0.0009
   // Derivative constant
-  private double ladderKd = 0.0; //was 0.0
+  private double ladderKd = 40;//48.75; //was 0.0
   // Feedforward = power needed to hold the ladder in a constant spot
-  private double ladderKf = 0;
+  private double ladderKf = 0.06;
 
   private int currentLimit = 20;
 
@@ -108,7 +109,7 @@ public class LadderS extends Subsystem {
     ladderTalonA.config_kF(LADDER_PID_SLOT, ladderKf);
 
     // The zone where the integral turns on
-    ladderTalonA.config_IntegralZone(LADDER_PID_SLOT, 1500);
+    ladderTalonA.config_IntegralZone(LADDER_PID_SLOT, 1500); //1500
 
     // Makes it so we don't start pushing the ladder at full power immediately,
     // takes 0.5 seconds to ramp to full
@@ -165,9 +166,10 @@ public class LadderS extends Subsystem {
 
   public void runPID() {
     ladderPIDActive = true;
+    double dynamicIntegral = ((8000 - getLadderEncoderCount()/2)/8000)*ladderKf;
 
     // Tuning/testing outputs
-    //SmartDashboard.putNumber("Encoder pos", ladderTalonA.getSensorCollection().getQuadraturePosition());
+    SmartDashboard.putNumber("Dynamic Integral", dynamicIntegral);
     //SmartDashboard.putNumber("Error", getError());
     //SmartDashboard.putBoolean("IsAtSetPoint", isAtSetPoint());
     //SmartDashboard.putNumber("Power", ladderTalonA.getMotorOutputPercent());
@@ -178,7 +180,7 @@ public class LadderS extends Subsystem {
     //SmartDashboard.putNumber("Derivative", ladderTalonA.getErrorDerivative());
     //SmartDashboard.putString("Ladder level",LadderLevelToString(getNextLadderLevel()));
 
-    ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount());
+    ladderTalonA.set(ControlMode.Position, getLadderSetPointEncoderCount(), DemandType.ArbitraryFeedForward, ladderKf);
 
     // If we are within the set point range add 1 to countWithinSetPoint, else set to 0
     if (Math.abs(getError()) < setPointRange) {
