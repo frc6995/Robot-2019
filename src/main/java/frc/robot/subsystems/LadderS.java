@@ -98,7 +98,7 @@ public class LadderS extends Subsystem {
     ladderTalonA.config_kF(LADDER_PID_SLOT, ladderKf);
 
     // The zone where the integral turns on
-    ladderTalonA.config_IntegralZone(LADDER_PID_SLOT, 1500);
+    ladderTalonA.config_IntegralZone(LADDER_PID_SLOT, 2000); //maybe 1500 test before matches.
 
     // Makes it so we don't start pushing the ladder at full power immediately,
     // takes 0.5 seconds to ramp to full
