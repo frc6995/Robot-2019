@@ -55,6 +55,7 @@ public class OI {
         xbox.y_runOnPressed(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
         xbox.a_toggleOnPress(new VisionAlignAndDriveCG(true)); //Rocket cargo
         xbox.b_runWhileHeld(new LadderManualMoveC());
+        xbox.right_bumper_toggleOnPress(new CargoIntakeCG());
 
         //Button Board Assignments (ASSIGN COMMANDS TO BUTTONS)
         buttonBoard.right_top_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_CARGO_SHIP));
