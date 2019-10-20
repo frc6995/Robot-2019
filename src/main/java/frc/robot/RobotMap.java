@@ -58,7 +58,7 @@ public class RobotMap {
   public static final int LEVEL_CARGO_SHIP = 2500;
 
   //TODO - set these values
-  public static final int LADDER_LEVEL_CARGO_INTAKE = 1980;
+  public static final int LADDER_LEVEL_CARGO_INTAKE = 1900; //1980
   //public static final int LADDER_LEVEL_ROCKET_CARGO_VISION = 1900;
 
   // Climb Constants

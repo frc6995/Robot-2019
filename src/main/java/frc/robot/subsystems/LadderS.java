@@ -34,7 +34,9 @@ public class LadderS extends Subsystem {
   private boolean ladderPIDActive = true;
   // Proportional constant
   //  Without feedforward
-    private double ladderKp = 0.57; //Up  was 0.45
+
+  //CHANGE IN LADDER MOVE UP CARGO C!!!!!!!!!!!
+    private double ladderKp = 0.55; //Up  was 0.45
 
   //with feedforward
   //private double ladderKp = 0.01;
@@ -44,7 +46,7 @@ public class LadderS extends Subsystem {
   // Integral constant
   private double ladderKi = 0.00075; //was 0.00078
   // Derivative constant
-  private double ladderKd = 65; //was 48.75
+  private double ladderKd = 75; //was 48.75
   // Feedforward = power needed to hold the ladder in a constant spot
   private double ladderKf = 0;
 

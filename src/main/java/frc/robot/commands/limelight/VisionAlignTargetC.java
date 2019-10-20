@@ -32,7 +32,7 @@ public class VisionAlignTargetC extends Command {
   //Change these if the align method is stopping too soon or not soon enough
   double xRange = 4; //degrees
   double yRange = 5; //degrees
-  double waitInRange = 10; //cycles
+  double waitInRange = 100; //cycles
 
   //Variables that are set within the command
   double tx= 0.0;
@@ -59,6 +59,7 @@ public class VisionAlignTargetC extends Command {
     requires(Robot.m_limelight);
     pipelineEntry.setDouble(RobotMap.PIPELINE_DRIVER_CAM); //Normal camera
     ledMode.setDouble(0); //Leds off
+    setInterruptible(true);
 
     //Puts constants on smart dashboard
     SmartDashboard.putNumber("kpAim", KpAim);

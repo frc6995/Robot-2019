@@ -56,22 +56,22 @@ public class OI {
         xbox.x_toggleOnPress(new VisionAlignAndDriveCG(false)); //Hatch + CargoShip
         //xbox.y_runOnPressed(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
         xbox.a_toggleOnPress(new VisionAlignAndDriveCG(true)); //Rocket cargo
-        xbox.b_runWhileHeld(new LadderManualMoveC());
-        xbox.right_bumper_toggleOnPress(new CargoIntakeCG());
+        //xbox.b_runWhileHeld(new LadderManualMoveC());
+        //xbox.right_bumper_toggleOnPress(new CargoIntakeCG());
         //xbox.left_bumper_runOnPressed(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
 
-        stick.button_8_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
-        stick.button_10_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
-        stick.button_12_runOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_ONE));
+        stick.button_8_toggleOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_THREE));
+        stick.button_10_toggleOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_TWO));
+        stick.button_12_toggleOnPress(new LadderLevelHatchScoreCG(LadderLevel.LEVEL_ONE));
 
-        stick.button_7_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
-        stick.button_9_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
-        stick.button_11_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE));
+        stick.button_7_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_THREE));
+        stick.button_9_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_TWO));
+        stick.button_11_toggleOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_ONE));
 
         stick.button_3_runOnPress(new HatchIntakeCG());
-        stick.button_4_runOnPress(new CargoIntakeCG());
+        stick.button_4_toggleOnPress(new CargoIntakeCG());
 
-        stick.button_5_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_CARGO_SHIP));
+        stick.button_6_runOnPress(new LadderLevelCargoScoreCG(LadderLevel.LEVEL_CARGO_SHIP));
 
         /**
         xbox2.left_bumper_runOnPressed(new CargoIntakeCG());

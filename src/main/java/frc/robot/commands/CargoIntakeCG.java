@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc.robot.commands.cargo.CargoIntakeC;
 import frc.robot.commands.ladder.LadderHoldPIDC;
 import frc.robot.commands.ladder.LadderMoveDownC;
+import frc.robot.commands.ladder.LadderMoveUpCargoC;
 import frc.robot.commands.ladder.LadderMoveUpPIDC;
 import frc.robot.commands.ladder.LadderSetLevelC;
 import frc.robot.subsystems.LadderS.LadderLevel;
@@ -17,7 +18,7 @@ public class CargoIntakeCG extends CommandGroup {
     //  --LIFT--
     //Move the ladder up
     addSequential(new LadderSetLevelC(LadderLevel.LEVEL_CARGO_INTAKE));
-    addSequential(new LadderMoveUpPIDC());
+    addSequential(new LadderMoveUpCargoC());
 
     //holds the ladder position.
     addParallel(new LadderHoldPIDC());
