@@ -18,77 +18,87 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 
 public class Xbox {
-    private static XboxController xbox;
-    private static JoystickButton a;
-    private static JoystickButton b;
-    private static JoystickButton x;
-    private static JoystickButton y;
-    private static JoystickButton left_stick;
-    private static JoystickButton right_stick;
-    private static JoystickButton left_bumper;
-    private static JoystickButton right_bumper;
-    private static JoystickButton start;
-    private static JoystickButton back;
+    private XboxController xbox;
+    private JoystickButton a;
+    private JoystickButton b;
+    private JoystickButton x;
+    private JoystickButton y;
+    private JoystickButton left_stick;
+    private JoystickButton right_stick;
+    private JoystickButton left_bumper;
+    private JoystickButton right_bumper;
+    private JoystickButton start;
+    private JoystickButton back;
 
-    private static POVButton dpad_center;
-    private static POVButton dpad_up;
-    private static POVButton dpad_down;
-    private static POVButton dpad_left;
-    private static POVButton dpad_right;
-    private static POVButton dpad_up_left;
-    private static POVButton dpad_up_right;
-    private static POVButton dpad_down_left;
-    private static POVButton dpad_down_right;
+    private POVButton dpad_center;
+    private POVButton dpad_up;
+    private POVButton dpad_down;
+    private POVButton dpad_left;
+    private POVButton dpad_right;
+    private POVButton dpad_up_left;
+    private POVButton dpad_up_right;
+    private POVButton dpad_down_left;
+    private POVButton dpad_down_right;
 
     private enum POV {
         UP, DOWN, LEFT, RIGHT, UP_RIGHT, UP_LEFT, DOWN_LEFT, DOWN_RIGHT, CENTER;
     }
 
-    private static int DPAD(POV pov) {
+    private int DPAD(POV pov) {
         switch (pov) {
-        case UP: return 0;
-        case UP_RIGHT: return 45;
-        case RIGHT: return 90;
-        case DOWN_RIGHT: return 135;
-        case DOWN: return 180;
-        case DOWN_LEFT: return 225;
-        case LEFT: return 270;
-        case UP_LEFT: return 315;
-        case CENTER: return -1;
-        default: return -1;
+        case UP:
+            return 0;
+        case UP_RIGHT:
+            return 45;
+        case RIGHT:
+            return 90;
+        case DOWN_RIGHT:
+            return 135;
+        case DOWN:
+            return 180;
+        case DOWN_LEFT:
+            return 225;
+        case LEFT:
+            return 270;
+        case UP_LEFT:
+            return 315;
+        case CENTER:
+            return -1;
+        default:
+            return -1;
         }
     }
 
     // BUTTONS
-    private final static int BUTTON_A = 1;
-    private final static int BUTTON_B = 2;
-    private final static int BUTTON_X = 3;
-    private final static int BUTTON_Y = 4;
-    private final static int BUTTON_LEFT_BUMPER = 5;
-    private final static int BUTTON_RIGHT_BUMPER = 6;
-    private final static int BUTTON_START = 7;
-    private final static int BUTTON_BACK = 8;
-    private final static int BUTTON_LEFT_STICK = 9;
-    private final static int BUTTON_RIGHT_STICK = 10;
+    private final int BUTTON_A = 1;
+    private final int BUTTON_B = 2;
+    private final int BUTTON_X = 3;
+    private final int BUTTON_Y = 4;
+    private final int BUTTON_LEFT_BUMPER = 5;
+    private final int BUTTON_RIGHT_BUMPER = 6;
+    private final int BUTTON_START = 7;
+    private final int BUTTON_BACK = 8;
+    private final int BUTTON_LEFT_STICK = 9;
+    private final int BUTTON_RIGHT_STICK = 10;
 
     // AXIS
-    private final static int AXIS_LEFT_STICK_X = 0;
-    private final static int AXIS_LEFT_STICK_Y = 1;
-    private final static int AXIS_RIGHT_STICK_X = 4;
-    private final static int AXIS_RIGHT_STICK_Y = 5;
-    private final static int AXIS_LEFT_TRIGGER = 2;
-    private final static int AXIS_RIGHT_TRIGGER = 3;
+    private final int AXIS_LEFT_STICK_X = 0;
+    private final int AXIS_LEFT_STICK_Y = 1;
+    private final int AXIS_RIGHT_STICK_X = 4;
+    private final int AXIS_RIGHT_STICK_Y = 5;
+    private final int AXIS_LEFT_TRIGGER = 2;
+    private final int AXIS_RIGHT_TRIGGER = 3;
 
     // DPAD
-    private final static int DPAD_UP = DPAD(POV.UP);
-    private final static int DPAD_LEFT = DPAD(POV.LEFT);
-    private final static int DPAD_DOWN = DPAD(POV.DOWN);
-    private final static int DPAD_RIGHT = DPAD(POV.RIGHT);
-    private final static int DPAD_UP_RIGHT = DPAD(POV.UP_RIGHT);
-    private final static int DPAD_UP_LEFT = DPAD(POV.UP_LEFT);
-    private final static int DPAD_DOWN_RIGHT = DPAD(POV.DOWN_RIGHT);
-    private final static int DPAD_DOWN_LEFT = DPAD(POV.DOWN_RIGHT);
-    private final static int DPAD_CENTER = DPAD(POV.CENTER);
+    private final int DPAD_UP = DPAD(POV.UP);
+    private final int DPAD_LEFT = DPAD(POV.LEFT);
+    private final int DPAD_DOWN = DPAD(POV.DOWN);
+    private final int DPAD_RIGHT = DPAD(POV.RIGHT);
+    private final int DPAD_UP_RIGHT = DPAD(POV.UP_RIGHT);
+    private final int DPAD_UP_LEFT = DPAD(POV.UP_LEFT);
+    private final int DPAD_DOWN_RIGHT = DPAD(POV.DOWN_RIGHT);
+    private final int DPAD_DOWN_LEFT = DPAD(POV.DOWN_RIGHT);
+    private final int DPAD_CENTER = DPAD(POV.CENTER);
 
     /**
      * Construct instance of the Xbox class.
@@ -178,7 +188,7 @@ public class Xbox {
     public double left_trigger() {
         return xbox.getRawAxis(AXIS_LEFT_TRIGGER);
     }
-    
+
     /**
      * BUTTONS
      */
@@ -623,7 +633,7 @@ public class Xbox {
         return xbox.getBumper(Hand.kLeft);
     }
 
-    public boolean left_bumper_pressed(){
+    public boolean left_bumper_pressed() {
         return xbox.getBumperPressed(Hand.kLeft);
     }
 
