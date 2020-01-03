@@ -3,6 +3,8 @@
 
 This Repository is for FRC 6995, 2019 Robot using VS Code
 
+***This repository has been archived. All further development will be put twoards the 2020 season.***
+
 This repository is the code for the 2019 robot of the First Robotics Challenge (FRC) team, 6995 NOMAD.
 Official FRC Java programming documentation
 https://wpilib.screenstepslive.com/s/currentCS/m/java
